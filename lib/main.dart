@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pokerspot_partner_app/common/theme/button.dart';
+import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 ThemeData _createThemeData({required BuildContext context}) {
   return ThemeData(
     useMaterial3: true,
-    checkboxTheme: CheckboxThemeData(),
-    elevatedButtonTheme: ElevatedButtonThemeData(),
-    textButtonTheme: TextButtonThemeData(),
+    colorScheme: colorScheme,
+    checkboxTheme: checkboxTheme,
+    elevatedButtonTheme: elevatedButtonThemeData,
+    textButtonTheme: textButtonThemeData,
     scaffoldBackgroundColor: Colors.white,
-    textTheme: Theme.of(context)
-        .textTheme
-        .apply(bodyColor: Colors.black, displayColor: Colors.black),
+    textTheme: Theme.of(context).textTheme.apply(
+          bodyColor: Colors.black,
+          displayColor: Colors.black,
+        ),
   );
 }
 

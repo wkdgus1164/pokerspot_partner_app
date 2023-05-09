@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <clipPath id="p168cwt0ga">
+            <path data-name="사각형 23439" transform="translate(164 378)" style="stroke:#707070;fill:#c6c8cd" d="M0 0h24v24H0z"/>
+        </clipPath>
+        <clipPath id="2ylqh7hrjb">
+            <path data-name="사각형 23445" transform="translate(164 382)" style="fill:#fff;stroke:#707070" d="M0 0h24v24H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="마스크 그룹 6474" transform="translate(-164 -378)" style="clip-path:url(#p168cwt0ga)">
+        <g data-name="마스크 그룹 6478" transform="translate(0 -4)" style="clip-path:url(#2ylqh7hrjb)">
+            <path d="M2 0h14a2 2 0 0 1 2 2v15.154a2 2 0 0 1-2.677 1.882l-1.562-.562a2 2 0 0 0-1.5.058l-2.442 1.1a2 2 0 0 1-1.641 0l-2.442-1.1a2 2 0 0 0-1.5-.058l-1.562.562A2 2 0 0 1 0 17.154V2a2 2 0 0 1 2-2zm3 4.25a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5zm0 4a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5zm0 4a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5z" transform="translate(167 384.097)" style="fill:#28303f;fill-rule:evenodd" data-name="그룹 76928"/>
+        </g>
+    </g>
+</svg>

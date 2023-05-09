@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g data-name="그룹 82672">
+        <g data-name="사각형 24211" style="fill:#fdfdfd;stroke:#e9ebee">
+            <rect width="24" height="24" rx="12" style="stroke:none"/>
+            <rect x=".5" y=".5" width="23" height="23" rx="11.5" style="fill:none"/>
+        </g>
+        <g data-name="그룹 82672">
+            <path data-name="선 90" transform="rotate(45 -2.339 18.253)" style="stroke:#3a4552;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none" d="M7.385 7.385 0 0"/>
+            <path data-name="선 91" transform="rotate(45 -2.339 18.253)" style="stroke:#3a4552;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none" d="M0 7.385 7.385 0"/>
+        </g>
+    </g>
+</svg>

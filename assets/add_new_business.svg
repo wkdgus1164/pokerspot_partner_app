@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <clipPath id="mrptm0jyna">
+            <path data-name="사각형 23835" transform="translate(172 1021)" style="fill:#fff" d="M0 0h24v24H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="마스크 그룹 6561" transform="translate(-172 -1021)" style="clip-path:url(#mrptm0jyna)">
+        <g data-name="그룹 78656">
+            <path data-name="Ellipse 1051" d="M10 5.75A4.25 4.25 0 0 1 5.75 10v1.5a5.75 5.75 0 0 0 5.75-5.75zM5.75 10A4.25 4.25 0 0 1 1.5 5.75H0a5.75 5.75 0 0 0 5.75 5.75zM1.5 5.75A4.25 4.25 0 0 1 5.75 1.5V0A5.75 5.75 0 0 0 0 5.75zM5.75 1.5A4.25 4.25 0 0 1 10 5.75h1.5A5.75 5.75 0 0 0 5.75 0z" transform="translate(178.25 1026.25)" style="fill:#fff"/>
+            <path data-name="Ellipse 1052" d="M18 9.639c0 2.2-1.285 4.814-3.057 6.913a13.373 13.373 0 0 1-2.774 2.526A4.743 4.743 0 0 1 9.75 20v1.5a6.177 6.177 0 0 0 3.242-1.169 14.863 14.863 0 0 0 3.1-2.812c1.884-2.23 3.411-5.175 3.411-7.881zM9.75 20a4.743 4.743 0 0 1-2.418-.923 13.374 13.374 0 0 1-2.774-2.526C2.785 14.453 1.5 11.843 1.5 9.639H0c0 2.705 1.528 5.65 3.411 7.881a14.865 14.865 0 0 0 3.1 2.812A6.177 6.177 0 0 0 9.75 21.5zM1.5 9.639A8.2 8.2 0 0 1 9.75 1.5V0A9.7 9.7 0 0 0 0 9.639zM9.75 1.5A8.2 8.2 0 0 1 18 9.639h1.5A9.7 9.7 0 0 0 9.75 0z" style="fill:#fff" transform="translate(174.25 1022.25)"/>
+            <path data-name="Vector 2410" d="M1.5.75a.75.75 0 0 0-1.5 0zm-1.5 4a.75.75 0 1 0 1.5 0zm0-4v4h1.5v-4z" transform="translate(183.25 1029.25)" style="fill:#fff"/>
+            <path data-name="Vector 2411" d="M4.75 1.5a.75.75 0 1 0 0-1.5zM.75 0a.75.75 0 0 0 0 1.5zm4 0h-4v1.5h4z" transform="translate(181.25 1031.25)" style="fill:#fff"/>
+        </g>
+    </g>
+</svg>

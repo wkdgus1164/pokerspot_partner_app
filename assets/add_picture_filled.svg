@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42">
+    <defs>
+        <clipPath id="bfj21imd0b">
+            <path data-name="사각형 24100" transform="translate(245 277)" style="fill:#5e48e8" d="M0 0h30v30H0z"/>
+        </clipPath>
+        <filter id="aksn55e0ta" x="0" y="0" width="42" height="42" filterUnits="userSpaceOnUse">
+            <feOffset dy="2"/>
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feFlood flood-color="#dbdbdb" flood-opacity=".302"/>
+            <feComposite operator="in" in2="blur"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g data-name="그룹 82816">
+        <g style="filter:url(#aksn55e0ta)">
+            <circle data-name="타원 2708" cx="15" cy="15" r="15" transform="translate(6 4)" style="fill:#fff"/>
+        </g>
+        <g style="clip-path:url(#bfj21imd0b)" data-name="그룹 81809">
+            <path d="M18.462 3.462a15 15 0 1 0 15 15 15.017 15.017 0 0 0-15-15zm5.769 16.154h-4.616v4.615a1.154 1.154 0 1 1-2.308 0v-4.616h-4.615a1.154 1.154 0 0 1 0-2.308h4.615v-4.615a1.154 1.154 0 0 1 2.308 0v4.615h4.615a1.154 1.154 0 1 1 0 2.308z" transform="translate(2.539 .539)" style="fill:#5e48e8" data-name="마스크 그룹 6656"/>
+        </g>
+    </g>
+</svg>

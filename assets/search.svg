@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19">
+    <defs>
+        <clipPath id="6gzamnugta">
+            <path data-name="사각형 23199" transform="translate(1470 249)" style="stroke:#707070;fill:#2a323b" d="M0 0h19v19H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="마스크 그룹 6377" transform="translate(-1470 -249)" style="clip-path:url(#6gzamnugta)">
+        <path d="M14.076 13.236a.594.594 0 0 0-.84.84zm1.931 3.61a.594.594 0 1 0 .84-.84zm.222-8.732A8.115 8.115 0 0 0 8.115 0v1.188a6.927 6.927 0 0 1 6.927 6.927zM8.115 0A8.115 8.115 0 0 0 0 8.115h1.188a6.927 6.927 0 0 1 6.927-6.927zM0 8.115a8.115 8.115 0 0 0 8.115 8.115v-1.188a6.927 6.927 0 0 1-6.927-6.927zm8.115 8.115a8.115 8.115 0 0 0 8.115-8.115h-1.188a6.927 6.927 0 0 1-6.927 6.927zm5.122-2.153 2.771 2.771.84-.84-2.771-2.771z" style="fill:#2a323b" transform="translate(1470.99 249.99)" data-name="Huge-icon/interface/outline/search 02"/>
+    </g>
+</svg>

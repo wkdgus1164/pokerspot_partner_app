@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+    <defs>
+        <clipPath id="kdxhl2pwta">
+            <path data-name="사각형 23484" transform="translate(175 758)" style="stroke:#707070;fill:#297afb" d="M0 0h15v15H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="마스크 그룹 6485" transform="translate(-175 -758)" style="clip-path:url(#kdxhl2pwta)">
+        <g data-name="그룹 77159">
+            <path data-name="Ellipse 1111" d="M1.25.625A.625.625 0 1 1 .625 0a.625.625 0 0 1 .625.625z" transform="translate(181.875 761.75)" style="fill:#297afb"/>
+            <path d="M6.094 5a.469.469 0 0 0 0 .938zm.625.469h.469A.469.469 0 0 0 6.719 5zM6.25 9.844a.469.469 0 0 0 .938 0zm6.25-3.125A5.781 5.781 0 0 1 6.719 12.5v.938a6.719 6.719 0 0 0 6.719-6.719zM6.719 12.5A5.781 5.781 0 0 1 .938 6.719H0a6.719 6.719 0 0 0 6.719 6.719zM.938 6.719A5.781 5.781 0 0 1 6.719.938V0A6.719 6.719 0 0 0 0 6.719zM6.719.938A5.781 5.781 0 0 1 12.5 6.719h.938A6.719 6.719 0 0 0 6.719 0zm-.625 5h.625V5h-.625zm.156-.469v4.375h.938V5.469z" transform="translate(175.781 758.781)" style="fill:#297afb"/>
+        </g>
+    </g>
+</svg>

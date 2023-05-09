@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31">
+    <defs>
+        <clipPath id="cdd5uv2zva">
+            <path data-name="사각형 24277" style="stroke:#707070;fill:#fff" d="M0 0h23v23H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="그룹 83296">
+        <g data-name="사각형 24276" style="stroke:#e9ebee;fill:#fff">
+            <rect width="31" height="31" rx="15.5" style="stroke:none"/>
+            <rect x=".5" y=".5" width="30" height="30" rx="15" style="fill:none"/>
+        </g>
+        <g data-name="마스크 그룹 6677" transform="translate(4 4)" style="clip-path:url(#cdd5uv2zva)">
+            <path data-name="Rectangle 77" d="M16.56 14.72v-1.514A1.84 1.84 0 0 0 15.4 11.5l-1.871-.749a1.84 1.84 0 0 0-2.329.885l-.163.326A9 9 0 0 1 6.9 9.66a9 9 0 0 1-2.3-4.14l.326-.163a1.84 1.84 0 0 0 .886-2.329l-.749-1.871A1.84 1.84 0 0 0 3.354 0H1.84A1.84 1.84 0 0 0 0 1.84a14.72 14.72 0 0 0 14.72 14.72 1.84 1.84 0 0 0 1.84-1.84z" transform="translate(3.68 3.68)" style="fill:#28303f"/>
+        </g>
+    </g>
+</svg>

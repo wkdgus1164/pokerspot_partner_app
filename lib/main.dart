@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/button.dart';
 import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/ui/splash/views/splash_view.dart';
 
 ThemeData _createThemeData({required BuildContext context}) {
   return ThemeData(
@@ -37,9 +37,11 @@ class MainApp extends StatelessWidget {
     );
 
     return GestureDetector(
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routeInformationProvider: router.routeInformationProvider,
+        routeInformationParser: router.routeInformationParser,
+        routerDelegate: router.routerDelegate,
         theme: _createThemeData(context: context),
-        home: const SplashView(),
       ),
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
     );

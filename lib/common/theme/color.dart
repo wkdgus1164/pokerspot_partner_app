@@ -10,7 +10,7 @@ ColorScheme colorScheme = ColorScheme(
   onError: Colors.white,
   background: backgroundColor,
   onBackground: Colors.black,
-  surface: Colors.white,
+  surface: backgroundColor,
   onSurface: Colors.black,
 );
 

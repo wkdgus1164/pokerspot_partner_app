@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/ui/intro/views/intro_first.dart';
+import 'package:pokerspot_partner_app/ui/intro/views/intro.dart';
 import 'package:pokerspot_partner_app/ui/splash/views/splash_view.dart';
 
 enum Routes {

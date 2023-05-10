@@ -36,13 +36,17 @@ class MainApp extends StatelessWidget {
       ),
     );
 
-    return GestureDetector(
-      child: MaterialApp.router(
+    MaterialApp materialApp() {
+      return MaterialApp.router(
         routeInformationProvider: router.routeInformationProvider,
         routeInformationParser: router.routeInformationParser,
         routerDelegate: router.routerDelegate,
         theme: _createThemeData(context: context),
-      ),
+      );
+    }
+
+    return GestureDetector(
+      child: materialApp(),
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
     );
   }

@@ -25,12 +25,19 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
   assets:
     - assets/
-    - assets/icons/
-    - assets/icons/common
-    - assets/images/
-    - assets/images/common
+
+  fonts:
+    - family: Pretendard
+      fonts:
+        - asset: fonts/Pretendard-Regular.otf
+          weight: 400
+    - family: Pretendard
+      fonts:
+        - asset: fonts/Pretendard-Bold.otf
+          weight: 700
 
 flutter_icons:
   android: 'launcher_icon'

@@ -9,7 +9,7 @@ class CustomTextFieldSet extends StatelessWidget {
     required this.inputLabel,
     required this.keyboardType,
     required this.isPassword,
-    required this.inputErrorText,
+    this.inputErrorText,
     required this.inputHintText,
     this.onEditingComplete,
     required this.onTextFieldChanged,
@@ -21,7 +21,7 @@ class CustomTextFieldSet extends StatelessWidget {
   }) : super(key: key);
 
   final String inputLabel;
-  final String inputErrorText;
+  final String? inputErrorText;
   final String inputHintText;
   final TextInputType keyboardType;
   final bool isPassword;
@@ -65,10 +65,13 @@ class CustomTextFieldSet extends StatelessWidget {
         ),
         const SizedBox(height: padding10),
         if (captionText.isNotEmpty) ...[
-          Text(
-            captionText,
-            style: caption.copyWith(
-              color: const Color.fromARGB(255, 102, 111, 123),
+          Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Text(
+              captionText,
+              style: caption.copyWith(
+                color: const Color.fromARGB(255, 102, 111, 123),
+              ),
             ),
           ),
         ]

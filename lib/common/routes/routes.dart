@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/ui/intro/views/intro.dart';
 import 'package:pokerspot_partner_app/ui/signup/business/views/business_view.dart';
+import 'package:pokerspot_partner_app/ui/signup/information/views/information_view.dart';
 import 'package:pokerspot_partner_app/ui/splash/views/splash_view.dart';
 
 enum Routes {
   splash('/'),
   intro('intro'),
   signupBusiness('signup_business'),
+  signupInformation('signup_information'),
   ;
 
   const Routes(this.path);
@@ -19,6 +21,7 @@ Map<String, Widget Function(BuildContext)> namedRoutes = {
   Routes.splash.path: (context) => const SplashView(),
   Routes.intro.path: (context) => const IntroView(),
   Routes.signupBusiness.path: (context) => const SignupBusinessView(),
+  Routes.signupInformation.path: (context) => const SignupInformationView(),
 };
 
 final GoRouter router = GoRouter(
@@ -59,6 +62,31 @@ final GoRouter router = GoRouter(
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const SignupBusinessView(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return SlideTransition(
+                  position: animation.drive(
+                    Tween<Offset>(
+                      begin: const Offset(1, 0),
+                      end: Offset.zero,
+                    ).chain(
+                      CurveTween(
+                        curve: Curves.easeInOut,
+                      ),
+                    ),
+                  ),
+                  child: child,
+                );
+              },
+            );
+          },
+        ),
+        GoRoute(
+          name: Routes.signupInformation.path,
+          path: Routes.signupInformation.path,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const SignupInformationView(),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                 return SlideTransition(

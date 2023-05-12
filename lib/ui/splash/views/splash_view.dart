@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
+import 'package:pokerspot_partner_app/common/routes/base/base.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 
@@ -19,7 +20,7 @@ class _SplashViewState extends State<SplashView> {
   // ignore: must_call_super
   void initState() {
     Timer(const Duration(milliseconds: 1500), () {
-      super.context.pushReplacementNamed(Routes.intro.path);
+      super.context.pushReplacementNamed(BaseRoutes.intro.path);
     });
   }
 

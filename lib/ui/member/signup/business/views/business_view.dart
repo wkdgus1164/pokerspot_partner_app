@@ -3,13 +3,14 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/routes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
-import 'package:pokerspot_partner_app/ui/signup/business/components/business_number.dart';
-import 'package:pokerspot_partner_app/ui/signup/business/components/header.dart';
-import 'package:pokerspot_partner_app/ui/signup/business/components/owner_name.dart';
-import 'package:pokerspot_partner_app/ui/signup/business/components/phone-number.dart';
+import 'package:pokerspot_partner_app/ui/member/signup/business/components/business_number.dart';
+import 'package:pokerspot_partner_app/ui/member/signup/business/components/header.dart';
+
+import '../components/owner_name.dart';
+import '../components/phone-number.dart';
 
 class SignupBusinessView extends StatelessWidget {
   const SignupBusinessView({super.key});
@@ -53,7 +54,7 @@ class SignupBusinessView extends StatelessWidget {
                         customButtonTheme: CustomButtonTheme.primary,
                         text: '다음 단계로',
                         onPressed: () => context.pushReplacementNamed(
-                          Routes.signupInformation.path,
+                          MemberRoutes.signupInformation.path,
                         ),
                       ),
                     ],

@@ -3,14 +3,16 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
-import 'package:pokerspot_partner_app/ui/signup/information/components/email.dart';
-import 'package:pokerspot_partner_app/ui/signup/information/components/header.dart';
-import 'package:pokerspot_partner_app/ui/signup/information/components/id.dart';
-import 'package:pokerspot_partner_app/ui/signup/information/components/password.dart';
-import 'package:pokerspot_partner_app/ui/signup/information/components/password_confirm.dart';
+import 'package:pokerspot_partner_app/ui/member/signup/information/components/email.dart';
+
+import '../components/header.dart';
+import '../components/id.dart';
+import '../components/password.dart';
+import '../components/password_confirm.dart';
 
 class SignupInformationView extends StatelessWidget {
   const SignupInformationView({super.key});
@@ -51,7 +53,7 @@ class SignupInformationView extends StatelessWidget {
                         customButtonTheme: CustomButtonTheme.primary,
                         text: '가입 완료',
                         onPressed: () => context.pushReplacementNamed(
-                          Routes.signupSuccess.path,
+                          MemberRoutes.signupSuccess.path,
                         ),
                       ),
                     ],

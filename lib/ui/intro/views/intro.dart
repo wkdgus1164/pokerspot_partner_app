@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/ui/intro/components/intro_start_button.dart';
-import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/ui/intro/components/swiper_root.dart';
 
@@ -27,6 +27,6 @@ class IntroView extends StatelessWidget {
   }
 
   onStartButtonPressed(BuildContext context) {
-    context.pushNamed(Routes.signupBusiness.path);
+    context.pushNamed(MemberRoutes.signupBusiness.path);
   }
 }

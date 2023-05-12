@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
   // ignore: must_call_super
   void initState() {
     Timer(const Duration(milliseconds: 1500), () {
-      super.context.go(Routes.introFirst.path);
+      super.context.pushReplacementNamed(Routes.intro.path);
     });
   }
 

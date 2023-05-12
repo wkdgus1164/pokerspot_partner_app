@@ -4,6 +4,9 @@ enum Assets {
   slide2('assets/slide2.png'),
   slide3('assets/slide3.png'),
   slide4('assets/slide4.png'),
+  arrowBackDark('assets/arrow_back_dark.svg'),
+  arrowBackLight('assets/arrow_back_light.svg'),
+
   ;
 
   const Assets(this.path);

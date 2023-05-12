@@ -8,6 +8,7 @@ Widget slide4() {
     padding: const EdgeInsets.all(padding64),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(Assets.slide4.path),
         Column(

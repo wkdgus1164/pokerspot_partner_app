@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/common/components/button.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/ui/intro/components/intro_start_button.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/ui/intro/components/swiper_root.dart';
 
-class IntroFirstView extends StatelessWidget {
-  const IntroFirstView({super.key});
+class IntroView extends StatelessWidget {
+  const IntroView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class IntroFirstView extends StatelessWidget {
             Expanded(child: slideSwiper()),
             IntroStartButton(
               text: '시작하기',
-              onPressed: onStartButtonPressed(),
+              onPressed: () => onStartButtonPressed(context),
             ),
           ],
         ),
@@ -24,5 +26,7 @@ class IntroFirstView extends StatelessWidget {
     );
   }
 
-  onStartButtonPressed() {}
+  onStartButtonPressed(BuildContext context) {
+    context.pushNamed(Routes.signupBusiness.path);
+  }
 }

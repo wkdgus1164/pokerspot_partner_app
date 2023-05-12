@@ -23,8 +23,8 @@ class IntroStartButton extends StatelessWidget {
           width: double.infinity,
           color: primaryColor,
           padding: const EdgeInsets.only(
-            top: padding10,
-            bottom: padding32,
+            top: padding16,
+            bottom: padding16,
           ),
           child: Text(
             '시작하기',

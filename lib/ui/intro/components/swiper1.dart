@@ -9,6 +9,7 @@ Widget slide1() {
     padding: const EdgeInsets.all(padding64),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

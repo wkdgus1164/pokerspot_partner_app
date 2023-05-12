@@ -7,6 +7,7 @@ enum Assets {
   arrowBackDark('assets/arrow_back_dark.svg'),
   arrowBackLight('assets/arrow_back_light.svg'),
   complete('assets/complete.svg'),
+  textLogo('assets/text_logo.svg'),
   ;
 
   const Assets(this.path);

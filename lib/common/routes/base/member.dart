@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/custom_route.dart';
+import 'package:pokerspot_partner_app/ui/member/login/views/login_view.dart';
 import 'package:pokerspot_partner_app/ui/member/signup/business/views/business_view.dart';
 import 'package:pokerspot_partner_app/ui/member/signup/information/views/information_view.dart';
 import 'package:pokerspot_partner_app/ui/member/signup/success/views/success_view.dart';
@@ -11,6 +12,7 @@ enum MemberRoutes {
   signupBusiness('$memberPath/business'),
   signupInformation('$memberPath/information'),
   signupSuccess('$memberPath/success'),
+  login('login'),
   ;
 
   const MemberRoutes(this.path);
@@ -37,5 +39,9 @@ List<RouteBase> memberRoutes = [
   customGoRoute(
     MemberRoutes.signupSuccess.path,
     const SignupSuccessView(),
+  ),
+  customGoRoute(
+    MemberRoutes.login.path,
+    const LoginView(),
   ),
 ];

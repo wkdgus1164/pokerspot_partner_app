@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/components/text_field/text_field.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class CustomTextFieldSet extends StatelessWidget {
@@ -44,7 +45,7 @@ class CustomTextFieldSet extends StatelessWidget {
         Text(
           inputLabel,
           style: label.copyWith(
-            color: const Color.fromARGB(255, 42, 50, 59),
+            color: textColor,
             fontWeight: FontWeight.w500,
           ),
         ),

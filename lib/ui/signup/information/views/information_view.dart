@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/ui/signup/information/components/email.dart';
@@ -47,8 +49,10 @@ class SignupInformationView extends StatelessWidget {
                       const SizedBox(height: padding24),
                       CustomButton(
                         customButtonTheme: CustomButtonTheme.primary,
-                        text: '다음 단계로',
-                        onPressed: () {},
+                        text: '가입 완료',
+                        onPressed: () => context.pushReplacementNamed(
+                          Routes.signupSuccess.path,
+                        ),
                       ),
                     ],
                   ),

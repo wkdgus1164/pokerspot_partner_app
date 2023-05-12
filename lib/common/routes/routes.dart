@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/ui/intro/views/intro.dart';
 import 'package:pokerspot_partner_app/ui/signup/business/views/business_view.dart';
 import 'package:pokerspot_partner_app/ui/signup/information/views/information_view.dart';
+import 'package:pokerspot_partner_app/ui/signup/success/views/success_view.dart';
 import 'package:pokerspot_partner_app/ui/splash/views/splash_view.dart';
 
 enum Routes {
@@ -10,6 +11,7 @@ enum Routes {
   intro('intro'),
   signupBusiness('signup_business'),
   signupInformation('signup_information'),
+  signupSuccess('signup_success'),
   ;
 
   const Routes(this.path);
@@ -22,6 +24,7 @@ Map<String, Widget Function(BuildContext)> namedRoutes = {
   Routes.intro.path: (context) => const IntroView(),
   Routes.signupBusiness.path: (context) => const SignupBusinessView(),
   Routes.signupInformation.path: (context) => const SignupInformationView(),
+  Routes.signupSuccess.path: (context) => const SignupSuccessView(),
 };
 
 final GoRouter router = GoRouter(
@@ -87,6 +90,31 @@ final GoRouter router = GoRouter(
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const SignupInformationView(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return SlideTransition(
+                  position: animation.drive(
+                    Tween<Offset>(
+                      begin: const Offset(1, 0),
+                      end: Offset.zero,
+                    ).chain(
+                      CurveTween(
+                        curve: Curves.easeInOut,
+                      ),
+                    ),
+                  ),
+                  child: child,
+                );
+              },
+            );
+          },
+        ),
+        GoRoute(
+          name: Routes.signupSuccess.path,
+          path: Routes.signupSuccess.path,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const SignupSuccessView(),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                 return SlideTransition(

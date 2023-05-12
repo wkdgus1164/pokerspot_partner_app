@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -52,7 +53,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: bodyMedium.copyWith(color: Colors.black),
+      style: bodyMedium.copyWith(color: textColor),
       decoration: textFieldDecoration(),
       onChanged: onTextFieldChanged,
       onEditingComplete: onEditingComplete,

@@ -10,8 +10,8 @@ ColorScheme colorScheme = ColorScheme(
   onError: Colors.white,
   background: backgroundColor,
   onBackground: Colors.black,
-  surface: backgroundColor,
-  onSurface: Colors.black,
+  surface: Colors.white,
+  onSurface: Colors.grey,
   outline: const Color.fromARGB(255, 233, 235, 238),
 );
 
@@ -19,3 +19,4 @@ Color primaryColor = const Color(0xff573dff);
 Color errorColor = const Color(0xffdb2828);
 Color backgroundColor = const Color(0xfffdfdfd);
 Color textColor = const Color(0xff425059);
+Color borderColor = const Color.fromARGB(255, 233, 235, 238);

@@ -75,7 +75,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             style: bodySmall.copyWith(fontWeight: FontWeight.w700),
             textAlign: TextAlign.center,
           )
-        : null;
+        : SvgPicture.asset(Assets.poker.path);
 
     return AppBar(
       centerTitle: true,

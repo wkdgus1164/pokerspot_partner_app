@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
+import 'package:pokerspot_partner_app/common/theme/bottom_navigation_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/button.dart';
 import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
@@ -13,10 +14,9 @@ ThemeData _createThemeData({required BuildContext context}) {
     elevatedButtonTheme: elevatedButtonThemeData,
     textButtonTheme: textButtonThemeData,
     scaffoldBackgroundColor: Colors.white,
-    textTheme: Theme.of(context).textTheme.apply(
-          bodyColor: Colors.black,
-          displayColor: Colors.black,
-        ),
+    bottomNavigationBarTheme: bottomNavigationBarThemeData,
+    textTheme: Theme.of(context).textTheme.apply(),
+    splashFactory: InkRipple.splashFactory,
   );
 }
 

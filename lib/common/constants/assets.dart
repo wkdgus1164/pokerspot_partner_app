@@ -13,6 +13,8 @@ enum Assets {
   arrowBackLight('assets/arrow_back_light.svg'),
   complete('assets/complete.svg'),
   notiLight('assets/noti_light.svg'),
+  newIcon('assets/new.png'),
+  setting('assets/setting.svg'),
 
   // BottomNavigation
   homeOn('assets/home_on.svg'),

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
-import 'package:pokerspot_partner_app/common/components/button/custom_outlined_button.dart';
-import 'package:pokerspot_partner_app/common/components/divider/divider.dart';
-import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
-import 'package:pokerspot_partner_app/ui/main/sections/home/components/header.dart';
-import 'package:pokerspot_partner_app/ui/main/sections/home/components/notice.dart';
+import 'package:pokerspot_partner_app/ui/main/sections/home/components/blind_buyin/blind_buyin.dart';
+import 'package:pokerspot_partner_app/ui/main/sections/home/components/header/store_header.dart';
+import 'package:pokerspot_partner_app/ui/main/sections/home/components/header/tab_header.dart';
+import 'package:pokerspot_partner_app/ui/main/sections/home/components/notice/notice.dart';
+import 'package:pokerspot_partner_app/ui/main/sections/home/components/reservation/reservation.dart';
+import 'package:pokerspot_partner_app/ui/main/sections/home/components/store_list/store_list.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -15,30 +13,31 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar,
-      body: SafeArea(
+      body: const SafeArea(
         child: Column(
           children: [
-            HomeNotice(),
-            SizedBox(height: padding10),
-            CustomDivider(),
+            HomeStoreHeader(name: '몬스터 홀덤펍'),
             Expanded(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '등록된 매장이 없습니다.',
-                      style: label.copyWith(
-                        color: Colors.grey.shade400,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(height: padding10),
-                    const CustomOutlinedButton(text: '신규 등록'),
-                  ],
-                ),
-              ),
+              child: SingleChildScrollView(
+                  child: Column(
+                children: [
+                  // 매장 예약 현황
+                  HomeReservationStatus(),
+
+                  // 블라인드 및 바이인
+                  HomeBlindBuyIn(),
+
+                  // 공지사항
+                  HomeNotice(),
+
+                  // 제휴 현황
+                  HomeStore(),
+                ],
+              )),
             ),
+
+            // 데이터 없음
+            // HomeNoStore(),
           ],
         ),
       ),

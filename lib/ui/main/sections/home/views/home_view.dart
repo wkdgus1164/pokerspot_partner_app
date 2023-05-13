@@ -5,6 +5,7 @@ import 'package:pokerspot_partner_app/ui/main/sections/home/components/header/ta
 import 'package:pokerspot_partner_app/ui/main/sections/home/components/notice/notice.dart';
 import 'package:pokerspot_partner_app/ui/main/sections/home/components/reservation/reservation.dart';
 import 'package:pokerspot_partner_app/ui/main/sections/home/components/store_list/store_list.dart';
+import 'package:pokerspot_partner_app/ui/main/sections/home/components/tournament/tournament.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -26,6 +27,9 @@ class HomeView extends StatelessWidget {
 
                   // 블라인드 및 바이인
                   HomeBlindBuyIn(),
+
+                  // 당일 진행 토너먼트
+                  HomeTournament(),
 
                   // 공지사항
                   HomeNotice(),

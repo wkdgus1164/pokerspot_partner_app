@@ -11,7 +11,8 @@ class HomeNoStore extends StatelessWidget {
     return Expanded(
       child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               '등록된 매장이 없습니다.',

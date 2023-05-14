@@ -8,42 +8,62 @@ import 'package:pokerspot_partner_app/ui/main/sections/home/components/reservati
 import 'package:pokerspot_partner_app/ui/main/sections/home/components/store_list/store_list.dart';
 import 'package:pokerspot_partner_app/ui/main/sections/home/components/tournament/tournament.dart';
 
+enum HomeType {
+  none('none'),
+  blindBuyIn('blind_buyin'),
+  toner('toner'),
+  ;
+
+  const HomeType(this.path);
+
+  final String path;
+}
+
+List<Widget> _buildBody(HomeType homeType) {
+  List<Widget> body = [];
+
+  if (homeType == HomeType.none) {
+    body.add(const HomeNotice());
+    body.add(const HomeNoStore());
+  }
+
+  if (homeType == HomeType.blindBuyIn) {
+    body.add(const HomeReservationStatus());
+    body.add(const HomeBlindBuyIn());
+    body.add(const HomeNotice());
+    body.add(const HomeStore());
+  }
+
+  if (homeType == HomeType.toner) {
+    body.add(const HomeReservationStatus());
+    body.add(const HomeTournament());
+    body.add(const HomeNotice());
+    body.add(const HomeStore());
+  }
+
+  return body;
+}
+
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const HomeType homeType = HomeType.blindBuyIn;
+
     return Scaffold(
       appBar: appBar,
-      body: const SafeArea(
+      body: SafeArea(
         child: Column(
           children: [
-            HomeStoreHeader(name: '몬스터 홀덤펍'),
+            const HomeStoreHeader(name: '몬스터 홀덤펍'),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
-                  children: [
-                    // 매장 예약 현황
-                    // HomeReservationStatus(),
-
-                    // 블라인드 및 바이인
-                    // HomeBlindBuyIn(),
-
-                    // 당일 진행 토너먼트
-                    // HomeTournament(),
-
-                    // 공지 사항
-                    HomeNotice(),
-
-                    // 제휴 현황
-                    // HomeStore(),
-                  ],
+                  children: _buildBody(homeType).map((e) => e).toList(),
                 ),
               ),
             ),
-
-            // 데이터 없음
-            HomeNoStore(),
           ],
         ),
       ),

@@ -8,24 +8,19 @@ class HomeNoStore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              '등록된 매장이 없습니다.',
-              style: label.copyWith(
-                color: Colors.grey.shade400,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            const SizedBox(height: padding10),
-            const CustomOutlinedButton(text: '신규 등록'),
-          ],
+    return Column(
+      children: [
+        const SizedBox(height: padding64),
+        Text(
+          '등록된 매장이 없습니다.',
+          style: label.copyWith(
+            color: Colors.grey.shade400,
+            fontWeight: FontWeight.w500,
+          ),
         ),
-      ),
+        const SizedBox(height: padding10),
+        const CustomOutlinedButton(text: '신규 등록'),
+      ],
     );
   }
 }

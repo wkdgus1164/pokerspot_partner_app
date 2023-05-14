@@ -21,24 +21,25 @@ class HomeView extends StatelessWidget {
             HomeStoreHeader(name: '몬스터 홀덤펍'),
             Expanded(
               child: SingleChildScrollView(
-                  child: Column(
-                children: [
-                  // 매장 예약 현황
-                  // HomeReservationStatus(),
+                child: Column(
+                  children: [
+                    // 매장 예약 현황
+                    // HomeReservationStatus(),
 
-                  // 블라인드 및 바이인
-                  // HomeBlindBuyIn(),
+                    // 블라인드 및 바이인
+                    // HomeBlindBuyIn(),
 
-                  // 당일 진행 토너먼트
-                  // HomeTournament(),
+                    // 당일 진행 토너먼트
+                    // HomeTournament(),
 
-                  // 공지사항
-                  HomeNotice(),
+                    // 공지 사항
+                    HomeNotice(),
 
-                  // 제휴 현황
-                  // HomeStore(),
-                ],
-              )),
+                    // 제휴 현황
+                    // HomeStore(),
+                  ],
+                ),
+              ),
             ),
 
             // 데이터 없음

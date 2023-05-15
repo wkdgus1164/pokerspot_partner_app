@@ -27,6 +27,9 @@ enum Assets {
   shopOn('assets/shop_on.svg'),
   accountOn('assets/account_on.svg'),
   accountOff('assets/account_off.svg'),
+
+  // Shop Register
+  newAddShop('assets/new_add_shop.svg'),
   ;
 
   const Assets(this.path);

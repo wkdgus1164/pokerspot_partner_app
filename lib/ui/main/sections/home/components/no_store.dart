@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class HomeNoStore extends StatelessWidget {
@@ -19,7 +21,12 @@ class HomeNoStore extends StatelessWidget {
           ),
         ),
         const SizedBox(height: padding10),
-        const CustomOutlinedButton(text: '신규 등록'),
+        CustomOutlinedButton(
+          text: '신규 등록',
+          onPressed: () {
+            context.pushNamed(ShopRoutes.newIntro.path);
+          },
+        ),
       ],
     );
   }

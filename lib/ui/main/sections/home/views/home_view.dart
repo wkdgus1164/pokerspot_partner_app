@@ -49,7 +49,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const HomeType homeType = HomeType.blindBuyIn;
+    const HomeType homeType = HomeType.none;
 
     return Scaffold(
       appBar: appBar,

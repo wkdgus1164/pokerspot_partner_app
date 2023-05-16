@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 enum CustomAppBarTheme {
@@ -69,21 +70,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ? Colors.white
         : const Color.fromARGB(255, 42, 50, 59);
 
-    final title = customAppBarCenter == CustomAppBarCenter.text
-        ? Text(
-            text,
-            style: bodySmall.copyWith(fontWeight: FontWeight.w700),
-            textAlign: TextAlign.center,
-          )
-        : SvgPicture.asset(Assets.poker.path);
-
     return AppBar(
       centerTitle: true,
       automaticallyImplyLeading: isLeftSideVisible,
       surfaceTintColor: surfaceTintColor,
       backgroundColor: surfaceTintColor,
-      leading: leadingIcon(),
-      title: title,
+      leading: leadingIcon(context),
+      title: title(),
       elevation: 0,
       actions: actions,
     );
@@ -92,29 +85,64 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(60);
 
-  Widget? leadingIcon() {
-    if (customAppBarLeftSide != CustomAppBarLeftSide.none) return null;
+  Widget title() {
+    switch (customAppBarCenter) {
+      case CustomAppBarCenter.logo:
+        return SvgPicture.asset(Assets.poker.path);
 
-    if (customAppBarLeftSide == CustomAppBarLeftSide.backButton) {
-      if (customAppBarTheme == CustomAppBarTheme.white) {
-        return SvgPicture.asset(Assets.arrowBackDark.path);
-      } else {
-        return SvgPicture.asset(Assets.arrowBackLight.path);
-      }
+      case CustomAppBarCenter.text:
+        if (customAppBarTheme == CustomAppBarTheme.white) {
+          return Text(
+            text,
+            style: bodySmall.copyWith(
+              color: textColor,
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.center,
+          );
+        } else {
+          return Text(
+            text,
+            style: bodySmall.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.center,
+          );
+        }
     }
+  }
 
-    if (customAppBarLeftSide == CustomAppBarLeftSide.cancelButton) {
-      if (customAppBarTheme == CustomAppBarTheme.white) {
-        return const Icon(Icons.close, color: Colors.black);
-      } else {
-        return SvgPicture.asset(Assets.arrowBackLight.path);
-      }
+  Widget? leadingIcon(BuildContext context) {
+    switch (customAppBarLeftSide) {
+      case CustomAppBarLeftSide.none:
+        return null;
 
-      if (customAppBarTheme == CustomAppBarTheme.black) {
-        return const Icon(Icons.close, color: Colors.white);
-      } else {
-        return SvgPicture.asset(Assets.arrowBackDark.path);
-      }
+      case CustomAppBarLeftSide.backButton:
+        if (customAppBarTheme == CustomAppBarTheme.white) {
+          return IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+          );
+        } else {
+          return IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
+          );
+        }
+
+      case CustomAppBarLeftSide.cancelButton:
+        if (customAppBarTheme == CustomAppBarTheme.black) {
+          return IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(Icons.close, color: Colors.white),
+          );
+        } else {
+          return IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: Icon(Icons.close, color: Colors.black),
+          );
+        }
     }
   }
 }

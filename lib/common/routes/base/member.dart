@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/routes/custom_route/custom_route.dart';
+import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
 import 'package:pokerspot_partner_app/ui/member/login/views/login_view.dart';
 import 'package:pokerspot_partner_app/ui/member/signup/business/views/business_view.dart';
 import 'package:pokerspot_partner_app/ui/member/signup/information/views/information_view.dart';
@@ -28,19 +28,19 @@ Map<String, Widget Function(BuildContext)> memberNamedRoutes = {
 };
 
 List<RouteBase> memberRoutes = [
-  customGoRoute(
+  rightToLeft(
     MemberRoutes.signupBusiness.path,
     const SignupBusinessView(),
   ),
-  customGoRoute(
+  rightToLeft(
     MemberRoutes.signupInformation.path,
     const SignupInformationView(),
   ),
-  customGoRoute(
+  rightToLeft(
     MemberRoutes.signupSuccess.path,
     const SignupSuccessView(),
   ),
-  customGoRoute(
+  rightToLeft(
     MemberRoutes.login.path,
     const LoginView(),
   ),

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
-GoRoute customGoRoute(String routePath, Widget pageView) {
+GoRoute bottomToTop(String routePath, Widget pageView) {
   return GoRoute(
     name: routePath,
     path: routePath,
@@ -12,7 +12,7 @@ GoRoute customGoRoute(String routePath, Widget pageView) {
           return SlideTransition(
             position: animation.drive(
               Tween(
-                begin: const Offset(1, 0),
+                begin: const Offset(0, 1),
                 end: Offset.zero,
               ).chain(
                 CurveTween(curve: Curves.easeInOut),

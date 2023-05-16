@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/routes/custom_route/custom_route.dart';
+import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
 import 'package:pokerspot_partner_app/ui/intro/views/intro.dart';
 import 'package:pokerspot_partner_app/ui/splash/views/splash_view.dart';
 
@@ -20,5 +20,5 @@ Map<String, Widget Function(BuildContext)> baseNamedRoutes = {
 };
 
 List<RouteBase> baseRoutes = [
-  customGoRoute(BaseRoutes.intro.path, const IntroView()),
+  rightToLeft(BaseRoutes.intro.path, const IntroView()),
 ];

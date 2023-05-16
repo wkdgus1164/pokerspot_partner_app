@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
@@ -11,7 +13,9 @@ class ShopNewIntroView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    onGuideButtonPressed() {}
+    onGuideButtonPressed() {
+      context.pushNamed(ShopRoutes.newGuide.path);
+    }
 
     onAddNewButtonPressed() {}
 

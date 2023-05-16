@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/components/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
+import 'package:pokerspot_partner_app/ui/shop/new/guide/tabs/register_introduction.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/guide/tabs/register_process.dart';
 
 class ShopNewGuideTabView extends StatefulWidget {
@@ -63,7 +64,7 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
               controller: _tabController,
               children: const [
                 Center(child: ShopRegisterProcessTab()),
-                Center(child: Text('sdfg')),
+                Center(child: ShopRegisterIntroductionTab()),
               ],
             )),
           ],

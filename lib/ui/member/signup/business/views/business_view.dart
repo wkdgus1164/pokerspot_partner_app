@@ -10,7 +10,7 @@ import 'package:pokerspot_partner_app/ui/member/signup/business/components/busin
 import 'package:pokerspot_partner_app/ui/member/signup/business/components/header.dart';
 
 import '../components/owner_name.dart';
-import '../components/phone-number.dart';
+import '../components/phone_number.dart';
 
 class SignupBusinessView extends StatelessWidget {
   const SignupBusinessView({super.key});
@@ -53,7 +53,7 @@ class SignupBusinessView extends StatelessWidget {
                       CustomButton(
                         customButtonTheme: CustomButtonTheme.primary,
                         text: '다음 단계로',
-                        onPressed: () => context.pushReplacementNamed(
+                        onPressed: () => context.pushNamed(
                           MemberRoutes.signupInformation.path,
                         ),
                       ),

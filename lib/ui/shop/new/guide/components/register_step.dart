@@ -13,7 +13,6 @@ class RegisterStepCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(textList);
     return Column(
       children: textList
           .asMap()

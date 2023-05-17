@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class PhoneAuthButton extends StatelessWidget {
   const PhoneAuthButton({

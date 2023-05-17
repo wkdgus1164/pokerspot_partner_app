@@ -111,7 +111,7 @@ class LoginView extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: padding64),
+              const SizedBox(height: padding64),
               OutlinedButton(
                 onPressed: () {},
                 child: Row(

@@ -140,7 +140,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         } else {
           return IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: Icon(Icons.close, color: Colors.black),
+            icon: const Icon(Icons.close, color: Colors.black),
           );
         }
     }

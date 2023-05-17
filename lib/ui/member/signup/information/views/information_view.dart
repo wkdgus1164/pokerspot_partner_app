@@ -4,7 +4,6 @@ import 'package:pokerspot_partner_app/common/components/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
-import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/ui/member/signup/information/components/email.dart';
@@ -52,7 +51,7 @@ class SignupInformationView extends StatelessWidget {
                       CustomButton(
                         customButtonTheme: CustomButtonTheme.primary,
                         text: '가입 완료',
-                        onPressed: () => context.pushReplacementNamed(
+                        onPressed: () => context.pushNamed(
                           MemberRoutes.signupSuccess.path,
                         ),
                       ),

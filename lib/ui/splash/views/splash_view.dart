@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/routes/base/base.dart';
-import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 class SplashView extends StatefulWidget {

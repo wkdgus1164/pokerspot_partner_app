@@ -77,7 +77,7 @@ class HomeRecentReservation extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '$time',
+              time,
               style: const TextStyle(
                 fontSize: 13,
                 color: Color.fromRGBO(102, 111, 123, 0.6),

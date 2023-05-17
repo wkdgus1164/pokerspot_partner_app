@@ -6,6 +6,7 @@ import 'package:pokerspot_partner_app/ui/shop/new/guide/views/guide_tab_view.dar
 import 'package:pokerspot_partner_app/ui/shop/new/intro/views/intro_view.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/process/business/views/business_view.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/process/essential/views/essential_view.dart';
+import 'package:pokerspot_partner_app/ui/shop/new/process/image_upload/views/image_upload_view.dart';
 
 const String shopPath = 'shop';
 
@@ -15,6 +16,7 @@ enum ShopRoutes {
 
   processBusiness('$shopPath/process/business'),
   processEssential('$shopPath/process/essential'),
+  processImageUpload('$shopPath/process/image_upload'),
   ;
 
   const ShopRoutes(this.path);
@@ -28,12 +30,29 @@ Map<String, Widget Function(BuildContext)> shopNamedRoutes = {
   ShopRoutes.processBusiness.path: (context) => const ShopProcessBusinessView(),
   ShopRoutes.processEssential.path: (context) =>
       const ShopProcessEssentialView(),
+  ShopRoutes.processImageUpload.path: (context) =>
+      const ShopProcessImageUploadView(),
 };
 
 List<RouteBase> shopRoutes = [
-  rightToLeft(ShopRoutes.newIntro.path, const ShopNewIntroView()),
-  bottomToTop(ShopRoutes.newGuide.path, const ShopNewGuideTabView()),
-  rightToLeft(ShopRoutes.processBusiness.path, const ShopProcessBusinessView()),
   rightToLeft(
-      ShopRoutes.processEssential.path, const ShopProcessEssentialView()),
+    ShopRoutes.newIntro.path,
+    const ShopNewIntroView(),
+  ),
+  bottomToTop(
+    ShopRoutes.newGuide.path,
+    const ShopNewGuideTabView(),
+  ),
+  rightToLeft(
+    ShopRoutes.processBusiness.path,
+    const ShopProcessBusinessView(),
+  ),
+  rightToLeft(
+    ShopRoutes.processEssential.path,
+    const ShopProcessEssentialView(),
+  ),
+  rightToLeft(
+    ShopRoutes.processImageUpload.path,
+    const ShopProcessImageUploadView(),
+  ),
 ];

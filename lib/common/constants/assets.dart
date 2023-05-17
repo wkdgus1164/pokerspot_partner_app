@@ -30,6 +30,7 @@ enum Assets {
 
   // Shop Register
   newAddShop('assets/new_add_shop.svg'),
+  imageUpload('assets/image_upload.png'),
   ;
 
   const Assets(this.path);

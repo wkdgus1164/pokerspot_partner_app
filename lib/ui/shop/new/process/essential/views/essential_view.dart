@@ -144,25 +144,27 @@ class ShopProcessEssentialView extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(children: [
-        Expanded(
-          child: CustomButton(
-            text: '이전',
-            customButtonTheme: CustomButtonTheme.light,
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ),
-        const SizedBox(width: padding16),
-        Expanded(
-          child: CustomButton(
-            text: '다음',
-            customButtonTheme: CustomButtonTheme.primary,
-            onPressed: () => context.pushNamed(
-              ShopRoutes.processEssential.path,
+      child: Row(
+        children: [
+          Expanded(
+            child: CustomButton(
+              text: '이전',
+              customButtonTheme: CustomButtonTheme.light,
+              onPressed: () => Navigator.of(context).pop(),
             ),
           ),
-        ),
-      ]),
+          const SizedBox(width: padding16),
+          Expanded(
+            child: CustomButton(
+              text: '다음',
+              customButtonTheme: CustomButtonTheme.primary,
+              onPressed: () => context.pushNamed(
+                ShopRoutes.processImageUpload.path,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

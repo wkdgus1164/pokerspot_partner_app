@@ -51,6 +51,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.customAppBarRightSide = CustomAppBarRightSide.none,
     this.text = '',
     this.actions,
+    this.bottom,
   });
 
   final CustomAppBarTheme customAppBarTheme;
@@ -59,6 +60,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final CustomAppBarRightSide customAppBarRightSide;
   final String text;
   final List<Widget>? actions;
+  final PreferredSizeWidget? bottom;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +81,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title(),
       elevation: 0,
       actions: actions,
+      bottom: bottom,
     );
   }
 

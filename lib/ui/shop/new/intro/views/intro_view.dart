@@ -17,7 +17,9 @@ class ShopNewIntroView extends StatelessWidget {
       context.pushNamed(ShopRoutes.newGuide.path);
     }
 
-    onAddNewButtonPressed() {}
+    onAddNewButtonPressed() {
+      context.pushNamed(ShopRoutes.processBusiness.path);
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -30,7 +32,7 @@ class ShopNewIntroView extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.close_rounded),
                   color: Colors.black,
-                  onPressed: () {},
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
               ],
             ),

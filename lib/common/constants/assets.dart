@@ -31,6 +31,12 @@ enum Assets {
   // Shop Register
   newAddShop('assets/new_add_shop.svg'),
   imageUpload('assets/image_upload.png'),
+  tonerPubOff('assets/pub_toner_off.svg'),
+  tonerPubOn('assets/pub_toner_on.svg'),
+  ringPubOff('assets/pub_ring_off.svg'),
+  ringPubOn('assets/pub_ring_on.svg'),
+  etcPubOff('assets/pub_etc_off.svg'),
+  etcPubOn('assets/pub_etc_on.svg'),
   ;
 
   const Assets(this.path);

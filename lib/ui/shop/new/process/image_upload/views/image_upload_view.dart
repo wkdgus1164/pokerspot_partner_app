@@ -122,7 +122,7 @@ class ShopProcessImageUploadView extends StatelessWidget {
               text: '다음',
               customButtonTheme: CustomButtonTheme.primary,
               onPressed: () => context.pushNamed(
-                ShopRoutes.processImageUpload.path,
+                ShopRoutes.processOperation.path,
               ),
             ),
           ),

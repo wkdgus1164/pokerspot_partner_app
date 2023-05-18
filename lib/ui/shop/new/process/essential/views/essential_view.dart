@@ -15,34 +15,6 @@ class ShopProcessEssentialView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    InputDecoration textFieldDecoration() {
-      return InputDecoration(
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(4),
-        ),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(4),
-        ),
-        hintText: '주소 입력',
-        hintStyle: bodyMedium.copyWith(color: Colors.grey.shade400),
-        suffixIcon: Container(
-          width: 80,
-          alignment: Alignment.center,
-          margin: const EdgeInsets.only(top: 6, bottom: 6, right: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(color: Colors.grey.shade300),
-          ),
-          child: Text(
-            '주소찾기',
-            style: caption.copyWith(color: textColor),
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
       appBar: CustomAppBar(
         customAppBarTheme: CustomAppBarTheme.white,

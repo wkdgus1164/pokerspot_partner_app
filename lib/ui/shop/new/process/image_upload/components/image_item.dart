@@ -64,6 +64,7 @@ class ShopProcessImageItem extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 6),
           Text(
             caption,
             style: label.copyWith(color: isPrimary ? primaryColor : textColor),

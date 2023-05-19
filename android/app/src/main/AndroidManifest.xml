@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pokerspot_partner_app">
+    package="com.pokerspot.pokerspot_partner_app">
     <application
         android:label="포커스팟 사장님용"
         android:name="${applicationName}"

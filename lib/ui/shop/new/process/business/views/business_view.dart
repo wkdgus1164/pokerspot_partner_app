@@ -52,15 +52,15 @@ class ShopProcessBusinessView extends StatelessWidget {
                       _buildBusinessNumber(),
                       const SizedBox(height: padding24),
 
-                      // 대표자명
-                      _buildOwner(),
+                      // 개업연월일
+                      _buildOpenDate(),
                       const SizedBox(height: padding24),
 
                       // 휴대폰 번호
                       _buildPhone(),
                       const SizedBox(height: padding32),
 
-                      // 휴대폰 본인인증
+                      // 사업자인증
                       _buildVerify(),
                     ],
                   ),
@@ -113,23 +113,23 @@ class ShopProcessBusinessView extends StatelessWidget {
   CustomButton _buildVerify() {
     return CustomButton(
       customButtonTheme: CustomButtonTheme.light,
-      text: '휴대폰 본인인증',
+      text: '사업자인증',
       onPressed: () {},
     );
   }
 
   CustomTextFieldSet _buildPhone() {
     return CustomTextFieldSet(
-      inputLabel: '휴대폰 번호',
+      inputLabel: '개업연월일',
       keyboardType: TextInputType.number,
       isPassword: false,
-      inputHintText: '휴대폰 번호 입력 (-제외)',
+      inputHintText: '예시 : 20230519',
       onTextFieldChanged: (_) {},
       captionText: '※ 대표자 명의의 휴대폰 번호를 입력해주세요.',
     );
   }
 
-  CustomTextFieldSet _buildOwner() {
+  CustomTextFieldSet _buildOpenDate() {
     return CustomTextFieldSet(
       inputLabel: '대표자명',
       keyboardType: TextInputType.text,

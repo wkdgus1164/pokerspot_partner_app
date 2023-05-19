@@ -214,7 +214,7 @@ class ShopProcessOperationView extends StatelessWidget {
               text: '다음',
               customButtonTheme: CustomButtonTheme.primary,
               onPressed: () => context.pushNamed(
-                ShopRoutes.processGame.path,
+                ShopRoutes.processSuccess.path,
               ),
             ),
           ),

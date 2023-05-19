@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/components/divider/divider.dart';
-import 'package:pokerspot_partner_app/common/components/text_field/text_field.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/ui/bottom_navigation/destinations.dart';
 import 'package:pokerspot_partner_app/ui/main/sections/home/views/home_view.dart';
 
@@ -16,14 +17,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.white,
-          border: Border(
-            top: BorderSide(
-              color: Color.fromARGB(255, 234, 234, 234),
-              width: 1,
-            ),
-          ),
+          border: Border(top: BorderSide(color: greyVariant4, width: 1)),
         ),
         child: BottomNavigationBar(
           currentIndex: currentPageIndex,

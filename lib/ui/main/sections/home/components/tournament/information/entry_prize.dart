@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class TournamentInformationEntryPrize extends StatelessWidget {
@@ -25,19 +26,9 @@ class TournamentInformationEntryPrize extends StatelessWidget {
     return Expanded(
       child: Row(
         children: [
-          Text(
-            title,
-            style: titleSmall.copyWith(
-              color: const Color.fromRGBO(176, 176, 176, 1),
-            ),
-          ),
+          Text(title, style: titleSmall.copyWith(color: greyVariant2)),
           const SizedBox(width: 6),
-          Text(
-            value,
-            style: titleMedium.copyWith(
-              color: const Color.fromRGBO(42, 50, 59, 1),
-            ),
-          ),
+          Text(value, style: titleMedium.copyWith(color: greyVariant6)),
         ],
       ),
     );

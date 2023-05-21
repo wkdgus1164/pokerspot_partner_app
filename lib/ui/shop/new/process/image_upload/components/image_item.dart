@@ -40,7 +40,7 @@ class ShopProcessImageItem extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: const Color.fromRGBO(247, 248, 249, 1),
+                        color: greyVariant5,
                         borderRadius: BorderRadius.circular(defaultRadius * 2),
                       ),
                     ),

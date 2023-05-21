@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/ui/main/sections/home/components/tournament/information/item_information.dart';
 import 'package:pokerspot_partner_app/ui/main/sections/home/components/tournament/information/operation_switches.dart';
 import 'package:pokerspot_partner_app/ui/main/sections/home/models/tournament_model.dart';
@@ -27,7 +28,7 @@ Color setAvailableColor(bool isAvailable) {
   if (isAvailable) {
     return const Color.fromRGBO(148, 159, 255, 1);
   } else {
-    return const Color.fromRGBO(176, 176, 176, 1);
+    return greyVariant2;
   }
 }
 

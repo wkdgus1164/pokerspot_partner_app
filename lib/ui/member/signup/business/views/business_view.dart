@@ -53,9 +53,11 @@ class SignupBusinessView extends StatelessWidget {
                       CustomButton(
                         customButtonTheme: CustomButtonTheme.primary,
                         text: '다음 단계로',
-                        onPressed: () => context.pushNamed(
-                          MemberRoutes.signupInformation.path,
-                        ),
+                        onPressed: () {
+                          context.pushNamed(
+                            MemberRoutes.signupInformation.path,
+                          );
+                        },
                       ),
                     ],
                   ),

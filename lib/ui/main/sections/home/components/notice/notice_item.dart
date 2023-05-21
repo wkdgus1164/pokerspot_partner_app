@@ -25,7 +25,7 @@ class HomeNoticeItem extends StatelessWidget {
         ),
       ),
       child: InkWell(
-        onTap: (){},
+        onTap: () {},
         splashColor: Colors.grey.shade50,
         borderRadius: const BorderRadius.all(
           Radius.circular(defaultRadius),
@@ -63,7 +63,7 @@ class HomeNoticeItem extends StatelessWidget {
               Text(
                 createdAt,
                 style: caption.copyWith(
-                  color: const Color.fromRGBO(192, 200, 205, 1),
+                  color: greyVariant3,
                   fontWeight: FontWeight.w500,
                 ),
               ),

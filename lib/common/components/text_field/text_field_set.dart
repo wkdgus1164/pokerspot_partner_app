@@ -70,9 +70,7 @@ class CustomTextFieldSet extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12),
             child: Text(
               captionText,
-              style: caption.copyWith(
-                color: const Color.fromARGB(255, 102, 111, 123),
-              ),
+              style: caption.copyWith(color: greyVariant1),
             ),
           ),
         ]

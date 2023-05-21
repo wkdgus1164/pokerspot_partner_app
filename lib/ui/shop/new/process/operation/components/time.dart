@@ -38,7 +38,7 @@ class ShopProcessOperationTime extends StatelessWidget {
                   Text(
                     time,
                     style: bodyLarge.copyWith(
-                      color: const Color.fromRGBO(42, 50, 59, 0.4),
+                      color: greyVariant6.withOpacity(0.4),
                     ),
                   ),
                 ],

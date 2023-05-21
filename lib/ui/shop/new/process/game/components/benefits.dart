@@ -18,10 +18,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            '혜택정보',
-            style: titleLarge.copyWith(color: textColor),
-          ),
+          Text('혜택정보', style: titleLarge.copyWith(color: textColor)),
           const SizedBox(height: padding24),
           Row(
             children: [
@@ -32,10 +29,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
                   style: titleSmall.copyWith(color: textColor),
                 ),
               ),
-              const Expanded(
-                flex: 7,
-                child: CustomTextField(hint: '혜택 선택'),
-              ),
+              const Expanded(flex: 7, child: CustomTextField(hint: '혜택 선택')),
             ],
           ),
           const SizedBox(height: padding16),
@@ -48,10 +42,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
                   style: titleSmall.copyWith(color: textColor),
                 ),
               ),
-              const Expanded(
-                flex: 7,
-                child: CustomTextField(hint: '혜택 선택'),
-              ),
+              const Expanded(flex: 7, child: CustomTextField(hint: '혜택 선택')),
             ],
           ),
           const SizedBox(height: padding16),
@@ -64,10 +55,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
                   style: titleSmall.copyWith(color: textColor),
                 ),
               ),
-              const Expanded(
-                flex: 7,
-                child: CustomTextField(hint: '혜택 선택'),
-              ),
+              const Expanded(flex: 7, child: CustomTextField(hint: '혜택 선택')),
             ],
           ),
           const SizedBox(height: padding16),
@@ -80,10 +68,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
                   style: titleSmall.copyWith(color: textColor),
                 ),
               ),
-              const Expanded(
-                flex: 7,
-                child: CustomTextField(hint: '혜택 선택'),
-              ),
+              const Expanded(flex: 7, child: CustomTextField(hint: '혜택 선택')),
             ],
           ),
           const SizedBox(height: padding16),

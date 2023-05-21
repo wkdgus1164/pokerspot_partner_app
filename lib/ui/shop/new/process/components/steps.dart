@@ -20,9 +20,7 @@ class ShopProcessSteps extends StatelessWidget {
                 margin: const EdgeInsets.only(left: 8),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: index == e
-                      ? primaryColor
-                      : const Color.fromRGBO(198, 200, 205, 1),
+                  color: index == e ? primaryColor : greyVariant3,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(

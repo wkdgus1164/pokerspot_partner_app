@@ -43,7 +43,7 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
         Text(
           '매장 주소 입력',
           style: label.copyWith(
-            color: const Color.fromARGB(255, 42, 50, 59),
+            color: greyVariant6,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -64,9 +64,7 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
           padding: const EdgeInsets.only(left: 12),
           child: Text(
             '* 사업자 등록증에 기재된 주소를 입력해주세요.',
-            style: caption.copyWith(
-              color: const Color.fromARGB(255, 102, 111, 123),
-            ),
+            style: caption.copyWith(color: greyVariant1),
           ),
         ),
       ],

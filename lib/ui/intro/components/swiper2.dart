@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 Widget slide2() {
@@ -17,17 +18,13 @@ Widget slide2() {
             const SizedBox(height: padding32),
             Text(
               '다양한 서비스',
-              style: headlineMedium.copyWith(
-                color: const Color.fromARGB(255, 42, 50, 59),
-              ),
+              style: headlineMedium.copyWith(color: greyVariant6),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: padding10),
             Text(
               '다양한 서비스를 한눈에 비교하세요.',
-              style: label.copyWith(
-                color: const Color.fromARGB(180, 42, 50, 59),
-              ),
+              style: label.copyWith(color: greyVariant6.withOpacity(0.6)),
               textAlign: TextAlign.center,
             ),
           ],

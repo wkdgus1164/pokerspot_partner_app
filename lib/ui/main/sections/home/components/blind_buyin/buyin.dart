@@ -25,11 +25,7 @@ class HomeBuyIn extends StatelessWidget {
             style: titleMedium.copyWith(color: textColor),
           ),
         ),
-        const Divider(
-          color: Color.fromRGBO(242, 242, 242, 1),
-          height: 1,
-          thickness: 1,
-        ),
+        Divider(color: greyVariant4, height: 1, thickness: 1),
         Padding(
           padding: const EdgeInsets.only(
             top: padding24,

@@ -27,11 +27,7 @@ class HomeBlind extends StatelessWidget {
             style: titleMedium.copyWith(color: textColor),
           ),
         ),
-        const Divider(
-          color: Color.fromRGBO(242, 242, 242, 1),
-          height: 1,
-          thickness: 1,
-        ),
+        Divider(color: greyVariant4, height: 1, thickness: 1),
         Padding(
           padding: const EdgeInsets.only(
             top: padding24,
@@ -62,10 +58,7 @@ class HomeBlind extends StatelessWidget {
                   children: [
                     Text(utg > 0 ? '$utg' : '-', style: headlineSmall),
                     const SizedBox(height: padding10),
-                    Text(
-                      'UTG',
-                      style: label.copyWith(color: textColor),
-                    ),
+                    Text('UTG', style: label.copyWith(color: textColor)),
                   ],
                 ),
               ),

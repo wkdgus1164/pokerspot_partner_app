@@ -92,7 +92,7 @@ class HomeStoreItem extends StatelessWidget {
                         Text(
                           isCorporate ? '제휴 중' : '기간 만료',
                           style: caption.copyWith(
-                            color: const Color.fromRGBO(102, 111, 123, 1),
+                            color: greyVariant1,
                             fontWeight: FontWeight.w500,
                           ),
                         ),

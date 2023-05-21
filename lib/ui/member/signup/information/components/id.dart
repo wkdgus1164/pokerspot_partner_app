@@ -43,7 +43,7 @@ class SignupId extends StatelessWidget {
         Text(
           '아이디',
           style: label.copyWith(
-            color: const Color.fromARGB(255, 42, 50, 59),
+            color: greyVariant6,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -63,9 +63,7 @@ class SignupId extends StatelessWidget {
           padding: const EdgeInsets.only(left: 12),
           child: Text(
             '영문+숫자 조합 4~12자리',
-            style: caption.copyWith(
-              color: const Color.fromARGB(255, 102, 111, 123),
-            ),
+            style: caption.copyWith(color: greyVariant1),
           ),
         ),
       ],

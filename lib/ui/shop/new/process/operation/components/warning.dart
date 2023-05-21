@@ -59,12 +59,7 @@ class ShopProcessOperationWarning extends StatelessWidget {
                                     Text(
                                       '·',
                                       style: label.copyWith(
-                                        color: const Color.fromRGBO(
-                                          102,
-                                          111,
-                                          123,
-                                          1,
-                                        ),
+                                        color: greyVariant1,
                                         fontWeight: FontWeight.w900,
                                       ),
                                     ),
@@ -74,12 +69,7 @@ class ShopProcessOperationWarning extends StatelessWidget {
                                         warningContents[titleEntry.key]
                                             [contentEntry.key],
                                         style: caption.copyWith(
-                                          color: const Color.fromRGBO(
-                                            102,
-                                            111,
-                                            123,
-                                            1,
-                                          ),
+                                          color: greyVariant1,
                                         ),
                                       ),
                                     ),

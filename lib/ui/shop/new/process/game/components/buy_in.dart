@@ -31,10 +31,7 @@ class ShopProcessGameBuyIn extends StatelessWidget {
                   style: titleSmall.copyWith(color: textColor),
                 ),
               ),
-              const Expanded(
-                flex: 7,
-                child: CustomTextField(hint: 'Min 선택'),
-              ),
+              const Expanded(flex: 7, child: CustomTextField(hint: 'Min 선택')),
             ],
           ),
           const SizedBox(height: padding16),
@@ -47,17 +44,14 @@ class ShopProcessGameBuyIn extends StatelessWidget {
                   style: titleSmall.copyWith(color: textColor),
                 ),
               ),
-              const Expanded(
-                flex: 7,
-                child: CustomTextField(hint: 'Max 선택'),
-              ),
+              const Expanded(flex: 7, child: CustomTextField(hint: 'Max 선택')),
             ],
           ),
           const SizedBox(height: padding16),
           Container(
             padding: const EdgeInsets.all(padding10),
             decoration: BoxDecoration(
-              color: const Color.fromRGBO(243, 248, 254, 1),
+              color: greyVariant5,
               borderRadius: BorderRadius.circular(defaultRadius),
             ),
             child: Row(

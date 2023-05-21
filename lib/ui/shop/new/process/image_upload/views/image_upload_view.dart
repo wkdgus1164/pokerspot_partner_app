@@ -22,11 +22,7 @@ class ShopProcessImageUploadView extends StatelessWidget {
         text: '신규 매장 등록',
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
-          child: Divider(
-            color: borderColor,
-            height: 1,
-            thickness: 1,
-          ),
+          child: Divider(color: borderColor, height: 1, thickness: 1),
         ),
       ),
       body: SafeArea(

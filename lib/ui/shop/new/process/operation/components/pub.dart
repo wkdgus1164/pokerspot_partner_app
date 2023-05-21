@@ -71,7 +71,7 @@ class ShopProcessOperationPub extends StatelessWidget {
               const SizedBox(height: 6),
               Text(text, style: label),
             ],
-          )
+          ),
         ],
       ),
     );

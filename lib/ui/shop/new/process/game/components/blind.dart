@@ -12,24 +12,15 @@ class ShopProcessGameBlind extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          'BL(블라인드)',
-          style: titleLarge.copyWith(color: textColor),
-        ),
+        Text('BL(블라인드)', style: titleLarge.copyWith(color: textColor)),
         const SizedBox(height: padding24),
         Row(
           children: [
             Expanded(
               flex: 3,
-              child: Text(
-                'SB',
-                style: titleSmall.copyWith(color: textColor),
-              ),
+              child: Text('SB', style: titleSmall.copyWith(color: textColor)),
             ),
-            const Expanded(
-              flex: 7,
-              child: CustomTextField(hint: 'SB 선택'),
-            ),
+            const Expanded(flex: 7, child: CustomTextField(hint: 'SB 선택')),
           ],
         ),
         const SizedBox(height: padding16),
@@ -37,15 +28,9 @@ class ShopProcessGameBlind extends StatelessWidget {
           children: [
             Expanded(
               flex: 3,
-              child: Text(
-                'BB',
-                style: titleSmall.copyWith(color: textColor),
-              ),
+              child: Text('BB', style: titleSmall.copyWith(color: textColor)),
             ),
-            const Expanded(
-              flex: 7,
-              child: CustomTextField(hint: 'BB 선택'),
-            ),
+            const Expanded(flex: 7, child: CustomTextField(hint: 'BB 선택')),
           ],
         ),
         const SizedBox(height: padding16),
@@ -53,15 +38,9 @@ class ShopProcessGameBlind extends StatelessWidget {
           children: [
             Expanded(
               flex: 3,
-              child: Text(
-                'UTG',
-                style: titleSmall.copyWith(color: textColor),
-              ),
+              child: Text('UTG', style: titleSmall.copyWith(color: textColor)),
             ),
-            const Expanded(
-              flex: 7,
-              child: CustomTextField(hint: '없음'),
-            ),
+            const Expanded(flex: 7, child: CustomTextField(hint: '없음')),
           ],
         ),
         const SizedBox(height: padding16),

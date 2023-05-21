@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class HomeStoreHeader extends StatelessWidget {
@@ -32,9 +33,9 @@ class HomeStoreHeader extends StatelessWidget {
             Container(
               width: 8,
               height: 8,
-              decoration: const BoxDecoration(
-                color: Color.fromRGBO(19, 181, 172, 1),
-                borderRadius: BorderRadius.all(Radius.circular(50)),
+              decoration: BoxDecoration(
+                color: mintColor,
+                borderRadius: const BorderRadius.all(Radius.circular(50)),
               ),
             ),
           ],

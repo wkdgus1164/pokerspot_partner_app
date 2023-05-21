@@ -26,11 +26,7 @@ class ShopProcessOperationView extends StatelessWidget {
         text: '신규 매장 등록',
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
-          child: Divider(
-            color: borderColor,
-            height: 1,
-            thickness: 1,
-          ),
+          child: Divider(color: borderColor, height: 1, thickness: 1),
         ),
       ),
       body: SafeArea(
@@ -141,12 +137,7 @@ class ShopProcessOperationView extends StatelessWidget {
                             Text(
                               '·',
                               style: label.copyWith(
-                                color: const Color.fromRGBO(
-                                  102,
-                                  111,
-                                  123,
-                                  1,
-                                ),
+                                color: greyVariant1,
                                 fontWeight: FontWeight.w900,
                               ),
                             ),
@@ -154,14 +145,7 @@ class ShopProcessOperationView extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 '그 이외 포커스팟은 홀덤펍의 정보 중개자로서, 해당 서비스 제공의 당사자가 아님을 고지하고 서비스의 예약 이용 및 환불, 불법적인 행위와 관련된 의무와 책임은 각 서비스 제공자에게 있습니다.',
-                                style: caption.copyWith(
-                                  color: const Color.fromRGBO(
-                                    102,
-                                    111,
-                                    123,
-                                    1,
-                                  ),
-                                ),
+                                style: caption.copyWith(color: greyVariant1),
                               ),
                             ),
                           ],

@@ -6,11 +6,7 @@ Widget transitionsBuilder(context, animation, secondaryAnimation, child) {
       Tween<Offset>(
         begin: const Offset(1, 0),
         end: Offset.zero,
-      ).chain(
-        CurveTween(
-          curve: Curves.easeIn,
-        ),
-      ),
+      ).chain(CurveTween(curve: Curves.easeIn)),
     ),
     child: child,
   );

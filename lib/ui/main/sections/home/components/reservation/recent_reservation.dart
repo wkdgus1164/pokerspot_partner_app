@@ -33,11 +33,7 @@ class HomeRecentReservation extends StatelessWidget {
             style: titleMedium.copyWith(color: textColor),
           ),
         ),
-        const Divider(
-          color: Color.fromRGBO(242, 242, 242, 1),
-          height: 1,
-          thickness: 1,
-        ),
+        Divider(color: greyVariant4, height: 1, thickness: 1),
         Padding(
           padding: const EdgeInsets.only(top: padding16),
           child: Padding(
@@ -50,10 +46,7 @@ class HomeRecentReservation extends StatelessWidget {
                     style: bodySmall.copyWith(color: textColor),
                   ),
                 ),
-                Text(
-                  '31명',
-                  style: titleMedium.copyWith(color: textColor),
-                ),
+                Text('31명', style: titleMedium.copyWith(color: textColor)),
               ],
             ),
           ),
@@ -69,20 +62,14 @@ class HomeRecentReservation extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: const Color.fromRGBO(247, 248, 249, 1),
+          backgroundColor: greyVariant5,
           foregroundColor: Colors.grey.shade400,
         ),
         onPressed: onRefreshButtonPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              time,
-              style: const TextStyle(
-                fontSize: 13,
-                color: Color.fromRGBO(102, 111, 123, 0.6),
-              ),
-            ),
+            Text(time, style: TextStyle(fontSize: 13, color: greyVariant1)),
             const SizedBox(width: 4),
             Container(
               width: 20,
@@ -90,9 +77,7 @@ class HomeRecentReservation extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(
-                  color: const Color.fromRGBO(233, 235, 238, 1),
-                ),
+                border: Border.all(color: borderColor),
                 color: Colors.white,
               ),
               child: SvgPicture.asset(Assets.setting.path),

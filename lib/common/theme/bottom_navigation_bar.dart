@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 BottomNavigationBarThemeData bottomNavigationBarThemeData =
-    const BottomNavigationBarThemeData(
+    BottomNavigationBarThemeData(
   selectedItemColor: Colors.black,
-  selectedLabelStyle: TextStyle(color: Colors.black, fontSize: 12),
-  unselectedItemColor: Color.fromRGBO(198, 200, 205, 1),
-  unselectedLabelStyle: TextStyle(
-    color: Color.fromRGBO(192, 200, 205, 1),
-    fontSize: 12,
-  ),
+  selectedLabelStyle: const TextStyle(color: Colors.black, fontSize: 12),
+  unselectedItemColor: greyVariant3,
+  unselectedLabelStyle: TextStyle(color: greyVariant3, fontSize: 12),
   showUnselectedLabels: true,
   type: BottomNavigationBarType.fixed,
   enableFeedback: true,

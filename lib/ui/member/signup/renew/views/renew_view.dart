@@ -26,11 +26,7 @@ class SignupRenewView extends StatelessWidget {
         text: '회원가입',
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
-          child: Divider(
-            color: borderColor,
-            height: 1,
-            thickness: 1,
-          ),
+          child: Divider(color: borderColor, height: 1, thickness: 1),
         ),
       ),
       body: SafeArea(

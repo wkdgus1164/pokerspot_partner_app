@@ -12,7 +12,7 @@ class HomeReservationStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromRGBO(247, 248, 249, 1),
+      color: greyVariant5,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(
           padding16,

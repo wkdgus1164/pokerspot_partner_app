@@ -32,11 +32,7 @@ class HomeRealtimeReservation extends StatelessWidget {
             style: titleMedium.copyWith(color: textColor),
           ),
         ),
-        const Divider(
-          color: Color.fromRGBO(242, 242, 242, 1),
-          height: 1,
-          thickness: 1,
-        ),
+        Divider(color: greyVariant4, height: 1, thickness: 1),
         Padding(
           padding: const EdgeInsets.only(
             top: padding24,
@@ -61,7 +57,7 @@ class HomeRealtimeReservation extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: const Color.fromRGBO(247, 248, 249, 1),
+          backgroundColor: greyVariant5,
           foregroundColor: Colors.grey.shade400,
         ),
         onPressed: onRefreshButtonPressed,
@@ -70,9 +66,9 @@ class HomeRealtimeReservation extends StatelessWidget {
           children: [
             Text(
               '오늘 $time:00 기준',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 13,
-                color: Color.fromRGBO(102, 111, 123, 0.6),
+                color: greyVariant1.withOpacity(0.6),
               ),
             ),
             const SizedBox(width: 4),
@@ -82,9 +78,7 @@ class HomeRealtimeReservation extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(
-                  color: const Color.fromRGBO(233, 235, 238, 1),
-                ),
+                border: Border.all(color: borderColor),
                 color: Colors.white,
               ),
               child: const Icon(

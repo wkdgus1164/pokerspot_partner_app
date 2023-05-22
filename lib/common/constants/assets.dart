@@ -29,6 +29,12 @@ enum Assets {
   accountOff('assets/account_off.svg'),
   addNewBusiness('assets/add_new_business.svg'),
 
+  // Mypage
+  notice('assets/notice.svg'),
+  settingNoti('assets/setting_noti.svg'),
+  ask('assets/ask.svg'),
+  term('assets/term.svg'),
+
   // Shop Register
   newAddShop('assets/new_add_shop.svg'),
   imageUpload('assets/image_upload.png'),

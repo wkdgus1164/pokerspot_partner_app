@@ -13,7 +13,7 @@ class HomeStoreHeader extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        color: const Color.fromRGBO(58, 59, 82, 1),
+        color: const Color.fromRGBO(58, 69, 82, 1),
         padding: const EdgeInsets.symmetric(vertical: padding10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

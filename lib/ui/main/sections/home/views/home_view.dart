@@ -52,7 +52,7 @@ class HomeView extends StatelessWidget {
     const HomeType homeType = HomeType.none;
 
     return Scaffold(
-      appBar: appBar,
+      appBar: homeTabAppBar,
       body: SafeArea(
         child: Column(
           children: [

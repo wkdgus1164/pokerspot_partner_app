@@ -70,7 +70,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     final surfaceTintColor = customAppBarTheme == CustomAppBarTheme.white
         ? Colors.white
-        : greyVariant6;
+        : const Color.fromRGBO(42, 50, 59, 1);
 
     return AppBar(
       centerTitle: true,

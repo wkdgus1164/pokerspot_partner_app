@@ -31,7 +31,7 @@ class CustomTextButton extends StatelessWidget {
     return InkWell(
       onTap: onClick,
       borderRadius: BorderRadius.circular(10),
-      splashColor: primaryColor.withAlpha(30),
+      splashColor: color.withAlpha(30),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(

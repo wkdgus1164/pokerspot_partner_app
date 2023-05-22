@@ -27,6 +27,7 @@ enum Assets {
   shopOn('assets/shop_on.svg'),
   accountOn('assets/account_on.svg'),
   accountOff('assets/account_off.svg'),
+  addNewBusiness('assets/add_new_business.svg'),
 
   // Shop Register
   newAddShop('assets/new_add_shop.svg'),

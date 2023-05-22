@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/components/divider/divider.dart';
+import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
@@ -35,10 +36,9 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Placeholder(
-                          fallbackWidth:
-                              MediaQuery.of(context).size.width / 2 - 30,
-                          fallbackHeight: 180,
+                        Image.asset(
+                          Assets.goodPhoto.path,
+                          width: MediaQuery.of(context).size.width / 2 - 20,
                         ),
                         const SizedBox(height: 6),
                         Text(
@@ -58,10 +58,9 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Placeholder(
-                          fallbackWidth:
-                              MediaQuery.of(context).size.width / 2 - 30,
-                          fallbackHeight: 180,
+                        Image.asset(
+                          Assets.padPhoto.path,
+                          width: MediaQuery.of(context).size.width / 2 - 20,
                         ),
                         const SizedBox(height: 6),
                         Text(

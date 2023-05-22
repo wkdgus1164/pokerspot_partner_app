@@ -44,6 +44,8 @@ enum Assets {
   ringPubOn('assets/pub_ring_on.svg'),
   etcPubOff('assets/pub_etc_off.svg'),
   etcPubOn('assets/pub_etc_on.svg'),
+  goodPhoto('assets/good_photo.png'),
+  padPhoto('assets/bad_photo.png'),
   ;
 
   const Assets(this.path);

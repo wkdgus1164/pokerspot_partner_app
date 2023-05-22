@@ -69,10 +69,16 @@ class RegisterInformationCard extends StatelessWidget {
         const SizedBox(height: 6),
         if (model.hint.isNotEmpty) ...[
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(Icons.info_outline_rounded, size: 16, color: textColor),
               const SizedBox(width: 4),
-              Text(model.hint, style: caption.copyWith(color: textColor)),
+              Expanded(
+                child: Text(
+                  model.hint,
+                  style: caption.copyWith(color: textColor),
+                ),
+              ),
             ],
           ),
         ],

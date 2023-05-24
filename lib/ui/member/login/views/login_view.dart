@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/ui/member/login/components/login_form.dart';
@@ -25,7 +27,9 @@ class LoginView extends StatelessWidget {
                 onPWChanged: (String value) {},
                 onAutoLoginCheckboxChanged: () {},
                 onAutoLoginChecked: true,
-                onSignupButtonPressed: () {},
+                onSignupButtonPressed: () {
+                  context.pushNamed(MemberRoutes.signupRenewal.path);
+                },
               ),
               const SizedBox(height: padding64),
 

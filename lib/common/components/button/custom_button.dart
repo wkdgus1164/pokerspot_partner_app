@@ -3,7 +3,8 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 enum CustomButtonTheme {
   light('light'),
-  primary('primary');
+  primary('primary'),
+  ;
 
   const CustomButtonTheme(this.key);
 

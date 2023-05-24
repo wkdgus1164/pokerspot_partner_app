@@ -9,19 +9,16 @@ class CustomCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10),
-      child: GestureDetector(
-        onTap: onChanged,
-        child: Container(
-          width: 20,
-          height: 20,
-          decoration: BoxDecoration(
-            color: value ? primaryColor : Colors.grey.shade300,
-            borderRadius: BorderRadius.circular(2),
-          ),
-          child: const Icon(Icons.check_rounded, color: Colors.white, size: 16),
+    return GestureDetector(
+      onTap: onChanged,
+      child: Container(
+        width: 20,
+        height: 20,
+        decoration: BoxDecoration(
+          color: value ? primaryColor : Colors.grey.shade300,
+          borderRadius: BorderRadius.circular(2),
         ),
+        child: const Icon(Icons.check_rounded, color: Colors.white, size: 16),
       ),
     );
   }

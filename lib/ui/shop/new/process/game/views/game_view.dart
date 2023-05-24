@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
+import 'package:pokerspot_partner_app/common/components/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/common/components/divider/divider.dart';
+import 'package:pokerspot_partner_app/common/components/info_box/info_box.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/process/components/steps.dart';
+import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/add_button.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/benefits.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/blind.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/buy_in.dart';
+import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/game_item.dart';
 
 class ShopProcessGameView extends StatelessWidget {
   const ShopProcessGameView({super.key});
@@ -53,16 +57,70 @@ class ShopProcessGameView extends StatelessWidget {
                             const SizedBox(height: padding16),
                             Text('게임 정보', style: headlineSmall),
                             const SizedBox(height: padding10),
-                            Text('게임 정보를 입력해주세요.', style: bodySmall),
-                            const SizedBox(height: padding48),
-                            const ShopProcessGameBlind(),
+                            Text('최소 1개의 토너먼트 목록을 작성해주세요.', style: bodySmall),
+                            const SizedBox(height: padding10),
+                            const InfoBox(
+                              boxColor: BoxColor.blue,
+                              text: '모든 참가비의 단위는 chip입니다.',
+                            ),
+                            const SizedBox(height: padding24),
+                            Text(
+                              '토너먼트',
+                              style: titleMedium.copyWith(color: textColor),
+                            ),
+                            const SizedBox(height: padding10),
+
+                            // 추가하기 버튼
+                            GameAddButton(onPressed: () {}),
+
+                            // 아이템
+                            GameItem(
+                              title: '3만 데일리 토너먼트',
+                              isAllDayRunning: true,
+                              tonerType: TonerType.daily,
+                              onTonerTypeChanged: () {},
+                              onAllDayRunningChanged: () {},
+                              joinCost: '3만',
+                              onJoinCostInputChanged: (value) {},
+                              entryStart: 15,
+                              onEntryStartInputChanged: (value) {},
+                              entryLimit: 0,
+                              onEntryLimitInputChanged: (value) {},
+                              prize: 80,
+                              targetToner: 'OOOO 토너먼트',
+                              onTargetTonerInputChanged: (value) {},
+                              onPrizeInputChanged: (value) {},
+                              isDeleteButtonEnabled: true,
+                              onDeleteButtonPressed: () {},
+                              isSaveButtonEnabled: true,
+                              onsaveButtonPressed: () {},
+                            ),
+
+                            // 아이템
+                            GameItem(
+                              title: '3만 데일리 토너먼트',
+                              isAllDayRunning: true,
+                              tonerType: TonerType.daily,
+                              onTonerTypeChanged: () {},
+                              onAllDayRunningChanged: () {},
+                              joinCost: '3만',
+                              onJoinCostInputChanged: (value) {},
+                              entryStart: 15,
+                              onEntryStartInputChanged: (value) {},
+                              entryLimit: 0,
+                              onEntryLimitInputChanged: (value) {},
+                              prize: 80,
+                              targetToner: 'OOOO 토너먼트',
+                              onTargetTonerInputChanged: (value) {},
+                              onPrizeInputChanged: (value) {},
+                              isDeleteButtonEnabled: true,
+                              onDeleteButtonPressed: () {},
+                              isSaveButtonEnabled: true,
+                              onsaveButtonPressed: () {},
+                            ),
                           ],
                         ),
                       ),
-                      const CustomDivider(),
-                      const ShopProcessGameBuyIn(),
-                      const CustomDivider(),
-                      const ShopProcessGameBenefits(),
                     ],
                   ),
                 ),
@@ -110,7 +168,7 @@ class ShopProcessGameView extends StatelessWidget {
               text: '완료',
               customButtonTheme: CustomButtonTheme.primary,
               onPressed: () => context.pushNamed(
-                ShopRoutes.processGame.path,
+                ShopRoutes.processSuccess.path,
               ),
             ),
           ),

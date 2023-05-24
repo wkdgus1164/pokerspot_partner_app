@@ -12,6 +12,7 @@ enum HomeType {
   none('none'),
   blindBuyIn('blind_buyin'),
   toner('toner'),
+  all('all'),
   ;
 
   const HomeType(this.path);
@@ -41,6 +42,14 @@ List<Widget> _buildBody(HomeType homeType) {
     body.add(const HomeStore());
   }
 
+  if (homeType == HomeType.all) {
+    body.add(const HomeReservationStatus());
+    body.add(const HomeTournament());
+    body.add(const HomeNotice());
+    body.add(const HomeStore());
+    body.add(const HomeNoStore());
+  }
+
   return body;
 }
 
@@ -49,7 +58,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const HomeType homeType = HomeType.none;
+    const HomeType homeType = HomeType.all;
 
     return Scaffold(
       appBar: homeTabAppBar,

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/bottom_to_top.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
@@ -29,20 +28,6 @@ enum ShopRoutes {
 
   final String path;
 }
-
-Map<String, Widget Function(BuildContext)> shopNamedRoutes = {
-  ShopRoutes.newIntro.path: (context) => const ShopNewIntroView(),
-  ShopRoutes.newGuide.path: (context) => const ShopNewGuideTabView(),
-  ShopRoutes.processBusiness.path: (context) => const ShopProcessBusinessView(),
-  ShopRoutes.processEssential.path: (context) =>
-      const ShopProcessEssentialView(),
-  ShopRoutes.processImageUpload.path: (context) =>
-      const ShopProcessImageUploadView(),
-  ShopRoutes.processOperation.path: (context) =>
-      const ShopProcessOperationView(),
-  ShopRoutes.processGame.path: (context) => const ShopProcessGameView(),
-  ShopRoutes.processSuccess.path: (context) => const ShopProcessSuccessView(),
-};
 
 List<RouteBase> shopRoutes = [
   rightToLeft(

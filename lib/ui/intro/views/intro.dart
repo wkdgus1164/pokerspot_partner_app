@@ -27,6 +27,6 @@ class IntroView extends StatelessWidget {
   }
 
   onStartButtonPressed(BuildContext context) {
-    context.pushNamed(MemberRoutes.signupRenewal.path);
+    context.pushNamed(MemberRoutes.login.path);
   }
 }

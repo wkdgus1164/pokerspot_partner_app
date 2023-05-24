@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
 import 'package:pokerspot_partner_app/ui/member/login/views/login_view.dart';
@@ -21,14 +20,6 @@ enum MemberRoutes {
 
   final String path;
 }
-
-Map<String, Widget Function(BuildContext)> memberNamedRoutes = {
-  MemberRoutes.signupBusiness.path: (context) => const SignupBusinessView(),
-  MemberRoutes.signupInformation.path: (context) =>
-      const SignupInformationView(),
-  MemberRoutes.signupSuccess.path: (context) => const SignupSuccessView(),
-  MemberRoutes.signupRenewal.path: (context) => const SignupRenewView(),
-};
 
 List<RouteBase> memberRoutes = [
   rightToLeft(

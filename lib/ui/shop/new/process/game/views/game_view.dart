@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
-import 'package:pokerspot_partner_app/common/components/button/custom_outlined_button.dart';
-import 'package:pokerspot_partner_app/common/components/divider/divider.dart';
 import 'package:pokerspot_partner_app/common/components/info_box/info_box.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
@@ -11,9 +9,6 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/process/components/steps.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/add_button.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/benefits.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/blind.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/buy_in.dart';
 import 'package:pokerspot_partner_app/ui/shop/new/process/game/components/game_item.dart';
 
 class ShopProcessGameView extends StatelessWidget {

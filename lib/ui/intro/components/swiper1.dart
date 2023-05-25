@@ -9,7 +9,7 @@ Widget slide1() {
   return Padding(
     padding: const EdgeInsets.all(padding64),
     child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Column(
@@ -26,7 +26,7 @@ Widget slide1() {
             ),
           ],
         ),
-        const SizedBox(height: padding64),
+        const SizedBox(height: padding48),
         SvgPicture.asset(Assets.slide1.path),
       ],
     ),

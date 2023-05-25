@@ -8,12 +8,12 @@ Widget slide4() {
   return Padding(
     padding: const EdgeInsets.all(padding64),
     child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(Assets.slide4.path),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: padding32),
             Text(

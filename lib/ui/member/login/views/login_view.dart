@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
@@ -31,19 +32,25 @@ class LoginView extends StatelessWidget {
                   context.pushNamed(MemberRoutes.signupRenewal.path);
                 },
               ),
-              const SizedBox(height: padding64),
+              const SizedBox(height: padding32),
 
               // 로그인 전 둘러보기
               OutlinedButton(
-                onPressed: () {},
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.grey.shade500,
+                ),
+                onPressed: () {
+                  context.pushNamed(BottomNavigationRoutes.home.path);
+                },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text('로그인 전 둘러보기', style: label.copyWith(color: textColor)),
-                    Icon(Icons.chevron_right, color: textColor),
+                    Icon(Icons.chevron_right, color: greyVariant3),
                   ],
                 ),
               ),
+              const SizedBox(height: padding64),
             ],
           ),
         ),

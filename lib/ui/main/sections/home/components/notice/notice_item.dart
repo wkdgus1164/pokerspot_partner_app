@@ -8,28 +8,29 @@ class HomeNoticeItem extends StatelessWidget {
     Key? key,
     required this.title,
     required this.createdAt,
-    this.padding,
+    required this.onItemPressed,
   }) : super(key: key);
 
   final String title;
   final String createdAt;
-  final EdgeInsetsGeometry? padding;
+  final Function() onItemPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding,
+      padding: const EdgeInsets.only(
+        left: padding16,
+        right: padding10,
+        top: padding16,
+        bottom: padding16,
+      ),
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(defaultRadius),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(defaultRadius)),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: onItemPressed,
         splashColor: Colors.grey.shade50,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(defaultRadius),
-        ),
+        borderRadius: const BorderRadius.all(Radius.circular(defaultRadius)),
         child: Container(
           width: MediaQuery.of(context).size.width - 80,
           padding: const EdgeInsets.all(padding16),

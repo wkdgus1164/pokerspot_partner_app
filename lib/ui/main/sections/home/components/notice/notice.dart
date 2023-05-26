@@ -12,6 +12,7 @@ class HomeNotice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 더보기
     onMoreButtonPressed() {}
 
     return Column(
@@ -28,12 +29,7 @@ class HomeNotice extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Text(
-                  '공지사항',
-                  style: titleLarge.copyWith(color: textColor),
-                ),
-              ),
+              Text('공지사항', style: titleLarge.copyWith(color: textColor)),
               CustomTextButton(
                 text: '더보기',
                 color: primaryColor,
@@ -46,25 +42,15 @@ class HomeNotice extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Wrap(
-            children: List.generate(
-              noticeList.length,
-              (index) => HomeNoticeItem(
-                title: noticeList[index].title,
-                createdAt: noticeList[index].createdAt,
-                padding: index == 0
-                    ? const EdgeInsets.only(
-                        left: padding16,
-                        right: padding10,
-                        top: padding16,
-                        bottom: padding16,
-                      )
-                    : const EdgeInsets.only(
-                        right: padding10,
-                        top: padding16,
-                        bottom: padding16,
-                      ),
-              ),
-            ),
+            children: noticeList
+                .asMap()
+                .entries
+                .map((entry) => HomeNoticeItem(
+                      title: noticeList[entry.key].title,
+                      createdAt: noticeList[entry.key].createdAt,
+                      onItemPressed: () {},
+                    ))
+                .toList(),
           ),
         ),
         const SizedBox(height: padding10),

@@ -20,6 +20,14 @@ enum HomeType {
   final String path;
 }
 
+/// HomeNotice : 공지사항
+/// HomeNoStore : 등록된 매장 없음
+/// HomeReservationStatus : 매장 예약 현황
+/// HomeBlindBuyIn : 블라인드 및 바이인
+/// HomeTournament : 매장 토너먼트 현황
+
+/// 데이터가 어떻게 올지 몰라서 우선 ENUM TYPE 대로 조건부 렌더링만 진행함
+
 List<Widget> _buildBody(HomeType homeType) {
   List<Widget> body = [];
 

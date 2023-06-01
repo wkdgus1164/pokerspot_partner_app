@@ -5,6 +5,11 @@ import 'package:pokerspot_partner_app/common/theme/bottom_navigation_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/button.dart';
 import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:provider/provider.dart';
+
+import 'data/network/api_client.dart';
+import 'locator.dart';
+import 'presentation/providers/token_provider.dart';
 
 ThemeData _createThemeData({required BuildContext context}) {
   return ThemeData(
@@ -21,6 +26,7 @@ ThemeData _createThemeData({required BuildContext context}) {
 }
 
 void main() {
+  setupLocator();
   runApp(const MainApp());
 }
 
@@ -46,8 +52,13 @@ class MainApp extends StatelessWidget {
     }
 
     return GestureDetector(
-      child: materialApp(),
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: MultiProvider(providers: [
+        ChangeNotifierProvider(create: (_) => locator<TokenProvider>()),
+        ProxyProvider<TokenProvider, DioClient>(
+          update: (_, tokenProvider, __) => locator<DioClient>(),
+        ),
+      ], child: materialApp()),
     );
   }
 }

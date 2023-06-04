@@ -6,7 +6,10 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
+import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../../../locator.dart';
 import '../../business/components/owner_name.dart';
 import '../../business/components/phone_number.dart';
 import '../../information/components/email.dart';
@@ -35,39 +38,52 @@ class SignupRenewView extends StatelessWidget {
           child: Container(
             color: backgroundColor,
             padding: const EdgeInsets.all(padding16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text('가입 정보 입력', style: headlineSmall),
-                const SizedBox(height: padding24),
-                const SignupId(),
-                const SizedBox(height: padding16),
-                const SignupPassword(),
-                const SizedBox(height: padding16),
-                const SignupPasswordConfirm(),
-                const SizedBox(height: padding16),
-                const SignupEmail(),
-                const SizedBox(height: padding24),
-                const SignupOwnerName(),
-                const SizedBox(height: padding16),
-                const SignupPhoneNumber(),
-                const SizedBox(height: padding24),
-                CustomButton(
-                  customButtonTheme: CustomButtonTheme.light,
-                  text: '휴대폰 본인인증',
-                  onPressed: () {},
-                ),
-                const SizedBox(height: padding24),
-                CustomButton(
-                  customButtonTheme: CustomButtonTheme.primary,
-                  text: '가입 완료',
-                  onPressed: () => context.pushNamed(
-                    MemberRoutes.signupSuccess.path,
-                  ),
-                ),
-              ],
-            ),
+            child: ChangeNotifierProvider<SignupProvider>(
+                create: (_) => locator(),
+                child: Consumer<SignupProvider>(builder: (_, provider, __) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text('가입 정보 입력', style: headlineSmall),
+                      const SizedBox(height: padding24),
+                      SignupId(onTextFieldChanged: provider.setId),
+                      const SizedBox(height: padding16),
+                      SignupPassword(onTextFieldChanged: provider.setPassword),
+                      const SizedBox(height: padding16),
+                      SignupPasswordConfirm(
+                          password: provider.password,
+                          onTextFieldChanged: provider.setCheckPassword),
+                      const SizedBox(height: padding16),
+                      SignupEmail(onTextFieldChanged: provider.setEmail),
+                      const SizedBox(height: padding24),
+                      SignupOwnerName(onTextFieldChanged: provider.setEmail),
+                      const SizedBox(height: padding16),
+                      SignupPhoneNumber(onTextFieldChanged: provider.setEmail),
+                      const SizedBox(height: padding24),
+                      CustomButton(
+                        customButtonTheme: CustomButtonTheme.light,
+                        text: '휴대폰 본인인증',
+                        onPressed: () {},
+                      ),
+                      const SizedBox(height: padding24),
+                      CustomButton(
+                        customButtonTheme: CustomButtonTheme.primary,
+                        text: '가입 완료',
+                        onPressed: () async {
+                          final result = await provider.signUp();
+                          if (result && context.mounted) {
+                            context.pushNamed(
+                              MemberRoutes.signupSuccess.path,
+                            );
+                          } else {
+                            /// TODO Toast
+                          }
+                        },
+                      ),
+                    ],
+                  );
+                })),
           ),
         ),
       ),

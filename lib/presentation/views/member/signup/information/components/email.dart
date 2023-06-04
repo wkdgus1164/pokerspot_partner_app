@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/components/text_field/text_field_set.dart';
 
-class SignupEmail extends StatelessWidget {
-  const SignupEmail({Key? key}) : super(key: key);
+class SignupEmail extends StatefulWidget {
+  final ValueChanged<String> onTextFieldChanged;
+
+  const SignupEmail({
+    Key? key,
+    required this.onTextFieldChanged,
+  }) : super(key: key);
+
+  @override
+  State<SignupEmail> createState() => _SignupEmailState();
+}
+
+class _SignupEmailState extends State<SignupEmail> {
+  String? _error;
 
   @override
   Widget build(BuildContext context) {
@@ -10,14 +22,31 @@ class SignupEmail extends StatelessWidget {
       inputLabel: '이메일 주소',
       keyboardType: TextInputType.emailAddress,
       isPassword: false,
-      inputErrorText: '이메일 형식이 맞지 않습니다.',
+      inputErrorText: _error,
       inputHintText: '이메일 입력',
       onEditingComplete: onEditingComplete,
-      onTextFieldChanged: onTextFieldChanged,
+      onTextFieldChanged: (text) {
+        widget.onTextFieldChanged.call(text);
+        _validate(text);
+      },
     );
   }
 
   onEditingComplete() {}
 
-  onTextFieldChanged(String value) {}
+  void _validate(String? value) {
+    String? error;
+    final emailRegExp = RegExp(r'^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$');
+    if (!emailRegExp.hasMatch(value ?? '')) {
+      error = '이메일 형식에 맞지 않습니다.';
+    } else {
+      error = null;
+    }
+
+    if (error != _error) {
+      setState(() {
+        _error = error;
+      });
+    }
+  }
 }

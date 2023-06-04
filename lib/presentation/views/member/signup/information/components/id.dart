@@ -3,8 +3,20 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
-class SignupId extends StatelessWidget {
-  const SignupId({Key? key}) : super(key: key);
+class SignupId extends StatefulWidget {
+  final ValueChanged<String>? onTextFieldChanged;
+
+  const SignupId({
+    Key? key,
+    this.onTextFieldChanged,
+  }) : super(key: key);
+
+  @override
+  State<SignupId> createState() => _SignupIdState();
+}
+
+class _SignupIdState extends State<SignupId> {
+  String? _error;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +32,7 @@ class SignupId extends StatelessWidget {
         ),
         hintText: '아이디 입력',
         hintStyle: bodyMedium.copyWith(color: Colors.grey.shade400),
-        errorText: '아이디 양식에 맞지 않습니다.',
+        errorText: _error,
         suffixIcon: Container(
           width: 80,
           alignment: Alignment.center,
@@ -54,8 +66,10 @@ class SignupId extends StatelessWidget {
           maxLength: 12,
           minLines: 1,
           maxLines: 1,
-          onEditingComplete: onEditingComplete,
-          onChanged: onTextFieldChanged,
+          onChanged: (text) {
+            widget.onTextFieldChanged?.call(text);
+            _validate(text);
+          },
           obscureText: false,
         ),
         const SizedBox(height: padding10),
@@ -70,7 +84,19 @@ class SignupId extends StatelessWidget {
     );
   }
 
-  onEditingComplete() {}
+  void _validate(String? value) {
+    String? error;
+    final idRegExp = RegExp(r'^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{4,12}$');
+    if (!idRegExp.hasMatch(value ?? '')) {
+      error = '아이디 양식에 맞지 않습니다.';
+    } else {
+      error = null;
+    }
 
-  onTextFieldChanged(String value) {}
+    if (error != _error) {
+      setState(() {
+        _error = error;
+      });
+    }
+  }
 }

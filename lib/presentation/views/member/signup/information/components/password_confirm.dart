@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/components/text_field/text_field_set.dart';
 
-class SignupPasswordConfirm extends StatelessWidget {
-  const SignupPasswordConfirm({Key? key}) : super(key: key);
+class SignupPasswordConfirm extends StatefulWidget {
+  final ValueChanged<String> onTextFieldChanged;
+  final String? password;
+
+  const SignupPasswordConfirm({
+    Key? key,
+    required this.onTextFieldChanged,
+    this.password,
+  }) : super(key: key);
+
+  @override
+  State<SignupPasswordConfirm> createState() => _SignupPasswordConfirmState();
+}
+
+class _SignupPasswordConfirmState extends State<SignupPasswordConfirm> {
+  String? _error;
 
   @override
   Widget build(BuildContext context) {
@@ -10,16 +24,32 @@ class SignupPasswordConfirm extends StatelessWidget {
       inputLabel: '비밀번호 확인',
       keyboardType: TextInputType.visiblePassword,
       isPassword: true,
-      inputErrorText: '입력하신 비밀번호와 다릅니다.',
+      inputErrorText: _error,
       inputHintText: '비밀번호 확인',
       maxLines: 1,
       maxLength: 12,
       onEditingComplete: onEditingComplete,
-      onTextFieldChanged: onTextFieldChanged,
+      onTextFieldChanged: (text) {
+        widget.onTextFieldChanged.call(text);
+        _validate(text);
+      },
     );
   }
 
   onEditingComplete() {}
 
-  onTextFieldChanged(String value) {}
+  void _validate(String? value) {
+    String? error;
+    if (widget.password != value) {
+      error = '입력하신 비밀번호와 다릅니다.';
+    } else {
+      error = null;
+    }
+
+    if (error != _error) {
+      setState(() {
+        _error = error;
+      });
+    }
+  }
 }

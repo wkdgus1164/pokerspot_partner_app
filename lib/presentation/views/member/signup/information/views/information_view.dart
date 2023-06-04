@@ -42,11 +42,17 @@ class SignupInformationView extends StatelessWidget {
                       const SizedBox(height: padding24),
                       const SignupId(),
                       const SizedBox(height: padding16),
-                      const SignupPassword(),
+                      SignupPassword(
+                        onTextFieldChanged: (String value) {},
+                      ),
                       const SizedBox(height: padding16),
-                      const SignupPasswordConfirm(),
+                      SignupPasswordConfirm(
+                        onTextFieldChanged: (String value) {},
+                      ),
                       const SizedBox(height: padding16),
-                      const SignupEmail(),
+                      SignupEmail(
+                        onTextFieldChanged: (String value) {},
+                      ),
                       const SizedBox(height: padding24),
                       CustomButton(
                         customButtonTheme: CustomButtonTheme.primary,

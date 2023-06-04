@@ -40,9 +40,13 @@ class SignupBusinessView extends StatelessWidget {
                       const SizedBox(height: padding24),
                       const SignupBusinessNumber(),
                       const SizedBox(height: padding16),
-                      const SignupOwnerName(),
+                      SignupOwnerName(
+                        onTextFieldChanged: (String value) {},
+                      ),
                       const SizedBox(height: padding16),
-                      const SignupPhoneNumber(),
+                      SignupPhoneNumber(
+                        onTextFieldChanged: (String value) {},
+                      ),
                       const SizedBox(height: padding24),
                       CustomButton(
                         customButtonTheme: CustomButtonTheme.light,

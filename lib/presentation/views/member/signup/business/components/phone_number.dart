@@ -1,9 +1,20 @@
-
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/components/text_field/text_field_set.dart';
 
-class SignupPhoneNumber extends StatelessWidget {
-  const SignupPhoneNumber({Key? key}) : super(key: key);
+class SignupPhoneNumber extends StatefulWidget {
+  final ValueChanged<String> onTextFieldChanged;
+
+  const SignupPhoneNumber({
+    Key? key,
+    required this.onTextFieldChanged,
+  }) : super(key: key);
+
+  @override
+  State<SignupPhoneNumber> createState() => _SignupPhoneNumberState();
+}
+
+class _SignupPhoneNumberState extends State<SignupPhoneNumber> {
+  String? _error;
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +22,13 @@ class SignupPhoneNumber extends StatelessWidget {
       inputLabel: '휴대폰 번호',
       keyboardType: TextInputType.number,
       isPassword: false,
-      inputErrorText: '올바른 양식의 휴대폰 번호를 입력해주세요.',
+      inputErrorText: _error,
       inputHintText: '휴대폰 번호 입력 (-제외)',
       onEditingComplete: onEditingComplete,
-      onTextFieldChanged: onTextFieldChanged,
+      onTextFieldChanged: (text) {
+        widget.onTextFieldChanged.call(text);
+        _validate(text);
+      },
       textInputAction: TextInputAction.go,
       captionText: '＊ 대표자 명의의 휴대폰 번호를 입력해주세요.',
     );
@@ -22,5 +36,19 @@ class SignupPhoneNumber extends StatelessWidget {
 
   onEditingComplete() {}
 
-  onTextFieldChanged(String value) {}
+  void _validate(String? value) {
+    String? error;
+    final phoneRegExp = RegExp(r'^\d{11}$');
+    if (!phoneRegExp.hasMatch(value ?? '')) {
+      error = '올바른 양식의 휴대폰 번호를 입력해주세요.';
+    } else {
+      error = null;
+    }
+
+    if (error != _error) {
+      setState(() {
+        _error = error;
+      });
+    }
+  }
 }

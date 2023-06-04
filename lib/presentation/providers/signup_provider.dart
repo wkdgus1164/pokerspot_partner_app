@@ -22,8 +22,11 @@ class SignupProvider with ChangeNotifier {
   String _phoneNumber = '';
   String get phoneNumber => _phoneNumber;
 
-  bool? _checkedDuplicateId;
-  bool? get checkedDuplicateId => _checkedDuplicateId;
+  String _impUid = '';
+  String get impUid => _impUid;
+
+  bool _checkedDuplicateId = false;
+  bool get checkedDuplicateId => _checkedDuplicateId;
 
   bool? _checkedPhoneNumber;
   bool? get checkedPhoneNumber => _checkedPhoneNumber;
@@ -60,6 +63,11 @@ class SignupProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void setImpUid(Map<String, String>? value) {
+    _impUid = value?['imp_uid'] ?? '';
+    notifyListeners();
+  }
+
   Future<void> checkDuplicate() async {
     _checkedDuplicateId = await _usecase.checkDuplicate(id);
     notifyListeners();
@@ -67,14 +75,12 @@ class SignupProvider with ChangeNotifier {
 
   Future<void> checkPhoneNumber() async {
     _checkedPhoneNumber = await _usecase.checkPhoneNumber(
-      phoneNumber: phoneNumber,
-      name: name,
-    );
+        phoneNumber: phoneNumber, name: name, impUid: impUid);
     notifyListeners();
   }
 
   Future<bool> signUp() {
     return _usecase.signUp(
-        id, password, checkPassword, email, name, phoneNumber);
+        id, password, checkPassword, email, name, phoneNumber, impUid);
   }
 }

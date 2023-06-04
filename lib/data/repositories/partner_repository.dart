@@ -19,7 +19,7 @@ class PartnerRepository {
   /// 사용 가능한 아이디 확인
   Future<bool> idValidate(String identifier) async {
     final response = await _dio.post(
-      '/v1/partners/signup/id-validate',
+      '/partners/signup/id-validate',
       data: {
         'identifier': identifier,
       },
@@ -29,7 +29,7 @@ class PartnerRepository {
 
   /// 휴대폰 본인 인증 검증
   Future<bool> phoneValidate(PhoneValidateRequestModel data) async {
-    final response = await _dio.post('/v1/partners/signup/phone-validate');
+    final response = await _dio.post('/partners/signup/phone-validate');
     if (response.statusCode == 200) {
       return true;
     } else {
@@ -40,7 +40,7 @@ class PartnerRepository {
   /// 회원 가입
   Future<bool> signup(SignupRequestModel data) async {
     final response = await _dio.post(
-      '/v1/partners/signup',
+      '/partners/signup',
       data: data.toJson(),
     );
     if (response.statusCode == 201) {
@@ -53,7 +53,7 @@ class PartnerRepository {
   /// 로그인
   Future<String?> signIn(SignInRequestModel data) async {
     final response = await _dio.post(
-      '/v1/partners/signin',
+      '/partners/signin',
       data: data.toJson(),
     );
     if (response.statusCode == 201) {

@@ -12,12 +12,15 @@ class SignupUsecase {
     return await _repository.idValidate(id);
   }
 
-  Future<bool> checkPhoneNumber(
-      {required String phoneNumber, required String name}) async {
+  Future<bool> checkPhoneNumber({
+    required String phoneNumber,
+    required String name,
+    required String impUid,
+  }) async {
     final model = PhoneValidateRequestModel(
       phoneNumber: phoneNumber,
       name: name,
-      impUid: 'impUid',
+      impUid: impUid,
     );
     return await _repository.phoneValidate(model);
   }
@@ -29,14 +32,16 @@ class SignupUsecase {
     String email,
     String name,
     String phoneNumber,
+    String impUid,
   ) async {
     final model = SignupRequestModel(
-        name: name,
-        phoneNumber: phoneNumber,
-        identifier: id,
-        password: password,
-        email: email,
-        impUid: 'impUid');
+      name: name,
+      phoneNumber: phoneNumber,
+      identifier: id,
+      password: password,
+      email: email,
+      impUid: impUid,
+    );
     if (!_validate(model)) {
       return false;
     }

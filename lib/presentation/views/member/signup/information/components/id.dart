@@ -5,10 +5,14 @@ import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class SignupId extends StatefulWidget {
   final ValueChanged<String>? onTextFieldChanged;
+  final VoidCallback? onCheckTap;
+  final bool checkedDuplicateId;
 
   const SignupId({
     Key? key,
     this.onTextFieldChanged,
+    this.onCheckTap,
+    this.checkedDuplicateId = false,
   }) : super(key: key);
 
   @override
@@ -33,17 +37,20 @@ class _SignupIdState extends State<SignupId> {
         hintText: '아이디 입력',
         hintStyle: bodyMedium.copyWith(color: Colors.grey.shade400),
         errorText: _error,
-        suffixIcon: Container(
-          width: 80,
-          alignment: Alignment.center,
-          margin: const EdgeInsets.only(top: 6, bottom: 6, right: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(color: Colors.grey.shade300),
-          ),
-          child: Text(
-            '중복확인',
-            style: caption.copyWith(color: textColor),
+        suffixIcon: InkWell(
+          onTap: widget.onCheckTap,
+          child: Container(
+            width: 80,
+            alignment: Alignment.center,
+            margin: const EdgeInsets.only(top: 6, bottom: 6, right: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(color: Colors.grey.shade300),
+            ),
+            child: Text(
+              widget.checkedDuplicateId ? '중복확인 완료' : '중복확인',
+              style: caption.copyWith(color: textColor),
+            ),
           ),
         ),
       );

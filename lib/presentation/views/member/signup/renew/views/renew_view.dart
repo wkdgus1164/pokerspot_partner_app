@@ -47,7 +47,13 @@ class SignupRenewView extends StatelessWidget {
                     children: [
                       Text('가입 정보 입력', style: headlineSmall),
                       const SizedBox(height: padding24),
-                      SignupId(onTextFieldChanged: provider.setId),
+                      SignupId(
+                        onTextFieldChanged: provider.setId,
+                        checkedDuplicateId: provider.checkedDuplicateId,
+                        onCheckTap: () {
+                          provider.checkDuplicate();
+                        },
+                      ),
                       const SizedBox(height: padding16),
                       SignupPassword(onTextFieldChanged: provider.setPassword),
                       const SizedBox(height: padding16),
@@ -57,14 +63,24 @@ class SignupRenewView extends StatelessWidget {
                       const SizedBox(height: padding16),
                       SignupEmail(onTextFieldChanged: provider.setEmail),
                       const SizedBox(height: padding24),
-                      SignupOwnerName(onTextFieldChanged: provider.setEmail),
+                      SignupOwnerName(onTextFieldChanged: provider.setName),
                       const SizedBox(height: padding16),
-                      SignupPhoneNumber(onTextFieldChanged: provider.setEmail),
+                      SignupPhoneNumber(
+                          onTextFieldChanged: provider.setPhoneNumber),
                       const SizedBox(height: padding24),
                       CustomButton(
                         customButtonTheme: CustomButtonTheme.light,
                         text: '휴대폰 본인인증',
-                        onPressed: () {},
+                        onPressed: () async {
+                          if (provider.impUid.isEmpty) {
+                            final data = await context.pushNamed(
+                              MemberRoutes.signupCertification.path,
+                            );
+                            provider.setImpUid(data as Map<String, String>?);
+                          } else {
+                            await provider.checkPhoneNumber();
+                          }
+                        },
                       ),
                       const SizedBox(height: padding24),
                       CustomButton(

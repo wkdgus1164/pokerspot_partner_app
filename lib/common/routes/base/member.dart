@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/views/certification_view.dart';
 
 import '../../../presentation/views/member/login/views/login_view.dart';
 import '../../../presentation/views/member/signup/business/views/business_view.dart';
@@ -13,6 +14,7 @@ enum MemberRoutes {
   signupBusiness('$memberPath/business'),
   signupInformation('$memberPath/information'),
   signupRenewal('$memberPath/renewal'),
+  signupCertification('$memberPath/certification'),
   signupSuccess('$memberPath/success'),
   login('login'),
   ;
@@ -34,6 +36,10 @@ List<RouteBase> memberRoutes = [
   rightToLeft(
     MemberRoutes.signupRenewal.path,
     const SignupRenewView(),
+  ),
+  rightToLeft(
+    MemberRoutes.signupCertification.path,
+    const CertificationView(),
   ),
   rightToLeft(
     MemberRoutes.signupSuccess.path,

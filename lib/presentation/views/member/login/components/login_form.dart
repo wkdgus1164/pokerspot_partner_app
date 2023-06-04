@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/components/button/text_button.dart';
 import 'package:pokerspot_partner_app/common/components/checkbox/checkbox.dart';
 import 'package:pokerspot_partner_app/common/components/text_field/text_field_with_delete_icon.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
@@ -14,6 +12,7 @@ class LoginForm extends StatelessWidget {
     super.key,
     this.onIDChanged,
     this.onPWChanged,
+    required this.onLogin,
     required this.onAutoLoginChecked,
     required this.onAutoLoginCheckboxChanged,
     required this.onSignupButtonPressed,
@@ -21,6 +20,7 @@ class LoginForm extends StatelessWidget {
 
   final Function(String)? onIDChanged;
   final Function(String)? onPWChanged;
+  final VoidCallback onLogin;
   final bool onAutoLoginChecked;
   final Function() onAutoLoginCheckboxChanged;
   final Function() onSignupButtonPressed;
@@ -64,9 +64,7 @@ class LoginForm extends StatelessWidget {
           CustomButton(
             text: '로그인',
             customButtonTheme: CustomButtonTheme.primary,
-            onPressed: () {
-              context.pushNamed(BottomNavigationRoutes.home.path);
-            },
+            onPressed: onLogin,
           ),
           const SizedBox(height: padding32),
           Column(

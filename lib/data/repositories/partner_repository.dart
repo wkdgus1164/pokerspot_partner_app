@@ -1,6 +1,7 @@
 import 'package:pokerspot_partner_app/data/models/partner/sign_in_request.dart';
 import 'package:pokerspot_partner_app/data/models/partner/signup_request.dart';
 import 'package:pokerspot_partner_app/data/network/api_client.dart';
+import 'package:pokerspot_partner_app/data/utils/logger.dart';
 
 import '../models/partner/partner.dart';
 import '../models/partner/phone_validate_request.dart';
@@ -11,9 +12,14 @@ class PartnerRepository {
   PartnerRepository(this._dio);
 
   /// 파트너 정보 조회
-  Future<PartnerModel> getPartner() async {
-    final response = await _dio.get('/partners');
-    return PartnerModel.fromJson(response.data);
+  Future<PartnerModel?> getPartner() async {
+    try {
+      final response = await _dio.get('/partners');
+      return PartnerModel.fromJson(response.data);
+    } catch (e) {
+      Logger.e(e);
+      return null;
+    }
   }
 
   /// 사용 가능한 아이디 확인

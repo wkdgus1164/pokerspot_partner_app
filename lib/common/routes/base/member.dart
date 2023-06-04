@@ -47,6 +47,6 @@ List<RouteBase> memberRoutes = [
   ),
   rightToLeft(
     MemberRoutes.login.path,
-    const LoginView(),
+    LoginView(),
   ),
 ];

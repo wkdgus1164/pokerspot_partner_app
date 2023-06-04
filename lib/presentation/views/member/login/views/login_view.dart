@@ -5,12 +5,18 @@ import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart'
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
+import 'package:pokerspot_partner_app/locator.dart';
+import 'package:pokerspot_partner_app/presentation/providers/partner_provider.dart';
+import 'package:pokerspot_partner_app/presentation/providers/token_provider.dart';
 
 import '../components/login_form.dart';
 import '../components/login_header.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+  LoginView({Key? key}) : super(key: key);
+
+  final _partnerProvider = locator<PartnerProvider>();
+  final _tokenProvider = locator<TokenProvider>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +31,25 @@ class LoginView extends StatelessWidget {
 
               // 로그인 폼
               LoginForm(
-                onIDChanged: (String value) {},
-                onPWChanged: (String value) {},
-                onAutoLoginCheckboxChanged: () {},
+                onIDChanged: (value) {
+                  _partnerProvider.id = value;
+                },
+                onPWChanged: (value) {
+                  _partnerProvider.password = value;
+                },
+                onLogin: () async {
+                  final token = await _partnerProvider.getToken();
+                  _tokenProvider.setToken(token);
+                  final result = await _partnerProvider.getPartner(token);
+                  if (result && context.mounted) {
+                    context.goNamed(BottomNavigationRoutes.home.path);
+                  } else {
+                    /// TODO 실패시 토스트 메시지
+                  }
+                },
+                onAutoLoginCheckboxChanged: () {
+                  /// TODO 자동 로그인
+                },
                 onAutoLoginChecked: true,
                 onSignupButtonPressed: () {
                   context.pushNamed(MemberRoutes.signupRenewal.path);

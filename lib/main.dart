@@ -5,6 +5,7 @@ import 'package:pokerspot_partner_app/common/theme/bottom_navigation_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/button.dart';
 import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/providers/partner_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'data/network/api_client.dart';
@@ -55,9 +56,8 @@ class MainApp extends StatelessWidget {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: MultiProvider(providers: [
         ChangeNotifierProvider(create: (_) => locator<TokenProvider>()),
-        ProxyProvider<TokenProvider, DioClient>(
-          update: (_, tokenProvider, __) => locator<DioClient>(),
-        ),
+        ChangeNotifierProvider(create: (_) => locator<PartnerProvider>()),
+        ChangeNotifierProvider(create: (_) => locator<DioClient>()),
       ], child: materialApp()),
     );
   }

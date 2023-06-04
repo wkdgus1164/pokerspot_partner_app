@@ -6,12 +6,13 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
-import 'package:pokerspot_partner_app/ui/member/signup/business/components/owner_name.dart';
-import 'package:pokerspot_partner_app/ui/member/signup/business/components/phone_number.dart';
-import 'package:pokerspot_partner_app/ui/member/signup/information/components/email.dart';
-import 'package:pokerspot_partner_app/ui/member/signup/information/components/id.dart';
-import 'package:pokerspot_partner_app/ui/member/signup/information/components/password.dart';
-import 'package:pokerspot_partner_app/ui/member/signup/information/components/password_confirm.dart';
+
+import '../../business/components/owner_name.dart';
+import '../../business/components/phone_number.dart';
+import '../../information/components/email.dart';
+import '../../information/components/id.dart';
+import '../../information/components/password.dart';
+import '../../information/components/password_confirm.dart';
 
 class SignupRenewView extends StatelessWidget {
   const SignupRenewView({super.key});

@@ -6,15 +6,14 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
-import 'package:pokerspot_partner_app/ui/member/signup/information/components/email.dart';
 
+import '../components/business_number.dart';
 import '../components/header.dart';
-import '../components/id.dart';
-import '../components/password.dart';
-import '../components/password_confirm.dart';
+import '../components/owner_name.dart';
+import '../components/phone_number.dart';
 
-class SignupInformationView extends StatelessWidget {
-  const SignupInformationView({super.key});
+class SignupBusinessView extends StatelessWidget {
+  const SignupBusinessView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,32 +27,37 @@ class SignupInformationView extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const SignupInformationHeader(),
+            const SignupBusinessHeader(),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
                   color: backgroundColor,
                   padding: const EdgeInsets.all(padding16),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text('가입 정보 입력', style: headlineSmall),
+                      Text('사업자 정보 입력', style: headlineSmall),
                       const SizedBox(height: padding24),
-                      const SignupId(),
+                      const SignupBusinessNumber(),
                       const SizedBox(height: padding16),
-                      const SignupPassword(),
+                      const SignupOwnerName(),
                       const SizedBox(height: padding16),
-                      const SignupPasswordConfirm(),
-                      const SizedBox(height: padding16),
-                      const SignupEmail(),
+                      const SignupPhoneNumber(),
                       const SizedBox(height: padding24),
                       CustomButton(
+                        customButtonTheme: CustomButtonTheme.light,
+                        text: '휴대폰 본인인증',
+                        onPressed: () {},
+                      ),
+                      const SizedBox(height: padding64),
+                      CustomButton(
                         customButtonTheme: CustomButtonTheme.primary,
-                        text: '가입 완료',
-                        onPressed: () => context.pushNamed(
-                          MemberRoutes.signupSuccess.path,
-                        ),
+                        text: '다음 단계로',
+                        onPressed: () {
+                          context.pushNamed(
+                            MemberRoutes.signupInformation.path,
+                          );
+                        },
                       ),
                     ],
                   ),

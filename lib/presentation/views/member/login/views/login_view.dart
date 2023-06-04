@@ -5,8 +5,9 @@ import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart'
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
-import 'package:pokerspot_partner_app/ui/member/login/components/login_form.dart';
-import 'package:pokerspot_partner_app/ui/member/login/components/login_header.dart';
+
+import '../components/login_form.dart';
+import '../components/login_header.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);

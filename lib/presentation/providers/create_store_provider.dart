@@ -20,7 +20,20 @@ class CreateStoreProvider with ChangeNotifier {
     return error;
   }
 
-  void setStore(CreateStoreModel model) {
+  void setStore(CreateStoreModel model, {bool notify = false}) {
     _store = model;
+    if (notify) {
+      notifyListeners();
+    }
+  }
+
+  bool validateEssential() {
+    return ![
+      store.name,
+      store.address,
+      store.addressDetail,
+      store.bizCategory,
+      store.bizCategoryDetail,
+    ].any((element) => element.isEmpty);
   }
 }

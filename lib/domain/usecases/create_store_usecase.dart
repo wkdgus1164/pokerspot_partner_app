@@ -13,7 +13,7 @@ class CreateStoreUsecase {
     /*
     final data = BizValidateRequestModel(
       bizNumber: model.bizNumber,
-      name: model.name,
+      name: model.ownerName,
       bizStartYMD: model.bizStartYMD,
     );
      */

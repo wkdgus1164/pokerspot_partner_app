@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 
 class ShopProcessEssentialAddressForm extends StatelessWidget {
-  const ShopProcessEssentialAddressForm({super.key});
+  final String initAddress;
+  final VoidCallback onSearchTap;
+  final Function(String) onAddressFieldChanged;
+  final Function(String) onAddressDetailFieldChanged;
+
+  const ShopProcessEssentialAddressForm({
+    super.key,
+    this.initAddress = '',
+    required this.onSearchTap,
+    required this.onAddressFieldChanged,
+    required this.onAddressDetailFieldChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +32,20 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
         ),
         hintText: '주소 입력',
         hintStyle: bodyMedium.copyWith(color: Colors.grey.shade400),
-        suffixIcon: Container(
-          width: 80,
-          alignment: Alignment.center,
-          margin: const EdgeInsets.only(top: 6, bottom: 6, right: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(color: Colors.grey.shade300),
-          ),
-          child: Text(
-            '주소찾기',
-            style: caption.copyWith(color: textColor),
+        suffixIcon: InkWell(
+          onTap: onSearchTap,
+          child: Container(
+            width: 80,
+            alignment: Alignment.center,
+            margin: const EdgeInsets.only(top: 6, bottom: 6, right: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(color: Colors.grey.shade300),
+            ),
+            child: Text(
+              '주소찾기',
+              style: caption.copyWith(color: textColor),
+            ),
           ),
         ),
       );
@@ -49,16 +63,25 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
         ),
         const SizedBox(height: padding10),
         TextFormField(
+          controller: (initAddress.isNotEmpty
+              ? (TextEditingController()
+                ..text = initAddress
+                ..selection =
+                    TextSelection.collapsed(offset: initAddress.length))
+              : null),
           decoration: textFieldDecoration(),
           keyboardType: TextInputType.text,
           minLines: 1,
           maxLines: 1,
           onEditingComplete: () {},
-          onChanged: (_) {},
+          onChanged: onAddressFieldChanged,
           obscureText: false,
         ),
         const SizedBox(height: padding10),
-        const CustomTextField(hint: '상세주소 입력'),
+        CustomTextField(
+          hint: '상세주소 입력',
+          onTextFieldChanged: onAddressDetailFieldChanged,
+        ),
         const SizedBox(height: padding10),
         Padding(
           padding: const EdgeInsets.only(left: 12),

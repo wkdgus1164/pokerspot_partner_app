@@ -44,7 +44,7 @@ List<RouteBase> shopRoutes = [
   ),
   rightToLeft(
     ShopRoutes.processEssential.path,
-    const ShopProcessEssentialView(),
+    ShopProcessEssentialView(),
   ),
   rightToLeft(
     ShopRoutes.processImageUpload.path,

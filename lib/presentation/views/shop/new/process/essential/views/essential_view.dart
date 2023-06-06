@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
+import 'package:kpostal/kpostal.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
+import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
+import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/components/steps.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/essential/components/address_form.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../../../data/models/store/create_store_request.dart';
+import '../../../../../../../locator.dart';
 
 class ShopProcessEssentialView extends StatelessWidget {
-  const ShopProcessEssentialView({super.key});
+  ShopProcessEssentialView({super.key});
+
+  final _provider = locator<CreateStoreProvider>();
+
+  CreateStoreModel get _store => _provider.store;
 
   @override
   Widget build(BuildContext context) {
@@ -46,21 +57,43 @@ class ShopProcessEssentialView extends StatelessWidget {
                       const SizedBox(height: padding16),
                       Text('기본 정보', style: headlineSmall),
                       const SizedBox(height: padding10),
-                      Text('사업자 정보를 입력해주세요.', style: bodySmall),
+                      Text('기본 정보를 입력해주세요.', style: bodySmall),
                       const SizedBox(height: padding48),
 
                       // 매장 상호명
                       CustomTextFieldSet(
                         inputLabel: '매장 상호명',
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         isPassword: false,
                         inputHintText: '매장 상호명 입력',
-                        onTextFieldChanged: (_) {},
+                        onTextFieldChanged: (value) {
+                          _provider.setStore(_store.copyWith(name: value));
+                        },
                       ),
                       const SizedBox(height: padding24),
 
                       // 매장 주소
-                      const ShopProcessEssentialAddressForm(),
+                      Consumer<CreateStoreProvider>(builder: (_, __, ___) {
+                        return ShopProcessEssentialAddressForm(
+                          initAddress: _provider.store.address,
+                          onSearchTap: () async {
+                            Kpostal result = await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => KpostalView()));
+                            _provider.setStore(
+                                _store.copyWith(address: result.address),
+                                notify: true);
+                          },
+                          onAddressFieldChanged: (value) {
+                            _provider.setStore(_store.copyWith(address: value));
+                          },
+                          onAddressDetailFieldChanged: (value) {
+                            _provider.setStore(
+                                _store.copyWith(addressDetail: value));
+                          },
+                        );
+                      }),
                       const SizedBox(height: padding24),
 
                       // 업태
@@ -68,7 +101,10 @@ class ShopProcessEssentialView extends StatelessWidget {
                         inputLabel: '업태',
                         isPassword: false,
                         inputHintText: '예) 숙박 및 음식점업',
-                        onTextFieldChanged: (_) {},
+                        onTextFieldChanged: (value) {
+                          _provider
+                              .setStore(_store.copyWith(bizCategory: value));
+                        },
                         keyboardType: TextInputType.text,
                         captionText: '* 사업자 등록증에 기재된 업태를 입력해주세요.',
                       ),
@@ -79,7 +115,10 @@ class ShopProcessEssentialView extends StatelessWidget {
                         inputLabel: '종목',
                         isPassword: false,
                         inputHintText: '예) 일반 유흥 주점업',
-                        onTextFieldChanged: (_) {},
+                        onTextFieldChanged: (value) {
+                          _provider.setStore(
+                              _store.copyWith(bizCategoryDetail: value));
+                        },
                         keyboardType: TextInputType.text,
                         captionText: '* 사업자 등록증에 기재된 종목을 입력해주세요.',
                       ),
@@ -130,9 +169,15 @@ class ShopProcessEssentialView extends StatelessWidget {
             child: CustomButton(
               text: '다음',
               customButtonTheme: CustomButtonTheme.primary,
-              onPressed: () => context.pushNamed(
-                ShopRoutes.processImageUpload.path,
-              ),
+              onPressed: () {
+                if (_provider.validateEssential()) {
+                  return context.pushNamed(
+                    ShopRoutes.processImageUpload.path,
+                  );
+                } else {
+                  showToast(context: context, message: '모든 정보를 입력해주세요.');
+                }
+              },
             ),
           ),
         ],

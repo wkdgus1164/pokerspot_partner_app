@@ -248,9 +248,9 @@ CreateStoreModel _$CreateStoreModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => StoreImageModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      openTime: json['openTime'] as String? ?? '',
-      closeTime: json['closeTime'] as String? ?? '',
-      type: json['type'] as String? ?? '',
+      openTime: json['openTime'] as String? ?? '00:00',
+      closeTime: json['closeTime'] as String? ?? '00:00',
+      type: json['type'] as String? ?? 'MTT',
     );
 
 Map<String, dynamic> _$CreateStoreModelToJson(CreateStoreModel instance) =>

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
+import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/domain/usecases/create_store_usecase.dart';
 
 class CreateStoreProvider with ChangeNotifier {
@@ -26,6 +27,7 @@ class CreateStoreProvider with ChangeNotifier {
 
   void setStore(CreateStoreModel model, {bool notify = false}) {
     _store = model;
+    Logger.d(store.toJson());
     if (notify) {
       notifyListeners();
     }

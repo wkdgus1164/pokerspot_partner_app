@@ -125,12 +125,14 @@ class ShopProcessBusinessView extends StatelessWidget {
     return CustomButton(
       customButtonTheme: CustomButtonTheme.light,
       text: _provider.checkedBiz ? '인증이 완료되었습니다' : '사업자 인증',
-      onPressed: _provider.checkedBiz ? null : () async {
-        final error = await _provider.bizValidate();
-        if (error != null && context.mounted) {
-          showToast(context: context, message: error);
-        }
-      },
+      onPressed: _provider.checkedBiz
+          ? null
+          : () async {
+              final error = await _provider.bizValidate();
+              if (error != null && context.mounted) {
+                showToast(context: context, message: error);
+              }
+            },
     );
   }
 
@@ -154,7 +156,7 @@ class ShopProcessBusinessView extends StatelessWidget {
       isPassword: false,
       inputHintText: '대표자명 입력',
       onTextFieldChanged: (value) {
-        _provider.setStore(_store.copyWith(name: value));
+        _provider.setStore(_store.copyWith(ownerName: value));
       },
       captionText: '※ 사업자 등록증에 기재된 대표자명을 입력해주세요.',
     );

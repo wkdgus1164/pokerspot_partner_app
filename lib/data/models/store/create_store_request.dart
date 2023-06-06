@@ -52,9 +52,9 @@ class CreateStoreModel {
     this.bizCategory = '',
     this.bizCategoryDetail = '',
     this.storeImages = const [],
-    this.openTime = '',
-    this.closeTime = '',
-    this.type = '',
+    this.openTime = '00:00',
+    this.closeTime = '00:00',
+    this.type = 'MTT',
   });
 
   factory CreateStoreModel.fromJson(Map<String, dynamic> json) =>

@@ -16,8 +16,10 @@ PartnerStoreModel _$PartnerStoreModelFromJson(Map<String, dynamic> json) =>
       storeImages: (json['storeImages'] as List<dynamic>)
           .map((e) => StoreImageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      storeAffiliate: StoreAffiliateModel.fromJson(
-          json['storeAffiliate'] as Map<String, dynamic>),
+      storeAffiliate: json['storeAffiliate'] == null
+          ? null
+          : StoreAffiliateModel.fromJson(
+              json['storeAffiliate'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PartnerStoreModelToJson(PartnerStoreModel instance) =>

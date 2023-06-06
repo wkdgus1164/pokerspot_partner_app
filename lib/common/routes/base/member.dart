@@ -1,5 +1,8 @@
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
+import 'package:pokerspot_partner_app/locator.dart';
+import 'package:pokerspot_partner_app/presentation/providers/token_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/views/certification_view.dart';
 
 import '../../../presentation/views/member/login/views/login_view.dart';
@@ -46,7 +49,9 @@ List<RouteBase> memberRoutes = [
     const SignupSuccessView(),
   ),
   rightToLeft(
-    MemberRoutes.login.path,
+    locator<TokenProvider>().token.isEmpty
+        ? MemberRoutes.login.path
+        : BottomNavigationRoutes.home.path,
     LoginView(),
   ),
 ];

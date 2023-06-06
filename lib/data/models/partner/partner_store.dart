@@ -10,7 +10,7 @@ class PartnerStoreModel {
   final String status;
   final bool isPaused;
   final List<StoreImageModel> storeImages;
-  final StoreAffiliateModel storeAffiliate;
+  final StoreAffiliateModel? storeAffiliate;
 
   PartnerStoreModel({
     required this.uid,
@@ -19,7 +19,7 @@ class PartnerStoreModel {
     required this.status,
     required this.isPaused,
     required this.storeImages,
-    required this.storeAffiliate,
+    this.storeAffiliate,
   });
 
   factory PartnerStoreModel.fromJson(Map<String, dynamic> json) =>

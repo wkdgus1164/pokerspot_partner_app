@@ -1,4 +1,4 @@
-import 'package:pokerspot_partner_app/presentation/views/main/sections/home/models/store_model.dart';
+import 'package:pokerspot_partner_app/domain/entities/home/store_model.dart';
 
 List<HomeStoreItemProps> storeList = [
   HomeStoreItemProps(

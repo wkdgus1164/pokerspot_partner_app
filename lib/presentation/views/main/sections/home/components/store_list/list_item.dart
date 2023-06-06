@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
@@ -47,10 +48,10 @@ class HomeStoreItem extends StatelessWidget {
           ),
           child: Row(
             children: [
-              const Placeholder(
-                fallbackWidth: 60,
-                fallbackHeight: 60,
-                strokeWidth: 1,
+              SizedBox(
+                width: 60,
+                height: 60,
+                child: CachedNetworkImage(imageUrl: thumbnail),
               ),
               const SizedBox(width: padding16),
               Expanded(

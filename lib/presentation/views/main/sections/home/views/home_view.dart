@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/blind_buyin/blind_buyin.dart';
@@ -42,21 +43,18 @@ List<Widget> _buildBody(HomeType homeType) {
     body.add(const HomeReservationStatus());
     body.add(const HomeBlindBuyIn());
     body.add(const HomeNotice());
-    body.add(const HomeStore());
   }
 
   if (homeType == HomeType.toner) {
     body.add(const HomeReservationStatus());
     body.add(const HomeTournament());
     body.add(const HomeNotice());
-    body.add(const HomeStore());
   }
 
   if (homeType == HomeType.all) {
     body.add(const HomeReservationStatus());
     body.add(const HomeTournament());
     body.add(const HomeNotice());
-    body.add(const HomeStore());
     body.add(const HomeNoStore());
   }
 
@@ -68,21 +66,22 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const HomeType homeType = HomeType.all;
-
     return Scaffold(
       appBar: homeTabAppBar,
       body: SafeArea(
         child: ChangeNotifierProvider<HomeProvider>(
           create: (_) => locator()..getStores(),
           child: Consumer<HomeProvider>(builder: (_, provider, __) {
-            switch (provider.store?.length) {
+            Logger.d('${provider.hashCode} ${provider.stores?.length}');
+            switch (provider.stores?.length) {
               case null:
                 return const Center(child: CircularProgressIndicator());
               case 0:
                 return const Center(child: HomeNoStore());
               default:
-                return const HomeStore();
+                return HomeStore(
+                  storeList: provider.stores ?? [],
+                );
             }
           }),
         ),

@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
-import 'package:pokerspot_partner_app/ui/bottom_navigation/bottom_navigation.dart';
+import 'package:pokerspot_partner_app/presentation/views/bottom_navigation/bottom_navigation.dart';
 
 const String navigationPath = 'navigation';
 

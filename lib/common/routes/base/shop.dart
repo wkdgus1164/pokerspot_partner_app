@@ -1,14 +1,14 @@
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/bottom_to_top.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/guide/views/guide_tab_view.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/intro/views/intro_view.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/process/business/views/business_view.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/process/essential/views/essential_view.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/process/game/views/game_view.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/process/image_upload/views/image_upload_view.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/process/operation/views/operation_view.dart';
-import 'package:pokerspot_partner_app/ui/shop/new/process/success/views/success_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/shop/new/guide/views/guide_tab_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/shop/new/intro/views/intro_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/shop/new/process/business/views/business_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/shop/new/process/essential/views/essential_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/shop/new/process/game/views/game_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/shop/new/process/image_upload/views/image_upload_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/shop/new/process/operation/views/operation_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/shop/new/process/success/views/success_view.dart';
 
 const String shopPath = 'shop';
 

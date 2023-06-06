@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
-import 'package:pokerspot_partner_app/ui/intro/views/intro.dart';
+import 'package:pokerspot_partner_app/presentation/views/intro/views/intro.dart';
 
 enum BaseRoutes {
   splash('/'),

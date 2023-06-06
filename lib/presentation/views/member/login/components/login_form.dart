@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/common/components/button/custom_button.dart';
-import 'package:pokerspot_partner_app/common/components/button/text_button.dart';
-import 'package:pokerspot_partner_app/common/components/checkbox/checkbox.dart';
-import 'package:pokerspot_partner_app/common/components/text_field/text_field_with_delete_icon.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_with_delete_icon.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';

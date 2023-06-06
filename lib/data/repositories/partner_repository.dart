@@ -58,13 +58,17 @@ class PartnerRepository {
 
   /// 로그인
   Future<String?> signIn(SignInRequestModel data) async {
-    final response = await _dio.post(
-      '/partners/signin',
-      data: data.toJson(),
-    );
-    if (response.statusCode == 201) {
-      return response.data['accessToken'];
-    } else {
+    try {
+      final response = await _dio.post(
+        '/partners/signin',
+        data: data.toJson(),
+      );
+      if (response.statusCode == 201) {
+        return response.data['accessToken'];
+      } else {
+        return null;
+      }
+    } catch (e) {
       return null;
     }
   }

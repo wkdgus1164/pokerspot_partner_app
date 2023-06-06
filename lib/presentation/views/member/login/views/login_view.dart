@@ -6,6 +6,7 @@ import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/locator.dart';
+import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/partner_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/token_provider.dart';
 
@@ -44,7 +45,7 @@ class LoginView extends StatelessWidget {
                   if (result && context.mounted) {
                     context.replaceNamed(BottomNavigationRoutes.home.path);
                   } else {
-                    /// TODO 실패시 토스트 메시지
+                    showToast(context: context, message: '로그인 실패하였습니다.');
                   }
                 },
                 onAutoLoginCheckboxChanged: () {

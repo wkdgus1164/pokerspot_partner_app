@@ -42,7 +42,7 @@ class LoginView extends StatelessWidget {
                   _tokenProvider.setToken(token);
                   final result = await _partnerProvider.getPartner(token);
                   if (result && context.mounted) {
-                    context.goNamed(BottomNavigationRoutes.home.path);
+                    context.replaceNamed(BottomNavigationRoutes.home.path);
                   } else {
                     /// TODO 실패시 토스트 메시지
                   }

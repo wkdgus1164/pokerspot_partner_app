@@ -15,12 +15,21 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  late Timer _timer;
+
   @override
   // ignore: must_call_super
   void initState() {
-    Timer(const Duration(milliseconds: 1500), () {
-      super.context.pushReplacementNamed(BaseRoutes.intro.path);
+    _timer = Timer(const Duration(milliseconds: 1500), () {
+      super.context.replaceNamed(BaseRoutes.intro.path);
     });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+
+    super.dispose();
   }
 
   @override

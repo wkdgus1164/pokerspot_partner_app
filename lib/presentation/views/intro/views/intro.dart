@@ -27,6 +27,6 @@ class IntroView extends StatelessWidget {
   }
 
   onStartButtonPressed(BuildContext context) {
-    context.pushNamed(MemberRoutes.login.path);
+    context.replaceNamed(MemberRoutes.login.path);
   }
 }

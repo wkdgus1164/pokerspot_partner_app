@@ -23,7 +23,7 @@ class PartnerProvider with ChangeNotifier {
   Future<bool> getPartner(String token) async {
     if (token.isNotEmpty) {
       _partner = await _usecase.getPartner();
-      Logger.d('_partner=${_partner?.toJson()}');
+      Logger.d('partner=${_partner?.toJson()}');
     } else {
       _partner = null;
     }

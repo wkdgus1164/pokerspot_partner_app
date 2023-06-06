@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/locator.dart';
+import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/blind_buyin/blind_buyin.dart';
-import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/header/store_header.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/header/tab_header.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/no_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/notice/notice.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/reservation/reservation.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/store_list/store_list.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/tournament/tournament.dart';
+import 'package:provider/provider.dart';
 
 enum HomeType {
   none('none'),
@@ -71,17 +73,18 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: homeTabAppBar,
       body: SafeArea(
-        child: Column(
-          children: [
-            const HomeStoreHeader(name: '몬스터 홀덤펍'),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: _buildBody(homeType).map((e) => e).toList(),
-                ),
-              ),
-            ),
-          ],
+        child: ChangeNotifierProvider<HomeProvider>(
+          create: (_) => locator()..getStores(),
+          child: Consumer<HomeProvider>(builder: (_, provider, __) {
+            switch (provider.store?.length) {
+              case null:
+                return const Center(child: CircularProgressIndicator());
+              case 0:
+                return const Center(child: HomeNoStore());
+              default:
+                return const HomeStore();
+            }
+          }),
         ),
       ),
     );

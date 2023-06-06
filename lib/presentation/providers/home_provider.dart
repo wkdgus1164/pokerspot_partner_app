@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:pokerspot_partner_app/domain/usecases/home_usecase.dart';
 
-import '../../data/models/store/store.dart';
+import '../../data/models/partner/partner_store.dart';
 
 class HomeProvider with ChangeNotifier {
   final HomeUsecase _usecase;
 
-  List<StoreModel>? _store;
-  List<StoreModel>? get store => _store;
+  List<PartnerStoreModel>? _store;
+  List<PartnerStoreModel>? get store => _store;
 
   HomeProvider(this._usecase);
 

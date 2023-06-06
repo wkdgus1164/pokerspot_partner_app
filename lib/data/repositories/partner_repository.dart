@@ -1,6 +1,6 @@
+import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/data/models/partner/sign_in_request.dart';
 import 'package:pokerspot_partner_app/data/models/partner/signup_request.dart';
-import 'package:pokerspot_partner_app/data/models/store/store.dart';
 import 'package:pokerspot_partner_app/data/network/api_client.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 
@@ -75,11 +75,11 @@ class PartnerRepository {
   }
 
   /// 메인 - 매장 리스트, 제휴 현황 / 매장 관리 - 리스트 조회
-  Future<List<StoreModel>> getStores() async {
+  Future<List<PartnerStoreModel>> getStores() async {
     try {
       final response = await _dio.get('/partners/stores');
       return (response.data['stores'] as List)
-          .map((e) => StoreModel.fromJson(e))
+          .map((e) => PartnerStoreModel.fromJson(e))
           .toList();
     } catch (e) {
       return [];

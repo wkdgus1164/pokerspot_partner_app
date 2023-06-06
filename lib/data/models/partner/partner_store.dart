@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'store.g.dart';
+part 'partner_store.g.dart';
 
 @JsonSerializable()
-class StoreModel {
+class PartnerStoreModel {
   final String uid;
   final String name;
   final String type;
@@ -12,7 +12,7 @@ class StoreModel {
   final List<StoreImageModel> storeImages;
   final StoreAffiliateModel storeAffiliate;
 
-  StoreModel({
+  PartnerStoreModel({
     required this.uid,
     required this.name,
     required this.type,
@@ -22,9 +22,9 @@ class StoreModel {
     required this.storeAffiliate,
   });
 
-  factory StoreModel.fromJson(Map<String, dynamic> json) =>
-      _$StoreModelFromJson(json);
-  Map<String, dynamic> toJson() => _$StoreModelToJson(this);
+  factory PartnerStoreModel.fromJson(Map<String, dynamic> json) =>
+      _$PartnerStoreModelFromJson(json);
+  Map<String, dynamic> toJson() => _$PartnerStoreModelToJson(this);
 }
 
 @JsonSerializable()

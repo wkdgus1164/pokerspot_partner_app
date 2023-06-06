@@ -1,4 +1,4 @@
-import 'package:pokerspot_partner_app/data/models/store/store.dart';
+import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/data/repositories/partner_repository.dart';
 
 class HomeUsecase {
@@ -6,7 +6,7 @@ class HomeUsecase {
 
   HomeUsecase(this._repository);
 
-  Future<List<StoreModel>> getStores() async {
+  Future<List<PartnerStoreModel>> getStores() async {
     return await _repository.getStores();
   }
 }

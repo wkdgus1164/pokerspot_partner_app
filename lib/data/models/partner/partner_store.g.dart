@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'store.dart';
+part of 'partner_store.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
+PartnerStoreModel _$PartnerStoreModelFromJson(Map<String, dynamic> json) =>
+    PartnerStoreModel(
       uid: json['uid'] as String,
       name: json['name'] as String,
       type: json['type'] as String,
@@ -19,7 +20,7 @@ StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
           json['storeAffiliate'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
+Map<String, dynamic> _$PartnerStoreModelToJson(PartnerStoreModel instance) =>
     <String, dynamic>{
       'uid': instance.uid,
       'name': instance.name,

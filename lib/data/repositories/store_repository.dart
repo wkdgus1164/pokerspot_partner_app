@@ -22,4 +22,21 @@ class StoreRepository {
       rethrow;
     }
   }
+
+  /// 매장 이미지 업로드
+  Future<String?> uploadImage(List<int> binaryData) async {
+    try {
+      FormData formData = FormData.fromMap({
+        'image': MultipartFile.fromBytes(binaryData, filename: 'image.jpg'),
+      });
+      final response = await _dio.post('/stores/upload-image',
+          data: formData,
+          options: Options(
+            headers: {'Content-Type': 'multipart/form-data'},
+          ));
+      return response.data['url'];
+    } catch (e) {
+      return null;
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
@@ -7,11 +8,13 @@ import 'package:pokerspot_partner_app/common/theme/typography.dart';
 class ShopProcessImageItem extends StatelessWidget {
   const ShopProcessImageItem({
     super.key,
+    this.imageUrl = '',
     this.isPrimary = false,
     this.onPressed,
     required this.caption,
   });
 
+  final String imageUrl;
   final bool isPrimary;
   final Function()? onPressed;
   final String caption;
@@ -43,6 +46,9 @@ class ShopProcessImageItem extends StatelessWidget {
                         color: greyVariant5,
                         borderRadius: BorderRadius.circular(defaultRadius * 2),
                       ),
+                      child: imageUrl.isNotEmpty
+                          ? CachedNetworkImage(imageUrl: imageUrl)
+                          : null,
                     ),
                     Container(
                       alignment: Alignment.center,

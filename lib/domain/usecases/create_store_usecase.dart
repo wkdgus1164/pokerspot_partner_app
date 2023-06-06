@@ -24,4 +24,8 @@ class CreateStoreUsecase {
     );
     return await _repository.bizValidate(data);
   }
+
+  Future<String?> uploadImage(List<int> binaryData) async {
+    return await _repository.uploadImage(binaryData);
+  }
 }

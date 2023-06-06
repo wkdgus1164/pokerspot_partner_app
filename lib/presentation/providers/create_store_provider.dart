@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/domain/usecases/create_store_usecase.dart';
 
@@ -7,6 +8,9 @@ class CreateStoreProvider with ChangeNotifier {
 
   CreateStoreModel _store = CreateStoreModel();
   CreateStoreModel get store => _store;
+
+  final List<StoreImageModel?> _images = List.generate(5, (_) => null);
+  List<StoreImageModel?> get images => _images;
 
   bool _checkedBiz = false;
   bool get checkedBiz => _checkedBiz;
@@ -27,6 +31,15 @@ class CreateStoreProvider with ChangeNotifier {
     }
   }
 
+  void setImage(int index, String url) {
+    _images[index] = StoreImageModel(url: url);
+    notifyListeners();
+  }
+
+  Future<String?> getImageUrl(List<int> binaryData) async {
+    return await _usecase.uploadImage(binaryData);
+  }
+
   bool validateEssential() {
     return ![
       store.name,
@@ -35,5 +48,21 @@ class CreateStoreProvider with ChangeNotifier {
       store.bizCategory,
       store.bizCategoryDetail,
     ].any((element) => element.isEmpty);
+  }
+
+  bool validateImages() {
+    final validate = images[0] != null && images[1] != null;
+    List<StoreImageModel> models = [];
+    for (final image in images) {
+      if (image != null) {
+        models.add(image);
+      }
+    }
+    if (validate) {
+      setStore(store.copyWith(storeImages: models), notify: true);
+      return true;
+    } else {
+      return false;
+    }
   }
 }

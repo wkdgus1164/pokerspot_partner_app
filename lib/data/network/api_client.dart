@@ -34,10 +34,14 @@ class DioClient extends ChangeNotifier {
     return _dio.get(path, data: data);
   }
 
-  Future<Response> post(String path, {Map<String, dynamic>? data}) async {
+  Future<Response> post(String path, {Object? data, Options? options}) async {
     _updateHeaders();
     Logger.d('[post]\npath: $path\ndata: $data');
-    return _dio.post(path, data: data);
+    return _dio.post(
+      path,
+      data: data,
+      options: options,
+    );
   }
 
   Future<Response> patch(String path, {Map<String, dynamic>? data}) async {

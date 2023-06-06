@@ -40,7 +40,7 @@ List<RouteBase> shopRoutes = [
   ),
   rightToLeft(
     ShopRoutes.processBusiness.path,
-    const ShopProcessBusinessView(),
+    ShopProcessBusinessView(),
   ),
   rightToLeft(
     ShopRoutes.processEssential.path,

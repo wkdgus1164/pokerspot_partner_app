@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/domain/usecases/create_store_usecase.dart';
@@ -10,8 +9,14 @@ class CreateStoreProvider with ChangeNotifier {
   CreateStoreModel _store = CreateStoreModel();
   CreateStoreModel get store => _store;
 
-  final List<StoreImageModel?> _images = List.generate(5, (_) => null);
-  List<StoreImageModel?> get images => _images;
+  List<MttGameModel> _mttGames = [];
+  List<MttGameModel> get mttGames => _mttGames;
+
+  List<EtcGameModel> _etcGames = [];
+  List<EtcGameModel> get etcGames => _etcGames;
+
+  final List<CreateStoreImageModel?> _images = List.generate(5, (_) => null);
+  List<CreateStoreImageModel?> get images => _images;
 
   bool _checkedBiz = false;
   bool get checkedBiz => _checkedBiz;
@@ -27,14 +32,13 @@ class CreateStoreProvider with ChangeNotifier {
 
   void setStore(CreateStoreModel model, {bool notify = false}) {
     _store = model;
-    Logger.d(store.toJson());
     if (notify) {
       notifyListeners();
     }
   }
 
   void setImage(int index, String url) {
-    _images[index] = StoreImageModel(url: url);
+    _images[index] = CreateStoreImageModel(url: url, priority: index);
     notifyListeners();
   }
 
@@ -42,7 +46,17 @@ class CreateStoreProvider with ChangeNotifier {
     return await _usecase.uploadImage(binaryData);
   }
 
+  Future<bool> createStore() async {
+    Logger.d(store.toJson());
+    return await _usecase.createStore(CreateStoreRequestModel(
+      store: store,
+      mttGames: mttGames,
+      etcGames: etcGames,
+    ));
+  }
+
   bool validateEssential() {
+    Logger.d(store.toJson());
     return ![
       store.name,
       store.address,
@@ -53,8 +67,9 @@ class CreateStoreProvider with ChangeNotifier {
   }
 
   bool validateImages() {
+    Logger.d(store.toJson());
     final validate = images[0] != null && images[1] != null;
-    List<StoreImageModel> models = [];
+    List<CreateStoreImageModel> models = [];
     for (final image in images) {
       if (image != null) {
         models.add(image);

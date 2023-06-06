@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pokerspot_partner_app/data/models/store/biz_validate_request.dart';
+import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/data/network/api_client.dart';
 
 class StoreRepository {
@@ -37,6 +38,19 @@ class StoreRepository {
       return response.data['url'];
     } catch (e) {
       return null;
+    }
+  }
+
+  /// Store 생성
+  Future<bool> createStore(CreateStoreRequestModel data) async {
+    try {
+      await _dio.post(
+        '/stores',
+        data: data.toJson(),
+      );
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 }

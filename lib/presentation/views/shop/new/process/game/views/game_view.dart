@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/info_box/info_box.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
+import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/components/steps.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/game/components/add_button.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/game/components/game_item.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/info_box/info_box.dart';
 
-class ShopProcessGameView extends StatelessWidget {
+import '../../../../../../../locator.dart';
+import '../../../../../../providers/create_store_provider.dart';
+
+class ShopProcessGameView extends StatefulWidget {
   const ShopProcessGameView({super.key});
+
+  @override
+  State<ShopProcessGameView> createState() => _ShopProcessGameViewState();
+}
+
+class _ShopProcessGameViewState extends State<ShopProcessGameView> {
+  final _provider = locator<CreateStoreProvider>();
 
   @override
   Widget build(BuildContext context) {
@@ -162,9 +173,18 @@ class ShopProcessGameView extends StatelessWidget {
             child: CustomButton(
               text: '완료',
               customButtonTheme: CustomButtonTheme.primary,
-              onPressed: () => context.pushNamed(
-                ShopRoutes.processSuccess.path,
-              ),
+              onPressed: () async {
+                final result = await _provider.createStore();
+                if (mounted) {
+                  if (result) {
+                    context.pushNamed(
+                      ShopRoutes.processSuccess.path,
+                    );
+                  }
+                } else {
+                  showToast(context: context, message: '다시 시도해주세요.');
+                }
+              },
             ),
           ),
         ],

@@ -28,4 +28,8 @@ class CreateStoreUsecase {
   Future<String?> uploadImage(List<int> binaryData) async {
     return await _repository.uploadImage(binaryData);
   }
+
+  Future<bool> createStore(CreateStoreRequestModel model) async {
+    return await _repository.createStore(model);
+  }
 }

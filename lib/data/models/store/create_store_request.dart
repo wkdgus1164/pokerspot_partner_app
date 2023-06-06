@@ -5,7 +5,7 @@ import '../partner/partner_store.dart';
 
 part 'create_store_request.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class CreateStoreRequestModel {
   final CreateStoreModel store;
   final List<MttGameModel> mttGames;
@@ -23,7 +23,7 @@ class CreateStoreRequestModel {
 }
 
 @CopyWith()
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class CreateStoreModel {
   final String bizNumber;
   final String ownerName;
@@ -35,7 +35,7 @@ class CreateStoreModel {
   final double lng;
   final String bizCategory;
   final String bizCategoryDetail;
-  final List<StoreImageModel> storeImages;
+  final List<CreateStoreImageModel> storeImages;
   final String openTime;
   final String closeTime;
   final String type;
@@ -60,6 +60,21 @@ class CreateStoreModel {
   factory CreateStoreModel.fromJson(Map<String, dynamic> json) =>
       _$CreateStoreModelFromJson(json);
   Map<String, dynamic> toJson() => _$CreateStoreModelToJson(this);
+}
+
+@JsonSerializable()
+class CreateStoreImageModel {
+  final String url;
+  final int priority;
+
+  CreateStoreImageModel({
+    required this.url,
+    this.priority = 0,
+  });
+
+  factory CreateStoreImageModel.fromJson(Map<String, dynamic> json) =>
+      _$CreateStoreImageModelFromJson(json);
+  Map<String, dynamic> toJson() => _$CreateStoreImageModelToJson(this);
 }
 
 @JsonSerializable()

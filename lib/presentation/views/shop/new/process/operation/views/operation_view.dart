@@ -5,6 +5,7 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
+import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/components/steps.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/operation/components/pub.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/operation/components/time.dart';
@@ -14,6 +15,7 @@ import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../../../common/components/dialogs/picker_dialog.dart';
 import '../../../../../../../data/models/store/create_store_request.dart';
 import '../../../../../../../locator.dart';
 import '../../../../../../providers/create_store_provider.dart';
@@ -28,7 +30,27 @@ class ShopProcessOperationView extends StatefulWidget {
 
 class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
   final _provider = locator<CreateStoreProvider>();
+  int _openTimeIndex = 0;
+  int _closeTimeIndex = 0;
+
   CreateStoreModel get _store => _provider.store;
+
+  List<String> _times({int startIndex = 0}) {
+    List<String> times = [];
+    for (int i = startIndex; i <= 23; i++) {
+      String hour = i.toString().padLeft(2, '0');
+      times.add('$hour:00');
+      times.add('$hour:30');
+    }
+    for (int i = 0; i <= 11; i++) {
+      String hour = i.toString().padLeft(2, '0');
+      times.add('익일 $hour:00');
+      times.add('익일 $hour:30');
+    }
+    times.add('익일 12:00');
+
+    return times;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,13 +97,57 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                         Row(
                           children: [
                             ShopProcessOperationTime(
-                                onTap: () {}, text: '오픈시간'),
+                              onTap: () {
+                                _buildStartTimePickerDialog(
+                                  startIndex: 0,
+                                  title: '오픈시간 선택',
+                                  onItemChanged: (value) {
+                                    _openTimeIndex = value;
+                                  },
+                                  onSubmit: () {
+                                    _provider.setStore(
+                                      _store.copyWith(
+                                          openTime: _times()[_openTimeIndex]),
+                                      notify: true,
+                                    );
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              },
+                              text: '오픈시간',
+                              time: _store.openTime,
+                            ),
                             Padding(
                               padding: const EdgeInsets.all(padding10),
                               child: Text('~', style: label),
                             ),
                             ShopProcessOperationTime(
-                                onTap: () {}, text: '마감시간'),
+                              onTap: () {
+                                _buildStartTimePickerDialog(
+                                  startIndex: _openTimeIndex,
+                                  title: '마감시간 선택',
+                                  onItemChanged: (value) {
+                                    _closeTimeIndex = value;
+                                  },
+                                  onSubmit: () {
+                                    final times =
+                                        _times(startIndex: _openTimeIndex);
+
+                                    _provider.setStore(
+                                      _store.copyWith(
+                                          closeTime:
+                                              times.length == _closeTimeIndex
+                                                  ? null
+                                                  : times[_closeTimeIndex]),
+                                      notify: true,
+                                    );
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              },
+                              text: '마감시간',
+                              time: _store.closeTime ?? '마감시까지',
+                            ),
                           ],
                         ),
                         const SizedBox(height: padding32),
@@ -226,13 +292,42 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
             child: CustomButton(
               text: '다음',
               customButtonTheme: CustomButtonTheme.primary,
-              onPressed: () => context.pushNamed(
-                ShopRoutes.processGame.path,
-              ),
+              onPressed: () {
+                if (_provider.validateOperation()) {
+                  context.pushNamed(ShopRoutes.processGame.path);
+                } else {
+                  showToast(context: context, message: '시간을 선택해주세요.');
+                }
+              },
             ),
           ),
         ],
       ),
+    );
+  }
+
+  void _buildStartTimePickerDialog(
+      {required String title,
+      int startIndex = 0,
+      required Function(int) onItemChanged,
+      required VoidCallback onSubmit}) {
+    showDialog(
+      context: context,
+      builder: (_) {
+        final times = _times(startIndex: startIndex);
+        if (startIndex != 0) {
+          times.add('마감시까지');
+        }
+        return PickerDialog(
+          onCancel: () {
+            Navigator.pop(context);
+          },
+          onSubmit: onSubmit,
+          onItemChanged: onItemChanged,
+          selections: times,
+          title: title,
+        );
+      },
     );
   }
 }

@@ -32,10 +32,6 @@ class _LoginViewState extends State<LoginView> {
     if (success && context.mounted) {
       context.replaceNamed(BottomNavigationRoutes.home.path);
     } else {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) => _buildStartTimePickerDialog(),
-      );
       showToast(context: context, message: '로그인 실패하였습니다.');
     }
   }

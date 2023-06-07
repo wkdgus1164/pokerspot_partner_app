@@ -54,13 +54,13 @@ class PickerDialog extends StatelessWidget {
             children: [
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: onCancel,
                   child: const Text('취소'),
                 ),
               ),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: onSubmit,
                   child: const Text('선택 완료'),
                 ),
               ),

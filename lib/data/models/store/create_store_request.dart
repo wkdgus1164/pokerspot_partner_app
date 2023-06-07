@@ -1,8 +1,6 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../partner/partner_store.dart';
-
 part 'create_store_request.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -37,7 +35,7 @@ class CreateStoreModel {
   final String bizCategoryDetail;
   final List<CreateStoreImageModel> storeImages;
   final String openTime;
-  final String closeTime;
+  final String? closeTime;
   final String type;
 
   CreateStoreModel({
@@ -52,8 +50,8 @@ class CreateStoreModel {
     this.bizCategory = '',
     this.bizCategoryDetail = '',
     this.storeImages = const [],
-    this.openTime = '00:00',
-    this.closeTime = '00:00',
+    this.openTime = '',
+    this.closeTime,
     this.type = 'MTT',
   });
 

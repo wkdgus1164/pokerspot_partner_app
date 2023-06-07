@@ -31,7 +31,7 @@ abstract class _$CreateStoreModelCWProxy {
 
   CreateStoreModel openTime(String openTime);
 
-  CreateStoreModel closeTime(String closeTime);
+  CreateStoreModel closeTime(String? closeTime);
 
   CreateStoreModel type(String type);
 
@@ -107,7 +107,7 @@ class _$CreateStoreModelCWProxyImpl implements _$CreateStoreModelCWProxy {
   CreateStoreModel openTime(String openTime) => this(openTime: openTime);
 
   @override
-  CreateStoreModel closeTime(String closeTime) => this(closeTime: closeTime);
+  CreateStoreModel closeTime(String? closeTime) => this(closeTime: closeTime);
 
   @override
   CreateStoreModel type(String type) => this(type: type);
@@ -190,10 +190,10 @@ class _$CreateStoreModelCWProxyImpl implements _$CreateStoreModelCWProxy {
           ? _value.openTime
           // ignore: cast_nullable_to_non_nullable
           : openTime as String,
-      closeTime: closeTime == const $CopyWithPlaceholder() || closeTime == null
+      closeTime: closeTime == const $CopyWithPlaceholder()
           ? _value.closeTime
           // ignore: cast_nullable_to_non_nullable
-          : closeTime as String,
+          : closeTime as String?,
       type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
@@ -249,8 +249,8 @@ CreateStoreModel _$CreateStoreModelFromJson(Map<String, dynamic> json) =>
                   CreateStoreImageModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      openTime: json['openTime'] as String? ?? '00:00',
-      closeTime: json['closeTime'] as String? ?? '00:00',
+      openTime: json['openTime'] as String? ?? '',
+      closeTime: json['closeTime'] as String?,
       type: json['type'] as String? ?? 'MTT',
     );
 

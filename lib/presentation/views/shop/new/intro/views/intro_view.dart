@@ -10,13 +10,23 @@ import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 
-class ShopNewIntroView extends StatelessWidget {
+class ShopNewIntroView extends StatefulWidget {
   const ShopNewIntroView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    locator<CreateStoreProvider>().clear();
+  State<ShopNewIntroView> createState() => _ShopNewIntroViewState();
+}
 
+class _ShopNewIntroViewState extends State<ShopNewIntroView> {
+  @override
+  void initState() {
+    super.initState();
+
+    locator<CreateStoreProvider>().clear();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     onGuideButtonPressed() {
       context.pushNamed(ShopRoutes.newGuide.path);
     }

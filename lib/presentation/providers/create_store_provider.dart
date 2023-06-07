@@ -67,7 +67,6 @@ class CreateStoreProvider with ChangeNotifier {
   }
 
   bool validateImages() {
-    Logger.d(store.toJson());
     final validate = images[0] != null && images[1] != null;
     List<CreateStoreImageModel> models = [];
     for (final image in images) {
@@ -75,12 +74,18 @@ class CreateStoreProvider with ChangeNotifier {
         models.add(image);
       }
     }
+    Logger.d(store.toJson());
     if (validate) {
       setStore(store.copyWith(storeImages: models), notify: true);
       return true;
     } else {
       return false;
     }
+  }
+
+  bool validateOperation() {
+    Logger.d(store.toJson());
+    return store.openTime.isNotEmpty;
   }
 
   void clear() {

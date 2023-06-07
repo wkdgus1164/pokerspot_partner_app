@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
-import 'package:pokerspot_partner_app/presentation/providers/partner_provider.dart';
+import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 class MypageMyinfo extends StatelessWidget {
@@ -10,7 +10,7 @@ class MypageMyinfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<PartnerProvider>(builder: (_, provider, __) {
+    return Consumer<AuthProviderProvider>(builder: (_, provider, __) {
       return Container(
         color: greyVariant5,
         padding: const EdgeInsets.symmetric(

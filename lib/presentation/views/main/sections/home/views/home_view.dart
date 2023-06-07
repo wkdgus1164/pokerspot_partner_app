@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/data/utils/logger.dart';
-import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/blind_buyin/blind_buyin.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/header/tab_header.dart';
@@ -69,22 +67,18 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: homeTabAppBar,
       body: SafeArea(
-        child: ChangeNotifierProvider<HomeProvider>(
-          create: (_) => locator()..getStores(),
-          child: Consumer<HomeProvider>(builder: (_, provider, __) {
-            Logger.d('${provider.hashCode} ${provider.stores?.length}');
-            switch (provider.stores?.length) {
-              case null:
-                return const Center(child: CircularProgressIndicator());
-              case 0:
-                return const Center(child: HomeNoStore());
-              default:
-                return HomeStore(
-                  storeList: provider.stores ?? [],
-                );
-            }
-          }),
-        ),
+        child: Consumer<HomeProvider>(builder: (_, provider, __) {
+          switch (provider.stores?.length) {
+            case null:
+              return const Center(child: CircularProgressIndicator());
+            case 0:
+              return const Center(child: HomeNoStore());
+            default:
+              return HomeStore(
+                storeList: provider.stores ?? [],
+              );
+          }
+        }),
       ),
     );
   }

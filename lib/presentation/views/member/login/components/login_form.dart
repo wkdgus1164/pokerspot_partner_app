@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_with_delete_icon.dart';
-import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -43,22 +43,29 @@ class LoginForm extends StatelessWidget {
             onChanged: onPWChanged,
           ),
           const SizedBox(height: padding16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              CustomCheckbox(
-                value: onAutoLoginChecked,
-                onChanged: onAutoLoginCheckboxChanged,
+          Align(
+            alignment: Alignment.centerLeft,
+            child: InkWell(
+              onTap: onAutoLoginCheckboxChanged,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CustomCheckbox(
+                    value: onAutoLoginChecked,
+                    onChanged: onAutoLoginCheckboxChanged,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    '로그인 상태 유지',
+                    style: label.copyWith(
+                      color: textColor,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 10),
-              Text(
-                '로그인 상태 유지',
-                style: label.copyWith(
-                  color: textColor,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
+            ),
           ),
           const SizedBox(height: padding32),
           CustomButton(

@@ -9,17 +9,36 @@ import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
-import 'package:pokerspot_partner_app/presentation/providers/partner_provider.dart';
+import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/token_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../components/login_form.dart';
 import '../components/login_header.dart';
 
-class LoginView extends StatelessWidget {
-  LoginView({Key? key}) : super(key: key);
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
 
-  final _partnerProvider = locator<PartnerProvider>();
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  final _authProvider = locator<AuthProviderProvider>();
   final _tokenProvider = locator<TokenProvider>();
+
+  Future<void> _login() async {
+    final success = await _authProvider.login();
+    if (success && context.mounted) {
+      context.replaceNamed(BottomNavigationRoutes.home.path);
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => _buildStartTimePickerDialog(),
+      );
+      showToast(context: context, message: '로그인 실패하였습니다.');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,36 +52,26 @@ class LoginView extends StatelessWidget {
               const LoginHeader(),
 
               // 로그인 폼
-              LoginForm(
-                onIDChanged: (value) {
-                  _partnerProvider.id = value;
-                },
-                onPWChanged: (value) {
-                  _partnerProvider.password = value;
-                },
-                onLogin: () async {
-                  final token = await _partnerProvider.getToken();
-                  _tokenProvider.setToken(token);
-                  final result = await _partnerProvider.getPartner(token);
-                  if (result && context.mounted) {
-                    context.replaceNamed(BottomNavigationRoutes.home.path);
-                  } else {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) =>
-                          _buildStartTimePickerDialog(),
-                    );
-                    showToast(context: context, message: '로그인 실패하였습니다.');
-                  }
-                },
-                onAutoLoginCheckboxChanged: () {
-                  /// TODO 자동 로그인
-                },
-                onAutoLoginChecked: true,
-                onSignupButtonPressed: () {
-                  context.pushNamed(MemberRoutes.signupRenewal.path);
-                },
-              ),
+              Consumer<TokenProvider>(builder: (_, __, ___) {
+                return LoginForm(
+                  onIDChanged: (value) {
+                    _authProvider.id = value;
+                  },
+                  onPWChanged: (value) {
+                    _authProvider.password = value;
+                  },
+                  onLogin: () async {
+                    await _login();
+                  },
+                  onAutoLoginCheckboxChanged: () async {
+                    await _tokenProvider.setIsAutoLogin();
+                  },
+                  onAutoLoginChecked: _tokenProvider.isAutoLogin,
+                  onSignupButtonPressed: () {
+                    context.pushNamed(MemberRoutes.signupRenewal.path);
+                  },
+                );
+              }),
               const SizedBox(height: padding32),
 
               // 로그인 전 둘러보기

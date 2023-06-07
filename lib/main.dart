@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/bottom_navigation_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/button.dart';
 import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
-import 'package:pokerspot_partner_app/presentation/providers/partner_provider.dart';
+import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'data/network/api_client.dart';
 import 'locator.dart';
 import 'presentation/providers/token_provider.dart';
+
+const storage = FlutterSecureStorage();
 
 ThemeData _createThemeData({required BuildContext context}) {
   return ThemeData(
@@ -57,9 +61,10 @@ class MainApp extends StatelessWidget {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: MultiProvider(providers: [
         ChangeNotifierProvider(create: (_) => locator<TokenProvider>()),
-        ChangeNotifierProvider(create: (_) => locator<PartnerProvider>()),
+        ChangeNotifierProvider(create: (_) => locator<AuthProviderProvider>()),
         ChangeNotifierProvider(create: (_) => locator<DioClient>()),
         ChangeNotifierProvider(create: (_) => locator<CreateStoreProvider>()),
+        ChangeNotifierProvider(create: (_) => locator<HomeProvider>()),
       ], child: materialApp()),
     );
   }

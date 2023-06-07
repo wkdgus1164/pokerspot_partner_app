@@ -31,6 +31,7 @@ dependencies:
   kpostal: ^0.5.1
   image_picker: ^0.8.7+5
   cached_network_image: ^3.2.3
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 
-enum TonerType {
-  daily('daily'),
-  seed('seed'),
-  ;
-
-  const TonerType(this.type);
-  final String type;
-}
+import '../../../../../../../data/models/store/create_store_request.dart';
 
 class GameItem extends StatelessWidget {
   const GameItem({
@@ -34,7 +27,7 @@ class GameItem extends StatelessWidget {
     required this.isDeleteButtonEnabled,
     required this.onDeleteButtonPressed,
     required this.isSaveButtonEnabled,
-    required this.onsaveButtonPressed,
+    this.onsaveButtonPressed,
     required this.targetToner,
     required this.onTargetTonerInputChanged,
   });
@@ -43,21 +36,21 @@ class GameItem extends StatelessWidget {
   final bool isAllDayRunning;
   final Function() onAllDayRunningChanged;
   final TonerType tonerType;
-  final Function() onTonerTypeChanged;
-  final String joinCost;
-  final Function(String) onJoinCostInputChanged;
+  final Function(int) onTonerTypeChanged;
+  final int joinCost;
+  final Function(int) onJoinCostInputChanged;
   final int entryStart;
   final Function(String) onEntryStartInputChanged;
   final int entryLimit;
   final Function(String) onEntryLimitInputChanged;
-  final int prize;
+  final String prize;
   final Function(String) onPrizeInputChanged;
   final String targetToner;
   final Function(String) onTargetTonerInputChanged;
   final bool isDeleteButtonEnabled;
   final Function() onDeleteButtonPressed;
   final bool isSaveButtonEnabled;
-  final Function() onsaveButtonPressed;
+  final VoidCallback? onsaveButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -82,16 +75,19 @@ class GameItem extends StatelessWidget {
         children: [
           Text(title, style: titleMedium.copyWith(color: textColor)),
           const SizedBox(height: padding10),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CustomCheckbox(
-                value: true,
-                onChanged: onAllDayRunningChanged,
-              ),
-              const SizedBox(width: padding10),
-              Text('매일 진행', style: label.copyWith(color: textColor)),
-            ],
+          InkWell(
+            onTap: onAllDayRunningChanged,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CustomCheckbox(
+                  value: isAllDayRunning,
+                  onChanged: onAllDayRunningChanged,
+                ),
+                const SizedBox(width: padding10),
+                Text('매일 진행', style: label.copyWith(color: textColor)),
+              ],
+            ),
           ),
           const SizedBox(height: padding10),
           Row(
@@ -105,7 +101,7 @@ class GameItem extends StatelessWidget {
                   builder: (ctx, constraints) {
                     final minWidth = constraints.minWidth / 3.1;
                     return ToggleButtons(
-                      onPressed: (int index) {},
+                      onPressed: onTonerTypeChanged,
                       borderRadius: const BorderRadius.all(
                         Radius.circular(defaultRadius),
                       ),
@@ -117,7 +113,10 @@ class GameItem extends StatelessWidget {
                       selectedColor: Colors.white,
                       fillColor: primaryColor,
                       color: primaryColor,
-                      isSelected: const [true, false, false],
+                      isSelected: [
+                        tonerType == TonerType.daily,
+                        tonerType == TonerType.seed
+                      ],
                       children: [
                         Container(
                           alignment: Alignment.center,
@@ -126,10 +125,6 @@ class GameItem extends StatelessWidget {
                         Container(
                           alignment: Alignment.center,
                           child: const Text('시드권토너'),
-                        ),
-                        Container(
-                          alignment: Alignment.center,
-                          child: const Text('GTD토너'),
                         ),
                       ],
                     );
@@ -151,8 +146,11 @@ class GameItem extends StatelessWidget {
               Expanded(
                 flex: 4,
                 child: CustomTextField(
+                  initText: joinCost.toString(),
+                  keyboardType: TextInputType.number,
                   hint: '참가비 입력',
-                  onTextFieldChanged: onJoinCostInputChanged,
+                  onTextFieldChanged: (value) =>
+                      onJoinCostInputChanged.call(int.tryParse(value) ?? 0),
                 ),
               ),
             ],
@@ -173,6 +171,8 @@ class GameItem extends StatelessWidget {
                   children: [
                     Expanded(
                       child: CustomTextField(
+                        initText: entryStart.toString(),
+                        keyboardType: TextInputType.number,
                         hint: '엔트리 입력',
                         onTextFieldChanged: onEntryStartInputChanged,
                       ),
@@ -183,6 +183,8 @@ class GameItem extends StatelessWidget {
                     ),
                     Expanded(
                       child: CustomTextField(
+                        initText: entryLimit.toString(),
+                        keyboardType: TextInputType.number,
                         hint: '엔트리 입력',
                         onTextFieldChanged: onEntryLimitInputChanged,
                       ),
@@ -205,31 +207,34 @@ class GameItem extends StatelessWidget {
               Expanded(
                 flex: 4,
                 child: CustomTextField(
+                  initText: prize,
                   hint: '프라이즈 입력',
                   onTextFieldChanged: onPrizeInputChanged,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: padding10),
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Text(
-                  '타겟 토너',
-                  style: titleSmall.copyWith(color: textColor),
+          if (tonerType == TonerType.seed)
+            Row(
+              children: [
+                const SizedBox(height: padding10),
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    '타겟 토너',
+                    style: titleSmall.copyWith(color: textColor),
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 4,
-                child: CustomTextField(
-                  hint: '타겟 토너 입력',
-                  onTextFieldChanged: onTargetTonerInputChanged,
+                Expanded(
+                  flex: 4,
+                  child: CustomTextField(
+                    initText: targetToner,
+                    hint: '타겟 토너 입력',
+                    onTextFieldChanged: onTargetTonerInputChanged,
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
           const SizedBox(height: padding16),
           Row(
             children: [
@@ -240,14 +245,16 @@ class GameItem extends StatelessWidget {
                   onPressed: onDeleteButtonPressed,
                 ),
               ),
-              const SizedBox(width: padding16),
-              Expanded(
-                child: CustomButton(
-                  text: '저장',
-                  customButtonTheme: CustomButtonTheme.primary,
-                  onPressed: onsaveButtonPressed,
+              if (onsaveButtonPressed != null) ...[
+                const SizedBox(width: padding16),
+                Expanded(
+                  child: CustomButton(
+                    text: '저장',
+                    customButtonTheme: CustomButtonTheme.primary,
+                    onPressed: onsaveButtonPressed,
+                  ),
                 ),
-              ),
+              ]
             ],
           )
         ],

@@ -208,6 +208,124 @@ extension $CreateStoreModelCopyWith on CreateStoreModel {
   _$CreateStoreModelCWProxy get copyWith => _$CreateStoreModelCWProxyImpl(this);
 }
 
+abstract class _$MttGameModelCWProxy {
+  MttGameModel type(TonerType type);
+
+  MttGameModel entryPrice(int entryPrice);
+
+  MttGameModel entryMin(int entryMin);
+
+  MttGameModel entryMax(int entryMax);
+
+  MttGameModel prize(String prize);
+
+  MttGameModel targetMttName(String targetMttName);
+
+  MttGameModel isDaily(bool isDaily);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MttGameModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// MttGameModel(...).copyWith(id: 12, name: "My name")
+  /// ````
+  MttGameModel call({
+    TonerType? type,
+    int? entryPrice,
+    int? entryMin,
+    int? entryMax,
+    String? prize,
+    String? targetMttName,
+    bool? isDaily,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfMttGameModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfMttGameModel.copyWith.fieldName(...)`
+class _$MttGameModelCWProxyImpl implements _$MttGameModelCWProxy {
+  const _$MttGameModelCWProxyImpl(this._value);
+
+  final MttGameModel _value;
+
+  @override
+  MttGameModel type(TonerType type) => this(type: type);
+
+  @override
+  MttGameModel entryPrice(int entryPrice) => this(entryPrice: entryPrice);
+
+  @override
+  MttGameModel entryMin(int entryMin) => this(entryMin: entryMin);
+
+  @override
+  MttGameModel entryMax(int entryMax) => this(entryMax: entryMax);
+
+  @override
+  MttGameModel prize(String prize) => this(prize: prize);
+
+  @override
+  MttGameModel targetMttName(String targetMttName) =>
+      this(targetMttName: targetMttName);
+
+  @override
+  MttGameModel isDaily(bool isDaily) => this(isDaily: isDaily);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MttGameModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// MttGameModel(...).copyWith(id: 12, name: "My name")
+  /// ````
+  MttGameModel call({
+    Object? type = const $CopyWithPlaceholder(),
+    Object? entryPrice = const $CopyWithPlaceholder(),
+    Object? entryMin = const $CopyWithPlaceholder(),
+    Object? entryMax = const $CopyWithPlaceholder(),
+    Object? prize = const $CopyWithPlaceholder(),
+    Object? targetMttName = const $CopyWithPlaceholder(),
+    Object? isDaily = const $CopyWithPlaceholder(),
+  }) {
+    return MttGameModel(
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as TonerType,
+      entryPrice:
+          entryPrice == const $CopyWithPlaceholder() || entryPrice == null
+              ? _value.entryPrice
+              // ignore: cast_nullable_to_non_nullable
+              : entryPrice as int,
+      entryMin: entryMin == const $CopyWithPlaceholder() || entryMin == null
+          ? _value.entryMin
+          // ignore: cast_nullable_to_non_nullable
+          : entryMin as int,
+      entryMax: entryMax == const $CopyWithPlaceholder() || entryMax == null
+          ? _value.entryMax
+          // ignore: cast_nullable_to_non_nullable
+          : entryMax as int,
+      prize: prize == const $CopyWithPlaceholder() || prize == null
+          ? _value.prize
+          // ignore: cast_nullable_to_non_nullable
+          : prize as String,
+      targetMttName:
+          targetMttName == const $CopyWithPlaceholder() || targetMttName == null
+              ? _value.targetMttName
+              // ignore: cast_nullable_to_non_nullable
+              : targetMttName as String,
+      isDaily: isDaily == const $CopyWithPlaceholder() || isDaily == null
+          ? _value.isDaily
+          // ignore: cast_nullable_to_non_nullable
+          : isDaily as bool,
+    );
+  }
+}
+
+extension $MttGameModelCopyWith on MttGameModel {
+  /// Returns a callable class that can be used as follows: `instanceOfMttGameModel.copyWith(...)` or like so:`instanceOfMttGameModel.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$MttGameModelCWProxy get copyWith => _$MttGameModelCWProxyImpl(this);
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -216,12 +334,10 @@ CreateStoreRequestModel _$CreateStoreRequestModelFromJson(
         Map<String, dynamic> json) =>
     CreateStoreRequestModel(
       store: CreateStoreModel.fromJson(json['store'] as Map<String, dynamic>),
-      mttGames: (json['mttGames'] as List<dynamic>)
-          .map((e) => MttGameModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      etcGames: (json['etcGames'] as List<dynamic>)
-          .map((e) => EtcGameModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      mttGames: (json['mttGames'] as List<dynamic>?)
+              ?.map((e) => MttGameModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$CreateStoreRequestModelToJson(
@@ -229,7 +345,6 @@ Map<String, dynamic> _$CreateStoreRequestModelToJson(
     <String, dynamic>{
       'store': instance.store.toJson(),
       'mttGames': instance.mttGames.map((e) => e.toJson()).toList(),
-      'etcGames': instance.etcGames.map((e) => e.toJson()).toList(),
     };
 
 CreateStoreModel _$CreateStoreModelFromJson(Map<String, dynamic> json) =>
@@ -287,47 +402,28 @@ Map<String, dynamic> _$CreateStoreImageModelToJson(
     };
 
 MttGameModel _$MttGameModelFromJson(Map<String, dynamic> json) => MttGameModel(
-      type: json['type'] as String,
-      entryPrice: json['entryPrice'] as int,
-      entryMin: json['entryMin'] as int,
-      entryMax: json['entryMax'] as int,
-      prize: json['prize'] as String,
-      mttName: json['mttName'] as String,
-      isDaily: json['isDaily'] as bool,
+      type: $enumDecodeNullable(_$TonerTypeEnumMap, json['type']) ??
+          TonerType.daily,
+      entryPrice: json['entryPrice'] as int? ?? 10000,
+      entryMin: json['entryMin'] as int? ?? 1,
+      entryMax: json['entryMax'] as int? ?? 2,
+      prize: json['prize'] as String? ?? '100%',
+      targetMttName: json['targetMttName'] as String? ?? '',
+      isDaily: json['isDaily'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$MttGameModelToJson(MttGameModel instance) =>
     <String, dynamic>{
-      'type': instance.type,
+      'type': _$TonerTypeEnumMap[instance.type]!,
       'entryPrice': instance.entryPrice,
       'entryMin': instance.entryMin,
       'entryMax': instance.entryMax,
       'prize': instance.prize,
-      'mttName': instance.mttName,
+      'targetMttName': instance.targetMttName,
       'isDaily': instance.isDaily,
     };
 
-EtcGameModel _$EtcGameModelFromJson(Map<String, dynamic> json) => EtcGameModel(
-      smallBlind: json['smallBlind'] as int,
-      bigBlind: json['bigBlind'] as int,
-      utgPrice: json['utgPrice'] as int,
-      buyinMin: json['buyinMin'] as int,
-      buyinMax: json['buyinMax'] as int,
-      newUserBenefit: json['newUserBenefit'] as int,
-      startReservationBenefit: json['startReservationBenefit'] as int,
-      earlyReservationBenefit: json['earlyReservationBenefit'] as int,
-      maxBuyinBenefit: json['maxBuyinBenefit'] as int,
-    );
-
-Map<String, dynamic> _$EtcGameModelToJson(EtcGameModel instance) =>
-    <String, dynamic>{
-      'smallBlind': instance.smallBlind,
-      'bigBlind': instance.bigBlind,
-      'utgPrice': instance.utgPrice,
-      'buyinMin': instance.buyinMin,
-      'buyinMax': instance.buyinMax,
-      'newUserBenefit': instance.newUserBenefit,
-      'startReservationBenefit': instance.startReservationBenefit,
-      'earlyReservationBenefit': instance.earlyReservationBenefit,
-      'maxBuyinBenefit': instance.maxBuyinBenefit,
-    };
+const _$TonerTypeEnumMap = {
+  TonerType.daily: 'DAILY',
+  TonerType.seed: 'SEED',
+};

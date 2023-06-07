@@ -7,12 +7,10 @@ part 'create_store_request.g.dart';
 class CreateStoreRequestModel {
   final CreateStoreModel store;
   final List<MttGameModel> mttGames;
-  final List<EtcGameModel> etcGames;
 
   CreateStoreRequestModel({
     required this.store,
-    required this.mttGames,
-    required this.etcGames,
+    this.mttGames = const [],
   });
 
   factory CreateStoreRequestModel.fromJson(Map<String, dynamic> json) =>
@@ -75,24 +73,25 @@ class CreateStoreImageModel {
   Map<String, dynamic> toJson() => _$CreateStoreImageModelToJson(this);
 }
 
+@CopyWith()
 @JsonSerializable()
 class MttGameModel {
-  final String type;
+  final TonerType type;
   final int entryPrice;
   final int entryMin;
   final int entryMax;
   final String prize;
-  final String mttName;
+  final String targetMttName;
   final bool isDaily;
 
   MttGameModel({
-    required this.type,
-    required this.entryPrice,
-    required this.entryMin,
-    required this.entryMax,
-    required this.prize,
-    required this.mttName,
-    required this.isDaily,
+    this.type = TonerType.daily,
+    this.entryPrice = 10000,
+    this.entryMin = 1,
+    this.entryMax = 2,
+    this.prize = '100%',
+    this.targetMttName = '',
+    this.isDaily = false,
   });
 
   factory MttGameModel.fromJson(Map<String, dynamic> json) =>
@@ -100,31 +99,8 @@ class MttGameModel {
   Map<String, dynamic> toJson() => _$MttGameModelToJson(this);
 }
 
-@JsonSerializable()
-class EtcGameModel {
-  final int smallBlind;
-  final int bigBlind;
-  final int utgPrice;
-  final int buyinMin;
-  final int buyinMax;
-  final int newUserBenefit;
-  final int startReservationBenefit;
-  final int earlyReservationBenefit;
-  final int maxBuyinBenefit;
-
-  EtcGameModel({
-    required this.smallBlind,
-    required this.bigBlind,
-    required this.utgPrice,
-    required this.buyinMin,
-    required this.buyinMax,
-    required this.newUserBenefit,
-    required this.startReservationBenefit,
-    required this.earlyReservationBenefit,
-    required this.maxBuyinBenefit,
-  });
-
-  factory EtcGameModel.fromJson(Map<String, dynamic> json) =>
-      _$EtcGameModelFromJson(json);
-  Map<String, dynamic> toJson() => _$EtcGameModelToJson(this);
+@JsonEnum(fieldRename: FieldRename.screamingSnake)
+enum TonerType {
+  daily,
+  seed,
 }

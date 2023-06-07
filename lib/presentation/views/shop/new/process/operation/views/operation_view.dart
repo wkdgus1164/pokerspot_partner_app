@@ -173,6 +173,9 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                     notify: true);
                               },
                             ),
+
+                            /// 현재 토너펍만 운영
+                            /*
                             const SizedBox(width: padding10),
                             ShopProcessOperationPub(
                               asset: Assets.ringPubOff.path,
@@ -197,6 +200,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                     notify: true);
                               },
                             ),
+                             */
                           ],
                         ),
                         const SizedBox(height: padding32),

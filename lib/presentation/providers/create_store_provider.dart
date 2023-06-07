@@ -9,11 +9,8 @@ class CreateStoreProvider with ChangeNotifier {
   CreateStoreModel _store = CreateStoreModel();
   CreateStoreModel get store => _store;
 
-  List<MttGameModel> _mttGames = [];
+  List<MttGameModel> _mttGames = [MttGameModel()];
   List<MttGameModel> get mttGames => _mttGames;
-
-  List<EtcGameModel> _etcGames = [];
-  List<EtcGameModel> get etcGames => _etcGames;
 
   List<CreateStoreImageModel?> _images = List.generate(5, (_) => null);
   List<CreateStoreImageModel?> get images => _images;
@@ -51,8 +48,25 @@ class CreateStoreProvider with ChangeNotifier {
     return await _usecase.createStore(CreateStoreRequestModel(
       store: store,
       mttGames: mttGames,
-      etcGames: etcGames,
     ));
+  }
+
+  void addGame() {
+    _mttGames.add(MttGameModel());
+    notifyListeners();
+  }
+
+  void deleteGame(int index) {
+    _mttGames.removeAt(index);
+    notifyListeners();
+  }
+
+  void setGame(
+      {required int index, required MttGameModel model, bool notify = true}) {
+    _mttGames[index] = model;
+    if (notify) {
+      notifyListeners();
+    }
   }
 
   bool validateEssential() {
@@ -83,6 +97,26 @@ class CreateStoreProvider with ChangeNotifier {
     }
   }
 
+  bool validateGame() {
+    Logger.d(store.toJson());
+    Logger.d(!mttGames
+        .map((e) =>
+            [
+              e.targetMttName,
+              e.prize,
+            ].any((data) => data.isNotEmpty) &&
+            e.entryMax >= e.entryMin)
+        .any((game) => game == false));
+    return !mttGames
+        .map((e) =>
+            [
+              e.targetMttName,
+              e.prize,
+            ].any((data) => data.isNotEmpty) &&
+            e.entryMax >= e.entryMin)
+        .any((game) => game == false);
+  }
+
   bool validateOperation() {
     Logger.d(store.toJson());
     return store.openTime.isNotEmpty;
@@ -90,8 +124,7 @@ class CreateStoreProvider with ChangeNotifier {
 
   void clear() {
     _store = CreateStoreModel();
-    _mttGames.clear();
-    _etcGames.clear();
+    _mttGames = [MttGameModel()];
     _images = List.generate(5, (_) => null);
     _checkedBiz = false;
     notifyListeners();

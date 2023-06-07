@@ -6,6 +6,7 @@ import 'package:pokerspot_partner_app/common/theme/typography.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
+    this.initText = '',
     required this.hint,
     this.keyboardType = TextInputType.text,
     this.isPassword = false,
@@ -20,6 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.maxLines,
   });
 
+  final String initText;
   final String hint;
   final TextInputType keyboardType;
   final bool isPassword;
@@ -53,6 +55,11 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: (initText.isNotEmpty
+          ? (TextEditingController()
+            ..text = initText
+            ..selection = TextSelection.collapsed(offset: initText.length))
+          : null),
       style: bodyMedium.copyWith(color: textColor),
       decoration: textFieldDecoration(),
       onChanged: onTextFieldChanged,

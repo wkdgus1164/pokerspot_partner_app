@@ -13,12 +13,14 @@ class HomeStoreItem extends StatelessWidget {
     required this.lastDays,
     this.padding,
     this.onTap,
+    this.width,
   }) : super(key: key);
 
   final String thumbnail;
   final String title;
   final bool isCorporate;
   final int lastDays;
+  final double? width;
   final EdgeInsetsGeometry? padding;
   final GestureTapCallback? onTap;
 
@@ -38,7 +40,7 @@ class HomeStoreItem extends StatelessWidget {
           Radius.circular(defaultRadius * 2),
         ),
         child: Container(
-          width: MediaQuery.of(context).size.width - 60,
+          width: width ?? MediaQuery.of(context).size.width - 60,
           padding: const EdgeInsets.all(padding16),
           decoration: BoxDecoration(
             border: Border.all(color: borderColor),

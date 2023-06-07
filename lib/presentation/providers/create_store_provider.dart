@@ -15,7 +15,7 @@ class CreateStoreProvider with ChangeNotifier {
   List<EtcGameModel> _etcGames = [];
   List<EtcGameModel> get etcGames => _etcGames;
 
-  final List<CreateStoreImageModel?> _images = List.generate(5, (_) => null);
+  List<CreateStoreImageModel?> _images = List.generate(5, (_) => null);
   List<CreateStoreImageModel?> get images => _images;
 
   bool _checkedBiz = false;
@@ -81,5 +81,14 @@ class CreateStoreProvider with ChangeNotifier {
     } else {
       return false;
     }
+  }
+
+  void clear() {
+    _store = CreateStoreModel();
+    _mttGames.clear();
+    _etcGames.clear();
+    _images = List.generate(5, (_) => null);
+    _checkedBiz = false;
+    notifyListeners();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/components/buttons/verify_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
@@ -39,38 +40,51 @@ class SignupRenewView extends StatelessWidget {
             color: backgroundColor,
             padding: const EdgeInsets.all(padding16),
             child: ChangeNotifierProvider<SignupProvider>(
-                create: (_) => locator(),
-                child: Consumer<SignupProvider>(builder: (_, provider, __) {
+              create: (_) => locator(),
+              child: Consumer<SignupProvider>(
+                builder: (_, provider, __) {
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text('가입 정보 입력', style: headlineSmall),
                       const SizedBox(height: padding24),
+
+                      // 아이디
                       SignupId(
                         onTextFieldChanged: provider.setId,
                         checkedDuplicateId: provider.checkedDuplicateId,
-                        onCheckTap: () {
-                          provider.checkDuplicate();
-                        },
+                        onCheckTap: () => provider.checkDuplicate(),
                       ),
-                      const SizedBox(height: padding16),
+                      const SizedBox(height: padding24),
+
+                      // 비밀번호
                       SignupPassword(onTextFieldChanged: provider.setPassword),
-                      const SizedBox(height: padding16),
+                      const SizedBox(height: padding24),
+
+                      // 비밀번호 확인
                       SignupPasswordConfirm(
-                          password: provider.password,
-                          onTextFieldChanged: provider.setCheckPassword),
-                      const SizedBox(height: padding16),
+                        password: provider.password,
+                        onTextFieldChanged: provider.setCheckPassword,
+                      ),
+                      const SizedBox(height: padding24),
+
+                      // 이메일
                       SignupEmail(onTextFieldChanged: provider.setEmail),
                       const SizedBox(height: padding24),
+
+                      // 대표자명
                       SignupOwnerName(onTextFieldChanged: provider.setName),
-                      const SizedBox(height: padding16),
-                      SignupPhoneNumber(
-                          onTextFieldChanged: provider.setPhoneNumber),
                       const SizedBox(height: padding24),
-                      CustomButton(
-                        customButtonTheme: CustomButtonTheme.light,
-                        text: '휴대폰 본인인증',
+
+                      // 휴대폰 번호
+                      SignupPhoneNumber(
+                        onTextFieldChanged: provider.setPhoneNumber,
+                      ),
+                      const SizedBox(height: padding24),
+
+                      // 휴대폰 본인 인증
+                      VerifyButton(
                         onPressed: () async {
                           if (provider.impUid.isEmpty) {
                             final data = await context.pushNamed(
@@ -83,15 +97,15 @@ class SignupRenewView extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: padding24),
+
+                      // 가입 완료
                       CustomButton(
                         customButtonTheme: CustomButtonTheme.primary,
                         text: '가입 완료',
                         onPressed: () async {
                           final result = await provider.signUp();
                           if (result && context.mounted) {
-                            context.pushNamed(
-                              MemberRoutes.signupSuccess.path,
-                            );
+                            context.pushNamed(MemberRoutes.signupSuccess.path);
                           } else {
                             /// TODO Toast
                           }
@@ -99,7 +113,9 @@ class SignupRenewView extends StatelessWidget {
                       ),
                     ],
                   );
-                })),
+                },
+              ),
+            ),
           ),
         ),
       ),

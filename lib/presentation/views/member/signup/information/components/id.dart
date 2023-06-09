@@ -67,6 +67,11 @@ class _SignupIdState extends State<SignupId> {
           ),
         ),
         const SizedBox(height: padding10),
+        Text(
+          '영문+숫자 조합 4~12자리',
+          style: caption.copyWith(color: greyVariant1),
+        ),
+        const SizedBox(height: padding10),
         TextFormField(
           decoration: textFieldDecoration(),
           keyboardType: TextInputType.text,
@@ -78,14 +83,6 @@ class _SignupIdState extends State<SignupId> {
             _validate(text);
           },
           obscureText: false,
-        ),
-        const SizedBox(height: padding10),
-        Padding(
-          padding: const EdgeInsets.only(left: 12),
-          child: Text(
-            '영문+숫자 조합 4~12자리',
-            style: caption.copyWith(color: greyVariant1),
-          ),
         ),
       ],
     );

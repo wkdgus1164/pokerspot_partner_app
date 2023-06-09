@@ -30,7 +30,7 @@ class _SignupPhoneNumberState extends State<SignupPhoneNumber> {
         _validate(text);
       },
       textInputAction: TextInputAction.go,
-      captionText: '＊ 대표자 명의의 휴대폰 번호를 입력해주세요.',
+      captionText: '대표자 명의의 휴대폰 번호를 입력해주세요.',
     );
   }
 

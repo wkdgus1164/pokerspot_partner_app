@@ -21,7 +21,7 @@ class SignupOwnerName extends StatelessWidget {
       onEditingComplete: onEditingComplete,
       onTextFieldChanged: onTextFieldChanged,
       textInputAction: TextInputAction.go,
-      captionText: '＊ 사업자 등록증에 기재된 대표자명을 입력해주세요.',
+      captionText: '사업자 등록증에 기재된 대표자명을 입력해주세요.',
     );
   }
 

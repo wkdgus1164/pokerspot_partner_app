@@ -50,6 +50,13 @@ class CustomTextFieldSet extends StatelessWidget {
           ),
         ),
         const SizedBox(height: padding10),
+        if (captionText.isNotEmpty) ...[
+          Text(
+            captionText,
+            style: caption.copyWith(color: greyVariant1),
+          ),
+        ],
+        const SizedBox(height: padding10),
         CustomTextField(
           hint: inputHintText,
           errorText: inputErrorText,
@@ -64,16 +71,6 @@ class CustomTextFieldSet extends StatelessWidget {
           isPassword: isPassword,
           textInputAction: textInputAction,
         ),
-        const SizedBox(height: padding10),
-        if (captionText.isNotEmpty) ...[
-          Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: Text(
-              captionText,
-              style: caption.copyWith(color: greyVariant1),
-            ),
-          ),
-        ]
       ],
     );
   }

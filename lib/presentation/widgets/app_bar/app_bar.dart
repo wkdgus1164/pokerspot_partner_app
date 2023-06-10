@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 enum CustomAppBarTheme {
   white('white'),
@@ -13,12 +12,12 @@ enum CustomAppBarTheme {
   final String key;
 }
 
-enum CustomAppBarLeftSide {
+enum CustomAppBarLeft {
   none('none'),
-  backButton('back_button'),
-  cancelButton('cancel_button');
+  back('back'),
+  cancel('cancel');
 
-  const CustomAppBarLeftSide(this.key);
+  const CustomAppBarLeft(this.key);
 
   final String key;
 }
@@ -32,12 +31,12 @@ enum CustomAppBarCenter {
   final String key;
 }
 
-enum CustomAppBarRightSide {
+enum CustomAppBarRight {
   none('none'),
   noti('noti'),
   button('button');
 
-  const CustomAppBarRightSide(this.key);
+  const CustomAppBarRight(this.key);
 
   final String key;
 }
@@ -45,32 +44,31 @@ enum CustomAppBarRightSide {
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
-    this.customAppBarTheme = CustomAppBarTheme.white,
-    this.customAppBarLeftSide = CustomAppBarLeftSide.none,
-    this.customAppBarCenter = CustomAppBarCenter.logo,
-    this.customAppBarRightSide = CustomAppBarRightSide.none,
+    this.theme = CustomAppBarTheme.white,
+    this.left = CustomAppBarLeft.none,
+    this.center = CustomAppBarCenter.logo,
+    this.right = CustomAppBarRight.none,
     this.text = '',
     this.actions,
-    this.bottom,
+    this.bottomDivider = true,
   });
 
-  final CustomAppBarTheme customAppBarTheme;
-  final CustomAppBarLeftSide customAppBarLeftSide;
-  final CustomAppBarCenter customAppBarCenter;
-  final CustomAppBarRightSide customAppBarRightSide;
+  final CustomAppBarTheme theme;
+  final CustomAppBarLeft left;
+  final CustomAppBarCenter center;
+  final CustomAppBarRight right;
   final String text;
   final List<Widget>? actions;
-  final PreferredSizeWidget? bottom;
+  final bool bottomDivider;
 
   @override
   Widget build(BuildContext context) {
     final isLeftSideVisible =
-        customAppBarLeftSide == CustomAppBarLeftSide.backButton ||
-            customAppBarLeftSide == CustomAppBarLeftSide.cancelButton;
+        left == CustomAppBarLeft.back || left == CustomAppBarLeft.cancel;
 
-    final surfaceTintColor = customAppBarTheme == CustomAppBarTheme.white
-        ? Colors.white
-        : const Color.fromRGBO(42, 50, 59, 1);
+    final surfaceTintColor = theme == CustomAppBarTheme.white
+        ? customColorScheme.surfaceWhite
+        : customColorScheme.surfaceContainer1;
 
     return AppBar(
       centerTitle: true,
@@ -78,51 +76,46 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       surfaceTintColor: surfaceTintColor,
       backgroundColor: surfaceTintColor,
       leading: leadingIcon(context),
-      title: title(),
+      title: title(context),
       elevation: 0,
       actions: actions,
-      bottom: bottom,
+      bottom: const PreferredSize(
+        preferredSize: Size.fromHeight(1),
+        child: Divider(height: 1, thickness: 1),
+      ),
     );
   }
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
 
-  Widget title() {
-    switch (customAppBarCenter) {
+  Widget title(BuildContext context) {
+    switch (center) {
       case CustomAppBarCenter.logo:
         return SvgPicture.asset(Assets.poker.path);
 
       case CustomAppBarCenter.text:
-        if (customAppBarTheme == CustomAppBarTheme.white) {
-          return Text(
-            text,
-            style: bodySmall.copyWith(
-              color: textColor,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.center,
-          );
+        if (theme == CustomAppBarTheme.white) {
+          return Text(text, style: Theme.of(context).textTheme.bodyMedium);
         } else {
           return Text(
             text,
-            style: bodySmall.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge!
+                .copyWith(color: Colors.white),
           );
         }
     }
   }
 
   Widget? leadingIcon(BuildContext context) {
-    switch (customAppBarLeftSide) {
-      case CustomAppBarLeftSide.none:
+    switch (left) {
+      case CustomAppBarLeft.none:
         return null;
 
-      case CustomAppBarLeftSide.backButton:
-        if (customAppBarTheme == CustomAppBarTheme.white) {
+      case CustomAppBarLeft.back:
+        if (theme == CustomAppBarTheme.white) {
           return IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(Icons.arrow_back, color: Colors.black),
@@ -134,8 +127,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           );
         }
 
-      case CustomAppBarLeftSide.cancelButton:
-        if (customAppBarTheme == CustomAppBarTheme.black) {
+      case CustomAppBarLeft.cancel:
+        if (theme == CustomAppBarTheme.black) {
           return IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(Icons.close, color: Colors.white),

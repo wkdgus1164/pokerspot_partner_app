@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
@@ -24,15 +23,11 @@ class ShopProcessBusinessView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        customAppBarTheme: CustomAppBarTheme.white,
-        customAppBarLeftSide: CustomAppBarLeftSide.cancelButton,
-        customAppBarCenter: CustomAppBarCenter.text,
+      appBar: const CustomAppBar(
+        theme: CustomAppBarTheme.white,
+        left: CustomAppBarLeft.cancel,
+        center: CustomAppBarCenter.text,
         text: '신규 매장 등록',
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(color: borderColor, height: 1, thickness: 1),
-        ),
       ),
       body: SafeArea(
         child: Consumer<CreateStoreProvider>(builder: (_, __, ___) {
@@ -42,16 +37,22 @@ class ShopProcessBusinessView extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Container(
                     padding: const EdgeInsets.all(padding16),
-                    color: backgroundColor,
+                    color: lightColorScheme.background,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         const ShopProcessSteps(index: 1),
                         const SizedBox(height: padding16),
-                        Text('사업자 정보', style: headlineSmall),
+                        Text(
+                          '사업자 정보',
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
                         const SizedBox(height: padding10),
-                        Text('사업자 정보를 입력해주세요.', style: bodySmall),
+                        Text(
+                          '사업자 정보를 입력해주세요.',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
                         const SizedBox(height: padding48),
 
                         // 사업자등록번호
@@ -105,9 +106,9 @@ class ShopProcessBusinessView extends StatelessWidget {
         const Expanded(child: SizedBox()),
         const SizedBox(width: padding16),
         Expanded(
-          child: CustomButton(
+          child: CustomFilledButton(
             text: '다음',
-            customButtonTheme: CustomButtonTheme.primary,
+            theme: CustomFilledButtonTheme.primary,
             onPressed: () {
               if (_provider.checkedBiz) {
                 context.pushNamed(ShopRoutes.processEssential.path);
@@ -121,9 +122,9 @@ class ShopProcessBusinessView extends StatelessWidget {
     );
   }
 
-  CustomButton _buildVerify(BuildContext context) {
-    return CustomButton(
-      customButtonTheme: CustomButtonTheme.light,
+  CustomFilledButton _buildVerify(BuildContext context) {
+    return CustomFilledButton(
+      theme: CustomFilledButtonTheme.secondary,
       text: _provider.checkedBiz ? '인증이 완료되었습니다' : '사업자 인증',
       onPressed: _provider.checkedBiz
           ? null

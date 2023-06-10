@@ -5,7 +5,6 @@ import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 import '../components/email.dart';
 import '../components/header.dart';
@@ -20,9 +19,9 @@ class SignupInformationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        customAppBarLeftSide: CustomAppBarLeftSide.backButton,
-        customAppBarRightSide: CustomAppBarRightSide.none,
-        customAppBarCenter: CustomAppBarCenter.text,
+        left: CustomAppBarLeft.back,
+        right: CustomAppBarRight.none,
+        center: CustomAppBarCenter.text,
         text: '회원가입',
       ),
       body: SafeArea(
@@ -32,13 +31,16 @@ class SignupInformationView extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  color: backgroundColor,
+                  color: lightColorScheme.background,
                   padding: const EdgeInsets.all(padding16),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text('가입 정보 입력', style: headlineSmall),
+                      Text(
+                        '가입 정보 입력',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                       const SizedBox(height: padding24),
                       const SignupId(),
                       const SizedBox(height: padding16),
@@ -54,8 +56,8 @@ class SignupInformationView extends StatelessWidget {
                         onTextFieldChanged: (String value) {},
                       ),
                       const SizedBox(height: padding24),
-                      CustomButton(
-                        customButtonTheme: CustomButtonTheme.primary,
+                      CustomFilledButton(
+                        theme: CustomFilledButtonTheme.primary,
                         text: '가입 완료',
                         onPressed: () => context.pushNamed(
                           MemberRoutes.signupSuccess.path,

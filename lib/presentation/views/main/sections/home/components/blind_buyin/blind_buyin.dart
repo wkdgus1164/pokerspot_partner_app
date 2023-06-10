@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/blind_buyin/blind.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/blind_buyin/buyin.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/card.dart';
@@ -30,13 +28,13 @@ class HomeBlindBuyIn extends StatelessWidget {
                   Expanded(
                     child: Text(
                       '블라인드 및 바이인',
-                      style: titleLarge.copyWith(color: textColor),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
                   CustomTextButton(
                     text: '더보기',
-                    color: primaryColor,
-                    trailingIcon: TrailingIcon.arrowRight,
+                    theme: CustomTextButtonTheme.primary,
+                    trailingIcon: Icons.keyboard_arrow_right,
                     onClick: () {},
                   ),
                 ],

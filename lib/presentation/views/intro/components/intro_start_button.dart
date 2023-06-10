@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class IntroStartButton extends StatelessWidget {
   const IntroStartButton({
@@ -21,17 +20,17 @@ class IntroStartButton extends StatelessWidget {
         onTap: onPressed,
         child: Container(
           width: double.infinity,
-          color: primaryColor,
+          color: lightColorScheme.primary,
           padding: const EdgeInsets.only(
             top: padding16,
             bottom: padding16,
           ),
           child: Text(
             '시작하기',
-            style: bodySmall.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
             textAlign: TextAlign.center,
           ),
         ),

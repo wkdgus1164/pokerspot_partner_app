@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iamport_flutter/iamport_certification.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 
 class CertificationView extends StatelessWidget {
   const CertificationView({super.key});
@@ -9,8 +10,11 @@ class CertificationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IamportCertification(
-      appBar: AppBar(
-        title: const Text('본인인증'),
+      appBar: const CustomAppBar(
+        left: CustomAppBarLeft.back,
+        right: CustomAppBarRight.none,
+        center: CustomAppBarCenter.text,
+        text: '본인인증',
       ),
       initialChild: const Center(
         child: CircularProgressIndicator(),

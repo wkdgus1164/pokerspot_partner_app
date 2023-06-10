@@ -6,9 +6,14 @@ import 'package:pokerspot_partner_app/presentation/views/intro/components/swiper
 import 'package:pokerspot_partner_app/presentation/views/intro/components/swiper3.dart';
 import 'package:pokerspot_partner_app/presentation/views/intro/components/swiper4.dart';
 
-final swiperList = [slide1(), slide2(), slide3(), slide4()];
+Swiper slideSwiper(BuildContext context) {
+  final swiperList = [
+    slide1(context),
+    slide2(context),
+    slide3(context),
+    slide4(context),
+  ];
 
-Swiper slideSwiper() {
   SwiperPagination swiperPagination() {
     return SwiperPagination(
       alignment: Alignment.bottomCenter,

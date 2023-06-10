@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
@@ -59,7 +58,7 @@ class GameItem extends StatelessWidget {
       padding: const EdgeInsets.all(padding16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(defaultRadius),
-        border: Border.all(color: greyVariant2),
+        border: Border.all(color: lightColorScheme.outline),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
@@ -73,7 +72,7 @@ class GameItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(title, style: titleMedium.copyWith(color: textColor)),
+          Text(title, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: padding10),
           InkWell(
             onTap: onAllDayRunningChanged,
@@ -85,7 +84,7 @@ class GameItem extends StatelessWidget {
                   onChanged: onAllDayRunningChanged,
                 ),
                 const SizedBox(width: padding10),
-                Text('매일 진행', style: label.copyWith(color: textColor)),
+                Text('매일 진행', style: Theme.of(context).textTheme.labelLarge),
               ],
             ),
           ),
@@ -93,7 +92,10 @@ class GameItem extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: Text('종류', style: titleSmall.copyWith(color: textColor)),
+                child: Text(
+                  '종류',
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
               ),
               Expanded(
                 flex: 4,
@@ -109,10 +111,10 @@ class GameItem extends StatelessWidget {
                         minWidth: minWidth,
                         minHeight: constraints.minHeight,
                       ),
-                      selectedBorderColor: primaryColor,
+                      selectedBorderColor: lightColorScheme.primary,
                       selectedColor: Colors.white,
-                      fillColor: primaryColor,
-                      color: primaryColor,
+                      fillColor: lightColorScheme.primary,
+                      color: lightColorScheme.primary,
                       isSelected: [
                         tonerType == TonerType.daily,
                         tonerType == TonerType.seed
@@ -140,7 +142,7 @@ class GameItem extends StatelessWidget {
                 flex: 1,
                 child: Text(
                   '참가비',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               Expanded(
@@ -162,7 +164,7 @@ class GameItem extends StatelessWidget {
                 flex: 1,
                 child: Text(
                   '엔트리',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               Expanded(
@@ -201,7 +203,7 @@ class GameItem extends StatelessWidget {
                 flex: 1,
                 child: Text(
                   '프라이즈',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               Expanded(
@@ -222,7 +224,7 @@ class GameItem extends StatelessWidget {
                   flex: 1,
                   child: Text(
                     '타겟 토너',
-                    style: titleSmall.copyWith(color: textColor),
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
                 Expanded(
@@ -239,18 +241,18 @@ class GameItem extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: CustomButton(
+                child: CustomFilledButton(
                   text: '삭제',
-                  customButtonTheme: CustomButtonTheme.light,
+                  theme: CustomFilledButtonTheme.secondary,
                   onPressed: onDeleteButtonPressed,
                 ),
               ),
               if (onsaveButtonPressed != null) ...[
                 const SizedBox(width: padding16),
                 Expanded(
-                  child: CustomButton(
+                  child: CustomFilledButton(
                     text: '저장',
-                    customButtonTheme: CustomButtonTheme.primary,
+                    theme: CustomFilledButtonTheme.primary,
                     onPressed: onsaveButtonPressed,
                   ),
                 ),

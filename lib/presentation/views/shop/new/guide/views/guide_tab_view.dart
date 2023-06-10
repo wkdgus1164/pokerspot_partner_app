@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/guide/tabs/register_introduction.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/guide/tabs/register_process.dart';
 
@@ -36,7 +35,10 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
           .map((title) => Tab(
                 child: Text(
                   title,
-                  style: bodySmall.copyWith(color: Colors.black),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(color: Colors.black),
                 ),
               ))
           .toList();
@@ -48,16 +50,16 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
       child: Scaffold(
         appBar: const CustomAppBar(
           text: '신규 매장 등록 가이드',
-          customAppBarTheme: CustomAppBarTheme.black,
-          customAppBarCenter: CustomAppBarCenter.text,
-          customAppBarLeftSide: CustomAppBarLeftSide.cancelButton,
+          theme: CustomAppBarTheme.black,
+          center: CustomAppBarCenter.text,
+          left: CustomAppBarLeft.cancel,
         ),
         body: Column(
           children: [
             TabBar(
               controller: _tabController,
               tabs: tabBarHeader(tabBarTitles),
-              dividerColor: borderColor,
+              dividerColor: lightColorScheme.outline,
             ),
             Expanded(
                 child: TabBarView(

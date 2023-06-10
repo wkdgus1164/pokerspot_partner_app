@@ -5,8 +5,6 @@ import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart'
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -24,20 +22,15 @@ class SignupRenewView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        customAppBarLeftSide: CustomAppBarLeftSide.backButton,
-        customAppBarRightSide: CustomAppBarRightSide.none,
-        customAppBarCenter: CustomAppBarCenter.text,
+      appBar: const CustomAppBar(
+        left: CustomAppBarLeft.back,
+        right: CustomAppBarRight.none,
+        center: CustomAppBarCenter.text,
         text: '회원가입',
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(color: borderColor, height: 1, thickness: 1),
-        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            color: backgroundColor,
             padding: const EdgeInsets.all(padding16),
             child: ChangeNotifierProvider<SignupProvider>(
               create: (_) => locator(),
@@ -47,7 +40,10 @@ class SignupRenewView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text('가입 정보 입력', style: headlineSmall),
+                      Text(
+                        '가입 정보 입력',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
                       const SizedBox(height: padding24),
 
                       // 아이디
@@ -85,6 +81,7 @@ class SignupRenewView extends StatelessWidget {
 
                       // 휴대폰 본인 인증
                       VerifyButton(
+                        isVerified: false,
                         onPressed: () async {
                           if (provider.impUid.isEmpty) {
                             final data = await context.pushNamed(
@@ -99,8 +96,8 @@ class SignupRenewView extends StatelessWidget {
                       const SizedBox(height: padding24),
 
                       // 가입 완료
-                      CustomButton(
-                        customButtonTheme: CustomButtonTheme.primary,
+                      CustomFilledButton(
+                        theme: CustomFilledButtonTheme.primary,
                         text: '가입 완료',
                         onPressed: () async {
                           final result = await provider.signUp();

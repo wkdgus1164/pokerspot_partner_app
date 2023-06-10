@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class HomeBuyIn extends StatelessWidget {
   const HomeBuyIn({
@@ -20,12 +19,9 @@ class HomeBuyIn extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(padding16),
-          child: Text(
-            '바이인',
-            style: titleMedium.copyWith(color: textColor),
-          ),
+          child: Text('바이인', style: Theme.of(context).textTheme.titleMedium),
         ),
-        Divider(color: greyVariant4, height: 1, thickness: 1),
+        Divider(color: lightColorScheme.outline, height: 1, thickness: 1),
         Padding(
           padding: const EdgeInsets.only(
             top: padding24,
@@ -36,18 +32,18 @@ class HomeBuyIn extends StatelessWidget {
               Expanded(
                 child: Column(
                   children: [
-                    Text(min, style: headlineSmall),
+                    Text(min, style: Theme.of(context).textTheme.headlineSmall),
                     const SizedBox(height: padding10),
-                    Text('MIN', style: label),
+                    Text('MIN', style: Theme.of(context).textTheme.labelLarge),
                   ],
                 ),
               ),
               Expanded(
                 child: Column(
                   children: [
-                    Text(max, style: headlineSmall),
+                    Text(max, style: Theme.of(context).textTheme.headlineSmall),
                     const SizedBox(height: padding10),
-                    Text('MAX', style: label.copyWith(color: textColor)),
+                    Text('MAX', style: Theme.of(context).textTheme.labelLarge),
                   ],
                 ),
               ),

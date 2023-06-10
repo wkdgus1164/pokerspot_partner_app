@@ -11,11 +11,11 @@ class IntroView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: lightColorScheme.background,
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(child: slideSwiper()),
+            Expanded(child: slideSwiper(context)),
             IntroStartButton(
               text: '시작하기',
               onPressed: () => onStartButtonPressed(context),

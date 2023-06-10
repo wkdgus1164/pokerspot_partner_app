@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/guide/models/register_information_model.dart';
 
 class RegisterInformationCard extends StatelessWidget {
@@ -19,7 +18,7 @@ class RegisterInformationCard extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(color: borderColor),
+            border: Border.all(color: lightColorScheme.outline),
             borderRadius: BorderRadius.circular(defaultRadius),
           ),
           child: Column(
@@ -29,10 +28,14 @@ class RegisterInformationCard extends StatelessWidget {
                 padding: const EdgeInsets.all(padding16),
                 child: Text(
                   model.title,
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
-              Divider(height: 1, indent: 1, color: borderColor),
+              Divider(
+                height: 1,
+                indent: 1,
+                color: lightColorScheme.outline,
+              ),
               Padding(
                 padding: const EdgeInsets.all(padding10),
                 child: Column(
@@ -43,18 +46,23 @@ class RegisterInformationCard extends StatelessWidget {
                               children: [
                                 Text(
                                   '·',
-                                  style: label.copyWith(
-                                    color: Colors.grey.shade400,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge!
+                                      .copyWith(
+                                        color: Colors.grey.shade400,
+                                      ),
                                 ),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: Text(
                                     it,
-                                    style: label.copyWith(
-                                      color: textColor,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelLarge!
+                                        .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -71,12 +79,12 @@ class RegisterInformationCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(Icons.info_outline_rounded, size: 16, color: textColor),
+              const Icon(Icons.info_outline_rounded, size: 16),
               const SizedBox(width: 4),
               Expanded(
                 child: Text(
                   model.hint,
-                  style: caption.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
             ],

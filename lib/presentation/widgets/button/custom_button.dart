@@ -1,53 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 
-enum CustomButtonTheme {
-  light('light'),
+enum CustomFilledButtonTheme {
   primary('primary'),
+  secondary('secondary'),
   ;
 
-  const CustomButtonTheme(this.key);
+  const CustomFilledButtonTheme(this.key);
 
   final String key;
 }
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class CustomFilledButton extends StatelessWidget {
+  const CustomFilledButton({
     super.key,
     this.onPressed,
     required this.text,
-    required this.customButtonTheme,
+    required this.theme,
   });
 
-  final CustomButtonTheme customButtonTheme;
+  final CustomFilledButtonTheme theme;
   final Function()? onPressed;
   final String text;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    setMainColor() {
+      switch (theme) {
+        case CustomFilledButtonTheme.primary:
+          return lightColorScheme.onPrimary;
+        case CustomFilledButtonTheme.secondary:
+          return lightColorScheme.onSecondary;
+        default:
+          return lightColorScheme.onSecondary;
+      }
+    }
+
+    setBackgroundColor() {
+      switch (theme) {
+        case CustomFilledButtonTheme.primary:
+          return lightColorScheme.primary;
+        case CustomFilledButtonTheme.secondary:
+          return lightColorScheme.secondary;
+        default:
+          return lightColorScheme.secondary;
+      }
+    }
+
+    return FilledButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        foregroundColor: customButtonTheme == CustomButtonTheme.light
-            ? Colors.grey.shade300
-            : primaryColor,
-        backgroundColor: customButtonTheme == CustomButtonTheme.light
-            ? Colors.white
-            : primaryColor,
+        foregroundColor: setMainColor(),
+        backgroundColor: setBackgroundColor(),
         elevation: 0,
-        side: BorderSide(color: Colors.grey.shade300),
+        side: const BorderSide(color: Colors.transparent),
         minimumSize: const Size(double.infinity, 50),
-        disabledBackgroundColor: customButtonTheme == CustomButtonTheme.light
-            ? Colors.grey.shade200
-            : Colors.grey.shade400,
       ),
       child: Text(
         text,
-        style: TextStyle(
-          color: customButtonTheme == CustomButtonTheme.light
-              ? textColor
-              : Colors.white,
-        ),
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+              color: setMainColor(),
+            ),
       ),
     );
   }

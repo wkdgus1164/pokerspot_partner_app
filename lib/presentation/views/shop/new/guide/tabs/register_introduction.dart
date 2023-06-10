@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/guide/components/register_information.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/guide/data/register_information.dart';
 
@@ -23,11 +21,14 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text('● 사진 등록 안내', style: titleMedium),
+                Text(
+                  '● 사진 등록 안내',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 const SizedBox(height: 6),
                 Text(
                   '매장 등록을 등록하시기 전 매장 사진 2장~4장을 꼭 준비해주세요!',
-                  style: label.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 const SizedBox(height: padding24),
                 Row(
@@ -43,15 +44,18 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
                         const SizedBox(height: 6),
                         Text(
                           '좋은 예시',
-                          style: label.copyWith(
-                            color: const Color.fromRGBO(41, 122, 251, 1),
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .copyWith(
+                                color: const Color.fromRGBO(41, 122, 251, 1),
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           '매장 시설과 관련된 사진',
-                          style: label.copyWith(color: textColor),
+                          style: Theme.of(context).textTheme.labelLarge,
                         ),
                       ],
                     ),
@@ -65,15 +69,16 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
                         const SizedBox(height: 6),
                         Text(
                           '나쁜 예시',
-                          style: label.copyWith(
-                            color: const Color.fromRGBO(219, 40, 40, 1),
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.labelLarge!.copyWith(
+                                    color: const Color.fromRGBO(219, 40, 40, 1),
+                                    fontWeight: FontWeight.w600,
+                                  ),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           '매장 시설과 관련없는 사진',
-                          style: label.copyWith(color: textColor),
+                          style: Theme.of(context).textTheme.labelLarge,
                         ),
                       ],
                     ),
@@ -89,11 +94,14 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text('● 매장 정보 등록 안내', style: titleMedium),
+                Text(
+                  '● 매장 정보 등록 안내',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 const SizedBox(height: 6),
                 Text(
                   '포커스팟 관리 서비스를 이용하기 위해 매장 정보 등록이 필요합니다.',
-                  style: label.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 const SizedBox(height: padding24),
                 Column(

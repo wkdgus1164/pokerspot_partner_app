@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class LoginHeader extends StatelessWidget {
   const LoginHeader({super.key});
@@ -23,15 +22,13 @@ class LoginHeader extends StatelessWidget {
             borderRadius: const BorderRadius.all(
               Radius.circular(4),
             ),
-            color: primaryColor.withAlpha(20),
+            color: lightColorScheme.primary.withAlpha(20),
           ),
           child: Text(
             '사장님 전용',
-            style: caption.copyWith(
-              color: primaryColor,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  color: lightColorScheme.primary,
+                ),
           ),
         ),
         const SizedBox(height: 60),

@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class HomeStoreItem extends StatelessWidget {
   const HomeStoreItem({
@@ -43,7 +42,7 @@ class HomeStoreItem extends StatelessWidget {
           width: width ?? MediaQuery.of(context).size.width - 60,
           padding: const EdgeInsets.all(padding16),
           decoration: BoxDecoration(
-            border: Border.all(color: borderColor),
+            border: Border.all(color: lightColorScheme.outline),
             borderRadius: const BorderRadius.all(
               Radius.circular(defaultRadius * 2),
             ),
@@ -62,11 +61,10 @@ class HomeStoreItem extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: titleMedium.copyWith(
-                        color: textColor,
-                        fontWeight: FontWeight.w600,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.w600,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                       maxLines: 1,
                     ),
                     const SizedBox(height: padding10),
@@ -83,10 +81,11 @@ class HomeStoreItem extends StatelessWidget {
                         const SizedBox(width: 4),
                         Text(
                           isCorporate ? '$lastDays일 남음' : '제휴 일시중단',
-                          style: caption.copyWith(
-                            color: const Color.fromRGBO(58, 69, 82, 1),
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.labelLarge!.copyWith(
+                                    color: const Color.fromRGBO(58, 69, 82, 1),
+                                    fontWeight: FontWeight.w500,
+                                  ),
                         ),
                         const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 4),
@@ -94,10 +93,10 @@ class HomeStoreItem extends StatelessWidget {
                         ),
                         Text(
                           isCorporate ? '제휴 중' : '기간 만료',
-                          style: caption.copyWith(
-                            color: greyVariant1,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.labelLarge!.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                  ),
                         ),
                       ],
                     ),

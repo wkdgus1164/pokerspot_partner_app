@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/notice/notice_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/data/notice_data.dart';
 
@@ -29,11 +27,11 @@ class HomeNotice extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('공지사항', style: titleLarge.copyWith(color: textColor)),
+              Text('공지사항', style: Theme.of(context).textTheme.titleLarge),
               CustomTextButton(
                 text: '더보기',
-                color: primaryColor,
-                trailingIcon: TrailingIcon.arrowRight,
+                theme: CustomTextButtonTheme.primary,
+                trailingIcon: Icons.keyboard_arrow_right,
                 onClick: onMoreButtonPressed,
               ),
             ],

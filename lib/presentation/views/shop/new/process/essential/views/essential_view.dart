@@ -4,7 +4,6 @@ import 'package:kpostal/kpostal.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/components/steps.dart';
@@ -27,19 +26,11 @@ class ShopProcessEssentialView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        customAppBarTheme: CustomAppBarTheme.white,
-        customAppBarCenter: CustomAppBarCenter.text,
+      appBar: const CustomAppBar(
+        theme: CustomAppBarTheme.white,
+        center: CustomAppBarCenter.text,
         text: '신규 매장 등록',
-        customAppBarLeftSide: CustomAppBarLeftSide.cancelButton,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(
-            height: 1,
-            thickness: 1,
-            color: borderColor,
-          ),
-        ),
+        left: CustomAppBarLeft.cancel,
       ),
       body: SafeArea(
         child: Column(
@@ -48,16 +39,22 @@ class ShopProcessEssentialView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.all(padding16),
-                  color: backgroundColor,
+                  color: lightColorScheme.background,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const ShopProcessSteps(index: 2),
                       const SizedBox(height: padding16),
-                      Text('기본 정보', style: headlineSmall),
+                      Text(
+                        '기본 정보',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                       const SizedBox(height: padding10),
-                      Text('기본 정보를 입력해주세요.', style: bodySmall),
+                      Text(
+                        '기본 정보를 입력해주세요.',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                       const SizedBox(height: padding48),
 
                       // 매장 상호명
@@ -158,17 +155,17 @@ class ShopProcessEssentialView extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: CustomButton(
+            child: CustomFilledButton(
               text: '이전',
-              customButtonTheme: CustomButtonTheme.light,
+              theme: CustomFilledButtonTheme.secondary,
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
           const SizedBox(width: padding16),
           Expanded(
-            child: CustomButton(
+            child: CustomFilledButton(
               text: '다음',
-              customButtonTheme: CustomButtonTheme.primary,
+              theme: CustomFilledButtonTheme.primary,
               onPressed: () {
                 if (_provider.validateEssential()) {
                   return context.pushNamed(

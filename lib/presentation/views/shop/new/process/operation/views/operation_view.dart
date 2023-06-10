@@ -4,7 +4,6 @@ import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/components/steps.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/operation/components/pub.dart';
@@ -55,15 +54,11 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        customAppBarTheme: CustomAppBarTheme.white,
-        customAppBarLeftSide: CustomAppBarLeftSide.cancelButton,
-        customAppBarCenter: CustomAppBarCenter.text,
+      appBar: const CustomAppBar(
+        theme: CustomAppBarTheme.white,
+        left: CustomAppBarLeft.cancel,
+        center: CustomAppBarCenter.text,
         text: '신규 매장 등록',
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(color: borderColor, height: 1, thickness: 1),
-        ),
       ),
       body: SafeArea(
         child: Column(
@@ -72,7 +67,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
               child: SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.all(padding16),
-                  color: backgroundColor,
+                  color: lightColorScheme.outline,
                   child: Consumer<CreateStoreProvider>(builder: (_, __, ___) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -80,18 +75,24 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                       children: [
                         const ShopProcessSteps(index: 4),
                         const SizedBox(height: padding16),
-                        Text('운영 정보', style: headlineSmall),
+                        Text(
+                          '운영 정보',
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
                         const SizedBox(height: padding10),
-                        Text('운영 정보를 입력해주세요.', style: bodySmall),
+                        Text(
+                          '운영 정보를 입력해주세요.',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
                         const SizedBox(height: padding48),
 
                         // 영업 시간
                         Text(
                           '영업시간',
-                          style: label.copyWith(
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.labelLarge!.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                  ),
                         ),
                         const SizedBox(height: padding16),
                         Row(
@@ -119,7 +120,10 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(padding10),
-                              child: Text('~', style: label),
+                              child: Text(
+                                '~',
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
                             ),
                             ShopProcessOperationTime(
                               onTap: () {
@@ -155,10 +159,10 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                         // 펍 종류
                         Text(
                           '펍 종류',
-                          style: label.copyWith(
-                            color: textColor,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.labelLarge!.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                  ),
                         ),
                         const SizedBox(height: padding16),
                         Row(
@@ -208,16 +212,12 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                         const SizedBox(height: padding32),
                         Row(
                           children: [
-                            Icon(
-                              Icons.info_outline_rounded,
-                              color: textColor,
-                              size: 20,
-                            ),
+                            const Icon(Icons.info_outline_rounded, size: 20),
                             const SizedBox(width: 6),
                             Expanded(
                               child: Text(
                                 '신규 매장 등록시 꼭 확인해주세요!',
-                                style: titleMedium.copyWith(color: textColor),
+                                style: Theme.of(context).textTheme.titleMedium,
                               ),
                             ),
                           ],
@@ -234,16 +234,18 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                               const SizedBox(width: 4),
                               Text(
                                 '·',
-                                style: label.copyWith(
-                                  color: greyVariant1,
-                                  fontWeight: FontWeight.w900,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w900,
+                                    ),
                               ),
                               const SizedBox(width: 6),
                               Expanded(
                                 child: Text(
                                   '그 이외 포커스팟은 홀덤펍의 정보 중개자로서, 해당 서비스 제공의 당사자가 아님을 고지하고 서비스의 예약 이용 및 환불, 불법적인 행위와 관련된 의무와 책임은 각 서비스 제공자에게 있습니다.',
-                                  style: caption.copyWith(color: greyVariant1),
+                                  style: Theme.of(context).textTheme.labelLarge,
                                 ),
                               ),
                             ],
@@ -285,17 +287,17 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
       child: Row(
         children: [
           Expanded(
-            child: CustomButton(
+            child: CustomFilledButton(
               text: '이전',
-              customButtonTheme: CustomButtonTheme.light,
+              theme: CustomFilledButtonTheme.secondary,
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
           const SizedBox(width: padding16),
           Expanded(
-            child: CustomButton(
+            child: CustomFilledButton(
               text: '다음',
-              customButtonTheme: CustomButtonTheme.primary,
+              theme: CustomFilledButtonTheme.primary,
               onPressed: () {
                 if (_provider.validateOperation()) {
                   context.pushNamed(ShopRoutes.processGame.path);

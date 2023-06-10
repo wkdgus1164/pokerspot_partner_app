@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class ShopProcessGameBuyIn extends StatelessWidget {
   const ShopProcessGameBuyIn({super.key});
@@ -17,10 +15,7 @@ class ShopProcessGameBuyIn extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            'Buy-in(바이인)',
-            style: titleLarge.copyWith(color: textColor),
-          ),
+          Text('Buy-in(바이인)', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: padding24),
           Row(
             children: [
@@ -28,7 +23,7 @@ class ShopProcessGameBuyIn extends StatelessWidget {
                 flex: 3,
                 child: Text(
                   'Min',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               const Expanded(flex: 7, child: CustomTextField(hint: 'Min 선택')),
@@ -41,7 +36,7 @@ class ShopProcessGameBuyIn extends StatelessWidget {
                 flex: 3,
                 child: Text(
                   'Max',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               const Expanded(flex: 7, child: CustomTextField(hint: 'Max 선택')),
@@ -51,7 +46,6 @@ class ShopProcessGameBuyIn extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(padding10),
             decoration: BoxDecoration(
-              color: greyVariant5,
               borderRadius: BorderRadius.circular(defaultRadius),
             ),
             child: Row(
@@ -65,10 +59,10 @@ class ShopProcessGameBuyIn extends StatelessWidget {
                 Expanded(
                   child: Text(
                     '모든 바이인의 숫자 단위는 ‘만’단위 입니다.',
-                    style: caption.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.blue,
-                    ),
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.blue,
+                        ),
                   ),
                 ),
               ],

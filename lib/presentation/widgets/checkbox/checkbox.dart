@@ -15,7 +15,7 @@ class CustomCheckbox extends StatelessWidget {
         width: 20,
         height: 20,
         decoration: BoxDecoration(
-          color: value ? primaryColor : Colors.grey.shade300,
+          color: value ? lightColorScheme.primary : Colors.grey.shade300,
           borderRadius: BorderRadius.circular(2),
         ),
         child: const Icon(Icons.check_rounded, color: Colors.white, size: 16),

@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:provider/provider.dart';
@@ -25,9 +24,9 @@ class _ShopViewState extends State<ShopView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        customAppBarTheme: CustomAppBarTheme.black,
+        theme: CustomAppBarTheme.black,
         text: '매장관리',
-        customAppBarCenter: CustomAppBarCenter.text,
+        center: CustomAppBarCenter.text,
       ),
       body: Scaffold(
         body: Consumer<HomeProvider>(builder: (_, provider, __) {
@@ -59,7 +58,10 @@ class _ShopViewState extends State<ShopView> {
                         const SizedBox(height: 6),
                         Text(
                           '업체 신규 등록',
-                          style: bodySmall.copyWith(color: Colors.white),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .copyWith(color: Colors.white),
                         ),
                       ],
                     ),
@@ -73,14 +75,12 @@ class _ShopViewState extends State<ShopView> {
                 ),
                 child: Row(
                   children: [
-                    Text(
-                      '보유 매장',
-                      style: titleLarge.copyWith(color: textColor),
-                    ),
+                    Text('보유 매장',
+                        style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(width: 6),
                     Text(
                       (provider.stores?.length ?? 0).toString(),
-                      style: titleLarge.copyWith(color: primaryColor),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ],
                 ),
@@ -93,11 +93,17 @@ class _ShopViewState extends State<ShopView> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.info_outline_rounded, color: greyVariant2),
+                        Icon(
+                          Icons.info_outline_rounded,
+                          color: customColorScheme.onSurface3,
+                        ),
                         const SizedBox(height: padding10),
                         Text(
                           '등록된 매장이 없습니다.\n매장을 등록해 주시기 바랍니다.',
-                          style: label.copyWith(color: greyVariant2),
+                          style:
+                              Theme.of(context).textTheme.labelLarge!.copyWith(
+                                    color: customColorScheme.onSurface3,
+                                  ),
                           textAlign: TextAlign.center,
                         ),
                       ],

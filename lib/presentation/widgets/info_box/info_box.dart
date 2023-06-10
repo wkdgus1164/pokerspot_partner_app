@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 enum BoxColor {
   blue('blue'),
@@ -57,10 +56,10 @@ class InfoBox extends StatelessWidget {
           Expanded(
             child: Text(
               text,
-              style: caption.copyWith(
-                fontWeight: FontWeight.w500,
-                color: setOnBackgroundColor(boxColor),
-              ),
+              style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: setOnBackgroundColor(boxColor),
+                  ),
             ),
           ),
         ],

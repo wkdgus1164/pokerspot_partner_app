@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class ShopProcessSteps extends StatelessWidget {
   const ShopProcessSteps({super.key, required this.index});
@@ -20,12 +19,17 @@ class ShopProcessSteps extends StatelessWidget {
                 margin: const EdgeInsets.only(left: 8),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: index == e ? primaryColor : greyVariant3,
+                  color: index == e
+                      ? lightColorScheme.primary
+                      : lightColorScheme.onSurface,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   '$e',
-                  style: caption.copyWith(color: Colors.white),
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge!
+                      .copyWith(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ))

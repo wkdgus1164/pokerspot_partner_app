@@ -4,9 +4,9 @@ import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart'
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 
 PreferredSizeWidget homeTabAppBar = CustomAppBar(
-  customAppBarRightSide: CustomAppBarRightSide.noti,
-  customAppBarCenter: CustomAppBarCenter.logo,
-  customAppBarTheme: CustomAppBarTheme.black,
+  right: CustomAppBarRight.noti,
+  center: CustomAppBarCenter.logo,
+  theme: CustomAppBarTheme.black,
   actions: [
     IconButton(
       icon: SvgPicture.asset(Assets.notiLight.path),

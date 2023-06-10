@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/tournament/tournament_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/data/tournament_data.dart';
 
@@ -29,13 +27,13 @@ class HomeTournament extends StatelessWidget {
                   Expanded(
                     child: Text(
                       '당일 진행 토너먼트',
-                      style: titleLarge.copyWith(color: textColor),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
                   CustomTextButton(
                     text: '더보기',
-                    color: primaryColor,
-                    trailingIcon: TrailingIcon.arrowRight,
+                    theme: CustomTextButtonTheme.primary,
+                    trailingIcon: Icons.keyboard_arrow_right,
                     onClick: () {},
                   ),
                 ],

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 
-ElevatedButtonThemeData elevatedButtonThemeData = ElevatedButtonThemeData(
-  style: ElevatedButton.styleFrom(
+FilledButtonThemeData filledButtonThemeData = FilledButtonThemeData(
+  style: FilledButton.styleFrom(
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(defaultRadius),
+      borderRadius: BorderRadius.circular(8),
     ),
   ),
 );
 
-TextButtonThemeData textButtonThemeData = TextButtonThemeData(
-  style: ElevatedButton.styleFrom(
+OutlinedButtonThemeData outlinedButtonThemeData = OutlinedButtonThemeData(
+  style: OutlinedButton.styleFrom(
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(defaultRadius),
-      side: BorderSide(color: Colors.grey.shade300),
+      borderRadius: BorderRadius.circular(8),
     ),
+    backgroundColor: Colors.white,
   ),
 );

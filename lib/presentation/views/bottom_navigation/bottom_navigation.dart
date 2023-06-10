@@ -31,7 +31,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          border: Border(top: BorderSide(color: greyVariant4, width: 1)),
+          border: Border(
+            top: BorderSide(
+              color: lightColorScheme.outlineVariant,
+              width: 1,
+            ),
+          ),
         ),
         child: BottomNavigationBar(
           currentIndex: currentPageIndex,

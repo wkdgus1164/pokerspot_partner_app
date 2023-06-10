@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class HomeStoreHeader extends StatelessWidget {
   const HomeStoreHeader({Key? key, required this.name}) : super(key: key);
@@ -22,7 +20,13 @@ class HomeStoreHeader extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(name, style: bodySmall.copyWith(color: Colors.white)),
+                Text(
+                  name,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(color: Colors.white),
+                ),
                 const SizedBox(width: 4),
                 const Icon(
                   Icons.keyboard_arrow_down_rounded,
@@ -33,9 +37,10 @@ class HomeStoreHeader extends StatelessWidget {
             Container(
               width: 8,
               height: 8,
-              decoration: BoxDecoration(
-                color: mintColor,
-                borderRadius: const BorderRadius.all(Radius.circular(50)),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(50),
+                ),
               ),
             ),
           ],

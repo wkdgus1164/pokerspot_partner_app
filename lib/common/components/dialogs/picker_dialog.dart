@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class PickerDialog extends StatelessWidget {
   final String title;
@@ -31,7 +30,7 @@ class PickerDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: padding24),
-          Text(title, style: titleSmall),
+          Text(title, style: Theme.of(context).textTheme.titleSmall),
           SizedBox(
             width: double.infinity,
             height: 160,
@@ -44,7 +43,10 @@ class PickerDialog extends StatelessWidget {
                         alignment: Alignment.center,
                         child: Text(
                           selection,
-                          style: bodySmall.copyWith(color: Colors.black),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .copyWith(color: Colors.black),
                         ),
                       ))
                   .toList(),

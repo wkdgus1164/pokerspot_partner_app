@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class HomeRecentReservation extends StatelessWidget {
   const HomeRecentReservation({
@@ -30,10 +29,14 @@ class HomeRecentReservation extends StatelessWidget {
           padding: const EdgeInsets.all(padding16),
           child: Text(
             '지난 예약 현황',
-            style: titleMedium.copyWith(color: textColor),
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         ),
-        Divider(color: greyVariant4, height: 1, thickness: 1),
+        Divider(
+          color: lightColorScheme.outline,
+          height: 1,
+          thickness: 1,
+        ),
         Padding(
           padding: const EdgeInsets.only(top: padding16),
           child: Padding(
@@ -43,10 +46,10 @@ class HomeRecentReservation extends StatelessWidget {
                 Expanded(
                   child: Text(
                     '최근 일주일',
-                    style: bodySmall.copyWith(color: textColor),
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
-                Text('31명', style: titleMedium.copyWith(color: textColor)),
+                Text('31명', style: Theme.of(context).textTheme.titleMedium),
               ],
             ),
           ),
@@ -62,14 +65,13 @@ class HomeRecentReservation extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: greyVariant5,
           foregroundColor: Colors.grey.shade400,
         ),
         onPressed: onRefreshButtonPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(time, style: TextStyle(fontSize: 13, color: greyVariant1)),
+            Text(time, style: const TextStyle(fontSize: 13)),
             const SizedBox(width: 4),
             Container(
               width: 20,
@@ -77,7 +79,7 @@ class HomeRecentReservation extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(color: borderColor),
+                border: Border.all(color: lightColorScheme.outline),
                 color: Colors.white,
               ),
               child: SvgPicture.asset(Assets.setting.path),

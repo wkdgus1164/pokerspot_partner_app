@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -35,18 +34,29 @@ class CustomTextField extends StatelessWidget {
   final int? minLines;
   final int? maxLines;
 
-  InputDecoration textFieldDecoration() {
+  InputDecoration textFieldDecoration(BuildContext context) {
     return InputDecoration(
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
+        borderSide: BorderSide(
+          width: 1,
+          color: lightColorScheme.outline,
+        ),
         borderRadius: BorderRadius.circular(4),
       ),
       border: OutlineInputBorder(
-        borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
+        borderSide: BorderSide(width: 1, color: lightColorScheme.outline),
         borderRadius: BorderRadius.circular(4),
       ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: lightColorScheme.primary.withAlpha(100),
+        ),
+      ),
       hintText: hint,
-      hintStyle: bodyMedium.copyWith(color: Colors.grey.shade400),
+      hintStyle: Theme.of(context)
+          .textTheme
+          .bodyMedium!
+          .copyWith(color: customColorScheme.onSurface4),
       errorText: errorText,
       helperText: helperText,
     );
@@ -60,8 +70,8 @@ class CustomTextField extends StatelessWidget {
             ..text = initText
             ..selection = TextSelection.collapsed(offset: initText.length))
           : null),
-      style: bodyMedium.copyWith(color: textColor),
-      decoration: textFieldDecoration(),
+      style: Theme.of(context).textTheme.bodyMedium,
+      decoration: textFieldDecoration(context),
       onChanged: onTextFieldChanged,
       onEditingComplete: onEditingComplete,
       maxLength: maxLength,

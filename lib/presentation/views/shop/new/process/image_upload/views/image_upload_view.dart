@@ -6,7 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/components/steps.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/image_upload/components/image_item.dart';
@@ -51,15 +50,11 @@ class _ShopProcessImageUploadViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        customAppBarTheme: CustomAppBarTheme.white,
-        customAppBarLeftSide: CustomAppBarLeftSide.cancelButton,
-        customAppBarCenter: CustomAppBarCenter.text,
+      appBar: const CustomAppBar(
+        theme: CustomAppBarTheme.white,
+        left: CustomAppBarLeft.cancel,
+        center: CustomAppBarCenter.text,
         text: '신규 매장 등록',
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(color: borderColor, height: 1, thickness: 1),
-        ),
       ),
       body: SafeArea(
         child: Column(
@@ -68,16 +63,22 @@ class _ShopProcessImageUploadViewState
               child: SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.all(padding16),
-                  color: backgroundColor,
+                  color: lightColorScheme.background,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const ShopProcessSteps(index: 3),
                       const SizedBox(height: padding16),
-                      Text('매장 사진', style: headlineSmall),
+                      Text(
+                        '매장 사진',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                       const SizedBox(height: padding10),
-                      Text('2장~5장의 매장 사진을 등록해주세요.', style: bodySmall),
+                      Text(
+                        '2장~5장의 매장 사진을 등록해주세요.',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                       const SizedBox(height: padding48),
                       Consumer<CreateStoreProvider>(builder: (_, __, ___) {
                         return Wrap(
@@ -159,17 +160,17 @@ class _ShopProcessImageUploadViewState
       child: Row(
         children: [
           Expanded(
-            child: CustomButton(
+            child: CustomFilledButton(
               text: '이전',
-              customButtonTheme: CustomButtonTheme.light,
+              theme: CustomFilledButtonTheme.secondary,
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
           const SizedBox(width: padding16),
           Expanded(
-            child: CustomButton(
+            child: CustomFilledButton(
               text: '다음',
-              customButtonTheme: CustomButtonTheme.primary,
+              theme: CustomFilledButtonTheme.primary,
               onPressed: () {
                 if (_provider.validateImages()) {
                   context.pushNamed(

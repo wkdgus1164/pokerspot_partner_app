@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/components/dialogs/picker_dialog.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
@@ -52,6 +50,7 @@ class _LoginViewState extends State<LoginView> {
                 return LoginForm(
                   onIDChanged: (value) {
                     _authProvider.id = value;
+                    Logger.d(_authProvider.id);
                   },
                   onPWChanged: (value) {
                     _authProvider.password = value;
@@ -73,7 +72,10 @@ class _LoginViewState extends State<LoginView> {
               // 로그인 전 둘러보기
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.grey.shade500,
+                  side: BorderSide(color: customColorScheme.onSurface4),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
                 ),
                 onPressed: () {
                   context.pushNamed(BottomNavigationRoutes.home.path);
@@ -81,8 +83,16 @@ class _LoginViewState extends State<LoginView> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('로그인 전 둘러보기', style: label.copyWith(color: textColor)),
-                    Icon(Icons.chevron_right, color: greyVariant3),
+                    Text(
+                      '로그인 전 둘러보기',
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            color: customColorScheme.onSurface3,
+                          ),
+                    ),
+                    Icon(
+                      Icons.chevron_right,
+                      color: customColorScheme.onSurface4,
+                    ),
                   ],
                 ),
               ),
@@ -91,43 +101,6 @@ class _LoginViewState extends State<LoginView> {
           ),
         ),
       ),
-    );
-  }
-
-  PickerDialog _buildStartTimePickerDialog() {
-    return PickerDialog(
-      onCancel: () {},
-      onSubmit: () {},
-      onItemChanged: (value) {
-        Logger.d(value);
-      },
-      selections: const [
-        '00:00',
-        '00:30',
-        '01:00',
-        '01:30',
-        '02:00',
-        '02:30',
-        '03:00',
-        '03:30',
-        '04:00',
-        '04:30',
-        '05:00',
-        '05:30',
-        '06:00',
-        '06:30',
-        '07:00',
-        '07:30',
-        '08:00',
-        '08:30',
-        '09:00',
-        '09:30',
-        '10:00',
-        '10:30',
-        '11:00',
-        '11:30',
-      ],
-      title: '오픈시간 선택',
     );
   }
 }

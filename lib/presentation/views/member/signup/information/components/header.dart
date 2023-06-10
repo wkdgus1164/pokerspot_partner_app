@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class SignupInformationHeader extends StatelessWidget {
   const SignupInformationHeader({Key? key}) : super(key: key);
@@ -24,7 +23,10 @@ class SignupInformationHeader extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         '1단계',
-                        style: label.copyWith(color: Colors.grey.shade400),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .copyWith(color: Colors.grey.shade400),
                       ),
                     ),
                   ],
@@ -46,16 +48,16 @@ class SignupInformationHeader extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         '2단계',
-                        style: label.copyWith(
-                          color: primaryColor,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              color: lightColorScheme.primary,
+                              fontWeight: FontWeight.w600,
+                            ),
                       ),
                     ),
                     Container(
                       width: double.infinity,
                       margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                      color: primaryColor,
+                      color: lightColorScheme.primary,
                       height: 2,
                     ),
                   ],

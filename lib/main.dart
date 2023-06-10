@@ -20,11 +20,11 @@ const storage = FlutterSecureStorage();
 ThemeData _createThemeData({required BuildContext context}) {
   return ThemeData(
     useMaterial3: true,
-    colorScheme: colorScheme,
+    colorScheme: lightColorScheme,
     checkboxTheme: checkboxTheme,
-    elevatedButtonTheme: elevatedButtonThemeData,
-    textButtonTheme: textButtonThemeData,
-    scaffoldBackgroundColor: Colors.white,
+    filledButtonTheme: filledButtonThemeData,
+    outlinedButtonTheme: outlinedButtonThemeData,
+    scaffoldBackgroundColor: lightColorScheme.surface,
     bottomNavigationBarTheme: bottomNavigationBarThemeData,
     textTheme: Theme.of(context).textTheme.apply(),
     splashFactory: InkRipple.splashFactory,
@@ -59,13 +59,26 @@ class MainApp extends StatelessWidget {
 
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: MultiProvider(providers: [
-        ChangeNotifierProvider(create: (_) => locator<TokenProvider>()),
-        ChangeNotifierProvider(create: (_) => locator<AuthProviderProvider>()),
-        ChangeNotifierProvider(create: (_) => locator<DioClient>()),
-        ChangeNotifierProvider(create: (_) => locator<CreateStoreProvider>()),
-        ChangeNotifierProvider(create: (_) => locator<HomeProvider>()),
-      ], child: materialApp()),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => locator<TokenProvider>(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => locator<AuthProviderProvider>(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => locator<DioClient>(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => locator<CreateStoreProvider>(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => locator<HomeProvider>(),
+          ),
+        ],
+        child: materialApp(),
+      ),
     );
   }
 }

@@ -5,8 +5,6 @@ import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class SignupSuccessView extends StatelessWidget {
   const SignupSuccessView({Key? key}) : super(key: key);
@@ -23,21 +21,20 @@ class SignupSuccessView extends StatelessWidget {
               const SizedBox(height: padding24),
               Text(
                 '가입 완료',
-                style: bodyLarge.copyWith(
-                  color: textColor,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
               ),
               const SizedBox(height: padding16),
               Text(
                 '회원가입이 완료되었습니다.',
-                style: label.copyWith(color: textColor),
+                style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 4),
               Text(
                 '신규매장을 등록하고 매장을 관리해보세요!',
-                style: label.copyWith(color: textColor),
+                style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: padding48),
@@ -46,9 +43,9 @@ class SignupSuccessView extends StatelessWidget {
                   left: padding64,
                   right: padding64,
                 ),
-                child: CustomButton(
+                child: CustomFilledButton(
                   text: '확인',
-                  customButtonTheme: CustomButtonTheme.light,
+                  theme: CustomFilledButtonTheme.secondary,
                   onPressed: () => context.pushNamed(
                     MemberRoutes.login.path,
                   ),

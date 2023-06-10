@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
@@ -33,15 +32,11 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        customAppBarTheme: CustomAppBarTheme.white,
-        customAppBarLeftSide: CustomAppBarLeftSide.cancelButton,
-        customAppBarCenter: CustomAppBarCenter.text,
+      appBar: const CustomAppBar(
+        theme: CustomAppBarTheme.white,
+        left: CustomAppBarLeft.cancel,
+        center: CustomAppBarCenter.text,
         text: '신규 매장 등록',
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(color: borderColor, height: 1, thickness: 1),
-        ),
       ),
       body: SafeArea(
         child: Column(
@@ -49,7 +44,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  color: backgroundColor,
+                  color: lightColorScheme.background,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
@@ -68,9 +63,16 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                             children: [
                               const ShopProcessSteps(index: 5),
                               const SizedBox(height: padding16),
-                              Text('게임 정보', style: headlineSmall),
+                              Text(
+                                '게임 정보',
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
+                              ),
                               const SizedBox(height: padding10),
-                              Text('최소 1개의 토너먼트 목록을 작성해주세요.', style: bodySmall),
+                              Text(
+                                '최소 1개의 토너먼트 목록을 작성해주세요.',
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
                               const SizedBox(height: padding10),
                               const InfoBox(
                                 boxColor: BoxColor.blue,
@@ -79,7 +81,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                               const SizedBox(height: padding24),
                               Text(
                                 '토너먼트',
-                                style: titleMedium.copyWith(color: textColor),
+                                style: Theme.of(context).textTheme.titleMedium,
                               ),
                               const SizedBox(height: padding10),
 
@@ -88,7 +90,9 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                                 _provider.addGame();
                               }),
                               ...List.generate(
-                                  _games.length, (index) => _buildGame(index)),
+                                _games.length,
+                                (index) => _buildGame(index),
+                              ),
                             ],
                           );
                         }),
@@ -128,17 +132,17 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
       child: Row(
         children: [
           Expanded(
-            child: CustomButton(
+            child: CustomFilledButton(
               text: '이전',
-              customButtonTheme: CustomButtonTheme.light,
+              theme: CustomFilledButtonTheme.secondary,
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
           const SizedBox(width: padding16),
           Expanded(
-            child: CustomButton(
+            child: CustomFilledButton(
               text: '완료',
-              customButtonTheme: CustomButtonTheme.primary,
+              theme: CustomFilledButtonTheme.primary,
               onPressed: () async {
                 if (!_provider.validateGame()) {
                   showToast(context: context, message: '게임 정보를 모두 입력해주세요.');

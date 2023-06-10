@@ -5,7 +5,6 @@ import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 import '../components/business_number.dart';
 import '../components/header.dart';
@@ -19,9 +18,9 @@ class SignupBusinessView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        customAppBarLeftSide: CustomAppBarLeftSide.backButton,
-        customAppBarRightSide: CustomAppBarRightSide.none,
-        customAppBarCenter: CustomAppBarCenter.text,
+        left: CustomAppBarLeft.back,
+        right: CustomAppBarRight.none,
+        center: CustomAppBarCenter.text,
         text: '회원가입',
       ),
       body: SafeArea(
@@ -31,12 +30,15 @@ class SignupBusinessView extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  color: backgroundColor,
+                  color: lightColorScheme.background,
                   padding: const EdgeInsets.all(padding16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text('사업자 정보 입력', style: headlineSmall),
+                      Text(
+                        '사업자 정보 입력',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                       const SizedBox(height: padding24),
                       const SignupBusinessNumber(),
                       const SizedBox(height: padding16),
@@ -48,14 +50,14 @@ class SignupBusinessView extends StatelessWidget {
                         onTextFieldChanged: (String value) {},
                       ),
                       const SizedBox(height: padding24),
-                      CustomButton(
-                        customButtonTheme: CustomButtonTheme.light,
+                      CustomFilledButton(
+                        theme: CustomFilledButtonTheme.secondary,
                         text: '휴대폰 본인인증',
                         onPressed: () {},
                       ),
                       const SizedBox(height: padding64),
-                      CustomButton(
-                        customButtonTheme: CustomButtonTheme.primary,
+                      CustomFilledButton(
+                        theme: CustomFilledButtonTheme.primary,
                         text: '다음 단계로',
                         onPressed: () {
                           context.pushNamed(

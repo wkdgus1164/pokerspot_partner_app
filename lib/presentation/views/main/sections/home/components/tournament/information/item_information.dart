@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/tournament/information/entry_prize.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/tournament/information/item_type.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/models/tournament_model.dart';
@@ -33,10 +31,7 @@ class TournamentItemInformation extends StatelessWidget {
           const SizedBox(height: padding10),
 
           // 토너 제목
-          Text(
-            title,
-            style: titleMedium.copyWith(color: textColor),
-          ),
+          Text(title, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: padding10),
 
           // 토너 정보

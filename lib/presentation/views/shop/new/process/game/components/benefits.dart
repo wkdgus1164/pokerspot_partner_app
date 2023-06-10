@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class ShopProcessGameBenefits extends StatelessWidget {
   const ShopProcessGameBenefits({super.key});
@@ -18,7 +16,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('혜택정보', style: titleLarge.copyWith(color: textColor)),
+          Text('혜택정보', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: padding24),
           Row(
             children: [
@@ -26,7 +24,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
                 flex: 3,
                 child: Text(
                   '신규 유저',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               const Expanded(flex: 7, child: CustomTextField(hint: '혜택 선택')),
@@ -39,7 +37,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
                 flex: 3,
                 child: Text(
                   '스타트 예약',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               const Expanded(flex: 7, child: CustomTextField(hint: '혜택 선택')),
@@ -52,7 +50,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
                 flex: 3,
                 child: Text(
                   '얼리 예약',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               const Expanded(flex: 7, child: CustomTextField(hint: '혜택 선택')),
@@ -65,7 +63,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
                 flex: 3,
                 child: Text(
                   'Max 바이인',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               const Expanded(flex: 7, child: CustomTextField(hint: '혜택 선택')),
@@ -79,7 +77,7 @@ class ShopProcessGameBenefits extends StatelessWidget {
               Expanded(
                 child: Text(
                   '중복 혜택 적용',
-                  style: titleSmall.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
             ],

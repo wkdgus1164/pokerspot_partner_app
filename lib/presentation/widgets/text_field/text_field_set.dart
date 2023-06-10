@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class CustomTextFieldSet extends StatelessWidget {
   const CustomTextFieldSet({
@@ -44,16 +43,19 @@ class CustomTextFieldSet extends StatelessWidget {
       children: [
         Text(
           inputLabel,
-          style: label.copyWith(
-            color: textColor,
-            fontWeight: FontWeight.w500,
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium!
+              .copyWith(color: customColorScheme.onSurface1),
         ),
         const SizedBox(height: padding10),
         if (captionText.isNotEmpty) ...[
           Text(
             captionText,
-            style: caption.copyWith(color: greyVariant1),
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall!
+                .copyWith(color: customColorScheme.onSurface3),
           ),
         ],
         const SizedBox(height: padding10),

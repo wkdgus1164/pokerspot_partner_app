@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class MypageMenuItem extends StatelessWidget {
   const MypageMenuItem({
@@ -18,33 +17,44 @@ class MypageMenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
-      child: Container(
-        padding: const EdgeInsets.only(
-          left: padding16,
-          right: padding16,
-          top: padding24,
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(padding24),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SvgPicture.asset(icon),
                       const SizedBox(width: padding10),
-                      Text(text, style: bodySmall.copyWith(color: textColor)),
+                      Text(
+                        text,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: customColorScheme.onSurface2),
+                      ),
                     ],
                   ),
                 ),
-                Icon(Icons.chevron_right_rounded, color: greyVariant3),
-              ],
-            ),
-            const SizedBox(height: padding24),
-            Divider(color: borderColor, height: 1, thickness: 1),
-          ],
-        ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(padding24),
+                child: Icon(
+                  Icons.chevron_right_rounded,
+                  color: customColorScheme.onSurface4,
+                ),
+              ),
+            ],
+          ),
+          Divider(
+            color: lightColorScheme.outline,
+            height: 1,
+            thickness: 1,
+          ),
+        ],
       ),
     );
   }

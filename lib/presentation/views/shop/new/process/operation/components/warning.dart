@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class ShopProcessOperationWarning extends StatelessWidget {
   const ShopProcessOperationWarning({super.key});
@@ -40,7 +38,7 @@ class ShopProcessOperationWarning extends StatelessWidget {
                     const SizedBox(height: padding24),
                     Text(
                       titleEntry.value,
-                      style: titleMedium.copyWith(color: textColor),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: 6),
                     Column(
@@ -58,19 +56,21 @@ class ShopProcessOperationWarning extends StatelessWidget {
                                     const SizedBox(width: 4),
                                     Text(
                                       '·',
-                                      style: label.copyWith(
-                                        color: greyVariant1,
-                                        fontWeight: FontWeight.w900,
-                                      ),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w900,
+                                          ),
                                     ),
                                     const SizedBox(width: 6),
                                     Expanded(
                                       child: Text(
                                         warningContents[titleEntry.key]
                                             [contentEntry.key],
-                                        style: caption.copyWith(
-                                          color: greyVariant1,
-                                        ),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge,
                                       ),
                                     ),
                                   ],

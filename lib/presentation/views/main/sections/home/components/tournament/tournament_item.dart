@@ -28,7 +28,7 @@ Color setAvailableColor(bool isAvailable) {
   if (isAvailable) {
     return const Color.fromRGBO(148, 159, 255, 1);
   } else {
-    return greyVariant2;
+    return lightColorScheme.onSurfaceVariant;
   }
 }
 

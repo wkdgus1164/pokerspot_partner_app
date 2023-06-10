@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class HomeRealtimeReservation extends StatelessWidget {
   const HomeRealtimeReservation({
@@ -29,10 +28,14 @@ class HomeRealtimeReservation extends StatelessWidget {
           padding: const EdgeInsets.all(padding16),
           child: Text(
             '실시간 예약 현황',
-            style: titleMedium.copyWith(color: textColor),
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         ),
-        Divider(color: greyVariant4, height: 1, thickness: 1),
+        Divider(
+          color: lightColorScheme.outline,
+          height: 1,
+          thickness: 1,
+        ),
         Padding(
           padding: const EdgeInsets.only(
             top: padding24,
@@ -40,9 +43,9 @@ class HomeRealtimeReservation extends StatelessWidget {
           ),
           child: Row(
             children: [
-              _buildWaiting(waiting),
-              _buildApplied(applied),
-              _buildDenied(denied),
+              _buildWaiting(context, waiting),
+              _buildApplied(context, applied),
+              _buildDenied(context, denied),
             ],
           ),
         ),
@@ -57,7 +60,6 @@ class HomeRealtimeReservation extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: greyVariant5,
           foregroundColor: Colors.grey.shade400,
         ),
         onPressed: onRefreshButtonPressed,
@@ -66,10 +68,7 @@ class HomeRealtimeReservation extends StatelessWidget {
           children: [
             Text(
               '오늘 $time:00 기준',
-              style: TextStyle(
-                fontSize: 13,
-                color: greyVariant1.withOpacity(0.6),
-              ),
+              style: const TextStyle(fontSize: 13),
             ),
             const SizedBox(width: 4),
             Container(
@@ -78,7 +77,7 @@ class HomeRealtimeReservation extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(color: borderColor),
+                border: Border.all(color: lightColorScheme.outline),
                 color: Colors.white,
               ),
               child: const Icon(
@@ -93,31 +92,31 @@ class HomeRealtimeReservation extends StatelessWidget {
     );
   }
 
-  Expanded _buildDenied(int denied) {
+  Expanded _buildDenied(BuildContext context, int denied) {
     return Expanded(
       child: Column(
         children: [
-          Text('$denied', style: headlineLarge),
+          Text('$denied', style: Theme.of(context).textTheme.headlineLarge),
           const SizedBox(height: padding10),
-          Text('예약거절', style: label.copyWith(color: textColor)),
+          Text('예약거절', style: Theme.of(context).textTheme.labelLarge),
         ],
       ),
     );
   }
 
-  Expanded _buildApplied(int applied) {
+  Expanded _buildApplied(BuildContext context, int applied) {
     return Expanded(
       child: Column(
         children: [
-          Text('$applied', style: headlineLarge),
+          Text('$applied', style: Theme.of(context).textTheme.headlineLarge),
           const SizedBox(height: padding10),
-          Text('처리완료', style: label.copyWith(color: textColor)),
+          Text('처리완료', style: Theme.of(context).textTheme.labelLarge),
         ],
       ),
     );
   }
 
-  Expanded _buildWaiting(int waiting) {
+  Expanded _buildWaiting(BuildContext context, int waiting) {
     return Expanded(
       child: Stack(
         alignment: Alignment.center,
@@ -126,10 +125,12 @@ class HomeRealtimeReservation extends StatelessWidget {
             children: [
               Text(
                 '$waiting',
-                style: headlineLarge.copyWith(color: primaryColor),
+                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      color: lightColorScheme.primary,
+                    ),
               ),
               const SizedBox(height: padding10),
-              Text('처리대기', style: label.copyWith(color: textColor)),
+              Text('처리대기', style: Theme.of(context).textTheme.labelLarge),
             ],
           ),
           Positioned(

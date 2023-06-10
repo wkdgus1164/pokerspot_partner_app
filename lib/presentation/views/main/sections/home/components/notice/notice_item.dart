@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class HomeNoticeItem extends StatelessWidget {
   const HomeNoticeItem({
@@ -35,7 +34,7 @@ class HomeNoticeItem extends StatelessWidget {
           width: MediaQuery.of(context).size.width - 80,
           padding: const EdgeInsets.all(padding16),
           decoration: BoxDecoration(
-            border: Border.all(color: borderColor),
+            border: Border.all(color: lightColorScheme.outline),
             borderRadius: const BorderRadius.all(
               Radius.circular(defaultRadius),
             ),
@@ -53,20 +52,18 @@ class HomeNoticeItem extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: titleMedium.copyWith(
-                  color: textColor,
-                  fontWeight: FontWeight.w600,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontWeight: FontWeight.w600,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                 maxLines: 1,
               ),
               const SizedBox(height: padding10),
               Text(
                 createdAt,
-                style: caption.copyWith(
-                  color: greyVariant3,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
               ),
             ],
           ),

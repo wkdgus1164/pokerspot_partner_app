@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class ShopProcessGameBlind extends StatelessWidget {
   const ShopProcessGameBlind({super.key});
@@ -12,13 +10,13 @@ class ShopProcessGameBlind extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text('BL(블라인드)', style: titleLarge.copyWith(color: textColor)),
+        Text('BL(블라인드)', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: padding24),
         Row(
           children: [
             Expanded(
               flex: 3,
-              child: Text('SB', style: titleSmall.copyWith(color: textColor)),
+              child: Text('SB', style: Theme.of(context).textTheme.titleSmall),
             ),
             const Expanded(flex: 7, child: CustomTextField(hint: 'SB 선택')),
           ],
@@ -28,7 +26,7 @@ class ShopProcessGameBlind extends StatelessWidget {
           children: [
             Expanded(
               flex: 3,
-              child: Text('BB', style: titleSmall.copyWith(color: textColor)),
+              child: Text('BB', style: Theme.of(context).textTheme.titleSmall),
             ),
             const Expanded(flex: 7, child: CustomTextField(hint: 'BB 선택')),
           ],
@@ -38,7 +36,7 @@ class ShopProcessGameBlind extends StatelessWidget {
           children: [
             Expanded(
               flex: 3,
-              child: Text('UTG', style: titleSmall.copyWith(color: textColor)),
+              child: Text('UTG', style: Theme.of(context).textTheme.titleSmall),
             ),
             const Expanded(flex: 7, child: CustomTextField(hint: '없음')),
           ],
@@ -61,10 +59,10 @@ class ShopProcessGameBlind extends StatelessWidget {
               Expanded(
                 child: Text(
                   '모든 블라인드의 단위는 chip입니다.',
-                  style: caption.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.blue,
-                  ),
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue,
+                      ),
                 ),
               ),
             ],

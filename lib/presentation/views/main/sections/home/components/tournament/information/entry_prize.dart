@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
+import 'package:flutter/material.dart';
 
 class TournamentInformationEntryPrize extends StatelessWidget {
   const TournamentInformationEntryPrize({
@@ -16,19 +14,19 @@ class TournamentInformationEntryPrize extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _buildTemplate('ENTRY', entry),
-        _buildTemplate('PRIZE', '$prize%'),
+        _buildTemplate(context, 'ENTRY', entry),
+        _buildTemplate(context, 'PRIZE', '$prize%'),
       ],
     );
   }
 
-  Expanded _buildTemplate(String title, String value) {
+  Expanded _buildTemplate(BuildContext context, String title, String value) {
     return Expanded(
       child: Row(
         children: [
-          Text(title, style: titleSmall.copyWith(color: greyVariant2)),
+          Text(title, style: Theme.of(context).textTheme.titleSmall),
           const SizedBox(width: 6),
-          Text(value, style: titleMedium.copyWith(color: greyVariant6)),
+          Text(value, style: Theme.of(context).textTheme.titleMedium),
         ],
       ),
     );

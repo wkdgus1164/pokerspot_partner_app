@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class ShopProcessOperationTime extends StatelessWidget {
   const ShopProcessOperationTime({
@@ -28,18 +27,18 @@ class ShopProcessOperationTime extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(padding16),
               decoration: BoxDecoration(
-                border: Border.all(color: borderColor),
+                border: Border.all(color: lightColorScheme.outline),
                 borderRadius: BorderRadius.circular(defaultRadius),
               ),
               child: Column(
                 children: [
-                  Text(text, style: label),
+                  Text(text, style: Theme.of(context).textTheme.labelLarge),
                   const SizedBox(height: padding16),
                   Text(
                     time,
-                    style: bodyLarge.copyWith(
-                      color: greyVariant6.withOpacity(0.4),
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: lightColorScheme.onSurface,
+                        ),
                   ),
                 ],
               ),

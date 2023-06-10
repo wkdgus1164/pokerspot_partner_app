@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
-class CustomTextFieldWithDeleteIcon extends StatelessWidget {
-  const CustomTextFieldWithDeleteIcon({
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
     Key? key,
     required this.hintText,
     this.onSuffixIconPressed,
@@ -22,19 +21,24 @@ class CustomTextFieldWithDeleteIcon extends StatelessWidget {
       filled: true,
       fillColor: Colors.white,
       border: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.all(
+          Radius.circular(4),
+        ),
       ),
       hintText: hintText,
-      hintStyle: bodySmall.copyWith(color: Colors.grey.shade400),
-      suffixIcon: IconButton(
-        icon: Icon(Icons.cancel, color: Colors.grey.shade400),
-        onPressed: onSuffixIconPressed,
-      ),
+      hintStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            color: customColorScheme.onSurface4,
+          ),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.grey.shade300, width: 1),
+        borderSide: BorderSide(
+          color: lightColorScheme.outline,
+          width: 1,
+        ),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: primaryColor.withAlpha(100)),
+        borderSide: BorderSide(
+          color: lightColorScheme.primary.withAlpha(100),
+        ),
       ),
     );
 
@@ -46,7 +50,7 @@ class CustomTextFieldWithDeleteIcon extends StatelessWidget {
       maxLength: 12,
       maxLines: 1,
       onChanged: onChanged,
-      cursorColor: primaryColor,
+      cursorColor: lightColorScheme.primary.withOpacity(0.3),
       buildCounter: (
         context, {
         required currentLength,

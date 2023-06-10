@@ -3,7 +3,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class ShopProcessImageItem extends StatelessWidget {
   const ShopProcessImageItem({
@@ -43,7 +42,6 @@ class ShopProcessImageItem extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: greyVariant5,
                         borderRadius: BorderRadius.circular(defaultRadius * 2),
                       ),
                       child: imageUrl.isNotEmpty
@@ -56,7 +54,7 @@ class ShopProcessImageItem extends StatelessWidget {
                       height: 40,
                       margin: const EdgeInsets.all(padding16),
                       decoration: BoxDecoration(
-                        color: primaryColor,
+                        color: lightColorScheme.primary,
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: IconButton(
@@ -73,7 +71,11 @@ class ShopProcessImageItem extends StatelessWidget {
           const SizedBox(height: 6),
           Text(
             caption,
-            style: label.copyWith(color: isPrimary ? primaryColor : textColor),
+            style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                  color: isPrimary
+                      ? lightColorScheme.primary
+                      : lightColorScheme.onSurface,
+                ),
             textAlign: TextAlign.center,
           ),
         ],

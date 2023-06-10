@@ -4,8 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 
 class ShopProcessSuccessView extends StatelessWidget {
@@ -23,15 +21,14 @@ class ShopProcessSuccessView extends StatelessWidget {
               const SizedBox(height: padding24),
               Text(
                 '매장 등록신청이\n완료 되었습니다.',
-                style: bodyLarge.copyWith(
-                  color: textColor,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
               ),
               const SizedBox(height: padding16),
               Text(
                 '승인 완료 후 제휴 등록이 가능합니다.',
-                style: label.copyWith(color: textColor),
+                style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: padding48),
@@ -40,9 +37,9 @@ class ShopProcessSuccessView extends StatelessWidget {
                   left: padding64,
                   right: padding64,
                 ),
-                child: CustomButton(
+                child: CustomFilledButton(
                   text: '확인',
-                  customButtonTheme: CustomButtonTheme.light,
+                  theme: CustomFilledButtonTheme.secondary,
                   onPressed: () => context.goNamed(
                     BottomNavigationRoutes.home.path,
                   ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
-PreferredSizeWidget reservationTabAppBar(String? title) => AppBar(
+PreferredSizeWidget reservationTabAppBar(BuildContext context, String? title) =>
+    AppBar(
       centerTitle: true,
       automaticallyImplyLeading: false,
       surfaceTintColor: Colors.white,
@@ -12,9 +12,15 @@ PreferredSizeWidget reservationTabAppBar(String? title) => AppBar(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(title ?? '예약관리',
-              style: bodyMedium.copyWith(color: Colors.white)),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(color: Colors.white)),
           if (title != null)
-            Icon(Icons.keyboard_arrow_down_rounded, color: greyVariant2),
+            Icon(
+              Icons.keyboard_arrow_down_rounded,
+              color: lightColorScheme.onSurfaceVariant,
+            ),
         ],
       ),
       /*

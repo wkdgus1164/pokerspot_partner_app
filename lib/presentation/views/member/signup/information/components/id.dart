@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class SignupId extends StatefulWidget {
   final ValueChanged<String>? onTextFieldChanged;
@@ -27,15 +26,26 @@ class _SignupIdState extends State<SignupId> {
     InputDecoration textFieldDecoration() {
       return InputDecoration(
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
+          borderSide: BorderSide(
+            width: 1,
+            color: lightColorScheme.outline,
+          ),
           borderRadius: BorderRadius.circular(4),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
+          borderSide: BorderSide(width: 1, color: lightColorScheme.outline),
           borderRadius: BorderRadius.circular(4),
         ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: lightColorScheme.primary.withAlpha(100),
+          ),
+        ),
         hintText: '아이디 입력',
-        hintStyle: bodyMedium.copyWith(color: Colors.grey.shade400),
+        hintStyle: Theme.of(context)
+            .textTheme
+            .bodyMedium!
+            .copyWith(color: customColorScheme.onSurface4),
         errorText: _error,
         suffixIcon: InkWell(
           onTap: widget.onCheckTap,
@@ -49,7 +59,7 @@ class _SignupIdState extends State<SignupId> {
             ),
             child: Text(
               widget.checkedDuplicateId ? '중복확인 완료' : '중복확인',
-              style: caption.copyWith(color: textColor),
+              style: Theme.of(context).textTheme.labelLarge,
             ),
           ),
         ),
@@ -61,15 +71,18 @@ class _SignupIdState extends State<SignupId> {
       children: [
         Text(
           '아이디',
-          style: label.copyWith(
-            color: greyVariant6,
-            fontWeight: FontWeight.w500,
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium!
+              .copyWith(color: customColorScheme.onSurface1),
         ),
         const SizedBox(height: padding10),
         Text(
           '영문+숫자 조합 4~12자리',
-          style: caption.copyWith(color: greyVariant1),
+          style: Theme.of(context)
+              .textTheme
+              .bodySmall!
+              .copyWith(color: customColorScheme.onSurface3),
         ),
         const SizedBox(height: padding10),
         TextFormField(

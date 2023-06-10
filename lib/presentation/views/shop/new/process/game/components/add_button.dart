@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class GameAddButton extends StatelessWidget {
   const GameAddButton({
@@ -16,25 +15,24 @@ class GameAddButton extends StatelessWidget {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        side: BorderSide(color: greyVariant4),
+        side: BorderSide(color: lightColorScheme.outline),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(defaultRadius)),
         ),
         padding: const EdgeInsets.symmetric(vertical: padding16),
-        foregroundColor: greyVariant2,
         backgroundColor: Colors.white,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.add, color: greyVariant3, size: 20),
+          Icon(Icons.add, color: lightColorScheme.onSurfaceVariant, size: 20),
           const SizedBox(width: 4),
           Text(
             '추가하기',
-            style: label.copyWith(
-              color: textColor,
-              fontWeight: FontWeight.w600,
-            ),
+            style: Theme.of(context)
+                .textTheme
+                .labelLarge!
+                .copyWith(fontWeight: FontWeight.w600),
           ),
         ],
       ),

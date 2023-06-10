@@ -3,10 +3,12 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 class VerifyButton extends StatelessWidget {
   final Function()? onPressed;
+  final bool isVerified;
 
   const VerifyButton({
     super.key,
     this.onPressed,
+    this.isVerified = false,
   });
 
   @override
@@ -21,9 +23,28 @@ class VerifyButton extends StatelessWidget {
         minimumSize: const Size(double.infinity, 50),
         disabledBackgroundColor: Colors.grey.shade200,
       ),
-      child: Text(
-        '휴대폰 본인인증',
-        style: TextStyle(color: greyVariant1),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(width: 24),
+          Text(
+            isVerified ? '인증이 완료되였습니다.' : '휴대폰 본인인증',
+            style: isVerified
+                ? Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: lightColorScheme.primary)
+                : Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: customColorScheme.onSurface1),
+          ),
+          Icon(
+            isVerified ? Icons.check : null,
+            color: lightColorScheme.primary,
+          ),
+        ],
       ),
     );
   }

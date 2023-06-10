@@ -4,8 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
@@ -56,13 +54,13 @@ class _ShopNewIntroViewState extends State<ShopNewIntroView> {
                 const SizedBox(height: padding10),
                 Text(
                   '매장 등록이\n처음이신가요?',
-                  style: headlineSmall,
+                  style: Theme.of(context).textTheme.headlineSmall,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: padding10),
                 Text(
                   '아래의 안내 가이드를 확인한 뒤\n매장 등록을 진행해주세요.',
-                  style: caption.copyWith(color: textColor),
+                  style: Theme.of(context).textTheme.labelLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: padding32),
@@ -80,7 +78,10 @@ class _ShopNewIntroViewState extends State<ShopNewIntroView> {
                     children: [
                       Text(
                         '매장 등록 안내 가이드 보기',
-                        style: caption.copyWith(color: Colors.black),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .copyWith(color: Colors.black),
                       ),
                       Icon(
                         Icons.chevron_right_rounded,
@@ -95,9 +96,9 @@ class _ShopNewIntroViewState extends State<ShopNewIntroView> {
               padding: const EdgeInsets.all(padding16),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: padding16),
-                child: CustomButton(
+                child: CustomFilledButton(
                   text: '신규 매장 등록하기',
-                  customButtonTheme: CustomButtonTheme.primary,
+                  theme: CustomFilledButtonTheme.primary,
                   onPressed: onAddNewButtonPressed,
                 ),
               ),

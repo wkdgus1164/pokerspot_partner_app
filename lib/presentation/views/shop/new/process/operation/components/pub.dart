@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 
 class ShopProcessOperationPub extends StatelessWidget {
   const ShopProcessOperationPub({
@@ -69,7 +68,7 @@ class ShopProcessOperationPub extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 6),
-              Text(text, style: label),
+              Text(text, style: Theme.of(context).textTheme.labelLarge),
             ],
           ),
         ],

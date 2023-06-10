@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/store_list/list_item.dart';
 
@@ -29,10 +28,15 @@ class HomeStore extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text('제휴 현황', style: titleLarge.copyWith(color: textColor)),
+              Text('제휴 현황', style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(width: 4),
-              Text(storeList.length.toString(),
-                  style: titleLarge.copyWith(color: primaryColor)),
+              Text(
+                storeList.length.toString(),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(color: lightColorScheme.primary),
+              ),
             ],
           ),
         ),

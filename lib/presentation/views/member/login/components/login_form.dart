@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
@@ -31,13 +29,13 @@ class LoginForm extends StatelessWidget {
       padding: const EdgeInsets.only(left: padding16, right: padding16),
       child: Column(
         children: [
-          CustomTextFieldWithDeleteIcon(
+          CustomTextField(
             hintText: '아이디',
             textInputType: TextInputType.text,
             onChanged: onIDChanged,
           ),
           const SizedBox(height: padding16),
-          CustomTextFieldWithDeleteIcon(
+          CustomTextField(
             hintText: '비밀번호',
             textInputType: TextInputType.visiblePassword,
             onChanged: onPWChanged,
@@ -47,30 +45,34 @@ class LoginForm extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: InkWell(
               onTap: onAutoLoginCheckboxChanged,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CustomCheckbox(
-                    value: onAutoLoginChecked,
-                    onChanged: onAutoLoginCheckboxChanged,
-                  ),
-                  const SizedBox(width: 10),
-                  Text(
-                    '로그인 상태 유지',
-                    style: label.copyWith(
-                      color: textColor,
-                      fontWeight: FontWeight.w500,
+              borderRadius: BorderRadius.circular(4),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CustomCheckbox(
+                      value: onAutoLoginChecked,
+                      onChanged: onAutoLoginCheckboxChanged,
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 10),
+                    Text(
+                      '로그인 상태 유지',
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-          const SizedBox(height: padding32),
-          CustomButton(
+          const SizedBox(height: padding16),
+          CustomFilledButton(
             text: '로그인',
-            customButtonTheme: CustomButtonTheme.primary,
+            theme: CustomFilledButtonTheme.primary,
             onPressed: onLogin,
           ),
           const SizedBox(height: padding32),
@@ -79,12 +81,15 @@ class LoginForm extends StatelessWidget {
             children: [
               Text(
                 '아직 회원이 아니신가요?',
-                style: label.copyWith(color: Colors.grey.shade700),
+                style: Theme.of(context)
+                    .textTheme
+                    .labelLarge!
+                    .copyWith(color: Colors.grey.shade700),
               ),
               const SizedBox(height: 6),
               CustomTextButton(
                 text: '회원가입하기',
-                color: primaryColor,
+                theme: CustomTextButtonTheme.primary,
                 onClick: onSignupButtonPressed,
               ),
             ],

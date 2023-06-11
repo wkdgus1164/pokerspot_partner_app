@@ -70,7 +70,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
               child: SingleChildScrollView(
                 controller: _scrollController,
                 child: Container(
-                  color: lightColorScheme.background,
+                  color: lightColorScheme.surface,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,

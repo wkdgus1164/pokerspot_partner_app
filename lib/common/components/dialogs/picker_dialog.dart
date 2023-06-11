@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 
 class PickerDialog extends StatelessWidget {
   final String title;
@@ -21,6 +25,8 @@ class PickerDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
+      backgroundColor: lightColorScheme.surface,
+      surfaceTintColor: lightColorScheme.surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(8),
@@ -30,7 +36,12 @@ class PickerDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: padding24),
-          Text(title, style: Theme.of(context).textTheme.titleSmall),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: customColorScheme.onSurface1,
+                fontWeight: FontWeight.w700),
+          ),
           SizedBox(
             width: double.infinity,
             height: 160,
@@ -45,28 +56,35 @@ class PickerDialog extends StatelessWidget {
                           selection,
                           style: Theme.of(context)
                               .textTheme
-                              .bodySmall!
+                              .bodyLarge!
                               .copyWith(color: Colors.black),
                         ),
                       ))
                   .toList(),
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: onCancel,
-                  child: const Text('취소'),
+          Padding(
+            padding: const EdgeInsets.all(padding10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: CustomOutlinedButton(
+                    onPressed: onCancel,
+                    theme: CustomOutlinedButtonTheme.neutral,
+                    text: '취소',
+                  ),
                 ),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: onSubmit,
-                  child: const Text('선택 완료'),
+                const SizedBox(width: padding10),
+                Expanded(
+                  child: CustomFilledButton(
+                    theme: CustomFilledButtonTheme.primary,
+                    onPressed: onSubmit,
+                    text: '선택 완료',
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           )
         ],
       ),

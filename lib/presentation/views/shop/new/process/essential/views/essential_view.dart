@@ -10,6 +10,7 @@ import 'package:pokerspot_partner_app/presentation/views/shop/new/process/compon
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/essential/components/address_form.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +29,7 @@ class ShopProcessEssentialView extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         theme: CustomAppBarTheme.light,
-        left: Icons.cancel,
+        left: Icons.keyboard_arrow_left_rounded,
         text: '신규 매장 등록',
       ),
       body: SafeArea(
@@ -38,7 +39,7 @@ class ShopProcessEssentialView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.all(padding16),
-                  color: lightColorScheme.background,
+                  color: lightColorScheme.surface,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
@@ -102,7 +103,7 @@ class ShopProcessEssentialView extends StatelessWidget {
                               .setStore(_store.copyWith(bizCategory: value));
                         },
                         keyboardType: TextInputType.text,
-                        captionText: '* 사업자 등록증에 기재된 업태를 입력해주세요.',
+                        captionText: '사업자 등록증에 기재된 업태를 입력해주세요.',
                       ),
                       const SizedBox(height: padding32),
 
@@ -116,7 +117,7 @@ class ShopProcessEssentialView extends StatelessWidget {
                               _store.copyWith(bizCategoryDetail: value));
                         },
                         keyboardType: TextInputType.text,
-                        captionText: '* 사업자 등록증에 기재된 종목을 입력해주세요.',
+                        captionText: '사업자 등록증에 기재된 종목을 입력해주세요.',
                       ),
                       const SizedBox(height: padding32),
                     ],
@@ -154,9 +155,9 @@ class ShopProcessEssentialView extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: CustomFilledButton(
+            child: CustomOutlinedButton(
               text: '이전',
-              theme: CustomFilledButtonTheme.secondary,
+              theme: CustomOutlinedButtonTheme.secondary,
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),

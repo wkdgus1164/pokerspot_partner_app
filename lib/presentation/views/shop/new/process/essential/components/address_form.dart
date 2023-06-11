@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 
 class ShopProcessEssentialAddressForm extends StatelessWidget {
@@ -60,6 +61,13 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
               .copyWith(fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: padding10),
+        Text(
+          '사업자 등록증에 기재된 주소를 입력해주세요.',
+          style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                color: customColorScheme.onSurface3,
+              ),
+        ),
+        const SizedBox(height: padding10),
         TextFormField(
           controller: (initAddress.isNotEmpty
               ? (TextEditingController()
@@ -79,14 +87,6 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
         CustomTextField(
           hint: '상세주소 입력',
           onTextFieldChanged: onAddressDetailFieldChanged,
-        ),
-        const SizedBox(height: padding10),
-        Padding(
-          padding: const EdgeInsets.only(left: 12),
-          child: Text(
-            '* 사업자 등록증에 기재된 주소를 입력해주세요.',
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
         ),
       ],
     );

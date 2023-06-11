@@ -11,6 +11,7 @@ import 'package:pokerspot_partner_app/presentation/views/shop/new/process/operat
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/operation/components/warning.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:provider/provider.dart';
 
@@ -56,7 +57,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
     return Scaffold(
       appBar: const CustomAppBar(
         theme: CustomAppBarTheme.light,
-        left: Icons.cancel,
+        left: Icons.close_rounded,
         text: '신규 매장 등록',
       ),
       body: SafeArea(
@@ -66,7 +67,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
               child: SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.all(padding16),
-                  color: lightColorScheme.outline,
+                  color: lightColorScheme.surface,
                   child: Consumer<CreateStoreProvider>(builder: (_, __, ___) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -133,15 +134,17 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                     _closeTimeIndex = value;
                                   },
                                   onSubmit: () {
-                                    final times =
-                                        _times(startIndex: _openTimeIndex);
+                                    final times = _times(
+                                      startIndex: _openTimeIndex,
+                                    );
 
                                     _provider.setStore(
                                       _store.copyWith(
-                                          closeTime:
-                                              times.length == _closeTimeIndex
-                                                  ? null
-                                                  : times[_closeTimeIndex]),
+                                        closeTime:
+                                            times.length == _closeTimeIndex
+                                                ? null
+                                                : times[_closeTimeIndex],
+                                      ),
                                       notify: true,
                                     );
                                     Navigator.pop(context);
@@ -166,15 +169,20 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                         const SizedBox(height: padding16),
                         Row(
                           children: [
-                            ShopProcessOperationPub(
-                              asset: Assets.tonerPubOff.path,
-                              enabledAsset: Assets.tonerPubOn.path,
-                              text: '토너펍',
-                              isEnabled: _store.type == 'MTT',
-                              onTap: () {
-                                _provider.setStore(_store.copyWith(type: 'MTT'),
-                                    notify: true);
-                              },
+                            Container(
+                              color: lightColorScheme.surface,
+                              child: ShopProcessOperationPub(
+                                asset: Assets.tonerPubOff.path,
+                                enabledAsset: Assets.tonerPubOn.path,
+                                text: '토너펍',
+                                isEnabled: _store.type == 'MTT',
+                                onTap: () {
+                                  _provider.setStore(
+                                    _store.copyWith(type: 'MTT'),
+                                    notify: true,
+                                  );
+                                },
+                              ),
                             ),
 
                             /// 현재 토너펍만 운영
@@ -207,16 +215,21 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                           ],
                         ),
                         const SizedBox(height: padding32),
-                        const CustomDivider(),
+                        const Divider(),
                         const SizedBox(height: padding32),
                         Row(
                           children: [
-                            const Icon(Icons.info_outline_rounded, size: 20),
+                            const Icon(Icons.info_outline_rounded, size: 24),
                             const SizedBox(width: 6),
                             Expanded(
                               child: Text(
-                                '신규 매장 등록시 꼭 확인해주세요!',
-                                style: Theme.of(context).textTheme.titleMedium,
+                                '신규 매장 등록 시 꼭 확인해주세요!',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(
+                                      color: customColorScheme.onSurface2,
+                                    ),
                               ),
                             ),
                           ],
@@ -235,16 +248,21 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                 '·',
                                 style: Theme.of(context)
                                     .textTheme
-                                    .labelLarge!
+                                    .labelMedium!
                                     .copyWith(
-                                      fontWeight: FontWeight.w900,
+                                      color: customColorScheme.onSurface4,
                                     ),
                               ),
                               const SizedBox(width: 6),
                               Expanded(
                                 child: Text(
                                   '그 이외 포커스팟은 홀덤펍의 정보 중개자로서, 해당 서비스 제공의 당사자가 아님을 고지하고 서비스의 예약 이용 및 환불, 불법적인 행위와 관련된 의무와 책임은 각 서비스 제공자에게 있습니다.',
-                                  style: Theme.of(context).textTheme.labelLarge,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelMedium!
+                                      .copyWith(
+                                        color: customColorScheme.onSurface3,
+                                      ),
                                 ),
                               ),
                             ],
@@ -286,9 +304,9 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
       child: Row(
         children: [
           Expanded(
-            child: CustomFilledButton(
+            child: CustomOutlinedButton(
               text: '이전',
-              theme: CustomFilledButtonTheme.secondary,
+              theme: CustomOutlinedButtonTheme.secondary,
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),

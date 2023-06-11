@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/guide/components/register_step.dart';
 
 class ShopRegisterProcessTab extends StatelessWidget {
@@ -28,7 +29,9 @@ class ShopRegisterProcessTab extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               '매장 등록은 다음과 같은 절차로 진행됩니다.',
-              style: Theme.of(context).textTheme.labelLarge,
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: customColorScheme.onSurface3,
+                  ),
             ),
             const SizedBox(height: padding24),
             RegisterStepCard(textList: steps),

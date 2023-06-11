@@ -49,19 +49,16 @@ class ShopProcessOperationPub extends StatelessWidget {
                   child: InkWell(
                     onTap: onTap,
                     borderRadius: BorderRadius.circular(defaultRadius * 2),
-                    child: AspectRatio(
-                      aspectRatio: 1,
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            defaultRadius * 2,
-                          ),
-                          border: isEnabled ? border(text) : null,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 3.5,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          defaultRadius * 2,
                         ),
-                        child: SvgPicture.asset(
-                          isEnabled ? enabledAsset : asset,
-                        ),
+                        border: isEnabled ? border(text) : null,
+                      ),
+                      child: SvgPicture.asset(
+                        isEnabled ? enabledAsset : asset,
                       ),
                     ),
                   ),

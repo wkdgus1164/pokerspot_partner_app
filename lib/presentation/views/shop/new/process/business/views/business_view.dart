@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/components/buttons/verify_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
@@ -25,7 +26,7 @@ class ShopProcessBusinessView extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         theme: CustomAppBarTheme.light,
-        left: Icons.cancel,
+        left: Icons.keyboard_arrow_left_rounded,
         text: '신규 매장 등록',
       ),
       body: SafeArea(
@@ -36,7 +37,7 @@ class ShopProcessBusinessView extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Container(
                     padding: const EdgeInsets.all(padding16),
-                    color: lightColorScheme.background,
+                    color: lightColorScheme.surface,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisSize: MainAxisSize.max,
@@ -121,10 +122,9 @@ class ShopProcessBusinessView extends StatelessWidget {
     );
   }
 
-  CustomFilledButton _buildVerify(BuildContext context) {
-    return CustomFilledButton(
-      theme: CustomFilledButtonTheme.secondary,
-      text: _provider.checkedBiz ? '인증이 완료되었습니다' : '사업자 인증',
+  VerifyButton _buildVerify(BuildContext context) {
+    return VerifyButton(
+      isVerified: false,
       onPressed: _provider.checkedBiz
           ? null
           : () async {

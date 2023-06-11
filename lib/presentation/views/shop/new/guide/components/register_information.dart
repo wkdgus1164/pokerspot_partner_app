@@ -41,7 +41,7 @@ class RegisterInformationCard extends StatelessWidget {
                 child: Column(
                   children: model.contents
                       .map((it) => Padding(
-                            padding: const EdgeInsets.all(6),
+                            padding: const EdgeInsets.all(4),
                             child: Row(
                               children: [
                                 Text(
@@ -59,9 +59,9 @@ class RegisterInformationCard extends StatelessWidget {
                                     it,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .labelLarge!
+                                        .labelMedium!
                                         .copyWith(
-                                          fontWeight: FontWeight.w500,
+                                          color: customColorScheme.onSurface3,
                                         ),
                                   ),
                                 ),
@@ -77,14 +77,20 @@ class RegisterInformationCard extends StatelessWidget {
         const SizedBox(height: 6),
         if (model.hint.isNotEmpty) ...[
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(Icons.info_outline_rounded, size: 16),
+              Icon(
+                Icons.info_outline_rounded,
+                size: 16,
+                color: customColorScheme.onSurface3,
+              ),
               const SizedBox(width: 4),
               Expanded(
                 child: Text(
                   model.hint,
-                  style: Theme.of(context).textTheme.labelLarge,
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                        color: customColorScheme.onSurface3,
+                      ),
                 ),
               ),
             ],

@@ -71,7 +71,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: setBackgroundColor(),
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
-        icon: Icon(left),
+        icon: Icon(
+          left,
+          color: theme == CustomAppBarTheme.light
+              ? customColorScheme.onSurface1
+              : customColorScheme.onSurfaceContainer1,
+        ),
       ),
       title: setTitle(),
       elevation: 0,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/guide/components/register_information.dart';
@@ -28,7 +28,9 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text(
                   '매장 등록을 등록하시기 전 매장 사진 2장~4장을 꼭 준비해주세요!',
-                  style: Theme.of(context).textTheme.labelLarge,
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                        color: customColorScheme.onSurface3,
+                      ),
                 ),
                 const SizedBox(height: padding24),
                 Row(
@@ -44,18 +46,19 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
                         const SizedBox(height: 6),
                         Text(
                           '좋은 예시',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge!
-                              .copyWith(
-                                color: const Color.fromRGBO(41, 122, 251, 1),
-                                fontWeight: FontWeight.w600,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.labelMedium!.copyWith(
+                                    color: lightColorScheme.primary,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           '매장 시설과 관련된 사진',
-                          style: Theme.of(context).textTheme.labelLarge,
+                          style:
+                              Theme.of(context).textTheme.labelMedium!.copyWith(
+                                    color: customColorScheme.onSurface3,
+                                  ),
                         ),
                       ],
                     ),
@@ -70,15 +73,18 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
                         Text(
                           '나쁜 예시',
                           style:
-                              Theme.of(context).textTheme.labelLarge!.copyWith(
-                                    color: const Color.fromRGBO(219, 40, 40, 1),
+                              Theme.of(context).textTheme.labelMedium!.copyWith(
+                                    color: lightColorScheme.error,
                                     fontWeight: FontWeight.w600,
                                   ),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           '매장 시설과 관련없는 사진',
-                          style: Theme.of(context).textTheme.labelLarge,
+                          style:
+                              Theme.of(context).textTheme.labelMedium!.copyWith(
+                                    color: customColorScheme.onSurface3,
+                                  ),
                         ),
                       ],
                     ),
@@ -87,7 +93,7 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
               ],
             ),
           ),
-          const CustomDivider(),
+          const Divider(),
           const SizedBox(height: padding24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: padding16),
@@ -101,7 +107,9 @@ class ShopRegisterIntroductionTab extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text(
                   '포커스팟 관리 서비스를 이용하기 위해 매장 정보 등록이 필요합니다.',
-                  style: Theme.of(context).textTheme.labelLarge,
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                        color: customColorScheme.onSurface3,
+                      ),
                 ),
                 const SizedBox(height: padding24),
                 Column(

@@ -63,16 +63,18 @@ class CustomOutlinedButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              Icon(
-                leadingIcon ?? leadingIcon,
-                color: setMainColor(),
-                size: 24,
-              ),
-              const SizedBox(width: 4),
-            ],
-          ),
+          if (leadingIcon != null) ...[
+            Row(
+              children: [
+                Icon(
+                  leadingIcon ?? leadingIcon,
+                  color: setMainColor(),
+                  size: 24,
+                ),
+                const SizedBox(width: 4),
+              ],
+            ),
+          ],
           Text(
             text,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(

@@ -36,8 +36,8 @@ class ShopProcessOperationTime extends StatelessWidget {
                   const SizedBox(height: padding16),
                   Text(
                     time,
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: lightColorScheme.onSurface,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: customColorScheme.onSurface1,
                         ),
                   ),
                 ],

@@ -11,6 +11,7 @@ import 'package:pokerspot_partner_app/presentation/views/shop/new/process/compon
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/image_upload/components/image_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../../locator.dart';
@@ -52,7 +53,7 @@ class _ShopProcessImageUploadViewState
     return Scaffold(
       appBar: const CustomAppBar(
         theme: CustomAppBarTheme.light,
-        left: Icons.cancel,
+        left: Icons.keyboard_arrow_left_rounded,
         text: '신규 매장 등록',
       ),
       body: SafeArea(
@@ -62,7 +63,7 @@ class _ShopProcessImageUploadViewState
               child: SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.all(padding16),
-                  color: lightColorScheme.background,
+                  color: lightColorScheme.surface,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
@@ -79,51 +80,43 @@ class _ShopProcessImageUploadViewState
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                       const SizedBox(height: padding48),
-                      Consumer<CreateStoreProvider>(builder: (_, __, ___) {
-                        return Wrap(
-                          spacing: padding24,
-                          runSpacing: padding24,
-                          direction: Axis.horizontal,
-                          children: [
-                            ShopProcessImageItem(
-                              caption: '대표사진',
-                              imageUrl: _imageUrl(0),
-                              isPrimary: true,
-                              onPressed: () {
-                                _setImageUrl(0);
-                              },
-                            ),
-                            ShopProcessImageItem(
-                              caption: '필수 1',
-                              imageUrl: _imageUrl(1),
-                              onPressed: () {
-                                _setImageUrl(1);
-                              },
-                            ),
-                            ShopProcessImageItem(
-                              caption: '선택 1',
-                              imageUrl: _imageUrl(2),
-                              onPressed: () {
-                                _setImageUrl(2);
-                              },
-                            ),
-                            ShopProcessImageItem(
-                              caption: '선택 2',
-                              imageUrl: _imageUrl(3),
-                              onPressed: () {
-                                _setImageUrl(3);
-                              },
-                            ),
-                            ShopProcessImageItem(
-                              caption: '선택 3',
-                              imageUrl: _imageUrl(4),
-                              onPressed: () {
-                                _setImageUrl(4);
-                              },
-                            ),
-                          ],
-                        );
-                      }),
+                      Consumer<CreateStoreProvider>(
+                        builder: (_, __, ___) {
+                          return Wrap(
+                            spacing: padding24,
+                            runSpacing: padding24,
+                            direction: Axis.horizontal,
+                            children: [
+                              ShopProcessImageItem(
+                                caption: '대표사진',
+                                imageUrl: _imageUrl(0),
+                                isPrimary: true,
+                                onPressed: () => _setImageUrl(0),
+                              ),
+                              ShopProcessImageItem(
+                                caption: '필수 1',
+                                imageUrl: _imageUrl(1),
+                                onPressed: () => _setImageUrl(1),
+                              ),
+                              ShopProcessImageItem(
+                                caption: '선택 1',
+                                imageUrl: _imageUrl(2),
+                                onPressed: () => _setImageUrl(2),
+                              ),
+                              ShopProcessImageItem(
+                                caption: '선택 2',
+                                imageUrl: _imageUrl(3),
+                                onPressed: () => _setImageUrl(3),
+                              ),
+                              ShopProcessImageItem(
+                                caption: '선택 3',
+                                imageUrl: _imageUrl(4),
+                                onPressed: () => _setImageUrl(4),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -159,9 +152,9 @@ class _ShopProcessImageUploadViewState
       child: Row(
         children: [
           Expanded(
-            child: CustomFilledButton(
+            child: CustomOutlinedButton(
               text: '이전',
-              theme: CustomFilledButtonTheme.secondary,
+              theme: CustomOutlinedButtonTheme.secondary,
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),

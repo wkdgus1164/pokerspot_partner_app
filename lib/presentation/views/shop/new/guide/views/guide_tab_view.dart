@@ -51,7 +51,7 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
         appBar: const CustomAppBar(
           text: '신규 매장 등록 가이드',
           theme: CustomAppBarTheme.dark,
-          left: Icons.cancel,
+          left: Icons.close_rounded,
         ),
         body: Column(
           children: [
@@ -61,13 +61,14 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
               dividerColor: lightColorScheme.outline,
             ),
             Expanded(
-                child: TabBarView(
-              controller: _tabController,
-              children: const [
-                Center(child: ShopRegisterProcessTab()),
-                Center(child: ShopRegisterIntroductionTab()),
-              ],
-            )),
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  ShopRegisterProcessTab(),
+                  ShopRegisterIntroductionTab(),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -124,7 +124,8 @@ class ShopProcessBusinessView extends StatelessWidget {
 
   VerifyButton _buildVerify(BuildContext context) {
     return VerifyButton(
-      isVerified: false,
+      label: '사업자 인증',
+      isVerified: _provider.checkedBiz,
       onPressed: _provider.checkedBiz
           ? null
           : () async {
@@ -138,6 +139,7 @@ class ShopProcessBusinessView extends StatelessWidget {
 
   CustomTextFieldSet _buildPhone() {
     return CustomTextFieldSet(
+      initText: _store.bizStartYMD,
       inputLabel: '개업연월일',
       keyboardType: TextInputType.number,
       isPassword: false,
@@ -152,11 +154,15 @@ class ShopProcessBusinessView extends StatelessWidget {
   CustomTextFieldSet _buildOpenDate() {
     return CustomTextFieldSet(
       inputLabel: '대표자명',
+      initText: _store.ownerName,
       keyboardType: TextInputType.text,
       isPassword: false,
       inputHintText: '대표자명 입력',
       onTextFieldChanged: (value) {
-        _provider.setStore(_store.copyWith(ownerName: value));
+        _provider.setStore(
+          _store.copyWith(ownerName: value),
+          notify: false,
+        );
       },
       captionText: '※ 사업자 등록증에 기재된 대표자명을 입력해주세요.',
     );
@@ -165,6 +171,7 @@ class ShopProcessBusinessView extends StatelessWidget {
   CustomTextFieldSet _buildBusinessNumber() {
     return CustomTextFieldSet(
       inputLabel: '사업자등록번호',
+      initText: _store.bizNumber,
       keyboardType: TextInputType.number,
       isPassword: false,
       inputHintText: '-제외 숫자만 입력',

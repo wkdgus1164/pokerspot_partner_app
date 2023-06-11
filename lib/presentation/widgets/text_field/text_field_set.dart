@@ -6,6 +6,7 @@ import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field
 class CustomTextFieldSet extends StatelessWidget {
   const CustomTextFieldSet({
     Key? key,
+    this.initText = '',
     required this.inputLabel,
     required this.keyboardType,
     required this.isPassword,
@@ -21,6 +22,7 @@ class CustomTextFieldSet extends StatelessWidget {
     this.enabled = true,
   }) : super(key: key);
 
+  final String initText;
   final String inputLabel;
   final String? inputErrorText;
   final String inputHintText;
@@ -63,6 +65,7 @@ class CustomTextFieldSet extends StatelessWidget {
         ],
         const SizedBox(height: padding10),
         CustomTextField(
+          initText: initText,
           hint: inputHintText,
           errorText: inputErrorText,
           keyboardType: keyboardType.toString().isEmpty

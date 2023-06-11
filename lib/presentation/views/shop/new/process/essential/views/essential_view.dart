@@ -60,6 +60,7 @@ class ShopProcessEssentialView extends StatelessWidget {
                       // 매장 상호명
                       CustomTextFieldSet(
                         inputLabel: '매장 상호명',
+                        initText: _store.name,
                         keyboardType: TextInputType.text,
                         isPassword: false,
                         inputHintText: '매장 상호명 입력',
@@ -72,7 +73,8 @@ class ShopProcessEssentialView extends StatelessWidget {
                       // 매장 주소
                       Consumer<CreateStoreProvider>(builder: (_, __, ___) {
                         return ShopProcessEssentialAddressForm(
-                          initAddress: _provider.store.address,
+                          initAddress: _store.address,
+                          initAddressDetail: _store.addressDetail,
                           onSearchTap: () async {
                             Kpostal result = await Navigator.push(
                                 context,
@@ -96,6 +98,7 @@ class ShopProcessEssentialView extends StatelessWidget {
                       // 업태
                       CustomTextFieldSet(
                         inputLabel: '업태',
+                        initText: _store.bizCategory,
                         isPassword: false,
                         inputHintText: '예) 숙박 및 음식점업',
                         onTextFieldChanged: (value) {
@@ -109,6 +112,7 @@ class ShopProcessEssentialView extends StatelessWidget {
 
                       // 종목
                       CustomTextFieldSet(
+                        initText: _store.bizCategoryDetail,
                         inputLabel: '종목',
                         isPassword: false,
                         inputHintText: '예) 일반 유흥 주점업',

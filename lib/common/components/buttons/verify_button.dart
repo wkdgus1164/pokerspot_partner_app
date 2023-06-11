@@ -4,11 +4,13 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 class VerifyButton extends StatelessWidget {
   final Function()? onPressed;
   final bool isVerified;
+  final String label;
 
   const VerifyButton({
     super.key,
     this.onPressed,
     this.isVerified = false,
+    this.label = '휴대폰 본인인증',
   });
 
   @override
@@ -29,7 +31,7 @@ class VerifyButton extends StatelessWidget {
         children: [
           const SizedBox(width: 24),
           Text(
-            isVerified ? '인증이 완료되였습니다.' : '휴대폰 본인인증',
+            isVerified ? '인증이 완료되였습니다.' : label,
             style: isVerified
                 ? Theme.of(context)
                     .textTheme

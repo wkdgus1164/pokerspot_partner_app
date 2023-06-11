@@ -5,6 +5,7 @@ import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field
 
 class ShopProcessEssentialAddressForm extends StatelessWidget {
   final String initAddress;
+  final String initAddressDetail;
   final VoidCallback onSearchTap;
   final Function(String) onAddressFieldChanged;
   final Function(String) onAddressDetailFieldChanged;
@@ -12,6 +13,7 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
   const ShopProcessEssentialAddressForm({
     super.key,
     this.initAddress = '',
+    this.initAddressDetail = '',
     required this.onSearchTap,
     required this.onAddressFieldChanged,
     required this.onAddressDetailFieldChanged,
@@ -86,6 +88,7 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
         const SizedBox(height: padding10),
         CustomTextField(
           hint: '상세주소 입력',
+          initText: initAddressDetail,
           onTextFieldChanged: onAddressDetailFieldChanged,
         ),
       ],

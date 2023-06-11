@@ -16,6 +16,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../../../../locator.dart';
 import '../../../../../../providers/create_store_provider.dart';
+import '../../../../../../providers/home_provider.dart';
 
 class ShopProcessGameView extends StatefulWidget {
   const ShopProcessGameView({super.key});
@@ -175,11 +176,14 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                   return;
                 }
                 final result = await _provider.createStore();
+                await locator<HomeProvider>().getStores();
                 if (mounted) {
                   if (result) {
-                    context.pushNamed(
-                      ShopRoutes.processSuccess.path,
-                    );
+                    if (mounted) {
+                      context.pushNamed(
+                        ShopRoutes.processSuccess.path,
+                      );
+                    }
                   }
                 } else {
                   showToast(context: context, message: '다시 시도해주세요.');

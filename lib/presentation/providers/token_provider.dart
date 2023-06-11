@@ -13,11 +13,11 @@ class TokenProvider with ChangeNotifier {
   TokenProvider() {
     storage.read(key: 'isAutoLogin').then((value) {
       _isAutoLogin = value == 'true' || value == null;
-      // if (isAutoLogin) {
-      //   storage.read(key: 'token').then((value) => _token = value ?? '');
-      // } else {
-      //   setToken('');
-      // }
+      if (isAutoLogin) {
+        storage.read(key: 'token').then((value) => _token = value ?? '');
+      } else {
+        setToken('');
+      }
     });
   }
 

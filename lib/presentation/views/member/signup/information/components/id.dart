@@ -47,22 +47,6 @@ class _SignupIdState extends State<SignupId> {
             .bodyMedium!
             .copyWith(color: customColorScheme.onSurface4),
         errorText: _error,
-        suffixIcon: InkWell(
-          onTap: widget.onCheckTap,
-          child: Container(
-            width: 80,
-            alignment: Alignment.center,
-            margin: const EdgeInsets.only(top: 6, bottom: 6, right: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              border: Border.all(color: Colors.grey.shade300),
-            ),
-            child: Text(
-              widget.checkedDuplicateId ? '중복확인 완료' : '중복확인',
-              style: Theme.of(context).textTheme.labelLarge,
-            ),
-          ),
-        ),
       );
     }
 

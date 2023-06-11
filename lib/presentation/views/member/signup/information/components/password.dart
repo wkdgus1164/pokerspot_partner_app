@@ -3,10 +3,12 @@ import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field
 
 class SignupPassword extends StatefulWidget {
   final ValueChanged<String> onTextFieldChanged;
+  final String? checkPassword;
 
   const SignupPassword({
     Key? key,
     required this.onTextFieldChanged,
+    this.checkPassword,
   }) : super(key: key);
 
   @override
@@ -43,8 +45,8 @@ class _SignupPasswordState extends State<SignupPassword> {
         RegExp(r'^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{4,12}$');
     if (!passwordRegExp.hasMatch(value ?? '')) {
       error = '비밀번호 양식에 맞지 않습니다.';
-    } else {
-      error = null;
+    } else if (widget.checkPassword != value) {
+      error = '입력하신 비밀번호와 다릅니다.';
     }
 
     if (error != _error) {

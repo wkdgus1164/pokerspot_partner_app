@@ -1,4 +1,6 @@
+import 'package:debounce_throttle/debounce_throttle.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/domain/usecases/signup_usecase.dart';
 
 class SignupProvider with ChangeNotifier {
@@ -31,10 +33,28 @@ class SignupProvider with ChangeNotifier {
   bool? _checkedPhoneNumber;
   bool? get checkedPhoneNumber => _checkedPhoneNumber;
 
-  SignupProvider(this._usecase);
+  SignupProvider(this._usecase) {
+    updateBasketDebounce.values.listen((state) {
+      checkDuplicate();
+    });
+  }
+
+  @override
+  void dispose() {
+    updateBasketDebounce.cancel();
+
+    super.dispose();
+  }
+
+  final updateBasketDebounce = Debouncer(
+    const Duration(milliseconds: 500),
+    initialValue: null,
+    checkEquality: false,
+  );
 
   void setId(String value) {
     _id = value;
+    updateBasketDebounce.setValue(null);
     notifyListeners();
   }
 
@@ -70,6 +90,7 @@ class SignupProvider with ChangeNotifier {
 
   Future<void> checkDuplicate() async {
     _checkedDuplicateId = await _usecase.checkDuplicate(id);
+    Logger.d('[checkedDuplicateId] $checkedDuplicateId');
     notifyListeners();
   }
 

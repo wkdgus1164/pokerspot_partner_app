@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/buttons/verify_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../locator.dart';
@@ -53,7 +53,10 @@ class SignupRenewView extends StatelessWidget {
                       const SizedBox(height: padding24),
 
                       // 비밀번호
-                      SignupPassword(onTextFieldChanged: provider.setPassword),
+                      SignupPassword(
+                        onTextFieldChanged: provider.setPassword,
+                        checkPassword: provider.checkPassword,
+                      ),
                       const SizedBox(height: padding24),
 
                       // 비밀번호 확인

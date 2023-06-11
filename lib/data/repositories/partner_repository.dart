@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/data/models/partner/sign_in_request.dart';
 import 'package:pokerspot_partner_app/data/models/partner/signup_request.dart';
@@ -36,24 +37,41 @@ class PartnerRepository {
 
   /// 휴대폰 본인 인증 검증
   Future<bool> phoneValidate(PhoneValidateRequestModel data) async {
-    final response = await _dio.post('/partners/signup/phone-validate');
-    if (response.statusCode == 200) {
-      return true;
-    } else {
+    try {
+      final response = await _dio.post('/partners/signup/phone-validate',
+          data: data.toJson());
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      Logger.e(e);
       return false;
     }
   }
 
   /// 회원 가입
-  Future<bool> signup(SignupRequestModel data) async {
-    final response = await _dio.post(
-      '/partners/signup',
-      data: data.toJson(),
-    );
-    if (response.statusCode == 201) {
-      return true;
-    } else {
-      return false;
+  Future<String?> signup(SignupRequestModel data) async {
+    try {
+      final response = await _dio.post(
+        '/partners/signup',
+        data: data.toJson(),
+      );
+      if (response.statusCode == 201) {
+        return null;
+      } else {
+        return response.data['error'] ?? '알수없는 에러가 발생했습니다.';
+      }
+    } catch (e) {
+      if (e is DioError) {
+        final error = e.response?.data['error'];
+        if (error == 'DUPLICATE') {
+          return '아이디 혹은 휴대폰 번호가 중복입니다.';
+        }
+        return '알수없는 에러가 발생했습니다.';
+      }
+      return '알수없는 에러가 발생했습니다.';
     }
   }
 

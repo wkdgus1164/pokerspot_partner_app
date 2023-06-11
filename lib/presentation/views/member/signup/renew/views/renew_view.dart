@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/components/buttons/verify_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
+import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
@@ -78,6 +79,7 @@ class SignupRenewView extends StatelessWidget {
                       // 휴대폰 번호
                       SignupPhoneNumber(
                         onTextFieldChanged: provider.setPhoneNumber,
+                        isVerified: provider.checkedPhoneNumber,
                       ),
                       const SizedBox(height: padding24),
 
@@ -86,15 +88,18 @@ class SignupRenewView extends StatelessWidget {
                         isVerified: provider.checkedPhoneNumber,
                         onPressed: provider.validateInput
                             ? () async {
-                                if (provider.impUid.isEmpty) {
-                                  final data = await context.pushNamed(
-                                    MemberRoutes.signupCertification.path,
-                                  );
-                                  provider
-                                      .setImpUid(data as Map<String, String>?);
-                                } else {
-                                  await provider.checkPhoneNumber();
-                                }
+                                final data = await context.pushNamed(
+                                  MemberRoutes.signupCertification.path,
+                                );
+                                provider
+                                    .setImpUid(data as Map<String, String>?);
+                                await provider.checkPhoneNumber().then((value) {
+                                  if (!value) {
+                                    showToast(
+                                        context: context,
+                                        message: '본인인증을 실패했습니다.');
+                                  }
+                                });
                               }
                             : null,
                       ),
@@ -107,11 +112,12 @@ class SignupRenewView extends StatelessWidget {
                         onPressed: provider.validateConfirm
                             ? () async {
                                 final result = await provider.signUp();
-                                if (result && context.mounted) {
+                                if (result == null && context.mounted) {
                                   context.pushNamed(
                                       MemberRoutes.signupSuccess.path);
                                 } else {
-                                  /// TODO Toast
+                                  showToast(
+                                      context: context, message: result ?? '');
                                 }
                               }
                             : null,

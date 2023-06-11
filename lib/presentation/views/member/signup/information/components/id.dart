@@ -20,6 +20,7 @@ class SignupId extends StatefulWidget {
 
 class _SignupIdState extends State<SignupId> {
   String? _error;
+  String? _help;
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +42,13 @@ class _SignupIdState extends State<SignupId> {
             color: lightColorScheme.primary.withAlpha(100),
           ),
         ),
+        helperText: _help,
         hintText: '아이디 입력',
         hintStyle: Theme.of(context)
             .textTheme
             .bodyMedium!
             .copyWith(color: customColorScheme.onSurface4),
-        errorText: _error,
+        errorText: !widget.checkedDuplicateId ? '중복된 아이디입니다.' : _error,
       );
     }
 
@@ -94,10 +96,12 @@ class _SignupIdState extends State<SignupId> {
       error = null;
     }
 
-    if (error != _error) {
-      setState(() {
+    setState(() {
+      if (error != _error) {
         _error = error;
-      });
-    }
+      } else {
+        _help = '사용 가능한 아이디입니다.';
+      }
+    });
   }
 }

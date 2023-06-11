@@ -33,6 +33,9 @@ class SignupProvider with ChangeNotifier {
   bool? _checkedPhoneNumber;
   bool? get checkedPhoneNumber => _checkedPhoneNumber;
 
+  bool _validate = false;
+  bool get validate => _validate;
+
   SignupProvider(this._usecase) {
     updateBasketDebounce.values.listen((state) {
       checkDuplicate();
@@ -47,7 +50,7 @@ class SignupProvider with ChangeNotifier {
   }
 
   final updateBasketDebounce = Debouncer(
-    const Duration(milliseconds: 500),
+    const Duration(milliseconds: 200),
     initialValue: null,
     checkEquality: false,
   );

@@ -100,14 +100,17 @@ class SignupRenewView extends StatelessWidget {
                       CustomFilledButton(
                         theme: CustomFilledButtonTheme.primary,
                         text: '가입 완료',
-                        onPressed: () async {
-                          final result = await provider.signUp();
-                          if (result && context.mounted) {
-                            context.pushNamed(MemberRoutes.signupSuccess.path);
-                          } else {
-                            /// TODO Toast
-                          }
-                        },
+                        onPressed: provider.validate
+                            ? () async {
+                                final result = await provider.signUp();
+                                if (result && context.mounted) {
+                                  context.pushNamed(
+                                      MemberRoutes.signupSuccess.path);
+                                } else {
+                                  /// TODO Toast
+                                }
+                              }
+                            : null,
                       ),
                     ],
                   );

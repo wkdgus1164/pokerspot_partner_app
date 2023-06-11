@@ -26,8 +26,34 @@ class ShopProcessGameView extends StatefulWidget {
 
 class _ShopProcessGameViewState extends State<ShopProcessGameView> {
   final _provider = locator<CreateStoreProvider>();
+  late final ScrollController _scrollController;
 
   List<MttGameModel> get _games => _provider.mttGames;
+
+  void _addGame() {
+    _provider.addGame();
+    Future.delayed(const Duration(milliseconds: 50)).then((value) {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeOutCubic,
+      );
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +68,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
           children: [
             Expanded(
               child: SingleChildScrollView(
+                controller: _scrollController,
                 child: Container(
                   color: lightColorScheme.background,
                   child: Column(
@@ -86,7 +113,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
 
                               // 추가하기 버튼
                               GameAddButton(onPressed: () {
-                                _provider.addGame();
+                                _addGame();
                               }),
                               ...List.generate(
                                 _games.length,

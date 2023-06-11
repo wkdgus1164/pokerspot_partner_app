@@ -27,14 +27,17 @@ class SignupProvider with ChangeNotifier {
   String _impUid = '';
   String get impUid => _impUid;
 
-  bool _checkedDuplicateId = false;
+  bool _checkedDuplicateId = true;
   bool get checkedDuplicateId => _checkedDuplicateId;
 
-  bool? _checkedPhoneNumber;
-  bool? get checkedPhoneNumber => _checkedPhoneNumber;
+  bool _checkedPhoneNumber = false;
+  bool get checkedPhoneNumber => _checkedPhoneNumber;
 
-  bool _validate = false;
-  bool get validate => _validate;
+  bool _validateInput = false;
+  bool get validateInput => _validateInput;
+
+  bool _validateConfirm = false;
+  bool get validateConfirm => _validateConfirm;
 
   SignupProvider(this._usecase) {
     updateBasketDebounce.values.listen((state) {
@@ -58,48 +61,59 @@ class SignupProvider with ChangeNotifier {
   void setId(String value) {
     _id = value;
     updateBasketDebounce.setValue(null);
-    notifyListeners();
+    validateButton();
   }
 
   void setPassword(String value) {
     _password = value;
-    notifyListeners();
+    validateButton();
   }
 
   void setCheckPassword(String value) {
     _checkPassword = value;
-    notifyListeners();
+    validateButton();
   }
 
   void setEmail(String value) {
     _email = value;
-    notifyListeners();
+    validateButton();
   }
 
   void setName(String value) {
     _name = value;
-    notifyListeners();
+    validateButton();
   }
 
   void setPhoneNumber(String value) {
     _phoneNumber = value;
-    notifyListeners();
+    validateButton();
   }
 
   void setImpUid(Map<String, String>? value) {
     _impUid = value?['imp_uid'] ?? '';
-    notifyListeners();
+    validateButton();
   }
 
   Future<void> checkDuplicate() async {
     _checkedDuplicateId = await _usecase.checkDuplicate(id);
     Logger.d('[checkedDuplicateId] $checkedDuplicateId');
-    notifyListeners();
+    validateButton();
   }
 
   Future<void> checkPhoneNumber() async {
     _checkedPhoneNumber = await _usecase.checkPhoneNumber(
         phoneNumber: phoneNumber, name: name, impUid: impUid);
+    validateButton();
+  }
+
+  void validateButton() {
+    _validateInput = _id.isNotEmpty &&
+        password.isNotEmpty &&
+        checkPassword.isNotEmpty &&
+        phoneNumber.isNotEmpty &&
+        name.isNotEmpty &&
+        checkedDuplicateId;
+    _validateConfirm = _validateInput && _checkedPhoneNumber;
     notifyListeners();
   }
 

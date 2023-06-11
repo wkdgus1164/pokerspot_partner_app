@@ -55,13 +55,14 @@ class SignupRenewView extends StatelessWidget {
                       // 비밀번호
                       SignupPassword(
                         onTextFieldChanged: provider.setPassword,
-                        checkPassword: provider.checkPassword,
+                        password: provider.password,
                       ),
                       const SizedBox(height: padding24),
 
                       // 비밀번호 확인
                       SignupPasswordConfirm(
                         password: provider.password,
+                        checkPassword: provider.checkPassword,
                         onTextFieldChanged: provider.setCheckPassword,
                       ),
                       const SizedBox(height: padding24),
@@ -82,17 +83,20 @@ class SignupRenewView extends StatelessWidget {
 
                       // 휴대폰 본인 인증
                       VerifyButton(
-                        isVerified: false,
-                        onPressed: () async {
-                          if (provider.impUid.isEmpty) {
-                            final data = await context.pushNamed(
-                              MemberRoutes.signupCertification.path,
-                            );
-                            provider.setImpUid(data as Map<String, String>?);
-                          } else {
-                            await provider.checkPhoneNumber();
-                          }
-                        },
+                        isVerified: provider.checkedPhoneNumber,
+                        onPressed: provider.validateInput
+                            ? () async {
+                                if (provider.impUid.isEmpty) {
+                                  final data = await context.pushNamed(
+                                    MemberRoutes.signupCertification.path,
+                                  );
+                                  provider
+                                      .setImpUid(data as Map<String, String>?);
+                                } else {
+                                  await provider.checkPhoneNumber();
+                                }
+                              }
+                            : null,
                       ),
                       const SizedBox(height: padding24),
 
@@ -100,7 +104,7 @@ class SignupRenewView extends StatelessWidget {
                       CustomFilledButton(
                         theme: CustomFilledButtonTheme.primary,
                         text: '가입 완료',
-                        onPressed: provider.validate
+                        onPressed: provider.validateConfirm
                             ? () async {
                                 final result = await provider.signUp();
                                 if (result && context.mounted) {

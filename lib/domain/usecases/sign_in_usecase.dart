@@ -1,7 +1,6 @@
 import 'package:pokerspot_partner_app/data/models/partner/partner.dart';
 import 'package:pokerspot_partner_app/data/models/partner/sign_in_request.dart';
 import 'package:pokerspot_partner_app/data/repositories/partner_repository.dart';
-import 'package:pokerspot_partner_app/data/utils/logger.dart';
 
 class SignInUsecase {
   final PartnerRepository _repository;

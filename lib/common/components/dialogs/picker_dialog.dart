@@ -4,7 +4,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 
 class PickerDialog extends StatelessWidget {
   final String title;

@@ -12,7 +12,6 @@ import 'package:pokerspot_partner_app/presentation/views/shop/new/process/operat
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../../common/components/dialogs/picker_dialog.dart';

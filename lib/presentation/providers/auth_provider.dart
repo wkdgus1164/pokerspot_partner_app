@@ -9,8 +9,14 @@ class AuthProviderProvider with ChangeNotifier {
   final TokenProvider _tokenProvider;
   final SignInUsecase _usecase;
 
-  String id = '';
-  String password = '';
+  String _id = '';
+  String get id => _id;
+
+  String _password = '';
+  String get password => _password;
+
+  bool _validate = false;
+  bool get validate => _validate;
 
   PartnerModel? _partner;
   PartnerModel? get partner => _partner;
@@ -31,9 +37,27 @@ class AuthProviderProvider with ChangeNotifier {
     return partner != null;
   }
 
+  void setId(String value) {
+    _id = value;
+    validateLogin();
+  }
+
+  void setPassword(String value) {
+    _password = value;
+    validateLogin();
+  }
+
   void logout() {
     _tokenProvider.setToken('');
+    _id = '';
+    _password = '';
+    _validate = false;
     _partner = null;
+    notifyListeners();
+  }
+
+  void validateLogin() {
+    _validate = _usecase.validate(id: id, password: password);
     notifyListeners();
   }
 }

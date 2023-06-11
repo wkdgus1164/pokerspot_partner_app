@@ -4,7 +4,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
@@ -46,18 +45,16 @@ class _LoginViewState extends State<LoginView> {
               const LoginHeader(),
 
               // 로그인 폼
-              Consumer<TokenProvider>(builder: (_, __, ___) {
+              Consumer2<TokenProvider, AuthProviderProvider>(
+                  builder: (_, __, ___, ____) {
                 return LoginForm(
-                  onIDChanged: (value) {
-                    _authProvider.id = value;
-                    Logger.d(_authProvider.id);
-                  },
-                  onPWChanged: (value) {
-                    _authProvider.password = value;
-                  },
-                  onLogin: () async {
-                    await _login();
-                  },
+                  onIDChanged: _authProvider.setId,
+                  onPWChanged: _authProvider.setPassword,
+                  onLogin: _authProvider.validate
+                      ? () async {
+                          await _login();
+                        }
+                      : null,
                   onAutoLoginCheckboxChanged: () async {
                     await _tokenProvider.setIsAutoLogin();
                   },

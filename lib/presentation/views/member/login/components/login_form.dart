@@ -10,7 +10,7 @@ class LoginForm extends StatelessWidget {
     super.key,
     this.onIDChanged,
     this.onPWChanged,
-    required this.onLogin,
+    this.onLogin,
     required this.onAutoLoginChecked,
     required this.onAutoLoginCheckboxChanged,
     required this.onSignupButtonPressed,
@@ -18,7 +18,7 @@ class LoginForm extends StatelessWidget {
 
   final Function(String)? onIDChanged;
   final Function(String)? onPWChanged;
-  final VoidCallback onLogin;
+  final VoidCallback? onLogin;
   final bool onAutoLoginChecked;
   final Function() onAutoLoginCheckboxChanged;
   final Function() onSignupButtonPressed;

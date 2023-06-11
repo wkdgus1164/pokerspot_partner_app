@@ -18,6 +18,7 @@ class CustomTextField extends StatelessWidget {
     this.maxLength,
     this.minLines,
     this.maxLines,
+    this.enabled = true,
   });
 
   final String initText;
@@ -33,6 +34,7 @@ class CustomTextField extends StatelessWidget {
   final int? maxLength;
   final int? minLines;
   final int? maxLines;
+  final bool enabled;
 
   InputDecoration textFieldDecoration(BuildContext context) {
     return InputDecoration(
@@ -59,6 +61,7 @@ class CustomTextField extends StatelessWidget {
           .copyWith(color: customColorScheme.onSurface4),
       errorText: errorText,
       helperText: helperText,
+      enabled: enabled,
     );
   }
 

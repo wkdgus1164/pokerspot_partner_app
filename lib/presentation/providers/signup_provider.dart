@@ -100,10 +100,11 @@ class SignupProvider with ChangeNotifier {
     validateButton();
   }
 
-  Future<void> checkPhoneNumber() async {
+  Future<bool> checkPhoneNumber() async {
     _checkedPhoneNumber = await _usecase.checkPhoneNumber(
         phoneNumber: phoneNumber, name: name, impUid: impUid);
     validateButton();
+    return checkedPhoneNumber;
   }
 
   void validateButton() {
@@ -117,7 +118,7 @@ class SignupProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> signUp() {
+  Future<String?> signUp() {
     return _usecase.signUp(
         id, password, checkPassword, email, name, phoneNumber, impUid);
   }

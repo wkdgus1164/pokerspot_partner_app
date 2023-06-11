@@ -25,7 +25,7 @@ class SignupUsecase {
     return await _repository.phoneValidate(model);
   }
 
-  Future<bool> signUp(
+  Future<String?> signUp(
     String id,
     String password,
     String checkPassword,
@@ -43,7 +43,7 @@ class SignupUsecase {
       impUid: impUid,
     );
     if (!_validate(model)) {
-      return false;
+      return '정보를 양식에 맞게 입력해주세요.';
     }
     return await _repository.signup(model);
   }

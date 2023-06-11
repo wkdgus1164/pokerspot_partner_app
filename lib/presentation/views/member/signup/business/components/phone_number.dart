@@ -3,10 +3,12 @@ import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field
 
 class SignupPhoneNumber extends StatefulWidget {
   final ValueChanged<String> onTextFieldChanged;
+  final bool isVerified;
 
   const SignupPhoneNumber({
     Key? key,
     required this.onTextFieldChanged,
+    this.isVerified = false,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class _SignupPhoneNumberState extends State<SignupPhoneNumber> {
       },
       textInputAction: TextInputAction.go,
       captionText: '대표자 명의의 휴대폰 번호를 입력해주세요.',
+      enabled: !widget.isVerified,
     );
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
-import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 
 class CustomTextFieldSet extends StatelessWidget {
   const CustomTextFieldSet({
@@ -18,6 +18,7 @@ class CustomTextFieldSet extends StatelessWidget {
     this.maxLines,
     this.textInputAction,
     this.captionText = '',
+    this.enabled = true,
   }) : super(key: key);
 
   final String inputLabel;
@@ -35,6 +36,8 @@ class CustomTextFieldSet extends StatelessWidget {
   final int? maxLines;
 
   final String captionText;
+
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +75,7 @@ class CustomTextFieldSet extends StatelessWidget {
           onTextFieldChanged: onTextFieldChanged,
           isPassword: isPassword,
           textInputAction: textInputAction,
+          enabled: enabled,
         ),
       ],
     );

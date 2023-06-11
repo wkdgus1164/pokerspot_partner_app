@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
@@ -33,17 +32,49 @@ class _ShopProcessImageUploadViewState
 
   Future<void> _setImageUrl(int index) async {
     final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    final ImageCropper cropper = ImageCropper();
 
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
-      final binaryData = File(image.path).readAsBytesSync();
-      final url = await _provider.getImageUrl(binaryData);
-      if (url == null) {
-        if (mounted) {
-          showToast(context: context, message: '이미지 업로드 실패했습니다.');
+      final CroppedFile? croppedImage = await cropper.cropImage(
+          sourcePath: image.path,
+          aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
+          compressFormat: ImageCompressFormat.jpg,
+          uiSettings: [
+            AndroidUiSettings(
+              toolbarColor: Colors.black,
+              toolbarWidgetColor: Colors.white,
+              toolbarTitle: '',
+              showCropGrid: false,
+              hideBottomControls: true,
+            ),
+            IOSUiSettings(
+              title: '',
+              hidesNavigationBar: true,
+              showActivitySheetOnDone: false,
+              showCancelConfirmationDialog: false,
+              rotateButtonsHidden: true,
+              resetButtonHidden: true,
+              aspectRatioPickerButtonHidden: true,
+              resetAspectRatioEnabled: false,
+              aspectRatioLockEnabled: true,
+              rectX: 1,
+              rectY: 1,
+              doneButtonTitle: '✔️',
+              cancelButtonTitle: '✖️',
+            )
+          ]);
+
+      if (croppedImage != null) {
+        final binaryData = await croppedImage.readAsBytes();
+        final url = await _provider.getImageUrl(binaryData);
+        if (url == null) {
+          if (mounted) {
+            showToast(context: context, message: '이미지 업로드 실패했습니다.');
+          }
+        } else {
+          _provider.setImage(index, url);
         }
-      } else {
-        _provider.setImage(index, url);
       }
     }
   }

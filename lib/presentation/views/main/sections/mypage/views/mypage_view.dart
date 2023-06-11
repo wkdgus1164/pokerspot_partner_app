@@ -11,8 +11,7 @@ class MypageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.black,
-        center: CustomAppBarCenter.text,
+        theme: CustomAppBarTheme.dark,
         text: '내정보',
       ),
       body: SafeArea(

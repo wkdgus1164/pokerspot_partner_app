@@ -51,9 +51,8 @@ class _ShopProcessImageUploadViewState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.white,
-        left: CustomAppBarLeft.cancel,
-        center: CustomAppBarCenter.text,
+        theme: CustomAppBarTheme.light,
+        left: Icons.cancel,
         text: '신규 매장 등록',
       ),
       body: SafeArea(

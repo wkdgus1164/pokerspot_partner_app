@@ -27,10 +27,9 @@ class ShopProcessEssentialView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.white,
-        center: CustomAppBarCenter.text,
+        theme: CustomAppBarTheme.light,
+        left: Icons.cancel,
         text: '신규 매장 등록',
-        left: CustomAppBarLeft.cancel,
       ),
       body: SafeArea(
         child: Column(

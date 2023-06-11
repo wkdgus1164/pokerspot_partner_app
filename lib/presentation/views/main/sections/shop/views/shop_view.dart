@@ -24,9 +24,10 @@ class _ShopViewState extends State<ShopView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.black,
+        theme: CustomAppBarTheme.dark,
         text: '매장관리',
-        center: CustomAppBarCenter.text,
+        isCenterLogo: false,
+        bottomDivider: false,
       ),
       body: Scaffold(
         body: Consumer<HomeProvider>(builder: (_, provider, __) {
@@ -34,15 +35,14 @@ class _ShopViewState extends State<ShopView> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Ink(
-                decoration: const BoxDecoration(
-                  color: Color.fromRGBO(58, 69, 82, 1),
+                decoration: BoxDecoration(
+                  color: customColorScheme.surfaceContainer2,
                 ),
                 child: InkWell(
                   onTap: () {
                     context.pushNamed(ShopRoutes.newIntro.path);
                   },
-                  splashColor:
-                      const Color.fromRGBO(42, 50, 59, 1).withOpacity(0.4),
+                  splashColor: customColorScheme.surfaceContainer1,
                   child: Container(
                     padding: const EdgeInsets.all(padding24),
                     child: Column(
@@ -50,8 +50,8 @@ class _ShopViewState extends State<ShopView> {
                         Container(
                           padding: const EdgeInsets.all(padding10),
                           decoration: BoxDecoration(
-                            color: const Color.fromRGBO(42, 50, 59, 1),
-                            borderRadius: BorderRadius.circular(30),
+                            color: customColorScheme.surfaceContainer1,
+                            borderRadius: BorderRadius.circular(100),
                           ),
                           child: SvgPicture.asset(Assets.addNewBusiness.path),
                         ),
@@ -75,12 +75,16 @@ class _ShopViewState extends State<ShopView> {
                 ),
                 child: Row(
                   children: [
-                    Text('보유 매장',
-                        style: Theme.of(context).textTheme.titleLarge),
+                    Text(
+                      '보유 매장',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                     const SizedBox(width: 6),
                     Text(
                       (provider.stores?.length ?? 0).toString(),
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: lightColorScheme.primary,
+                          ),
                     ),
                   ],
                 ),

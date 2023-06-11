@@ -11,9 +11,7 @@ class CertificationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return IamportCertification(
       appBar: const CustomAppBar(
-        left: CustomAppBarLeft.back,
-        right: CustomAppBarRight.none,
-        center: CustomAppBarCenter.text,
+        left: Icons.keyboard_arrow_left,
         text: '본인인증',
       ),
       initialChild: const Center(

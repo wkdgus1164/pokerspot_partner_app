@@ -18,9 +18,7 @@ class SignupBusinessView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        left: CustomAppBarLeft.back,
-        right: CustomAppBarRight.none,
-        center: CustomAppBarCenter.text,
+        left: Icons.keyboard_arrow_left,
         text: '회원가입',
       ),
       body: SafeArea(

@@ -16,9 +16,8 @@ class ReservationView extends StatelessWidget {
         final title = provider.stores?.firstOrNull?.name;
         return Scaffold(
           appBar: const CustomAppBar(
-            center: CustomAppBarCenter.text,
             text: '예약관리',
-            theme: CustomAppBarTheme.black,
+            theme: CustomAppBarTheme.dark,
           ),
           // appBar: reservationTabAppBar(context, title),
           body: Center(

@@ -50,9 +50,8 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
       child: Scaffold(
         appBar: const CustomAppBar(
           text: '신규 매장 등록 가이드',
-          theme: CustomAppBarTheme.black,
-          center: CustomAppBarCenter.text,
-          left: CustomAppBarLeft.cancel,
+          theme: CustomAppBarTheme.dark,
+          left: Icons.cancel,
         ),
         body: Column(
           children: [

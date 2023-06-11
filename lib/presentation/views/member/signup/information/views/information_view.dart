@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 
 import '../components/email.dart';
 import '../components/header.dart';
@@ -43,6 +43,7 @@ class SignupInformationView extends StatelessWidget {
                       const SignupId(),
                       const SizedBox(height: padding16),
                       SignupPassword(
+                        password: '',
                         onTextFieldChanged: (String value) {},
                       ),
                       const SizedBox(height: padding16),

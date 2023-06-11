@@ -48,7 +48,7 @@ class CreateStoreModel {
     this.bizCategory = '',
     this.bizCategoryDetail = '',
     this.storeImages = const [],
-    this.openTime = '',
+    this.openTime = '00:00',
     this.closeTime,
     this.type = 'MTT',
   });

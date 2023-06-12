@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/components/dialogs/picker_dialog/picker_dialog_utils.dart';
+import 'package:pokerspot_partner_app/common/components/dialogs/picker_dialog_with_checkbox/picker_dialog_with_checkbox_utils.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
@@ -14,7 +16,6 @@ import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../../common/components/dialogs/picker_dialog.dart';
 import '../../../../../../../data/models/store/create_store_request.dart';
 import '../../../../../../../locator.dart';
 import '../../../../../../providers/create_store_provider.dart';
@@ -110,7 +111,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                           openTime: _times()[_openTimeIndex]),
                                       notify: true,
                                     );
-                                    Navigator.pop(context);
+                                    // Navigator.pop(context);
                                   },
                                 );
                               },
@@ -126,7 +127,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                             ),
                             ShopProcessOperationTime(
                               onTap: () {
-                                _buildStartTimePickerDialog(
+                                _buildFinishTimePickerDialog(
                                   startIndex: _openTimeIndex,
                                   title: '마감시간 선택',
                                   onItemChanged: (value) {
@@ -146,7 +147,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                       ),
                                       notify: true,
                                     );
-                                    Navigator.pop(context);
+                                    // Navigator.pop(context);
                                   },
                                 );
                               },
@@ -328,28 +329,38 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
     );
   }
 
-  void _buildStartTimePickerDialog(
-      {required String title,
-      int startIndex = 0,
-      required Function(int) onItemChanged,
-      required VoidCallback onSubmit}) {
-    showDialog(
+  void _buildStartTimePickerDialog({
+    required String title,
+    int startIndex = 0,
+    required Function(int) onItemChanged,
+    required VoidCallback onSubmit,
+  }) {
+    showPickerDialog(
+      title: '오픈시간 선택',
       context: context,
-      builder: (_) {
-        final times = _times(startIndex: startIndex);
-        if (startIndex != 0) {
-          times.add('마감시까지');
-        }
-        return PickerDialog(
-          onCancel: () {
-            Navigator.pop(context);
-          },
-          onSubmit: onSubmit,
-          onItemChanged: onItemChanged,
-          selections: times,
-          title: title,
-        );
-      },
+      selections: _times(startIndex: startIndex),
+      onCancel: () {},
+      onConfirm: onSubmit,
+      onSelectedItemChanged: onItemChanged,
+    );
+  }
+
+  void _buildFinishTimePickerDialog({
+    required String title,
+    int startIndex = 0,
+    required Function(int) onItemChanged,
+    required VoidCallback onSubmit,
+  }) {
+    showPickerDialogWithCheckbox(
+      title: '마감시간 선택',
+      context: context,
+      selections: _times(startIndex: startIndex),
+      onCancel: () {},
+      onConfirm: onSubmit,
+      checkboxLabel: '마감 시까지',
+      isChecked: false,
+      onCheckboxChanged: () {},
+      onSelectedItemChanged: onItemChanged,
     );
   }
 }

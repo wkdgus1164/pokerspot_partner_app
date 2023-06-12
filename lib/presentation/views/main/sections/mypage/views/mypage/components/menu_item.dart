@@ -8,15 +8,17 @@ class MypageMenuItem extends StatelessWidget {
     super.key,
     required this.text,
     required this.icon,
+    required this.onTap,
   });
 
   final String text;
   final String icon;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Column(
         children: [
           Row(
@@ -28,7 +30,7 @@ class MypageMenuItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SvgPicture.asset(icon),
-                      const SizedBox(width: padding10),
+                      const SizedBox(width: padding16),
                       Text(
                         text,
                         style: Theme.of(context)

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/bottom_navigation/destinations.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/views/home_view.dart';
-import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/mypage_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/mypage/mypage_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/reservation/views/reservation_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/shop/views/shop_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/statistics/views/statistics_view.dart';

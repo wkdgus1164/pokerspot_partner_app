@@ -103,4 +103,5 @@ class MttGameModel {
 enum TonerType {
   daily,
   seed,
+  gtd,
 }

@@ -197,26 +197,38 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
     );
   }
 
+  String setTitle(int index, List<MttGameModel> games) {
+    switch (games[index].type) {
+      case TonerType.daily:
+        return '${games[index].entryPrice ~/ 10000}만 데일리 토너먼트';
+      case TonerType.seed:
+        return '${games[index].entryPrice ~/ 10000}만 시드권 토너먼트';
+      case TonerType.gtd:
+        return '${games[index].entryPrice ~/ 10000}만 GTD 토너먼트';
+    }
+  }
+
   Widget _buildGame(int index) {
     return GameItem(
-      title:
-          '${_games[index].entryPrice ~/ 10000}만 ${_games[index].type == TonerType.daily ? '데일리' : '${_games[index].targetMttName}시드권'} 토너먼트',
+      title: setTitle(index, _games),
       isAllDayRunning: _games[index].isDaily,
       tonerType: _games[index].type,
       onTonerTypeChanged: (value) {
         Logger.d(_games[index].toJson());
         _provider.setGame(
-            index: index,
-            model: _games[index].copyWith(
-              type: value == 0 ? TonerType.daily : TonerType.seed,
-            ));
+          index: index,
+          model: _games[index].copyWith(
+            type: value == 0 ? TonerType.daily : TonerType.seed,
+          ),
+        );
       },
       onAllDayRunningChanged: () {
         _provider.setGame(
-            index: index,
-            model: _games[index].copyWith(
-              isDaily: !_games[index].isDaily,
-            ));
+          index: index,
+          model: _games[index].copyWith(
+            isDaily: !_games[index].isDaily,
+          ),
+        );
       },
       joinCost: _games[index].entryPrice,
       onJoinCostInputChanged: (value) {

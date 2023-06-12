@@ -121,7 +121,8 @@ class GameItem extends StatelessWidget {
                         color: lightColorScheme.primary,
                         isSelected: [
                           tonerType == TonerType.daily,
-                          tonerType == TonerType.seed
+                          tonerType == TonerType.seed,
+                          tonerType == TonerType.gtd,
                         ],
                         children: [
                           Container(
@@ -131,6 +132,10 @@ class GameItem extends StatelessWidget {
                           Container(
                             alignment: Alignment.center,
                             child: const Text('시드권토너'),
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            child: const Text('GTD토너'),
                           ),
                         ],
                       ),

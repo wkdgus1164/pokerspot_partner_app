@@ -11,6 +11,7 @@ import 'package:pokerspot_partner_app/presentation/views/shop/new/process/game/c
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/game/components/game_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/info_box/info_box.dart';
 import 'package:provider/provider.dart';
 
@@ -61,7 +62,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
     return Scaffold(
       appBar: const CustomAppBar(
         theme: CustomAppBarTheme.light,
-        left: Icons.cancel,
+        left: Icons.keyboard_arrow_left_rounded,
         text: '신규 매장 등록',
       ),
       body: SafeArea(
@@ -159,9 +160,9 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
       child: Row(
         children: [
           Expanded(
-            child: CustomFilledButton(
+            child: CustomOutlinedButton(
               text: '이전',
-              theme: CustomFilledButtonTheme.secondary,
+              theme: CustomOutlinedButtonTheme.secondary,
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
@@ -199,7 +200,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
   Widget _buildGame(int index) {
     return GameItem(
       title:
-          '${_games[index].entryPrice ~/ 10000}만 ${_games[index].type == TonerType.daily ? '데일리' : '${_games[index].targetMttName} 시드권'} 토너먼트',
+          '${_games[index].entryPrice ~/ 10000}만 ${_games[index].type == TonerType.daily ? '데일리' : '${_games[index].targetMttName}시드권'} 토너먼트',
       isAllDayRunning: _games[index].isDaily,
       tonerType: _games[index].type,
       onTonerTypeChanged: (value) {
@@ -220,39 +221,57 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
       joinCost: _games[index].entryPrice,
       onJoinCostInputChanged: (value) {
         _provider.setGame(
-            index: index, model: _games[index].copyWith(entryPrice: value));
+          index: index,
+          model: _games[index].copyWith(
+            entryPrice: value,
+          ),
+        );
       },
       entryStart: _games[index].entryMin,
       onEntryStartInputChanged: (value) {
         _provider.setGame(
-            index: index,
-            model: _games[index].copyWith(entryMin: int.tryParse(value) ?? 0));
+          index: index,
+          model: _games[index].copyWith(
+            entryMin: int.tryParse(value) ?? 0,
+          ),
+        );
       },
       entryLimit: _games[index].entryMax,
       onEntryLimitInputChanged: (value) {
         _provider.setGame(
-            index: index,
-            model: _games[index].copyWith(entryMax: int.tryParse(value) ?? 0));
+          index: index,
+          model: _games[index].copyWith(
+            entryMax: int.tryParse(value) ?? 0,
+          ),
+        );
       },
       prize: _games[index].prize,
       targetToner: _games[index].targetMttName,
       onTargetTonerInputChanged: (value) {
         _provider.setGame(
-            index: index,
-            model: _games[index].copyWith(targetMttName: value),
-            notify: false);
+          index: index,
+          model: _games[index].copyWith(targetMttName: value),
+          notify: false,
+        );
         Logger.d(_provider.mttGames[index].targetMttName);
       },
       onPrizeInputChanged: (value) {
         _provider.setGame(
-            index: index, model: _games[index].copyWith(prize: value));
+          index: index,
+          model: _games[index].copyWith(
+            prize: value,
+          ),
+        );
       },
       isDeleteButtonEnabled: true,
       onDeleteButtonPressed: () {
         if (_games.length > 1) {
           _provider.deleteGame(index);
         } else {
-          showToast(context: context, message: '최소 1개의 토너먼트가 필요합니다.');
+          showToast(
+            context: context,
+            message: '최소 1개의 토너먼트가 필요합니다.',
+          );
         }
       },
       isSaveButtonEnabled: true,

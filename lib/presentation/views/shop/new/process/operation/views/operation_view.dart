@@ -57,7 +57,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
     return Scaffold(
       appBar: const CustomAppBar(
         theme: CustomAppBarTheme.light,
-        left: Icons.close_rounded,
+        left: Icons.keyboard_arrow_left_rounded,
         text: '신규 매장 등록',
       ),
       body: SafeArea(

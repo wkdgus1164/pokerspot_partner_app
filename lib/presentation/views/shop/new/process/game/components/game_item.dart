@@ -73,8 +73,9 @@ class GameItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(title, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: padding10),
+          Text(title, style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: padding16),
           InkWell(
             onTap: onAllDayRunningChanged,
             child: Row(
@@ -85,11 +86,11 @@ class GameItem extends StatelessWidget {
                   onChanged: onAllDayRunningChanged,
                 ),
                 const SizedBox(width: padding10),
-                Text('매일 진행', style: Theme.of(context).textTheme.labelLarge),
+                Text('매일 진행', style: Theme.of(context).textTheme.bodyLarge),
               ],
             ),
           ),
-          const SizedBox(height: padding10),
+          const SizedBox(height: padding16),
           Row(
             children: [
               Expanded(
@@ -103,33 +104,36 @@ class GameItem extends StatelessWidget {
                 child: LayoutBuilder(
                   builder: (ctx, constraints) {
                     final minWidth = constraints.minWidth / 3.1;
-                    return ToggleButtons(
-                      onPressed: onTonerTypeChanged,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(defaultRadius),
-                      ),
-                      constraints: BoxConstraints(
-                        minWidth: minWidth,
-                        minHeight: constraints.minHeight,
-                      ),
-                      selectedBorderColor: lightColorScheme.primary,
-                      selectedColor: Colors.white,
-                      fillColor: lightColorScheme.primary,
-                      color: lightColorScheme.primary,
-                      isSelected: [
-                        tonerType == TonerType.daily,
-                        tonerType == TonerType.seed
-                      ],
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          child: const Text('데일리토너'),
+                    return SizedBox(
+                      height: 40,
+                      child: ToggleButtons(
+                        onPressed: onTonerTypeChanged,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(defaultRadius),
                         ),
-                        Container(
-                          alignment: Alignment.center,
-                          child: const Text('시드권토너'),
+                        constraints: BoxConstraints(
+                          minWidth: minWidth,
+                          minHeight: constraints.minHeight,
                         ),
-                      ],
+                        selectedBorderColor: lightColorScheme.primary,
+                        selectedColor: Colors.white,
+                        fillColor: lightColorScheme.primary,
+                        color: lightColorScheme.primary,
+                        isSelected: [
+                          tonerType == TonerType.daily,
+                          tonerType == TonerType.seed
+                        ],
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            child: const Text('데일리토너'),
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            child: const Text('시드권토너'),
+                          ),
+                        ],
+                      ),
                     );
                   },
                 ),
@@ -218,23 +222,28 @@ class GameItem extends StatelessWidget {
             ],
           ),
           if (tonerType == TonerType.seed)
-            Row(
+            Column(
               children: [
                 const SizedBox(height: padding10),
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    '타겟 토너',
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
-                ),
-                Expanded(
-                  flex: 4,
-                  child: CustomTextField(
-                    initText: targetToner,
-                    hint: '타겟 토너 입력',
-                    onTextFieldChanged: onTargetTonerInputChanged,
-                  ),
+                Row(
+                  children: [
+                    const SizedBox(height: padding10),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        '타겟 토너',
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: CustomTextField(
+                        initText: targetToner,
+                        hint: '타겟 토너 입력',
+                        onTextFieldChanged: onTargetTonerInputChanged,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

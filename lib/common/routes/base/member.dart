@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/mypage_admin/mypage_admin_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/notice/notice_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/term/term.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/views/certification_view.dart';
 
@@ -21,6 +22,7 @@ enum MemberRoutes {
   login('login'),
   mypageAdmin('mypageAdmin'),
   term('term'),
+  notice('notice'),
   ;
 
   const MemberRoutes(this.path);
@@ -60,5 +62,9 @@ List<RouteBase> memberRoutes = [
   rightToLeft(
     MemberRoutes.term.path,
     const TermView(),
+  ),
+  rightToLeft(
+    MemberRoutes.notice.path,
+    const NoticeView(),
   ),
 ];

@@ -24,7 +24,7 @@ class MypageView extends StatelessWidget {
             MypageMenuItem(
               text: '공지사항',
               icon: Assets.notice.path,
-              onTap: () {},
+              onTap: () => context.pushNamed(MemberRoutes.notice.path),
             ),
             // MypageMenuItem(text: '알림설정', icon: Assets.settingNoti.path),
             // MypageMenuItem(text: '1 : 1 문의', icon: Assets.ask.path),

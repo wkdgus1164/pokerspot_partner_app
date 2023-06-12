@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/common/components/dialogs/input_dialog_with_checkbox/input_dialog_with_checkbox_utils.dart';
+import 'package:pokerspot_partner_app/common/components/dialogs/picker_dialog/picker_dialog_utils.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
@@ -187,6 +189,17 @@ class GameItem extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         hint: '엔트리 입력',
                         onTextFieldChanged: onEntryStartInputChanged,
+                        readOnly: true,
+                        onTap: () {
+                          showPickerDialog(
+                            context: context,
+                            title: '최소 엔트리',
+                            selections: ["1", "2", "3", "4"],
+                            onSelectedItemChanged: (p0) {},
+                            onCancel: () {},
+                            onConfirm: () {},
+                          );
+                        },
                       ),
                     ),
                     const Padding(
@@ -199,6 +212,16 @@ class GameItem extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         hint: '엔트리 입력',
                         onTextFieldChanged: onEntryLimitInputChanged,
+                        readOnly: true,
+                        onTap: () {
+                          showInputDialogWithCheckbox(
+                            context: context,
+                            checkboxLabel: '제한없음',
+                            title: '최대 엔트리',
+                            onCancel: () {},
+                            onConfirm: () {},
+                          );
+                        },
                       ),
                     ),
                   ],

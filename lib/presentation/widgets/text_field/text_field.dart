@@ -19,6 +19,9 @@ class CustomTextField extends StatelessWidget {
     this.minLines,
     this.maxLines,
     this.enabled = true,
+    this.onTap,
+    this.readOnly = false,
+    this.textAlign = TextAlign.left,
   });
 
   final String initText;
@@ -35,6 +38,9 @@ class CustomTextField extends StatelessWidget {
   final int? minLines;
   final int? maxLines;
   final bool enabled;
+  final GestureTapCallback? onTap;
+  final bool readOnly;
+  final TextAlign textAlign;
 
   InputDecoration textFieldDecoration(BuildContext context) {
     return InputDecoration(
@@ -80,6 +86,9 @@ class CustomTextField extends StatelessWidget {
       maxLength: maxLength,
       minLines: minLines,
       maxLines: maxLines,
+      textAlign: textAlign,
+      onTap: onTap,
+      readOnly: readOnly,
       keyboardType:
           keyboardType.toString().isEmpty ? TextInputType.text : keyboardType,
       textInputAction: textInputAction,

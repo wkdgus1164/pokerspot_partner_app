@@ -4,8 +4,8 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 
-class TermView extends StatelessWidget {
-  const TermView({super.key});
+class PrivacyPolicyView extends StatelessWidget {
+  const PrivacyPolicyView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class TermView extends StatelessWidget {
         theme: CustomAppBarTheme.light,
         left: Icons.keyboard_arrow_left_rounded,
         isCenterLogo: false,
-        text: '약관 및 정책',
+        text: '개인정보처리방침',
       ),
       body: Container(
         padding: const EdgeInsets.all(padding16),
@@ -34,7 +34,7 @@ class TermView extends StatelessWidget {
     try {
       Dio dio = Dio();
       Response response = await dio.get(
-          'https://pokerspot-policy-docs.s3.ap-northeast-2.amazonaws.com/partner-tos-230606.html');
+          'https://pokerspot-policy-docs.s3.ap-northeast-2.amazonaws.com/partner-privacy-policy-230606.html');
       String htmlSource = response.data.toString();
       return htmlSource;
     } catch (e) {

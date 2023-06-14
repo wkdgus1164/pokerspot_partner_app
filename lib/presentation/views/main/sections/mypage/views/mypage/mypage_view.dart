@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/mypage/components/menu_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/mypage/components/myinfo.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
-import 'package:pokerspot_partner_app/common/constants/assets.dart';
 
 class MypageView extends StatelessWidget {
   const MypageView({super.key});
@@ -36,7 +36,7 @@ class MypageView extends StatelessWidget {
             MypageMenuItem(
               text: '개인정보처리방침',
               icon: Assets.term.path,
-              onTap: () => context.pushNamed(MemberRoutes.term.path),
+              onTap: () => context.pushNamed(MemberRoutes.privacyPolicy.path),
             ),
           ],
         ),

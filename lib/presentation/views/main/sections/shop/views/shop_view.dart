@@ -5,6 +5,7 @@ import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
+import 'package:pokerspot_partner_app/presentation/views/main/sections/shop/components/shop_card.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -23,51 +24,62 @@ class _ShopViewState extends State<ShopView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         theme: CustomAppBarTheme.dark,
         text: '매장관리',
         isCenterLogo: false,
         bottomDivider: false,
+        actions: [
+          IconButton(
+            onPressed: () {
+              // TODO: 신규 등록 페이지로 이동
+            },
+            icon: Icon(
+              Icons.add,
+              color: customColorScheme.onSurfaceContainer1,
+            ),
+          ),
+        ],
       ),
       body: Scaffold(
         body: Consumer<HomeProvider>(builder: (_, provider, __) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Ink(
-                decoration: BoxDecoration(
-                  color: customColorScheme.surfaceContainer2,
-                ),
-                child: InkWell(
-                  onTap: () {
-                    context.pushNamed(ShopRoutes.newIntro.path);
-                  },
-                  splashColor: customColorScheme.surfaceContainer1,
-                  child: Container(
-                    padding: const EdgeInsets.all(padding24),
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(padding10),
-                          decoration: BoxDecoration(
-                            color: customColorScheme.surfaceContainer1,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: SvgPicture.asset(Assets.addNewBusiness.path),
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                          '업체 신규 등록',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall!
-                              .copyWith(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              // Ink(
+              //   decoration: BoxDecoration(
+              //     color: customColorScheme.surfaceContainer2,
+              //   ),
+              //   child: InkWell(
+              //     onTap: () {
+              //       context.pushNamed(ShopRoutes.newIntro.path);
+              //     },
+              //     splashColor: customColorScheme.surfaceContainer1,
+              //     child: Container(
+              //       padding: const EdgeInsets.all(padding24),
+              //       child: Column(
+              //         children: [
+              //           Container(
+              //             padding: const EdgeInsets.all(padding10),
+              //             decoration: BoxDecoration(
+              //               color: customColorScheme.surfaceContainer1,
+              //               borderRadius: BorderRadius.circular(100),
+              //             ),
+              //             child: SvgPicture.asset(Assets.addNewBusiness.path),
+              //           ),
+              //           const SizedBox(height: 6),
+              //           Text(
+              //             '업체 신규 등록',
+              //             style: Theme.of(context)
+              //                 .textTheme
+              //                 .bodySmall!
+              //                 .copyWith(color: Colors.white),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: padding16,
@@ -127,14 +139,12 @@ class _ShopViewState extends State<ShopView> {
       child: Wrap(
         children: List.generate(
           storeList.length,
-          (index) => HomeStoreItem(
-            width: MediaQuery.of(context).size.width,
+          (index) => ShopCard(
+            type: '토너펍',
             thumbnail: storeList[index].storeImages.firstOrNull?.url ?? '',
             title: storeList[index].name,
             isCorporate: storeList[index].status == 'ACCEPT',
-            lastDays: 0,
             onTap: () {},
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 8),
           ),
         ),
       ),

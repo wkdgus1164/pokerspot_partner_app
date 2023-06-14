@@ -87,17 +87,6 @@ class HomeStoreItem extends StatelessWidget {
                                     fontWeight: FontWeight.w500,
                                   ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 4),
-                          child: Text('·'),
-                        ),
-                        Text(
-                          isCorporate ? '제휴 중' : '기간 만료',
-                          style:
-                              Theme.of(context).textTheme.labelLarge!.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
                       ],
                     ),
                   ],

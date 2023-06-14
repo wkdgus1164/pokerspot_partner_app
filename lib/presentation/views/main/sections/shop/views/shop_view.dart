@@ -6,7 +6,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
-import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/shop/components/shop_card.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:provider/provider.dart';
@@ -104,7 +103,6 @@ class _ShopViewState extends State<ShopView> {
   }
 
   Widget _buildStores(List<PartnerStoreModel> storeList) {
-    Logger.d(storeList.map((e) => e.toJson()));
     return SingleChildScrollView(
       child: Column(
         children: List.generate(

@@ -24,18 +24,23 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
     InputDecoration textFieldDecoration() {
       return InputDecoration(
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
+          borderSide: BorderSide(
+            width: 1,
+            color: Colors.grey.shade300,
+          ),
           borderRadius: BorderRadius.circular(4),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
+          borderSide: BorderSide(
+            width: 1,
+            color: Colors.grey.shade300,
+          ),
           borderRadius: BorderRadius.circular(4),
         ),
         hintText: '주소 입력',
-        hintStyle: Theme.of(context)
-            .textTheme
-            .bodyMedium!
-            .copyWith(color: Colors.grey.shade400),
+        hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              color: Colors.grey.shade400,
+            ),
         suffixIcon: InkWell(
           onTap: onSearchTap,
           child: Container(
@@ -46,7 +51,10 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
               border: Border.all(color: Colors.grey.shade300),
             ),
-            child: Text('주소찾기', style: Theme.of(context).textTheme.labelLarge),
+            child: Text(
+              '주소찾기',
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
           ),
         ),
       );
@@ -74,8 +82,9 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
           controller: (initAddress.isNotEmpty
               ? (TextEditingController()
                 ..text = initAddress
-                ..selection =
-                    TextSelection.collapsed(offset: initAddress.length))
+                ..selection = TextSelection.collapsed(
+                  offset: initAddress.length,
+                ))
               : null),
           decoration: textFieldDecoration(),
           keyboardType: TextInputType.text,

@@ -193,8 +193,11 @@ class GameItem extends StatelessWidget {
                   initText: joinCost.toString(),
                   keyboardType: TextInputType.number,
                   hint: '참가비 입력',
-                  onTextFieldChanged: (value) =>
-                      onJoinCostInputChanged.call(int.tryParse(value) ?? 0),
+                  onTextFieldChanged: (value) {
+                    onJoinCostInputChanged.call(
+                      int.tryParse(value) ?? 0,
+                    );
+                  },
                 ),
               ),
             ],
@@ -336,9 +339,9 @@ class GameItem extends StatelessWidget {
                     onPressed: onsaveButtonPressed,
                   ),
                 ),
-              ]
+              ],
             ],
-          )
+          ),
         ],
       ),
     );

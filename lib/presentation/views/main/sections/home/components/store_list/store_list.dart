@@ -1,3 +1,5 @@
+// ignore_for_file: sdk_version_since
+
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
@@ -28,14 +30,16 @@ class HomeStore extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text('제휴 현황', style: Theme.of(context).textTheme.titleLarge),
+              Text(
+                '제휴 현황',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
               const SizedBox(width: 4),
               Text(
                 storeList.length.toString(),
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(color: lightColorScheme.primary),
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: lightColorScheme.primary,
+                    ),
               ),
             ],
           ),

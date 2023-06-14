@@ -33,10 +33,9 @@ class MypageMenuItem extends StatelessWidget {
                       const SizedBox(width: padding16),
                       Text(
                         text,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(color: customColorScheme.onSurface2),
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: customColorScheme.onSurface2,
+                            ),
                       ),
                     ],
                   ),

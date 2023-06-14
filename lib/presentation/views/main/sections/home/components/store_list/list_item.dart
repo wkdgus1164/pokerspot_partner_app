@@ -74,7 +74,9 @@ class HomeStoreItem extends StatelessWidget {
                           width: 10,
                           height: 10,
                           decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
                             color: Colors.red,
                           ),
                         ),

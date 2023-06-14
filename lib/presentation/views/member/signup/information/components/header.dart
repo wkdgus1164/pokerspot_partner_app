@@ -23,10 +23,9 @@ class SignupInformationHeader extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         '1단계',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .copyWith(color: Colors.grey.shade400),
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              color: Colors.grey.shade400,
+                            ),
                       ),
                     ),
                   ],

@@ -22,10 +22,9 @@ class HomeStoreHeader extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall!
-                      .copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        color: Colors.white,
+                      ),
                 ),
                 const SizedBox(width: 4),
                 const Icon(

@@ -39,7 +39,10 @@ class SignupBusinessHeader extends StatelessWidget {
                 ),
               ),
               Center(
-                child: Icon(Icons.chevron_right, color: Colors.grey.shade400),
+                child: Icon(
+                  Icons.chevron_right,
+                  color: Colors.grey.shade400,
+                ),
               ),
               Expanded(
                 child: Column(
@@ -51,10 +54,9 @@ class SignupBusinessHeader extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         '2단계',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .copyWith(color: Colors.grey.shade400),
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              color: Colors.grey.shade400,
+                            ),
                       ),
                     ),
                   ],

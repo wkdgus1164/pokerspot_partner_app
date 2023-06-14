@@ -19,7 +19,10 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: tabBarTitles.length, vsync: this);
+    _tabController = TabController(
+      length: tabBarTitles.length,
+      vsync: this,
+    );
   }
 
   @override
@@ -35,10 +38,9 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
           .map((title) => Tab(
                 child: Text(
                   title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall!
-                      .copyWith(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        color: Colors.black,
+                      ),
                 ),
               ))
           .toList();

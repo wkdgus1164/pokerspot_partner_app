@@ -77,19 +77,27 @@ class ShopProcessEssentialView extends StatelessWidget {
                           initAddressDetail: _store.addressDetail,
                           onSearchTap: () async {
                             Kpostal result = await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) => KpostalView()));
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => KpostalView(),
+                              ),
+                            );
                             _provider.setStore(
-                                _store.copyWith(address: result.address),
-                                notify: true);
+                              _store.copyWith(
+                                address: result.address,
+                              ),
+                              notify: true,
+                            );
                           },
                           onAddressFieldChanged: (value) {
-                            _provider.setStore(_store.copyWith(address: value));
+                            _provider.setStore(
+                              _store.copyWith(address: value),
+                            );
                           },
                           onAddressDetailFieldChanged: (value) {
                             _provider.setStore(
-                                _store.copyWith(addressDetail: value));
+                              _store.copyWith(addressDetail: value),
+                            );
                           },
                         );
                       }),
@@ -102,8 +110,9 @@ class ShopProcessEssentialView extends StatelessWidget {
                         isPassword: false,
                         inputHintText: '예) 숙박 및 음식점업',
                         onTextFieldChanged: (value) {
-                          _provider
-                              .setStore(_store.copyWith(bizCategory: value));
+                          _provider.setStore(
+                            _store.copyWith(bizCategory: value),
+                          );
                         },
                         keyboardType: TextInputType.text,
                         captionText: '사업자 등록증에 기재된 업태를 입력해주세요.',
@@ -118,7 +127,8 @@ class ShopProcessEssentialView extends StatelessWidget {
                         inputHintText: '예) 일반 유흥 주점업',
                         onTextFieldChanged: (value) {
                           _provider.setStore(
-                              _store.copyWith(bizCategoryDetail: value));
+                            _store.copyWith(bizCategoryDetail: value),
+                          );
                         },
                         keyboardType: TextInputType.text,
                         captionText: '사업자 등록증에 기재된 종목을 입력해주세요.',
@@ -172,9 +182,7 @@ class ShopProcessEssentialView extends StatelessWidget {
               theme: CustomFilledButtonTheme.primary,
               onPressed: () {
                 if (_provider.validateEssential()) {
-                  return context.pushNamed(
-                    ShopRoutes.processImageUpload.path,
-                  );
+                  return context.pushNamed(ShopRoutes.processImageUpload.path);
                 } else {
                   showToast(context: context, message: '모든 정보를 입력해주세요.');
                 }

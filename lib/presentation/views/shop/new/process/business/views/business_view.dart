@@ -30,54 +30,56 @@ class ShopProcessBusinessView extends StatelessWidget {
         text: '신규 매장 등록',
       ),
       body: SafeArea(
-        child: Consumer<CreateStoreProvider>(builder: (_, __, ___) {
-          return Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    padding: const EdgeInsets.all(padding16),
-                    color: lightColorScheme.surface,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        const ShopProcessSteps(index: 1),
-                        const SizedBox(height: padding16),
-                        Text(
-                          '사업자 정보',
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
-                        const SizedBox(height: padding10),
-                        Text(
-                          '사업자 정보를 입력해주세요.',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        const SizedBox(height: padding48),
+        child: Consumer<CreateStoreProvider>(
+          builder: (_, __, ___) {
+            return Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      padding: const EdgeInsets.all(padding16),
+                      color: lightColorScheme.surface,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          const ShopProcessSteps(index: 1),
+                          const SizedBox(height: padding16),
+                          Text(
+                            '사업자 정보',
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                          const SizedBox(height: padding10),
+                          Text(
+                            '사업자 정보를 입력해주세요.',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          const SizedBox(height: padding48),
 
-                        // 사업자등록번호
-                        _buildBusinessNumber(),
-                        const SizedBox(height: padding24),
+                          // 사업자등록번호
+                          _buildBusinessNumber(),
+                          const SizedBox(height: padding24),
 
-                        // 개업연월일
-                        _buildOpenDate(),
-                        const SizedBox(height: padding24),
+                          // 개업연월일
+                          _buildOpenDate(),
+                          const SizedBox(height: padding24),
 
-                        // 휴대폰 번호
-                        _buildPhone(),
-                        const SizedBox(height: padding32),
+                          // 휴대폰 번호
+                          _buildPhone(),
+                          const SizedBox(height: padding32),
 
-                        // 사업자인증
-                        _buildVerify(context),
-                      ],
+                          // 사업자인증
+                          _buildVerify(context),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              _buildNextButton(context),
-            ],
-          );
-        }),
+                _buildNextButton(context),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

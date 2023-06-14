@@ -46,9 +46,7 @@ class SignupSuccessView extends StatelessWidget {
                 child: CustomFilledButton(
                   text: '확인',
                   theme: CustomFilledButtonTheme.secondary,
-                  onPressed: () => context.pushNamed(
-                    MemberRoutes.login.path,
-                  ),
+                  onPressed: () => context.pushNamed(MemberRoutes.login.path),
                 ),
               ),
             ],

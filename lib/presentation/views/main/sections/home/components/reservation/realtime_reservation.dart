@@ -77,7 +77,9 @@ class HomeRealtimeReservation extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(color: lightColorScheme.outline),
+                border: Border.all(
+                  color: lightColorScheme.outline,
+                ),
                 color: Colors.white,
               ),
               child: const Icon(
@@ -96,9 +98,15 @@ class HomeRealtimeReservation extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          Text('$denied', style: Theme.of(context).textTheme.headlineLarge),
+          Text(
+            '$denied',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
           const SizedBox(height: padding10),
-          Text('예약거절', style: Theme.of(context).textTheme.labelLarge),
+          Text(
+            '예약거절',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
         ],
       ),
     );
@@ -108,9 +116,15 @@ class HomeRealtimeReservation extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          Text('$applied', style: Theme.of(context).textTheme.headlineLarge),
+          Text(
+            '$applied',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
           const SizedBox(height: padding10),
-          Text('처리완료', style: Theme.of(context).textTheme.labelLarge),
+          Text(
+            '처리완료',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
         ],
       ),
     );
@@ -130,13 +144,19 @@ class HomeRealtimeReservation extends StatelessWidget {
                     ),
               ),
               const SizedBox(height: padding10),
-              Text('처리대기', style: Theme.of(context).textTheme.labelLarge),
+              Text(
+                '처리대기',
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
             ],
           ),
           Positioned(
             top: 0,
             left: 80,
-            child: Image.asset(Assets.newIcon.path, width: 16),
+            child: Image.asset(
+              Assets.newIcon.path,
+              width: 16,
+            ),
           ),
         ],
       ),

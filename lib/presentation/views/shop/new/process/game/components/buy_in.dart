@@ -15,7 +15,10 @@ class ShopProcessGameBuyIn extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('Buy-in(바이인)', style: Theme.of(context).textTheme.titleLarge),
+          Text(
+            'Buy-in(바이인)',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
           const SizedBox(height: padding24),
           Row(
             children: [
@@ -26,7 +29,10 @@ class ShopProcessGameBuyIn extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
-              const Expanded(flex: 7, child: CustomTextField(hint: 'Min 선택')),
+              const Expanded(
+                flex: 7,
+                child: CustomTextField(hint: 'Min 선택'),
+              ),
             ],
           ),
           const SizedBox(height: padding16),
@@ -39,7 +45,10 @@ class ShopProcessGameBuyIn extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
-              const Expanded(flex: 7, child: CustomTextField(hint: 'Max 선택')),
+              const Expanded(
+                flex: 7,
+                child: CustomTextField(hint: 'Max 선택'),
+              ),
             ],
           ),
           const SizedBox(height: padding16),

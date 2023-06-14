@@ -23,7 +23,8 @@ class TermView extends StatelessWidget {
           future: _fetchHtmlSource(),
           builder: (_, snapshot) {
             return SingleChildScrollView(
-                child: Html(data: snapshot.data ?? ''));
+              child: Html(data: snapshot.data ?? ''),
+            );
           },
         )),
       ),
@@ -34,7 +35,8 @@ class TermView extends StatelessWidget {
     try {
       Dio dio = Dio();
       Response response = await dio.get(
-          'https://pokerspot-policy-docs.s3.ap-northeast-2.amazonaws.com/partner-tos-230606.html');
+        'https://pokerspot-policy-docs.s3.ap-northeast-2.amazonaws.com/partner-tos-230606.html',
+      );
       String htmlSource = response.data.toString();
       return htmlSource;
     } catch (e) {

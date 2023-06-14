@@ -91,15 +91,19 @@ class SignupRenewView extends StatelessWidget {
                                 final data = await context.pushNamed(
                                   MemberRoutes.signupCertification.path,
                                 );
-                                provider
-                                    .setImpUid(data as Map<String, String>?);
-                                await provider.checkPhoneNumber().then((value) {
-                                  if (!value) {
-                                    showToast(
+                                provider.setImpUid(
+                                  data as Map<String, String>?,
+                                );
+                                await provider.checkPhoneNumber().then(
+                                  (value) {
+                                    if (!value) {
+                                      showToast(
                                         context: context,
-                                        message: '본인인증을 실패했습니다.');
-                                  }
-                                });
+                                        message: '본인인증을 실패했습니다.',
+                                      );
+                                    }
+                                  },
+                                );
                               }
                             : null,
                       ),
@@ -114,10 +118,13 @@ class SignupRenewView extends StatelessWidget {
                                 final result = await provider.signUp();
                                 if (result == null && context.mounted) {
                                   context.pushNamed(
-                                      MemberRoutes.signupSuccess.path);
+                                    MemberRoutes.signupSuccess.path,
+                                  );
                                 } else {
                                   showToast(
-                                      context: context, message: result ?? '');
+                                    context: context,
+                                    message: result ?? '',
+                                  );
                                 }
                               }
                             : null,

@@ -34,7 +34,10 @@ class _SignupIdState extends State<SignupId> {
           borderRadius: BorderRadius.circular(4),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(width: 1, color: lightColorScheme.outline),
+          borderSide: BorderSide(
+            width: 1,
+            color: lightColorScheme.outline,
+          ),
           borderRadius: BorderRadius.circular(4),
         ),
         focusedBorder: OutlineInputBorder(
@@ -44,10 +47,9 @@ class _SignupIdState extends State<SignupId> {
         ),
         helperText: _help,
         hintText: '아이디 입력',
-        hintStyle: Theme.of(context)
-            .textTheme
-            .bodyMedium!
-            .copyWith(color: customColorScheme.onSurface4),
+        hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              color: customColorScheme.onSurface4,
+            ),
         errorText: !widget.checkedDuplicateId ? '중복된 아이디입니다.' : _error,
       );
     }
@@ -57,18 +59,16 @@ class _SignupIdState extends State<SignupId> {
       children: [
         Text(
           '아이디',
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(color: customColorScheme.onSurface1),
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: customColorScheme.onSurface1,
+              ),
         ),
         const SizedBox(height: padding10),
         Text(
           '영문+숫자 조합 4~12자리',
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall!
-              .copyWith(color: customColorScheme.onSurface3),
+          style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                color: customColorScheme.onSurface3,
+              ),
         ),
         const SizedBox(height: padding10),
         TextFormField(

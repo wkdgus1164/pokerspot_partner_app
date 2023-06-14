@@ -24,17 +24,23 @@ class HomeNoticeItem extends StatelessWidget {
         bottom: padding16,
       ),
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(defaultRadius)),
+        borderRadius: BorderRadius.all(
+          Radius.circular(defaultRadius),
+        ),
       ),
       child: InkWell(
         onTap: onItemPressed,
         splashColor: Colors.grey.shade50,
-        borderRadius: const BorderRadius.all(Radius.circular(defaultRadius)),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(defaultRadius),
+        ),
         child: Container(
           width: MediaQuery.of(context).size.width - 80,
           padding: const EdgeInsets.all(padding16),
           decoration: BoxDecoration(
-            border: Border.all(color: lightColorScheme.outline),
+            border: Border.all(
+              color: lightColorScheme.outline,
+            ),
             borderRadius: const BorderRadius.all(
               Radius.circular(defaultRadius),
             ),

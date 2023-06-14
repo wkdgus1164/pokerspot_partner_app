@@ -43,13 +43,19 @@ class MypageAdminView extends StatelessWidget {
                       ),
                       const SizedBox(height: padding48),
                       CustomOutlinedButton(
-                          onPressed: () {
-                            provider.logout();
-                            context.goNamed(MemberRoutes.login.path);
-                          },
-                          text: '로그아웃'),
+                        onPressed: () {
+                          provider.logout();
+                          context.goNamed(MemberRoutes.login.path);
+                        },
+                        text: '로그아웃',
+                      ),
                       const SizedBox(height: padding16),
-                      CustomOutlinedButton(onPressed: () {}, text: '회원탈퇴'),
+                      CustomOutlinedButton(
+                        onPressed: () {
+                          // TODO: 회원탈퇴
+                        },
+                        text: '회원탈퇴',
+                      ),
                     ],
                   ),
                 );

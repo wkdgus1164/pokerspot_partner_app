@@ -114,9 +114,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                               const SizedBox(height: padding10),
 
                               // 추가하기 버튼
-                              GameAddButton(onPressed: () {
-                                _addGame();
-                              }),
+                              GameAddButton(onPressed: () => _addGame()),
                               ...List.generate(
                                 _games.length,
                                 (index) => _buildGame(index),

@@ -58,35 +58,6 @@ class MypageMyinfo extends StatelessWidget {
                   ),
                 ],
               ),
-              // const SizedBox(height: padding32),
-              // Container(
-              //   padding: const EdgeInsets.symmetric(
-              //     horizontal: padding16,
-              //     vertical: padding32,
-              //   ),
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(10),
-              //     color: const Color.fromRGBO(58, 69, 82, 1),
-              //   ),
-              //   child: Row(
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: [
-              //       const Icon(
-              //         Icons.person,
-              //         color: Colors.white,
-              //         size: 30,
-              //       ),
-              //       const SizedBox(width: padding10),
-              //       Text(
-              //         '손님관리',
-              //         style: Theme.of(context).textTheme.titleLarge!.copyWith(
-              //               color: Colors.white,
-              //               fontWeight: FontWeight.w600,
-              //             ),
-              //       )
-              //     ],
-              //   ),
-              // )
             ],
           ),
         );

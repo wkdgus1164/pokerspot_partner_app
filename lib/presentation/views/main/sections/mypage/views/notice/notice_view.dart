@@ -21,23 +21,25 @@ class NoticeView extends StatelessWidget {
       body: SafeArea(
         child: ChangeNotifierProvider<NoticeProvider>(
           create: (_) => locator(),
-          child: Consumer<NoticeProvider>(builder: (_, provider, __) {
-            return ListView.builder(
-              itemCount: provider.notices.length,
-              itemBuilder: (_, int index) {
-                final notice = provider.notices[index];
-                return MoreNoticeItem(
-                  onClick: () {
-                    provider.getNotice(notice.id);
-                  },
-                  date: '21시간 전',
-                  title: notice.title,
-                  content: notice.content,
-                  isExpand: provider.isExpands[index],
-                );
-              },
-            );
-          }),
+          child: Consumer<NoticeProvider>(
+            builder: (_, provider, __) {
+              return ListView.builder(
+                itemCount: provider.notices.length,
+                itemBuilder: (_, int index) {
+                  final notice = provider.notices[index];
+                  return MoreNoticeItem(
+                    onClick: () {
+                      provider.getNotice(notice.id);
+                    },
+                    date: '21시간 전',
+                    title: notice.title,
+                    content: notice.content,
+                    isExpand: provider.isExpands[index],
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );

@@ -31,7 +31,10 @@ class TournamentItemInformation extends StatelessWidget {
           const SizedBox(height: padding10),
 
           // 토너 제목
-          Text(title, style: Theme.of(context).textTheme.titleMedium),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
           const SizedBox(height: padding10),
 
           // 토너 정보

@@ -117,10 +117,10 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                   onSubmit: () {
                                     _provider.setStore(
                                       _store.copyWith(
-                                          openTime: _times()[_openTimeIndex]),
+                                        openTime: _times()[_openTimeIndex],
+                                      ),
                                       notify: true,
                                     );
-                                    // Navigator.pop(context);
                                   },
                                 );
                               },
@@ -149,7 +149,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                     final times = _times(
                                       startIndex: _openTimeIndex,
                                     );
-                                    Logger.d('_isChecked=${_isChecked}');
+                                    Logger.d('_isChecked=$_isChecked');
                                     _provider.setStore(
                                       _store.copyWith(
                                         closeTime: _isChecked
@@ -160,7 +160,6 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                       ),
                                       notify: true,
                                     );
-                                    // Navigator.pop(context);
                                   },
                                 );
                               },
@@ -197,34 +196,6 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                 },
                               ),
                             ),
-
-                            /// 현재 토너펍만 운영
-                            /*
-                            const SizedBox(width: padding10),
-                            ShopProcessOperationPub(
-                              asset: Assets.ringPubOff.path,
-                              enabledAsset: Assets.ringPubOn.path,
-                              text: '기타펍 A',
-                              isEnabled: _store.type == 'ETC1',
-                              onTap: () {
-                                _provider.setStore(
-                                    _store.copyWith(type: 'ETC1'),
-                                    notify: true);
-                              },
-                            ),
-                            const SizedBox(width: padding10),
-                            ShopProcessOperationPub(
-                              asset: Assets.etcPubOff.path,
-                              enabledAsset: Assets.etcPubOn.path,
-                              text: '기타펍 B',
-                              isEnabled: _store.type == 'ETC2',
-                              onTap: () {
-                                _provider.setStore(
-                                    _store.copyWith(type: 'ETC2'),
-                                    notify: true);
-                              },
-                            ),
-                             */
                           ],
                         ),
                         const SizedBox(height: padding32),

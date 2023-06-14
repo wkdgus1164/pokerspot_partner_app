@@ -19,13 +19,15 @@ class PrivacyPolicyView extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(padding16),
         child: SizedBox.expand(
-            child: FutureBuilder<String>(
-          future: _fetchHtmlSource(),
-          builder: (_, snapshot) {
-            return SingleChildScrollView(
-                child: Html(data: snapshot.data ?? ''));
-          },
-        )),
+          child: FutureBuilder<String>(
+            future: _fetchHtmlSource(),
+            builder: (_, snapshot) {
+              return SingleChildScrollView(
+                child: Html(data: snapshot.data ?? ''),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
@@ -34,7 +36,8 @@ class PrivacyPolicyView extends StatelessWidget {
     try {
       Dio dio = Dio();
       Response response = await dio.get(
-          'https://pokerspot-policy-docs.s3.ap-northeast-2.amazonaws.com/partner-privacy-policy-230606.html');
+        'https://pokerspot-policy-docs.s3.ap-northeast-2.amazonaws.com/partner-privacy-policy-230606.html',
+      );
       String htmlSource = response.data.toString();
       return htmlSource;
     } catch (e) {

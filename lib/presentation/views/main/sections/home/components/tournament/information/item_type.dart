@@ -20,14 +20,19 @@ class ItemType extends StatelessWidget {
         vertical: 4,
       ),
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(4)),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(4),
+        ),
         color: isAvailable
             ? const Color.fromRGBO(112, 156, 237, 1)
             : lightColorScheme.onSurface,
       ),
       child: Text(
         tournamentType == TournamentType.daily ? '데일리 토너' : '시드권 토너',
-        style: const TextStyle(fontSize: 10, color: Colors.white),
+        style: const TextStyle(
+          fontSize: 10,
+          color: Colors.white,
+        ),
       ),
     );
   }

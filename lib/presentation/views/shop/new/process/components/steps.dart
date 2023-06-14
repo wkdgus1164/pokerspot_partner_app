@@ -26,10 +26,9 @@ class ShopProcessSteps extends StatelessWidget {
                 ),
                 child: Text(
                   '$e',
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelLarge!
-                      .copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        color: Colors.white,
+                      ),
                   textAlign: TextAlign.center,
                 ),
               ))

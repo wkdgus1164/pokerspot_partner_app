@@ -49,7 +49,10 @@ class HomeRecentReservation extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
-                Text('31명', style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  '31명',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
               ],
             ),
           ),
@@ -79,7 +82,9 @@ class HomeRecentReservation extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(color: lightColorScheme.outline),
+                border: Border.all(
+                  color: lightColorScheme.outline,
+                ),
                 color: Colors.white,
               ),
               child: SvgPicture.asset(Assets.setting.path),

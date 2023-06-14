@@ -47,7 +47,10 @@ class LoginForm extends StatelessWidget {
               onTap: onAutoLoginCheckboxChanged,
               borderRadius: BorderRadius.circular(4),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 8,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -81,10 +84,9 @@ class LoginForm extends StatelessWidget {
             children: [
               Text(
                 '아직 회원이 아니신가요?',
-                style: Theme.of(context)
-                    .textTheme
-                    .labelLarge!
-                    .copyWith(color: Colors.grey.shade700),
+                style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: Colors.grey.shade700,
+                    ),
               ),
               const SizedBox(height: 6),
               CustomTextButton(

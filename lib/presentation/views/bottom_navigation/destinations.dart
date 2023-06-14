@@ -27,14 +27,12 @@ final List<String> labels = [
 ];
 
 List<BottomNavigationBarItem> bottomNavigationItems =
-    defaultIcons.asMap().entries.map(
-  (entry) {
-    int index = entry.key;
+    defaultIcons.asMap().entries.map((entry) {
+  int index = entry.key;
 
-    return BottomNavigationBarItem(
-      icon: SvgPicture.asset(defaultIcons[index]),
-      activeIcon: SvgPicture.asset(selectedIcons[index]),
-      label: labels[index],
-    );
-  },
-).toList();
+  return BottomNavigationBarItem(
+    icon: SvgPicture.asset(defaultIcons[index]),
+    activeIcon: SvgPicture.asset(selectedIcons[index]),
+    label: labels[index],
+  );
+}).toList();

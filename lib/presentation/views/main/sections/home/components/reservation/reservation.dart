@@ -19,7 +19,10 @@ class HomeReservationStatus extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('매장 예약 현황', style: Theme.of(context).textTheme.titleLarge),
+          Text(
+            '매장 예약 현황',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
           const SizedBox(height: padding16),
           HomeCard(
             child: HomeRealtimeReservation(

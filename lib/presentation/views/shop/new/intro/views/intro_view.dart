@@ -78,10 +78,9 @@ class _ShopNewIntroViewState extends State<ShopNewIntroView> {
                     children: [
                       Text(
                         '매장 등록 안내 가이드 보기',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .copyWith(color: Colors.black),
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              color: Colors.black,
+                            ),
                       ),
                       Icon(
                         Icons.chevron_right_rounded,

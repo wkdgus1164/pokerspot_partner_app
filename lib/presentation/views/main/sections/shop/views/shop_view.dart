@@ -129,7 +129,7 @@ class _ShopViewState extends State<ShopView> {
           storeList.length,
           (index) => HomeStoreItem(
             width: MediaQuery.of(context).size.width,
-            thumbnail: storeList[index].storeImages.first.url,
+            thumbnail: storeList[index].storeImages.firstOrNull?.url ?? '',
             title: storeList[index].name,
             isCorporate: storeList[index].status == 'ACCEPT',
             lastDays: 0,

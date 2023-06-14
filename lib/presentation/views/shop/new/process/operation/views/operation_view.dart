@@ -6,6 +6,7 @@ import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/components/steps.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/operation/components/pub.dart';
@@ -32,6 +33,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
   final _provider = locator<CreateStoreProvider>();
   int _openTimeIndex = 0;
   int _closeTimeIndex = 0;
+  bool _isChecked = false;
 
   CreateStoreModel get _store => _provider.store;
 
@@ -50,6 +52,13 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
     times.add('익일 12:00');
 
     return times;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _isChecked = _store.closeTime == null;
   }
 
   @override
@@ -133,15 +142,19 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                   onItemChanged: (value) {
                                     _closeTimeIndex = value;
                                   },
+                                  onCheckboxChanged: () {
+                                    _isChecked = !_isChecked;
+                                  },
                                   onSubmit: () {
                                     final times = _times(
                                       startIndex: _openTimeIndex,
                                     );
-
+                                    Logger.d('_isChecked=${_isChecked}');
                                     _provider.setStore(
                                       _store.copyWith(
-                                        closeTime:
-                                            times.length == _closeTimeIndex
+                                        closeTime: _isChecked
+                                            ? null
+                                            : times.length == _closeTimeIndex
                                                 ? null
                                                 : times[_closeTimeIndex],
                                       ),
@@ -350,6 +363,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
     int startIndex = 0,
     required Function(int) onItemChanged,
     required VoidCallback onSubmit,
+    required VoidCallback onCheckboxChanged,
   }) {
     showPickerDialogWithCheckbox(
       title: '마감시간 선택',
@@ -358,8 +372,8 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
       onCancel: () {},
       onConfirm: onSubmit,
       checkboxLabel: '마감 시까지',
-      isChecked: false,
-      onCheckboxChanged: () {},
+      isChecked: _store.closeTime == null,
+      onCheckboxChanged: onCheckboxChanged,
       onSelectedItemChanged: onItemChanged,
     );
   }

@@ -46,7 +46,7 @@ class HomeStore extends StatelessWidget {
             children: List.generate(
               storeList.length,
               (index) => HomeStoreItem(
-                thumbnail: storeList[index].storeImages.first.url,
+                thumbnail: storeList[index].storeImages.firstOrNull?.url ?? '',
                 title: storeList[index].name,
                 isCorporate: storeList[index].status == 'ACCEPT',
                 lastDays: 0,

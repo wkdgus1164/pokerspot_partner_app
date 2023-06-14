@@ -42,8 +42,15 @@ class PickerDialogWithCheckbox extends StatefulWidget {
 class _PickerDialogState extends State<PickerDialogWithCheckbox> {
   Widget get icon => widget.icon;
   String get title => widget.title;
-  bool get isChecked => widget.isChecked;
+  bool isChecked = false;
   String get checkboxLabel => widget.checkboxLabel;
+
+  @override
+  void initState() {
+    super.initState();
+
+    isChecked = widget.isChecked;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +86,12 @@ class _PickerDialogState extends State<PickerDialogWithCheckbox> {
               children: [
                 CustomCheckbox(
                   value: isChecked,
-                  onChanged: widget.onCheckboxChanged,
+                  onChanged: () {
+                    setState(() {
+                      isChecked = !isChecked;
+                    });
+                    widget.onCheckboxChanged?.call();
+                  },
                 ),
                 const SizedBox(width: padding10),
                 Text(

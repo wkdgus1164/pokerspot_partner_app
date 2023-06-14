@@ -364,7 +364,7 @@ CreateStoreModel _$CreateStoreModelFromJson(Map<String, dynamic> json) =>
                   CreateStoreImageModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      openTime: json['openTime'] as String? ?? '',
+      openTime: json['openTime'] as String? ?? '00:00',
       closeTime: json['closeTime'] as String?,
       type: json['type'] as String? ?? 'MTT',
     );
@@ -426,4 +426,5 @@ Map<String, dynamic> _$MttGameModelToJson(MttGameModel instance) =>
 const _$TonerTypeEnumMap = {
   TonerType.daily: 'DAILY',
   TonerType.seed: 'SEED',
+  TonerType.gtd: 'GTD',
 };

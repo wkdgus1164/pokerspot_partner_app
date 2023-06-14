@@ -218,7 +218,11 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
         _provider.setGame(
           index: index,
           model: _games[index].copyWith(
-            type: value == 0 ? TonerType.daily : TonerType.seed,
+            type: value == 0
+                ? TonerType.daily
+                : value == 1
+                    ? TonerType.seed
+                    : TonerType.gtd,
           ),
         );
       },

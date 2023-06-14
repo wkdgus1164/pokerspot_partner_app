@@ -30,7 +30,7 @@ class _ShopNewIntroViewState extends State<ShopNewIntroView> {
     }
 
     onAddNewButtonPressed() {
-      context.pushNamed(ShopRoutes.processOperation.path);
+      context.pushNamed(ShopRoutes.processBusiness.path);
     }
 
     return Scaffold(

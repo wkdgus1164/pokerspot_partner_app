@@ -79,18 +79,20 @@ class MttGameModel {
   final TonerType type;
   final int entryPrice;
   final int entryMin;
-  final int entryMax;
+  final int? entryMax;
   final String prize;
   final String targetMttName;
+  final int gtdMinReward;
   final bool isDaily;
 
   MttGameModel({
     this.type = TonerType.daily,
     this.entryPrice = 10000,
     this.entryMin = 1,
-    this.entryMax = 2,
+    this.entryMax,
     this.prize = '100%',
     this.targetMttName = '',
+    this.gtdMinReward = 1000000,
     this.isDaily = false,
   });
 

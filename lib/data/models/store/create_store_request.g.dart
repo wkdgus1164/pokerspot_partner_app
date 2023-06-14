@@ -215,11 +215,13 @@ abstract class _$MttGameModelCWProxy {
 
   MttGameModel entryMin(int entryMin);
 
-  MttGameModel entryMax(int entryMax);
+  MttGameModel entryMax(int? entryMax);
 
   MttGameModel prize(String prize);
 
   MttGameModel targetMttName(String targetMttName);
+
+  MttGameModel gtdMinReward(int gtdMinReward);
 
   MttGameModel isDaily(bool isDaily);
 
@@ -236,6 +238,7 @@ abstract class _$MttGameModelCWProxy {
     int? entryMax,
     String? prize,
     String? targetMttName,
+    int? gtdMinReward,
     bool? isDaily,
   });
 }
@@ -256,7 +259,7 @@ class _$MttGameModelCWProxyImpl implements _$MttGameModelCWProxy {
   MttGameModel entryMin(int entryMin) => this(entryMin: entryMin);
 
   @override
-  MttGameModel entryMax(int entryMax) => this(entryMax: entryMax);
+  MttGameModel entryMax(int? entryMax) => this(entryMax: entryMax);
 
   @override
   MttGameModel prize(String prize) => this(prize: prize);
@@ -264,6 +267,10 @@ class _$MttGameModelCWProxyImpl implements _$MttGameModelCWProxy {
   @override
   MttGameModel targetMttName(String targetMttName) =>
       this(targetMttName: targetMttName);
+
+  @override
+  MttGameModel gtdMinReward(int gtdMinReward) =>
+      this(gtdMinReward: gtdMinReward);
 
   @override
   MttGameModel isDaily(bool isDaily) => this(isDaily: isDaily);
@@ -283,6 +290,7 @@ class _$MttGameModelCWProxyImpl implements _$MttGameModelCWProxy {
     Object? entryMax = const $CopyWithPlaceholder(),
     Object? prize = const $CopyWithPlaceholder(),
     Object? targetMttName = const $CopyWithPlaceholder(),
+    Object? gtdMinReward = const $CopyWithPlaceholder(),
     Object? isDaily = const $CopyWithPlaceholder(),
   }) {
     return MttGameModel(
@@ -299,10 +307,10 @@ class _$MttGameModelCWProxyImpl implements _$MttGameModelCWProxy {
           ? _value.entryMin
           // ignore: cast_nullable_to_non_nullable
           : entryMin as int,
-      entryMax: entryMax == const $CopyWithPlaceholder() || entryMax == null
+      entryMax: entryMax == const $CopyWithPlaceholder()
           ? _value.entryMax
           // ignore: cast_nullable_to_non_nullable
-          : entryMax as int,
+          : entryMax as int?,
       prize: prize == const $CopyWithPlaceholder() || prize == null
           ? _value.prize
           // ignore: cast_nullable_to_non_nullable
@@ -312,6 +320,11 @@ class _$MttGameModelCWProxyImpl implements _$MttGameModelCWProxy {
               ? _value.targetMttName
               // ignore: cast_nullable_to_non_nullable
               : targetMttName as String,
+      gtdMinReward:
+          gtdMinReward == const $CopyWithPlaceholder() || gtdMinReward == null
+              ? _value.gtdMinReward
+              // ignore: cast_nullable_to_non_nullable
+              : gtdMinReward as int,
       isDaily: isDaily == const $CopyWithPlaceholder() || isDaily == null
           ? _value.isDaily
           // ignore: cast_nullable_to_non_nullable
@@ -406,9 +419,10 @@ MttGameModel _$MttGameModelFromJson(Map<String, dynamic> json) => MttGameModel(
           TonerType.daily,
       entryPrice: json['entryPrice'] as int? ?? 10000,
       entryMin: json['entryMin'] as int? ?? 1,
-      entryMax: json['entryMax'] as int? ?? 2,
+      entryMax: json['entryMax'] as int?,
       prize: json['prize'] as String? ?? '100%',
       targetMttName: json['targetMttName'] as String? ?? '',
+      gtdMinReward: json['gtdMinReward'] as int? ?? 1000000,
       isDaily: json['isDaily'] as bool? ?? false,
     );
 
@@ -420,6 +434,7 @@ Map<String, dynamic> _$MttGameModelToJson(MttGameModel instance) =>
       'entryMax': instance.entryMax,
       'prize': instance.prize,
       'targetMttName': instance.targetMttName,
+      'gtdMinReward': instance.gtdMinReward,
       'isDaily': instance.isDaily,
     };
 

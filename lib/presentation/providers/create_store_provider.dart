@@ -99,21 +99,13 @@ class CreateStoreProvider with ChangeNotifier {
 
   bool validateGame() {
     Logger.d(store.toJson());
-    Logger.d(!mttGames
-        .map((e) =>
-            [
-              e.targetMttName,
-              e.prize,
-            ].any((data) => data.isNotEmpty) &&
-            e.entryMax >= e.entryMin)
-        .any((game) => game == false));
     return !mttGames
         .map((e) =>
             [
               e.targetMttName,
               e.prize,
             ].any((data) => data.isNotEmpty) &&
-            e.entryMax >= e.entryMin)
+            (e.entryMax ?? 1000) >= e.entryMin)
         .any((game) => game == false);
   }
 

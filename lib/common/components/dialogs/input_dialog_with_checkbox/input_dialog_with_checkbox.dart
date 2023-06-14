@@ -8,6 +8,7 @@ import 'package:pokerspot_partner_app/common/components/dialogs/base/templates/b
 import 'package:pokerspot_partner_app/common/components/dialogs/base/templates/title/base_dialog_title_section.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 
@@ -15,10 +16,12 @@ class InputDialogWithCheckbox extends StatefulWidget {
   final Widget icon;
   final String title;
   final bool isChecked;
+  final bool disableOnChecked;
   final String checkboxLabel;
   final VoidCallback? onConfirm;
   final VoidCallback? onCancel;
   final Function()? onCheckboxChanged;
+  final Function(String)? onTextFieldChanged;
 
   const InputDialogWithCheckbox({
     super.key,
@@ -27,8 +30,10 @@ class InputDialogWithCheckbox extends StatefulWidget {
     this.onConfirm,
     this.onCancel,
     this.isChecked = false,
+    this.disableOnChecked = false,
     this.checkboxLabel = "",
     required this.onCheckboxChanged,
+    this.onTextFieldChanged,
   });
 
   @override
@@ -38,8 +43,16 @@ class InputDialogWithCheckbox extends StatefulWidget {
 class _PickerDialogState extends State<InputDialogWithCheckbox> {
   Widget get icon => widget.icon;
   String get title => widget.title;
-  bool get isChecked => widget.isChecked;
+  bool isChecked = false;
+  bool get disableOnChecked => widget.disableOnChecked ? isChecked : false;
   String get checkboxLabel => widget.checkboxLabel;
+
+  @override
+  void initState() {
+    super.initState();
+
+    isChecked = widget.isChecked;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +61,8 @@ class _PickerDialogState extends State<InputDialogWithCheckbox> {
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(
+          Padding(
+            padding: const EdgeInsets.symmetric(
               horizontal: padding24,
               vertical: padding16,
             ),
@@ -59,6 +72,8 @@ class _PickerDialogState extends State<InputDialogWithCheckbox> {
               textAlign: TextAlign.center,
               maxLines: 1,
               maxLength: 3,
+              enabled: !disableOnChecked,
+              onTextFieldChanged: widget.onTextFieldChanged,
             ),
           ),
           Padding(
@@ -67,7 +82,13 @@ class _PickerDialogState extends State<InputDialogWithCheckbox> {
               children: [
                 CustomCheckbox(
                   value: isChecked,
-                  onChanged: widget.onCheckboxChanged,
+                  onChanged: () {
+                    setState(() {
+                      isChecked = !isChecked;
+                      Logger.d(disableOnChecked);
+                    });
+                    widget.onCheckboxChanged?.call();
+                  },
                 ),
                 const SizedBox(width: padding10),
                 Text(

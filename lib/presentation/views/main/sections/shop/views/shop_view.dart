@@ -1,7 +1,9 @@
 // ignore_for_file: sdk_version_since
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/shop/components/shop_card.dart';
@@ -29,7 +31,7 @@ class _ShopViewState extends State<ShopView> {
         actions: [
           IconButton(
             onPressed: () {
-              // TODO: 신규 등록 페이지로 이동
+              context.pushNamed(ShopRoutes.processGame.path);
             },
             icon: Icon(
               Icons.add,
@@ -66,7 +68,7 @@ class _ShopViewState extends State<ShopView> {
                   ),
                 ),
                 if (provider.stores?.isNotEmpty == true)
-                  _buildStores(provider.stores ?? [])
+                  Expanded(child: _buildStores(provider.stores ?? []))
                 else
                   Expanded(
                     child: Center(
@@ -100,7 +102,6 @@ class _ShopViewState extends State<ShopView> {
     );
   }
 
-  // FIXME 임시 보유 매장 리스트
   Widget _buildStores(List<PartnerStoreModel> storeList) {
     return SingleChildScrollView(
       child: Column(

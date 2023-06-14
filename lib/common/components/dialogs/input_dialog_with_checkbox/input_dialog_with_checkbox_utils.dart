@@ -10,6 +10,8 @@ void showInputDialogWithCheckbox({
   String checkboxLabel = "",
   bool isChecked = false,
   Function()? onCheckboxChanged,
+  Function(String)? onTextFieldChanged,
+  bool disableOnChecked = false,
 }) {
   showDialog(
     context: context,
@@ -19,6 +21,8 @@ void showInputDialogWithCheckbox({
         onCheckboxChanged: onCheckboxChanged,
         checkboxLabel: checkboxLabel,
         isChecked: isChecked,
+        disableOnChecked: disableOnChecked,
+        onTextFieldChanged: onTextFieldChanged,
         onCancel: onCancel,
         onConfirm: onConfirm,
       );

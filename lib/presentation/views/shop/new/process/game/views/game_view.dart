@@ -202,69 +202,76 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
       case TonerType.seed:
         return '${games[index].entryPrice ~/ 10000}만 시드권 토너먼트';
       case TonerType.gtd:
-        return '${games[index].entryPrice ~/ 10000}만 GTD 토너먼트';
+        return '${games[index].gtdMinReward ~/ 10000}만 GTD 토너먼트';
     }
   }
 
   Widget _buildGame(int index) {
+    final game = _games[index];
     return GameItem(
       title: setTitle(index, _games),
-      isAllDayRunning: _games[index].isDaily,
-      tonerType: _games[index].type,
+      isAllDayRunning: game.isDaily,
+      tonerType: game.type,
       onTonerTypeChanged: (value) {
-        Logger.d(_games[index].toJson());
         _provider.setGame(
           index: index,
-          model: _games[index].copyWith(
-            type: value == 0
-                ? TonerType.daily
-                : value == 1
-                    ? TonerType.seed
-                    : TonerType.gtd,
+          model: game.copyWith(
+              type: value == 0
+                  ? TonerType.daily
+                  : value == 1
+                      ? TonerType.seed
+                      : TonerType.gtd),
+        );
+        Logger.d(_games[index].toJson());
+      },
+      gtdMinReward: game.gtdMinReward,
+      onGtdMinRewardChanged: (value) {
+        _provider.setGame(
+          index: index,
+          model: game.copyWith(
+            gtdMinReward: value,
           ),
         );
       },
       onAllDayRunningChanged: () {
         _provider.setGame(
           index: index,
-          model: _games[index].copyWith(
-            isDaily: !_games[index].isDaily,
+          model: game.copyWith(
+            isDaily: !game.isDaily,
           ),
         );
       },
-      joinCost: _games[index].entryPrice,
+      joinCost: game.entryPrice,
       onJoinCostInputChanged: (value) {
         _provider.setGame(
           index: index,
-          model: _games[index].copyWith(
+          model: game.copyWith(
             entryPrice: value,
           ),
         );
       },
-      entryStart: _games[index].entryMin,
+      entryStart: game.entryMin,
       onEntryStartInputChanged: (value) {
         _provider.setGame(
           index: index,
-          model: _games[index].copyWith(
-            entryMin: int.tryParse(value) ?? 0,
+          model: game.copyWith(
+            entryMin: value,
           ),
         );
       },
-      entryLimit: _games[index].entryMax,
+      entryLimit: game.entryMax,
       onEntryLimitInputChanged: (value) {
         _provider.setGame(
           index: index,
-          model: _games[index].copyWith(
-            entryMax: int.tryParse(value) ?? 0,
-          ),
+          model: game.copyWith(entryMax: value),
         );
       },
-      prize: _games[index].prize,
-      targetToner: _games[index].targetMttName,
+      prize: game.prize,
+      targetToner: game.targetMttName,
       onTargetTonerInputChanged: (value) {
         _provider.setGame(
           index: index,
-          model: _games[index].copyWith(targetMttName: value),
+          model: game.copyWith(targetMttName: value),
           notify: false,
         );
         Logger.d(_provider.mttGames[index].targetMttName);
@@ -272,7 +279,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
       onPrizeInputChanged: (value) {
         _provider.setGame(
           index: index,
-          model: _games[index].copyWith(
+          model: game.copyWith(
             prize: value,
           ),
         );

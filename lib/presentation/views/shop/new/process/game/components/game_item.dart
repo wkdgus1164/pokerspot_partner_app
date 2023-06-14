@@ -10,7 +10,7 @@ import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field
 
 import '../../../../../../../data/models/store/create_store_request.dart';
 
-class GameItem extends StatelessWidget {
+class GameItem extends StatefulWidget {
   const GameItem({
     super.key,
     required this.title,
@@ -18,6 +18,8 @@ class GameItem extends StatelessWidget {
     required this.onAllDayRunningChanged,
     required this.tonerType,
     required this.onTonerTypeChanged,
+    required this.gtdMinReward,
+    required this.onGtdMinRewardChanged,
     required this.joinCost,
     required this.onJoinCostInputChanged,
     required this.entryStart,
@@ -39,12 +41,14 @@ class GameItem extends StatelessWidget {
   final Function() onAllDayRunningChanged;
   final TonerType tonerType;
   final Function(int) onTonerTypeChanged;
+  final int gtdMinReward;
+  final Function(int) onGtdMinRewardChanged;
   final int joinCost;
   final Function(int) onJoinCostInputChanged;
   final int entryStart;
-  final Function(String) onEntryStartInputChanged;
-  final int entryLimit;
-  final Function(String) onEntryLimitInputChanged;
+  final Function(int) onEntryStartInputChanged;
+  final int? entryLimit;
+  final Function(int?) onEntryLimitInputChanged;
   final String prize;
   final Function(String) onPrizeInputChanged;
   final String targetToner;
@@ -53,6 +57,28 @@ class GameItem extends StatelessWidget {
   final Function() onDeleteButtonPressed;
   final bool isSaveButtonEnabled;
   final VoidCallback? onsaveButtonPressed;
+
+  @override
+  State<GameItem> createState() => _GameItemState();
+}
+
+class _GameItemState extends State<GameItem> {
+  int _gtdMinReward = 0;
+  int _entryMin = 1;
+  int? _entryMax;
+  bool _isEntryMaxCheck = false;
+  String _prize = '50%';
+
+  @override
+  void initState() {
+    super.initState();
+
+    _gtdMinReward = widget.gtdMinReward;
+    _entryMin = widget.entryStart;
+    _entryMax = widget.entryLimit;
+    _isEntryMaxCheck = _entryMax == null;
+    _prize = widget.prize;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,16 +102,16 @@ class GameItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: padding10),
-          Text(title, style: Theme.of(context).textTheme.titleLarge),
+          Text(widget.title, style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: padding16),
           InkWell(
-            onTap: onAllDayRunningChanged,
+            onTap: widget.onAllDayRunningChanged,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomCheckbox(
-                  value: isAllDayRunning,
-                  onChanged: onAllDayRunningChanged,
+                  value: widget.isAllDayRunning,
+                  onChanged: widget.onAllDayRunningChanged,
                 ),
                 const SizedBox(width: padding10),
                 Text('매일 진행', style: Theme.of(context).textTheme.bodyLarge),
@@ -109,7 +135,7 @@ class GameItem extends StatelessWidget {
                     return SizedBox(
                       height: 40,
                       child: ToggleButtons(
-                        onPressed: onTonerTypeChanged,
+                        onPressed: widget.onTonerTypeChanged,
                         borderRadius: const BorderRadius.all(
                           Radius.circular(defaultRadius),
                         ),
@@ -122,9 +148,9 @@ class GameItem extends StatelessWidget {
                         fillColor: lightColorScheme.primary,
                         color: lightColorScheme.primary,
                         isSelected: [
-                          tonerType == TonerType.daily,
-                          tonerType == TonerType.seed,
-                          tonerType == TonerType.gtd,
+                          widget.tonerType == TonerType.daily,
+                          widget.tonerType == TonerType.seed,
+                          widget.tonerType == TonerType.gtd,
                         ],
                         children: [
                           Container(
@@ -147,36 +173,42 @@ class GameItem extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: padding10),
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Text(
-                  '최소 상금',
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-              ),
-              Expanded(
-                flex: 4,
-                child: CustomTextField(
-                  initText: prize,
-                  hint: '최소 상금',
-                  onTextFieldChanged: onPrizeInputChanged,
-                  readOnly: true,
-                  onTap: () => showPickerDialog(
-                    title: '프라이즈 비율',
-                    context: context,
-                    autoDismiss: false,
-                    onCancel: () {},
-                    onConfirm: () {},
-                    onSelectedItemChanged: (p0) {},
-                    selections: ["10만", "20만"],
+          if (widget.tonerType == TonerType.gtd) ...[
+            const SizedBox(height: padding10),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    '최소 상금',
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
-              ),
-            ],
-          ),
+                Expanded(
+                  flex: 4,
+                  child: CustomTextField(
+                    initText: '${_gtdMinReward ~/ 10000}만',
+                    hint: '최소 상금',
+                    readOnly: true,
+                    onTap: () => showPickerDialog(
+                      title: '프라이즈 비율',
+                      context: context,
+                      autoDismiss: false,
+                      onCancel: () {},
+                      onConfirm: () {
+                        widget.onGtdMinRewardChanged.call(_gtdMinReward);
+                      },
+                      onSelectedItemChanged: (value) {
+                        _gtdMinReward = (value + 1) * 100000;
+                      },
+                      selections:
+                          List.generate(10, (index) => '${(index + 1) * 10}만'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
           const SizedBox(height: padding10),
           Row(
             children: [
@@ -190,14 +222,11 @@ class GameItem extends StatelessWidget {
               Expanded(
                 flex: 4,
                 child: CustomTextField(
-                  initText: joinCost.toString(),
+                  initText: widget.joinCost.toString(),
                   keyboardType: TextInputType.number,
                   hint: '참가비 입력',
-                  onTextFieldChanged: (value) {
-                    onJoinCostInputChanged.call(
-                      int.tryParse(value) ?? 0,
-                    );
-                  },
+                  onTextFieldChanged: (value) => widget.onJoinCostInputChanged
+                      .call(int.tryParse(value) ?? 0),
                 ),
               ),
             ],
@@ -218,19 +247,23 @@ class GameItem extends StatelessWidget {
                   children: [
                     Expanded(
                       child: CustomTextField(
-                        initText: entryStart.toString(),
+                        initText: widget.entryStart.toString(),
                         keyboardType: TextInputType.number,
                         hint: '엔트리 입력',
-                        onTextFieldChanged: onEntryStartInputChanged,
                         readOnly: true,
                         onTap: () {
                           showPickerDialog(
                             context: context,
                             title: '최소 엔트리',
-                            selections: ["1", "2", "3", "4"],
-                            onSelectedItemChanged: (p0) {},
+                            selections: List.generate(
+                                100, (index) => (index + 1).toString()),
+                            onSelectedItemChanged: (value) {
+                              _entryMin = value + 1;
+                            },
                             onCancel: () {},
-                            onConfirm: () {},
+                            onConfirm: () {
+                              widget.onEntryStartInputChanged.call(_entryMin);
+                            },
                           );
                         },
                       ),
@@ -241,20 +274,33 @@ class GameItem extends StatelessWidget {
                     ),
                     Expanded(
                       child: CustomTextField(
-                        initText: entryLimit.toString(),
+                        initText: _entryMax?.toString() ?? '제한 없음',
                         keyboardType: TextInputType.number,
                         hint: '엔트리 입력',
-                        onTextFieldChanged: onEntryLimitInputChanged,
+                        onTextFieldChanged: (value) {
+                          _entryMax = int.tryParse(value) ?? 2;
+                        },
                         readOnly: true,
                         onTap: () {
                           showInputDialogWithCheckbox(
                             context: context,
                             checkboxLabel: '제한없음',
-                            isChecked: false,
-                            onCheckboxChanged: () {},
+                            isChecked: _isEntryMaxCheck,
+                            disableOnChecked: true,
+                            onCheckboxChanged: () {
+                              setState(() {
+                                _isEntryMaxCheck = !_isEntryMaxCheck;
+                                _entryMax = null;
+                              });
+                            },
+                            onTextFieldChanged: (value) {
+                              _entryMax = int.tryParse(value);
+                            },
                             title: '최대 엔트리',
                             onCancel: () {},
-                            onConfirm: () {},
+                            onConfirm: () {
+                              widget.onEntryLimitInputChanged.call(_entryMax);
+                            },
                           );
                         },
                       ),
@@ -277,24 +323,28 @@ class GameItem extends StatelessWidget {
               Expanded(
                 flex: 4,
                 child: CustomTextField(
-                  initText: prize,
+                  initText: _prize,
                   hint: '프라이즈 입력',
-                  onTextFieldChanged: onPrizeInputChanged,
                   readOnly: true,
                   onTap: () => showPickerDialog(
                     title: '프라이즈 비율',
                     context: context,
                     autoDismiss: false,
                     onCancel: () {},
-                    onConfirm: () {},
-                    onSelectedItemChanged: (p0) {},
-                    selections: ["50%", "55%"],
+                    onConfirm: () {
+                      widget.onPrizeInputChanged.call(_prize);
+                    },
+                    onSelectedItemChanged: (value) {
+                      _prize = '${50 + (value * 5)}%';
+                    },
+                    selections:
+                        List.generate(11, (index) => '${50 + (index * 5)}%'),
                   ),
                 ),
               ),
             ],
           ),
-          if (tonerType == TonerType.seed)
+          if (widget.tonerType == TonerType.seed)
             Column(
               children: [
                 const SizedBox(height: padding10),
@@ -311,9 +361,9 @@ class GameItem extends StatelessWidget {
                     Expanded(
                       flex: 4,
                       child: CustomTextField(
-                        initText: targetToner,
+                        initText: widget.targetToner,
                         hint: '타겟 토너 입력',
-                        onTextFieldChanged: onTargetTonerInputChanged,
+                        onTextFieldChanged: widget.onTargetTonerInputChanged,
                       ),
                     ),
                   ],
@@ -327,16 +377,16 @@ class GameItem extends StatelessWidget {
                 child: CustomOutlinedButton(
                   text: '삭제',
                   theme: CustomOutlinedButtonTheme.secondary,
-                  onPressed: onDeleteButtonPressed,
+                  onPressed: widget.onDeleteButtonPressed,
                 ),
               ),
-              if (onsaveButtonPressed != null) ...[
+              if (widget.onsaveButtonPressed != null) ...[
                 const SizedBox(width: padding16),
                 Expanded(
                   child: CustomFilledButton(
                     text: '저장',
                     theme: CustomFilledButtonTheme.primary,
-                    onPressed: onsaveButtonPressed,
+                    onPressed: widget.onsaveButtonPressed,
                   ),
                 ),
               ],

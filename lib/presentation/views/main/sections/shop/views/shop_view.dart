@@ -136,7 +136,7 @@ class _ShopViewState extends State<ShopView> {
   // FIXME 임시 보유 매장 리스트
   Widget _buildStores(List<PartnerStoreModel> storeList) {
     return SingleChildScrollView(
-      child: Wrap(
+      child: Column(
         children: List.generate(
           storeList.length,
           (index) => ShopCard(

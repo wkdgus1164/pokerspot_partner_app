@@ -22,7 +22,11 @@ class ShopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: padding16),
+      margin: const EdgeInsets.only(
+        left: padding16,
+        right: padding16,
+        bottom: padding16,
+      ),
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(
           Radius.circular(defaultRadius * 2),

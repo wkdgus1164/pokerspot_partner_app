@@ -30,8 +30,7 @@ class _SplashViewState extends State<SplashView> {
       if (token.isEmpty) {
         context.replaceNamed(BaseRoutes.intro.path);
       } else {
-        final success =
-            await locator<AuthProviderProvider>().login(token: token);
+        final success = await locator<AuthProvider>().login(token: token);
         if (success && mounted) {
           context.replaceNamed(BottomNavigationRoutes.home.path);
         } else {

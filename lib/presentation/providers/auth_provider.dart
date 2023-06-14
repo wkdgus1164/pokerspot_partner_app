@@ -5,7 +5,7 @@ import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import '../../domain/usecases/sign_in_usecase.dart';
 import 'token_provider.dart';
 
-class AuthProviderProvider with ChangeNotifier {
+class AuthProvider with ChangeNotifier {
   final TokenProvider _tokenProvider;
   final SignInUsecase _usecase;
 
@@ -21,7 +21,7 @@ class AuthProviderProvider with ChangeNotifier {
   PartnerModel? _partner;
   PartnerModel? get partner => _partner;
 
-  AuthProviderProvider(this._tokenProvider, this._usecase);
+  AuthProvider(this._tokenProvider, this._usecase);
 
   Future<bool> login({String? token}) async {
     final newToken =

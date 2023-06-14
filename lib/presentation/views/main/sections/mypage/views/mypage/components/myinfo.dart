@@ -11,7 +11,7 @@ class MypageMyinfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthProviderProvider>(
+    return Consumer<AuthProvider>(
       builder: (_, provider, __) {
         return Container(
           padding: const EdgeInsets.symmetric(

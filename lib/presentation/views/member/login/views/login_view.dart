@@ -20,7 +20,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final _authProvider = locator<AuthProviderProvider>();
+  final _authProvider = locator<AuthProvider>();
   final _tokenProvider = locator<TokenProvider>();
 
   Future<void> _login() async {
@@ -50,7 +50,7 @@ class _LoginViewState extends State<LoginView> {
               const LoginHeader(),
 
               // 로그인 폼
-              Consumer2<TokenProvider, AuthProviderProvider>(
+              Consumer2<TokenProvider, AuthProvider>(
                   builder: (_, __, ___, ____) {
                 return LoginForm(
                   onIDChanged: _authProvider.setId,

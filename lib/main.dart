@@ -65,7 +65,7 @@ class MainApp extends StatelessWidget {
             create: (_) => locator<TokenProvider>(),
           ),
           ChangeNotifierProvider(
-            create: (_) => locator<AuthProviderProvider>(),
+            create: (_) => locator<AuthProvider>(),
           ),
           ChangeNotifierProvider(
             create: (_) => locator<DioClient>(),

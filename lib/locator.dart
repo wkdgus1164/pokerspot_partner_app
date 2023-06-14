@@ -20,8 +20,7 @@ GetIt locator = GetIt.instance;
 
 void setupLocator() {
   /// Provider
-  locator
-      .registerLazySingleton(() => AuthProviderProvider(locator(), locator()));
+  locator.registerLazySingleton(() => AuthProvider(locator(), locator()));
   locator.registerLazySingleton(() => TokenProvider());
   locator.registerFactory(() => SignupProvider(locator()));
   locator.registerLazySingleton(() => HomeProvider(locator()));

@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/no_store.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:provider/provider.dart';
@@ -27,11 +28,16 @@ class StatisticsView extends StatelessWidget {
             children: title == null
                 ? [const HomeNoStore()]
                 : [
-                    const Icon(Icons.bar_chart_rounded),
+                    Icon(
+                      Icons.bar_chart_rounded,
+                      color: customColorScheme.onSurface4,
+                    ),
                     const SizedBox(height: padding10),
                     Text(
-                      '해당 매장은 아직\n통계 데이터가 존재하지 않습니다.',
-                      style: Theme.of(context).textTheme.labelLarge,
+                      '해당 매장은 현재\n통계 데이터가 존재하지 않습니다.',
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            color: customColorScheme.onSurface4,
+                          ),
                       textAlign: TextAlign.center,
                     ),
                   ],

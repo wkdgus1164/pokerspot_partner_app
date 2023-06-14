@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/mypage_admin/components/information_item.dart';
@@ -40,7 +42,12 @@ class MypageAdminView extends StatelessWidget {
                         value: provider.partner?.phoneNumber ?? '',
                       ),
                       const SizedBox(height: padding48),
-                      CustomOutlinedButton(onPressed: () {}, text: '로그아웃'),
+                      CustomOutlinedButton(
+                          onPressed: () {
+                            provider.logout();
+                            context.goNamed(MemberRoutes.login.path);
+                          },
+                          text: '로그아웃'),
                       const SizedBox(height: padding16),
                       CustomOutlinedButton(onPressed: () {}, text: '회원탈퇴'),
                     ],

@@ -9,14 +9,14 @@ class ShopCard extends StatelessWidget {
     required this.thumbnail,
     required this.title,
     required this.type,
-    required this.isCorporate,
+    required this.status,
     this.onTap,
   }) : super(key: key);
 
   final String thumbnail;
   final String title;
   final String type;
-  final bool isCorporate;
+  final String status;
   final GestureTapCallback? onTap;
 
   @override
@@ -107,7 +107,7 @@ class ShopCard extends StatelessWidget {
                               height: 10,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: isCorporate
+                                color: status == 'ACCEPT'
                                     ? const Color.fromRGBO(19, 181, 172, 1)
                                     : lightColorScheme.error,
                               ),
@@ -115,7 +115,11 @@ class ShopCard extends StatelessWidget {
                             const SizedBox(width: padding10),
                             Expanded(
                               child: Text(
-                                isCorporate ? '제휴 진행 중' : '제휴 만료',
+                                status == 'ACCEPT'
+                                    ? '제휴 진행 중'
+                                    : status == 'PENDING'
+                                        ? '제휴 준비 중'
+                                        : '제휴 만료',
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelLarge!

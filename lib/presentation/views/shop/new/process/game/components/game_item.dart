@@ -153,6 +153,36 @@ class GameItem extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
+                  '최소 상금',
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+              ),
+              Expanded(
+                flex: 4,
+                child: CustomTextField(
+                  initText: prize,
+                  hint: '최소 상금',
+                  onTextFieldChanged: onPrizeInputChanged,
+                  readOnly: true,
+                  onTap: () => showPickerDialog(
+                    title: '프라이즈 비율',
+                    context: context,
+                    autoDismiss: false,
+                    onCancel: () {},
+                    onConfirm: () {},
+                    onSelectedItemChanged: (p0) {},
+                    selections: ["10만", "20만"],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: padding10),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Text(
                   '참가비',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),

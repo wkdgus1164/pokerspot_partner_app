@@ -31,7 +31,7 @@ class VerifyButton extends StatelessWidget {
         children: [
           const SizedBox(width: 24),
           Text(
-            isVerified ? '인증이 완료되였습니다.' : label,
+            isVerified ? '인증이 완료되었습니다.' : label,
             style: isVerified
                 ? Theme.of(context)
                     .textTheme

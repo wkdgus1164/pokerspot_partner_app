@@ -60,12 +60,12 @@ class ShopProcessBusinessView extends StatelessWidget {
                           _buildBusinessNumber(),
                           const SizedBox(height: padding24),
 
-                          // 개업연월일
-                          _buildOpenDate(),
+                          // 대표자명
+                          _buildName(),
                           const SizedBox(height: padding24),
 
-                          // 휴대폰 번호
-                          _buildPhone(),
+                          // 개업연월일
+                          _buildOpenDate(),
                           const SizedBox(height: padding32),
 
                           // 사업자인증
@@ -139,7 +139,7 @@ class ShopProcessBusinessView extends StatelessWidget {
     );
   }
 
-  CustomTextFieldSet _buildPhone() {
+  CustomTextFieldSet _buildOpenDate() {
     return CustomTextFieldSet(
       initText: _store.bizStartYMD,
       inputLabel: '개업연월일',
@@ -149,11 +149,11 @@ class ShopProcessBusinessView extends StatelessWidget {
       onTextFieldChanged: (value) {
         _provider.setStore(_store.copyWith(bizStartYMD: value));
       },
-      captionText: '※ 대표자 명의의 휴대폰 번호를 입력해주세요.',
+      captionText: '※ 사업자 등록증에 기재된 개업연월일을 입력해주세요.',
     );
   }
 
-  CustomTextFieldSet _buildOpenDate() {
+  CustomTextFieldSet _buildName() {
     return CustomTextFieldSet(
       inputLabel: '대표자명',
       initText: _store.ownerName,

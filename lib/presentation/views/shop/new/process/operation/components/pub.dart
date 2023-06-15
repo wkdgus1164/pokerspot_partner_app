@@ -33,43 +33,37 @@ class ShopProcessOperationPub extends StatelessWidget {
       }
     }
 
-    return Expanded(
-      child: Column(
-        children: [
-          Column(
-            children: [
-              Material(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(defaultRadius * 2),
-                child: Ink(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(defaultRadius * 2),
-                    color: Colors.grey.shade100,
+    return Column(
+      children: [
+        Material(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(defaultRadius * 2),
+          child: Ink(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(defaultRadius * 2),
+              color: Colors.grey.shade100,
+            ),
+            child: InkWell(
+              onTap: onTap,
+              borderRadius: BorderRadius.circular(defaultRadius * 2),
+              child: Container(
+                width: MediaQuery.of(context).size.width / 3.5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    defaultRadius * 2,
                   ),
-                  child: InkWell(
-                    onTap: onTap,
-                    borderRadius: BorderRadius.circular(defaultRadius * 2),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          defaultRadius * 2,
-                        ),
-                        border: isEnabled ? border(text) : null,
-                      ),
-                      child: SvgPicture.asset(
-                        isEnabled ? enabledAsset : asset,
-                      ),
-                    ),
-                  ),
+                  border: isEnabled ? border(text) : null,
+                ),
+                child: SvgPicture.asset(
+                  isEnabled ? enabledAsset : asset,
                 ),
               ),
-              const SizedBox(height: 6),
-              Text(text, style: Theme.of(context).textTheme.labelLarge),
-            ],
+            ),
           ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 6),
+        Text(text, style: Theme.of(context).textTheme.labelLarge),
+      ],
     );
   }
 }

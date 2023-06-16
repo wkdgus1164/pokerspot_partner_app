@@ -31,7 +31,7 @@ class _ShopViewState extends State<ShopView> {
         actions: [
           IconButton(
             onPressed: () {
-              context.pushNamed(ShopRoutes.newIntro.path);
+              context.pushNamed(ShopRoutes.processGame.path);
             },
             icon: Icon(
               Icons.add,

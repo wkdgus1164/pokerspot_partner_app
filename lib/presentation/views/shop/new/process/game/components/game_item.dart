@@ -64,6 +64,7 @@ class GameItem extends StatefulWidget {
 
 class _GameItemState extends State<GameItem> {
   int _gtdMinReward = 0;
+  int _joinCost = 10000;
   int _entryMin = 1;
   int? _entryMax;
   bool _isEntryMaxCheck = false;
@@ -74,6 +75,7 @@ class _GameItemState extends State<GameItem> {
     super.initState();
 
     _gtdMinReward = widget.gtdMinReward;
+    _joinCost = widget.joinCost;
     _entryMin = widget.entryStart;
     _entryMax = widget.entryLimit;
     _isEntryMaxCheck = _entryMax == null;
@@ -199,10 +201,10 @@ class _GameItemState extends State<GameItem> {
                         widget.onGtdMinRewardChanged.call(_gtdMinReward);
                       },
                       onSelectedItemChanged: (value) {
-                        _gtdMinReward = (value + 1) * 100000;
+                        _gtdMinReward = (value + 10) * 100000;
                       },
                       selections:
-                          List.generate(10, (index) => '${(index + 1) * 10}만'),
+                          List.generate(91, (index) => '${(index + 10) * 10}만'),
                     ),
                   ),
                 ),
@@ -222,11 +224,23 @@ class _GameItemState extends State<GameItem> {
               Expanded(
                 flex: 4,
                 child: CustomTextField(
-                  initText: widget.joinCost.toString(),
-                  keyboardType: TextInputType.number,
+                  initText: '${_joinCost ~/ 10000}만'.toString(),
+                  readOnly: true,
                   hint: '참가비 입력',
-                  onTextFieldChanged: (value) => widget.onJoinCostInputChanged
-                      .call(int.tryParse(value) ?? 0),
+                  onTap: () {
+                    showPickerDialog(
+                      context: context,
+                      title: '참가비',
+                      selections: List.generate(30, (index) => '${index + 1}만'),
+                      onSelectedItemChanged: (value) {
+                        _joinCost = (value + 1) * 10000;
+                      },
+                      onCancel: () {},
+                      onConfirm: () {
+                        widget.onJoinCostInputChanged.call(_joinCost);
+                      },
+                    );
+                  },
                 ),
               ),
             ],

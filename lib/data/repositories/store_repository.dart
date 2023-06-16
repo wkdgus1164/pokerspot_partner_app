@@ -53,7 +53,7 @@ class StoreRepository {
       return const Right(true);
     } catch (e) {
       if (e is DioError) {
-        return e.response?.data['message'];
+        return Left(e.response?.data['message']);
       }
       Logger.e(e);
       rethrow;

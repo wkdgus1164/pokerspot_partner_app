@@ -1,7 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:pokerspot_partner_app/data/models/store/biz_validate_request.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/data/network/api_client.dart';
+import 'package:pokerspot_partner_app/data/utils/logger.dart';
 
 class StoreRepository {
   final DioClient _dio;
@@ -42,15 +44,19 @@ class StoreRepository {
   }
 
   /// Store 생성
-  Future<bool> createStore(CreateStoreRequestModel data) async {
+  Future<Either<String, bool>> createStore(CreateStoreRequestModel data) async {
     try {
       await _dio.post(
         '/stores',
         data: data.toJson(),
       );
-      return true;
+      return const Right(true);
     } catch (e) {
-      return false;
+      if (e is DioError) {
+        return e.response?.data['message'];
+      }
+      Logger.e(e);
+      rethrow;
     }
   }
 }

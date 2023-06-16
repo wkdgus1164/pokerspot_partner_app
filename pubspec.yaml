@@ -35,6 +35,7 @@ dependencies:
   debounce_throttle: ^2.0.0
   flutter_html: ^3.0.0-beta.2
   flutter_inappwebview: ^5.7.2+3
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

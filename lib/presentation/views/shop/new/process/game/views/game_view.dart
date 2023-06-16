@@ -174,18 +174,14 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                   showToast(context: context, message: '게임 정보를 모두 입력해주세요.');
                   return;
                 }
-                final result = await _provider.createStore();
-                await locator<HomeProvider>().getStores();
-                if (mounted) {
-                  if (result) {
-                    if (mounted) {
-                      context.pushNamed(
-                        ShopRoutes.processSuccess.path,
-                      );
-                    }
-                  }
+                final error = await _provider.createStore();
+                if (error != null && mounted) {
+                  locator<HomeProvider>().getStores();
+                  context.pushNamed(
+                    ShopRoutes.processSuccess.path,
+                  );
                 } else {
-                  showToast(context: context, message: '다시 시도해주세요.');
+                  showToast(context: context, message: error ?? '다시 시도해주세요.');
                 }
               },
             ),

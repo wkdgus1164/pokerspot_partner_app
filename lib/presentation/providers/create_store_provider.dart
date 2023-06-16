@@ -43,7 +43,7 @@ class CreateStoreProvider with ChangeNotifier {
     return await _usecase.uploadImage(binaryData);
   }
 
-  Future<bool> createStore() async {
+  Future<String?> createStore() async {
     Logger.d(store.toJson());
     return await _usecase.createStore(CreateStoreRequestModel(
       store: store,

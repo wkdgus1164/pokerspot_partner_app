@@ -30,7 +30,9 @@ class CreateStoreUsecase {
     return await _repository.uploadImage(binaryData);
   }
 
-  Future<bool> createStore(CreateStoreRequestModel model) async {
-    return await _repository.createStore(model);
+  Future<String?> createStore(CreateStoreRequestModel model) async {
+    return await _repository
+        .createStore(model)
+        .then((value) => value.fold((l) => l, (r) => null));
   }
 }

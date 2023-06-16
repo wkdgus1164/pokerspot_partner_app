@@ -131,9 +131,16 @@ class ShopProcessBusinessView extends StatelessWidget {
       onPressed: _provider.checkedBiz
           ? null
           : () async {
-              final error = await _provider.bizValidate();
-              if (error != null && context.mounted) {
-                showToast(context: context, message: error);
+              String? error = await _provider.storeValidate(_store.bizNumber);
+              if (error != null) {
+                if (context.mounted) {
+                  showToast(context: context, message: error);
+                }
+              } else {
+                error = await _provider.bizValidate();
+                if (error != null && context.mounted) {
+                  showToast(context: context, message: error);
+                }
               }
             },
     );

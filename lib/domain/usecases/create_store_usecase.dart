@@ -35,4 +35,10 @@ class CreateStoreUsecase {
         .createStore(model)
         .then((value) => value.fold((l) => l, (r) => null));
   }
+
+  Future<String?> storeValidate(String bizNumber) async {
+    return await _repository
+        .storeValidate(bizNumber)
+        .then((value) => value.fold((l) => l, (r) => null));
+  }
 }

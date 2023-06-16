@@ -59,4 +59,21 @@ class StoreRepository {
       rethrow;
     }
   }
+
+  /// Store 생성
+  Future<Either<String, bool>> storeValidate(String bizNumber) async {
+    try {
+      await _dio.post(
+        '/stores/store-validate',
+        data: {'bizNumber': bizNumber},
+      );
+      return const Right(true);
+    } catch (e) {
+      if (e is DioError) {
+        return Left(e.response?.data['message']);
+      }
+      Logger.e(e);
+      rethrow;
+    }
+  }
 }

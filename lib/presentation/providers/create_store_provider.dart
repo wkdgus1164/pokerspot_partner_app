@@ -51,6 +51,10 @@ class CreateStoreProvider with ChangeNotifier {
     ));
   }
 
+  Future<String?> storeValidate(String bizNumber) async {
+    return await _usecase.storeValidate(bizNumber);
+  }
+
   void addGame() {
     _mttGames.add(MttGameModel());
     notifyListeners();

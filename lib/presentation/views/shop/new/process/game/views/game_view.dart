@@ -197,7 +197,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
       case TonerType.daily:
         return '${games[index].entryPrice ~/ 10000}만 데일리 토너먼트';
       case TonerType.seed:
-        return '${games[index].entryPrice ~/ 10000}만 시드권 토너먼트';
+        return '${games[index].entryPrice ~/ 10000}만 ${games[index].targetMttName.replaceAll('토너먼트', '')} 시드권 토너먼트';
       case TonerType.gtd:
         return '${games[index].gtdMinReward ~/ 10000}만 GTD 토너먼트';
     }
@@ -264,14 +264,12 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
         );
       },
       prize: game.prize,
-      targetToner: game.targetMttName,
+      targetToner: '',
       onTargetTonerInputChanged: (value) {
         _provider.setGame(
           index: index,
           model: game.copyWith(targetMttName: value),
-          notify: false,
         );
-        Logger.d(_provider.mttGames[index].targetMttName);
       },
       onPrizeInputChanged: (value) {
         _provider.setGame(

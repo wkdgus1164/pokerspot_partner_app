@@ -6,7 +6,6 @@ import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/components/steps.dart';
 import 'package:pokerspot_partner_app/presentation/views/shop/new/process/operation/components/pub.dart';
@@ -149,14 +148,15 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
                                     final times = _times(
                                       startIndex: _openTimeIndex,
                                     );
-                                    Logger.d('_isChecked=$_isChecked');
                                     _provider.setStore(
                                       _store.copyWith(
-                                        closeTime: _isChecked
-                                            ? null
-                                            : times.length == _closeTimeIndex
+                                        closeTime: (_isChecked
                                                 ? null
-                                                : times[_closeTimeIndex],
+                                                : times.length ==
+                                                        _closeTimeIndex
+                                                    ? null
+                                                    : times[_closeTimeIndex])
+                                            ?.replaceAll('익일 ', ''),
                                       ),
                                       notify: true,
                                     );

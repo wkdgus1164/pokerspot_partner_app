@@ -27,7 +27,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>사진 앨범 접근 권한이 필요합니다.</string>
+	<string>${PRODUCT_NAME}앱은 포토 라이브러리 접근 권한을 필요로 합니다. 해당 권한을 통해 매장의 실제 사진을 포토 라이브러리에서 선택하여 업로드할 수 있습니다. 허용 안함 시 일부 기능이 동작하지 않을 수 있습니다.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/components/dialogs/selection_dialog/selection_dialog_utils.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/mypage_admin/components/information_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
@@ -52,7 +54,21 @@ class MypageAdminView extends StatelessWidget {
                       const SizedBox(height: padding16),
                       CustomOutlinedButton(
                         onPressed: () {
-                          // TODO: 회원탈퇴
+                          showSelectionDialog(
+                              context: context,
+                              title: '회원탈퇴를 하시겠습니까?',
+                              onConfirm: () async {
+                                final success = await provider.delete();
+                                if (context.mounted) {
+                                  if (success) {
+                                    context.goNamed(MemberRoutes.login.path);
+                                  } else {
+                                    showToast(
+                                        context: context,
+                                        message: '회원탈퇴를 실패했습니다.');
+                                  }
+                                }
+                              });
                         },
                         text: '회원탈퇴',
                       ),

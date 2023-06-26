@@ -24,6 +24,17 @@ class PartnerRepository {
     }
   }
 
+  /// 파트너 탈퇴
+  Future<bool> deletePartner() async {
+    try {
+      await _dio.delete('/partners');
+      return true;
+    } catch (e) {
+      Logger.e(e);
+      return false;
+    }
+  }
+
   /// 사용 가능한 아이디 확인
   Future<bool> idValidate(String identifier) async {
     final response = await _dio.post(

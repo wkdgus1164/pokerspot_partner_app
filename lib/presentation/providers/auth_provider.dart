@@ -1,13 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
+import 'package:pokerspot_partner_app/domain/usecases/my_usecase.dart';
 
 import '../../domain/usecases/sign_in_usecase.dart';
 import 'token_provider.dart';
 
 class AuthProvider with ChangeNotifier {
   final TokenProvider _tokenProvider;
-  final SignInUsecase _usecase;
+  final SignInUsecase _signInUsecase;
+  final MyUsecase _myUsecase;
 
   String _id = '';
   String get id => _id;
@@ -21,14 +23,14 @@ class AuthProvider with ChangeNotifier {
   PartnerModel? _partner;
   PartnerModel? get partner => _partner;
 
-  AuthProvider(this._tokenProvider, this._usecase);
+  AuthProvider(this._tokenProvider, this._signInUsecase, this._myUsecase);
 
   Future<bool> login({String? token}) async {
     final newToken =
-        token ?? await _usecase.signIn(id: id, password: password) ?? '';
+        token ?? await _signInUsecase.signIn(id: id, password: password) ?? '';
     await _tokenProvider.setToken(newToken);
     if (newToken.isNotEmpty) {
-      _partner = await _usecase.getPartner();
+      _partner = await _signInUsecase.getPartner();
       Logger.d('[partner]\n${_partner?.toJson()}');
     } else {
       _partner = null;
@@ -56,8 +58,12 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<bool> delete() async {
+    return await _myUsecase.deletePartner();
+  }
+
   void validateLogin() {
-    _validate = _usecase.validate(id: id, password: password);
+    _validate = _signInUsecase.validate(id: id, password: password);
     notifyListeners();
   }
 }

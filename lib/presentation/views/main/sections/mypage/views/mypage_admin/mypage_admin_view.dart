@@ -61,6 +61,7 @@ class MypageAdminView extends StatelessWidget {
                                 final success = await provider.delete();
                                 if (context.mounted) {
                                   if (success) {
+                                    provider.logout();
                                     context.goNamed(MemberRoutes.login.path);
                                   } else {
                                     showToast(

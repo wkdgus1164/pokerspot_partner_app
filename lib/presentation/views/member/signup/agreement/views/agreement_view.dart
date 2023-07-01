@@ -17,8 +17,6 @@ class SignupAgreementView extends StatelessWidget {
       appBar: const CustomAppBar(text: '회원가입'),
       body: SafeArea(
         child: Container(
-          width: 430,
-          height: 802,
           padding: const EdgeInsets.all(16),
           color: lightColorScheme.surface,
           child: Column(

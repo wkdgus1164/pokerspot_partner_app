@@ -4,10 +4,11 @@ import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/vi
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/notice/notice_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/term/privacy_policy.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/term/term.dart';
-import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/views/certification_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/views/agreement_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/signup/signup/views/certification_view.dart';
 
 import '../../../presentation/views/member/login/views/login_view.dart';
-import '../../../presentation/views/member/signup/renew/views/renew_view.dart';
+import '../../../presentation/views/member/signup/signup/views/signup_view.dart';
 import '../../../presentation/views/member/signup/success/views/success_view.dart';
 
 const String memberPath = 'member';
@@ -15,6 +16,7 @@ const String memberPath = 'member';
 enum MemberRoutes {
   signup('$memberPath/signup'),
   signupCertification('$memberPath/certification'),
+  signupAgreement('$memberPath/agreement'),
   signupSuccess('$memberPath/success'),
   login('login'),
   mypageAdmin('mypageAdmin'),
@@ -36,6 +38,10 @@ List<RouteBase> memberRoutes = [
   rightToLeft(
     MemberRoutes.signupCertification.path,
     const CertificationView(),
+  ),
+  rightToLeft(
+    MemberRoutes.signupAgreement.path,
+    const SignupAgreementView(),
   ),
   rightToLeft(
     MemberRoutes.signupSuccess.path,

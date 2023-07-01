@@ -103,7 +103,8 @@ class LoginForm extends StatelessWidget {
               CustomTextButton(
                 text: '회원가입하기',
                 theme: CustomTextButtonTheme.primary,
-                onClick: () => context.pushNamed(MemberRoutes.signup.path),
+                onClick: () =>
+                    context.pushNamed(MemberRoutes.signupAgreement.path),
               ),
             ],
           ),

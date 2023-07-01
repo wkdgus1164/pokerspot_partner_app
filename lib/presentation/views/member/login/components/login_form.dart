@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
@@ -13,7 +15,6 @@ class LoginForm extends StatelessWidget {
     this.onLogin,
     required this.onAutoLoginChecked,
     required this.onAutoLoginCheckboxChanged,
-    required this.onSignupButtonPressed,
   });
 
   final Function(String)? onIDChanged;
@@ -21,7 +22,6 @@ class LoginForm extends StatelessWidget {
   final VoidCallback? onLogin;
   final bool onAutoLoginChecked;
   final Function() onAutoLoginCheckboxChanged;
-  final Function() onSignupButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -41,36 +41,47 @@ class LoginForm extends StatelessWidget {
             onChanged: onPWChanged,
           ),
           const SizedBox(height: padding16),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: InkWell(
-              onTap: onAutoLoginCheckboxChanged,
-              borderRadius: BorderRadius.circular(4),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 8,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CustomCheckbox(
-                      value: onAutoLoginChecked,
-                      onChanged: onAutoLoginCheckboxChanged,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: InkWell(
+                  onTap: onAutoLoginCheckboxChanged,
+                  borderRadius: BorderRadius.circular(4),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CustomCheckbox(
+                          value: onAutoLoginChecked,
+                          onChanged: onAutoLoginCheckboxChanged,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          '로그인 상태 유지',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 10),
-                    Text(
-                      '로그인 상태 유지',
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ),
+              InkWell(
+                onTap: () {},
+                borderRadius: BorderRadius.circular(4),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(
+                    '회원정보 찾기',
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: padding16),
           CustomFilledButton(
@@ -92,7 +103,7 @@ class LoginForm extends StatelessWidget {
               CustomTextButton(
                 text: '회원가입하기',
                 theme: CustomTextButtonTheme.primary,
-                onClick: onSignupButtonPressed,
+                onClick: () => context.pushNamed(MemberRoutes.signup.path),
               ),
             ],
           ),

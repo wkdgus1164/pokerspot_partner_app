@@ -10,12 +10,7 @@ class TermView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.light,
-        left: Icons.keyboard_arrow_left_rounded,
-        isCenterLogo: false,
-        text: '약관 및 정책',
-      ),
+      appBar: const CustomAppBar(text: '약관 및 정책'),
       body: Container(
         padding: const EdgeInsets.all(padding16),
         child: SizedBox.expand(

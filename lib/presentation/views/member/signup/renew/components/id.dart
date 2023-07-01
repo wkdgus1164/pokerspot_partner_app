@@ -59,14 +59,14 @@ class _SignupIdState extends State<SignupId> {
       children: [
         Text(
           '아이디',
-          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 color: customColorScheme.onSurface1,
               ),
         ),
         const SizedBox(height: padding10),
         Text(
           '영문+숫자 조합 4~12자리',
-          style: Theme.of(context).textTheme.bodySmall!.copyWith(
+          style: Theme.of(context).textTheme.labelMedium!.copyWith(
                 color: customColorScheme.onSurface3,
               ),
         ),

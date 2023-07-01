@@ -7,17 +7,13 @@ import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/vi
 import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/views/certification_view.dart';
 
 import '../../../presentation/views/member/login/views/login_view.dart';
-import '../../../presentation/views/member/signup/business/views/business_view.dart';
-import '../../../presentation/views/member/signup/information/views/information_view.dart';
 import '../../../presentation/views/member/signup/renew/views/renew_view.dart';
 import '../../../presentation/views/member/signup/success/views/success_view.dart';
 
-const String memberPath = 'signup';
+const String memberPath = 'member';
 
 enum MemberRoutes {
-  signupBusiness('$memberPath/business'),
-  signupInformation('$memberPath/information'),
-  signupRenewal('$memberPath/renewal'),
+  signup('$memberPath/signup'),
   signupCertification('$memberPath/certification'),
   signupSuccess('$memberPath/success'),
   login('login'),
@@ -34,16 +30,8 @@ enum MemberRoutes {
 
 List<RouteBase> memberRoutes = [
   rightToLeft(
-    MemberRoutes.signupBusiness.path,
-    const SignupBusinessView(),
-  ),
-  rightToLeft(
-    MemberRoutes.signupInformation.path,
-    const SignupInformationView(),
-  ),
-  rightToLeft(
-    MemberRoutes.signupRenewal.path,
-    const SignupRenewView(),
+    MemberRoutes.signup.path,
+    const SignupView(),
   ),
   rightToLeft(
     MemberRoutes.signupCertification.path,

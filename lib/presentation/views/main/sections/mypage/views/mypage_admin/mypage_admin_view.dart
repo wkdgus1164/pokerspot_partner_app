@@ -18,8 +18,6 @@ class MypageAdminView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.light,
-        isCenterLogo: false,
         text: '내 정보 관리',
         left: Icons.keyboard_arrow_left_rounded,
       ),

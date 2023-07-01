@@ -10,20 +10,11 @@ class CertificationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IamportCertification(
-      appBar: const CustomAppBar(
-        left: Icons.keyboard_arrow_left,
-        text: '본인인증',
-      ),
-      initialChild: const Center(
-        child: CircularProgressIndicator(),
-      ),
+      appBar: const CustomAppBar(text: '본인인증'),
+      initialChild: const Center(child: CircularProgressIndicator()),
       userCode: 'imp05614040',
-      data: CertificationData(
-        mRedirectUrl: 'https://test.com/',
-      ),
-      callback: (Map<String, String> result) {
-        context.pop(result);
-      },
+      data: CertificationData(mRedirectUrl: 'https://test.com/'),
+      callback: (Map<String, String> result) => context.pop(result),
     );
   }
 }

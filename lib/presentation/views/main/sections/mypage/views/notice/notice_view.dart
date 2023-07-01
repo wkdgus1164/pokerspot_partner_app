@@ -12,12 +12,7 @@ class NoticeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.light,
-        isCenterLogo: false,
-        text: '공지사항',
-        left: Icons.keyboard_arrow_left_rounded,
-      ),
+      appBar: const CustomAppBar(text: '공지사항'),
       body: SafeArea(
         child: ChangeNotifierProvider<NoticeProvider>(
           create: (_) => locator(),

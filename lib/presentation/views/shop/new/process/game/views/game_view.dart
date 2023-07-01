@@ -60,11 +60,7 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.light,
-        left: Icons.keyboard_arrow_left_rounded,
-        text: '신규 매장 등록',
-      ),
+      appBar: const CustomAppBar(text: '신규 매장 등록'),
       body: SafeArea(
         child: Column(
           children: [

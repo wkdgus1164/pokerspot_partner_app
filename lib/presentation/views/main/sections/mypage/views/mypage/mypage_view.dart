@@ -12,10 +12,7 @@ class MypageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.dark,
-        text: '내정보',
-      ),
+      appBar: const CustomAppBar(text: '내정보'),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

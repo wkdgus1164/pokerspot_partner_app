@@ -5,26 +5,25 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/components/email.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/components/id.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/components/owner_name.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/components/password.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/components/password_confirm.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/signup/renew/components/phone_number.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../locator.dart';
-import '../../business/components/owner_name.dart';
-import '../../business/components/phone_number.dart';
-import '../../information/components/email.dart';
-import '../../information/components/id.dart';
-import '../../information/components/password.dart';
-import '../../information/components/password_confirm.dart';
 
-class SignupRenewView extends StatelessWidget {
-  const SignupRenewView({super.key});
+class SignupView extends StatelessWidget {
+  const SignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        left: Icons.keyboard_arrow_left,
         text: '회원가입',
       ),
       body: SafeArea(
@@ -41,7 +40,9 @@ class SignupRenewView extends StatelessWidget {
                     children: [
                       Text(
                         '가입 정보 입력',
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                       const SizedBox(height: padding24),
 

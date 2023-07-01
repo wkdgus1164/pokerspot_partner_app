@@ -17,11 +17,7 @@ class StatisticsView extends StatelessWidget {
       builder: (_, provider, __) {
         final title = provider.stores?.firstOrNull?.name;
         return Scaffold(
-          appBar: const CustomAppBar(
-            isCenterLogo: false,
-            text: '통계',
-            theme: CustomAppBarTheme.dark,
-          ),
+          appBar: const CustomAppBar(text: '통계'),
           body: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,

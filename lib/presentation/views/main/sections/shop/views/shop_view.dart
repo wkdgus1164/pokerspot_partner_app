@@ -24,9 +24,7 @@ class _ShopViewState extends State<ShopView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        theme: CustomAppBarTheme.dark,
         text: '매장관리',
-        isCenterLogo: false,
         bottomDivider: false,
         actions: [
           IconButton(

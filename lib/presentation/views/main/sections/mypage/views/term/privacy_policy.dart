@@ -10,12 +10,7 @@ class PrivacyPolicyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        theme: CustomAppBarTheme.light,
-        left: Icons.keyboard_arrow_left_rounded,
-        isCenterLogo: false,
-        text: '개인정보처리방침',
-      ),
+      appBar: const CustomAppBar(text: '개인정보처리방침'),
       body: Container(
         padding: const EdgeInsets.all(padding16),
         child: SizedBox.expand(

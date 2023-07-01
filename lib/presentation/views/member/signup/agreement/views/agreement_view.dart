@@ -73,16 +73,20 @@ class SignupAgreementView extends StatelessWidget {
                       children: [
                         AgreementCategory(text: '선택'),
                         SizedBox(height: 16),
-                        Column(
-                          children: [
-                            AgreementItem(
-                              agreementTitle: '푸시 서비스 수신 동의',
-                              isChecked: true,
-                            ),
-                            AgreementItem(agreementTitle: '광고 및 마케팅 정보 수신 동의'),
-                            AgreementItem(
-                                agreementTitle: '이벤트 및 프로모션 정보 수신 동의'),
-                          ],
+                        Padding(
+                          padding: EdgeInsets.only(left: 16),
+                          child: Column(
+                            children: [
+                              AgreementItem(
+                                agreementTitle: '푸시 서비스 수신 동의',
+                                isChecked: true,
+                              ),
+                              AgreementItem(
+                                  agreementTitle: '광고 및 마케팅 정보 수신 동의'),
+                              AgreementItem(
+                                  agreementTitle: '이벤트 및 프로모션 정보 수신 동의'),
+                            ],
+                          ),
                         ),
                       ],
                     ),

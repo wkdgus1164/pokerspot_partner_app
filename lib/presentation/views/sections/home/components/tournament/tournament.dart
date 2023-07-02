@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/routes/base/home.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/models/tournament_model.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
@@ -39,7 +41,8 @@ class HomeTournament extends StatelessWidget {
                   CustomTextButton(
                     text: '옵션 변경',
                     theme: CustomTextButtonTheme.primary,
-                    onClick: () {},
+                    onClick: () =>
+                        context.pushNamed(HomeRoutes.tournaments.path),
                   ),
                 ],
               ),

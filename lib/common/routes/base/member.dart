@@ -4,6 +4,11 @@ import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/vi
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/notice/notice_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/term/privacy_policy.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/mypage/views/term/term.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/find/category/views/category_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/find/id/views/id_find_success_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/find/id/views/id_find_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/find/password/views/pw_find_success_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/find/password/views/pw_find_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/views/agreement_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/signup/views/certification_view.dart';
 
@@ -19,6 +24,14 @@ enum MemberRoutes {
   signupAgreement('$memberPath/agreement'),
   signupSuccess('$memberPath/success'),
   login('login'),
+
+  findCategory('$memberPath/find/category'),
+  findId('$memberPath/find/id'),
+  findIdSuccess('$memberPath/find/id/success'),
+
+  findPw('$memberPath/find/pw'),
+  findPwSuccess('$memberPath/find/pw/success'),
+
   mypageAdmin('mypageAdmin'),
   term('term'),
   privacyPolicy('privacyPolicy'),
@@ -50,6 +63,26 @@ List<RouteBase> memberRoutes = [
   rightToLeft(
     MemberRoutes.login.path,
     const LoginView(),
+  ),
+  rightToLeft(
+    MemberRoutes.findCategory.path,
+    const FindCategoryView(),
+  ),
+  rightToLeft(
+    MemberRoutes.findId.path,
+    const IdFindView(),
+  ),
+  rightToLeft(
+    MemberRoutes.findIdSuccess.path,
+    const IdFindSuccessView(),
+  ),
+  rightToLeft(
+    MemberRoutes.findPw.path,
+    const PwFindView(),
+  ),
+  rightToLeft(
+    MemberRoutes.findPwSuccess.path,
+    const PwFindSuccessView(),
   ),
   rightToLeft(
     MemberRoutes.mypageAdmin.path,

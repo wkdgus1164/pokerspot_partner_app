@@ -71,7 +71,7 @@ class LoginForm extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () => context.pushNamed(MemberRoutes.findCategory.path),
                 borderRadius: BorderRadius.circular(4),
                 child: Padding(
                   padding: const EdgeInsets.all(8),

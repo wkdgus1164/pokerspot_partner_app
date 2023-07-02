@@ -7,6 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     this.left = Icons.arrow_back_rounded,
+    this.isLeftButton = true,
     this.isCenterLogo = false,
     this.text = '',
     this.actions,
@@ -14,6 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   final IconData? left;
+  final bool isLeftButton;
   final bool isCenterLogo;
   final String text;
   final List<Widget>? actions;
@@ -21,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isLeftIconVisible = left != null;
+    bool isLeftIconVisible = isLeftButton;
 
     Widget setTitle() {
       switch (isCenterLogo) {
@@ -45,7 +47,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: isLeftIconVisible,
       surfaceTintColor: customColorScheme.surfaceContainer1,
       backgroundColor: customColorScheme.surfaceContainer1,
-      leading: left != null
+      leading: isLeftButton
           ? IconButton(
               onPressed: () => Navigator.pop(context),
               icon: Icon(left, color: Colors.white),

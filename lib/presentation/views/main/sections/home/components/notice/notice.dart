@@ -27,7 +27,12 @@ class HomeNotice extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('공지사항', style: Theme.of(context).textTheme.titleLarge),
+              Text(
+                '공지사항',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
               CustomTextButton(
                 text: '더보기',
                 theme: CustomTextButtonTheme.primary,

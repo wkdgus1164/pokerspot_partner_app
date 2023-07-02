@@ -32,13 +32,17 @@ class HomeStore extends StatelessWidget {
             children: [
               Text(
                 '제휴 현황',
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: customColorScheme.onSurface1,
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(width: 4),
               Text(
                 storeList.length.toString(),
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: lightColorScheme.primary,
+                      fontWeight: FontWeight.bold,
                     ),
               ),
             ],

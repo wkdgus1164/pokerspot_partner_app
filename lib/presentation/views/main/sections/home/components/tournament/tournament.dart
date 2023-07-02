@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/views/main/sections/home/models/tournament_model.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
@@ -26,28 +29,35 @@ class HomeTournament extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      '당일 진행 토너먼트',
-                      style: Theme.of(context).textTheme.titleLarge,
+                      '매장 토너먼트 현황',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: customColorScheme.onSurface1,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                   ),
                   CustomTextButton(
-                    text: '더보기',
+                    text: '옵션 변경',
                     theme: CustomTextButtonTheme.primary,
-                    trailingIcon: Icons.keyboard_arrow_right,
                     onClick: () {},
                   ),
                 ],
               ),
               const SizedBox(height: padding24),
+
+              // TODO: 토너먼트 리스트 PROPS 변경
               Column(
                 children: tournamentList
                     .map(
-                      (it) => HomeTournamentItem(
-                        isPlaying: it.isPlaying,
-                        tournamentType: it.tournamentType,
-                        isToday: it.isToday,
-                        isLive: it.isLive,
-                        isAvailable: it.isAvailable,
+                      (it) => const HomeTournamentItem(
+                        tournamentType: TournamentType.daily,
+                        displayIndex: 1,
+                        displayName: '가나다라 시드권 토너먼트',
+                        isToday: true,
+                        isRealtime: true,
+                        entryMin: 10,
+                        entryMax: 25,
+                        prize: 80,
                       ),
                     )
                     .toList(),
@@ -55,7 +65,16 @@ class HomeTournament extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: padding24),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: padding16),
+          child: CustomOutlinedButton(
+            onPressed: () {},
+            text: '더보기',
+            leadingIcon: Icons.add,
+          ),
+        ),
+        const SizedBox(height: padding16),
         const CustomDivider(),
       ],
     );

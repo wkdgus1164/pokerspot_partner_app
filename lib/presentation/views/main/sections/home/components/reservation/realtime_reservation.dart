@@ -28,14 +28,12 @@ class HomeRealtimeReservation extends StatelessWidget {
           padding: const EdgeInsets.all(padding16),
           child: Text(
             '실시간 예약 현황',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: customColorScheme.onSurface2,
+                ),
           ),
         ),
-        Divider(
-          color: lightColorScheme.outline,
-          height: 1,
-          thickness: 1,
-        ),
+        const Divider(height: 1, thickness: 1),
         Padding(
           padding: const EdgeInsets.only(
             top: padding24,
@@ -43,94 +41,24 @@ class HomeRealtimeReservation extends StatelessWidget {
           ),
           child: Row(
             children: [
-              _buildWaiting(context, waiting),
-              _buildApplied(context, applied),
-              _buildDenied(context, denied),
+              _buildItem(context, true, waiting, '처리대기', true),
+              _buildItem(context, false, applied, '처리완료', false),
+              _buildItem(context, false, denied, '예약거절', false),
             ],
           ),
         ),
-        _buildRefreshButton(time, onRefreshButtonPressed),
+        const SizedBox(height: padding16),
       ],
     );
   }
 
-  Padding _buildRefreshButton(String time, Function() onRefreshButtonPressed) {
-    return Padding(
-      padding: const EdgeInsets.all(padding16),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          foregroundColor: Colors.grey.shade400,
-        ),
-        onPressed: onRefreshButtonPressed,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              '오늘 $time:00 기준',
-              style: const TextStyle(fontSize: 13),
-            ),
-            const SizedBox(width: 4),
-            Container(
-              width: 20,
-              height: 20,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                border: Border.all(
-                  color: lightColorScheme.outline,
-                ),
-                color: Colors.white,
-              ),
-              child: const Icon(
-                Icons.refresh_rounded,
-                color: Colors.black45,
-                size: 16,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Expanded _buildDenied(BuildContext context, int denied) {
-    return Expanded(
-      child: Column(
-        children: [
-          Text(
-            '$denied',
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
-          const SizedBox(height: padding10),
-          Text(
-            '예약거절',
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Expanded _buildApplied(BuildContext context, int applied) {
-    return Expanded(
-      child: Column(
-        children: [
-          Text(
-            '$applied',
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
-          const SizedBox(height: padding10),
-          Text(
-            '처리완료',
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Expanded _buildWaiting(BuildContext context, int waiting) {
+  Expanded _buildItem(
+    BuildContext context,
+    bool isPrimary,
+    int waiting,
+    String status,
+    bool isNew,
+  ) {
     return Expanded(
       child: Stack(
         alignment: Alignment.center,
@@ -139,25 +67,29 @@ class HomeRealtimeReservation extends StatelessWidget {
             children: [
               Text(
                 '$waiting',
-                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                      color: lightColorScheme.primary,
+                style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                      color: isPrimary
+                          ? lightColorScheme.primary
+                          : customColorScheme.onSurface2,
+                      fontWeight: FontWeight.bold,
                     ),
               ),
               const SizedBox(height: padding10),
               Text(
-                '처리대기',
-                style: Theme.of(context).textTheme.labelLarge,
+                status,
+                style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                      color: customColorScheme.onSurface3,
+                    ),
               ),
             ],
           ),
-          Positioned(
-            top: 0,
-            left: 80,
-            child: Image.asset(
-              Assets.newIcon.path,
-              width: 16,
+          if (isNew) ...[
+            Positioned(
+              top: 0,
+              left: 80,
+              child: Image.asset(Assets.newIcon.path, width: 16),
             ),
-          ),
+          ],
         ],
       ),
     );

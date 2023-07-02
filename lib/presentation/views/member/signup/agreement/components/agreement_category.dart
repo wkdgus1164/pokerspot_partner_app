@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 class AgreementCategory extends StatelessWidget {

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 
 class HomeStoreItem extends StatelessWidget {
   const HomeStoreItem({
@@ -32,26 +33,30 @@ class HomeStoreItem extends StatelessWidget {
           Radius.circular(defaultRadius * 2),
         ),
       ),
-      child: InkWell(
+      child: GestureDetector(
         onTap: onTap,
-        splashColor: Colors.grey.shade50,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(defaultRadius * 2),
-        ),
         child: Container(
           width: width ?? MediaQuery.of(context).size.width - 60,
           padding: const EdgeInsets.all(padding16),
           decoration: BoxDecoration(
+            color: lightColorScheme.surface,
             border: Border.all(color: lightColorScheme.outline),
             borderRadius: const BorderRadius.all(
               Radius.circular(defaultRadius * 2),
             ),
+            boxShadow: [cardShadow],
           ),
           child: Row(
             children: [
-              SizedBox(
+              Container(
                 width: 60,
                 height: 60,
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                clipBehavior: Clip.antiAlias,
                 child: CachedNetworkImage(imageUrl: thumbnail),
               ),
               const SizedBox(width: padding16),
@@ -62,7 +67,7 @@ class HomeStoreItem extends StatelessWidget {
                     Text(
                       title,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                            fontWeight: FontWeight.w600,
+                            color: customColorScheme.onSurface2,
                             overflow: TextOverflow.ellipsis,
                           ),
                       maxLines: 1,
@@ -73,20 +78,21 @@ class HomeStoreItem extends StatelessWidget {
                         Container(
                           width: 10,
                           height: 10,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(10),
                             ),
-                            color: Colors.red,
+                            color: isCorporate
+                                ? lightColorScheme.primary
+                                : lightColorScheme.error,
                           ),
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          isCorporate ? '$lastDays일 남음' : '제휴 일시중단',
+                          isCorporate ? '$lastDays일 남음' : '제휴 일시 중단',
                           style:
-                              Theme.of(context).textTheme.labelLarge!.copyWith(
-                                    color: const Color.fromRGBO(58, 69, 82, 1),
-                                    fontWeight: FontWeight.w500,
+                              Theme.of(context).textTheme.labelMedium!.copyWith(
+                                    color: customColorScheme.onSurface3,
                                   ),
                         ),
                       ],

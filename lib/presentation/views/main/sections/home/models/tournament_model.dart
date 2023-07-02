@@ -1,6 +1,7 @@
 enum TournamentType {
   daily('daily'),
   seed('seed'),
+  gtd('gtd'),
   ;
 
   const TournamentType(this.tournamentType);

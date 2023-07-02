@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/coupon/coupon.dart';
+import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/header/store_header.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/no_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/notice/notice.dart';
 import 'package:pokerspot_partner_app/presentation/views/main/sections/home/components/reservation/reservation.dart';
@@ -29,6 +30,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
+        bottomDivider: false,
         isCenterLogo: true,
         isLeftButton: false,
         actions: [
@@ -52,6 +54,8 @@ class HomeView extends StatelessWidget {
                 return SingleChildScrollView(
                   child: Column(
                     children: [
+                      // TODO: 스토어 이름
+                      const HomeStoreHeader(name: '몬스터 홀덤펍'),
                       const HomeReservation(),
                       const HomeTournament(),
                       const HomeCoupon(),

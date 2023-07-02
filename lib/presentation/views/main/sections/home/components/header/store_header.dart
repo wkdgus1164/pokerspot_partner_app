@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 class HomeStoreHeader extends StatelessWidget {
   const HomeStoreHeader({Key? key, required this.name}) : super(key: key);
@@ -9,10 +12,10 @@ class HomeStoreHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => context.pushNamed(ShopRoutes.select.path),
       child: Container(
-        color: const Color.fromRGBO(58, 69, 82, 1),
-        padding: const EdgeInsets.symmetric(vertical: padding10),
+        color: customColorScheme.surfaceContainer2,
+        padding: const EdgeInsets.symmetric(vertical: padding16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,7 +25,7 @@ class HomeStoreHeader extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         color: Colors.white,
                       ),
                 ),
@@ -37,8 +40,9 @@ class HomeStoreHeader extends StatelessWidget {
               width: 8,
               height: 8,
               decoration: const BoxDecoration(
+                color: Color.fromRGBO(19, 181, 172, 1),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(50),
+                  Radius.circular(8),
                 ),
               ),
             ),

@@ -4,24 +4,24 @@ import 'package:pokerspot_partner_app/common/constants/assets.dart';
 
 final List<String> defaultIcons = [
   Assets.homeOff.path,
-  // Assets.statisticsOff.path,
-  // Assets.reservationOff.path,
+  Assets.statisticsOff.path,
+  Assets.reservationOff.path,
   Assets.shopOff.path,
   Assets.accountOff.path,
 ];
 
 final List<String> selectedIcons = [
   Assets.homeOn.path,
-  // Assets.statisticsOn.path,
-  // Assets.reservationOn.path,
+  Assets.statisticsOn.path,
+  Assets.reservationOn.path,
   Assets.shopOn.path,
   Assets.accountOn.path,
 ];
 
 final List<String> labels = [
   '홈',
-  // '통계',
-  // '예약관리',
+  '통계',
+  '예약관리',
   '매장관리',
   '내정보',
 ];

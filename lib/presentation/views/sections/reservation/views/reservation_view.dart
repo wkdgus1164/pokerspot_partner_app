@@ -2,11 +2,14 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/count_tab.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/list_header.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/new_item.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/tab_header.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/home_provider.dart';
-import '../../home/components/no_store.dart';
 
 class ReservationView extends StatelessWidget {
   const ReservationView({super.key});
@@ -17,40 +20,54 @@ class ReservationView extends StatelessWidget {
       builder: (_, provider, __) {
         final title = provider.stores?.firstOrNull?.name;
         return Scaffold(
-          appBar: const CustomAppBar(text: '예약관리'),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: title == null
-                  ? [const HomeNoStore()]
-                  : [
-                      Center(
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.bar_chart_rounded,
-                              color: customColorScheme.onSurface4,
-                            ),
-                            const SizedBox(height: padding10),
-                            Text(
-                              '해당 매장은 현재\n예약 데이터가 존재하지 않습니다.',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge!
-                                  .copyWith(
-                                    color: customColorScheme.onSurface4,
-                                  ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-            ),
-          ),
+          appBar: reservationTabAppBar(context, title),
+          body: _buildBody(context),
         );
       },
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    // 매장 없음
+    // return const NoStore();
+
+    // 데이터 없음
+    // return const ReservationNoData();
+
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        const ReservationCountTab(
+          newData: 0,
+          completeData: 12,
+          focusedOn: FocusedOn.newData,
+        ),
+        ReservationListHeader(
+          date: '09.05(월)',
+          startAt: '19:00',
+          onOneClickCancelButtonPressed: () {},
+        ),
+
+        Expanded(
+          child: ListView.builder(
+            itemBuilder: (_, __) => const ReservationNewItem(
+              date: "10:35",
+              status: Status.waiting,
+              reservedAt: 38,
+              time: "10:35",
+              count: "3",
+              isCoupon: true,
+              shopName: "몬스터 홀덤펍",
+              userNickname: "유저닉네임",
+              userType: UserType.vip,
+            ),
+            itemCount: 4,
+          ),
+        ),
+
+        // 데이터 없음
+        // Expanded(child: const ReservationNoData()),
+      ],
     );
   }
 }

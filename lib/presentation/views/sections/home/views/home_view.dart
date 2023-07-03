@@ -4,7 +4,7 @@ import 'package:pokerspot_partner_app/common/routes/base/home.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/coupon/coupon.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/header/store_header.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/components/no_store.dart';
+import 'package:pokerspot_partner_app/presentation/views/common/no_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/notice/notice.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/reservation/reservation.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/store_list/store_list.dart';
@@ -51,7 +51,7 @@ class HomeView extends StatelessWidget {
             switch (provider.stores?.length) {
               case null:
               case 0:
-                return const Center(child: HomeNoStore());
+                return const Center(child: NoStore());
               default:
                 return SingleChildScrollView(
                   child: Column(

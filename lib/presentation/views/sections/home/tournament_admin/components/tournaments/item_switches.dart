@@ -22,8 +22,8 @@ class TournamentsItemSwitches extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildwitchSet(context, '당일 진행', true, onFirstSwitchChanged),
-        _buildwitchSet(context, '실시간 진행', false, onSecondSwitchChanged),
+        _buildwitchSet(context, '당일 진행', true, onFirstSwitchChanged, false),
+        _buildwitchSet(context, '실시간 진행', false, onSecondSwitchChanged, true),
       ],
     );
   }
@@ -33,10 +33,18 @@ class TournamentsItemSwitches extends StatelessWidget {
     String text,
     bool switchValue,
     Function(bool)? onSwitchChanged,
+    bool isLastItem,
   ) {
     return Expanded(
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.all(padding16),
+        decoration: BoxDecoration(
+          border: Border(
+            right: BorderSide(
+              color: isLastItem ? Colors.transparent : lightColorScheme.outline,
+            ),
+          ),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -7,5 +7,5 @@ class Constants {
     return _instance;
   }
 
-  static const apiUrl = 'https://partners-api.pokerspotground.com/v1';
+  static const apiUrl = 'https://test-partners-api.pokerspotground.com/v1';
 }

@@ -8,8 +8,8 @@ class CustomTextFieldSet extends StatelessWidget {
     Key? key,
     this.initText = '',
     required this.inputLabel,
-    required this.keyboardType,
-    required this.isPassword,
+    this.keyboardType = TextInputType.text,
+    this.isPassword = false,
     this.inputErrorText,
     required this.inputHintText,
     this.onEditingComplete,
@@ -50,7 +50,7 @@ class CustomTextFieldSet extends StatelessWidget {
           inputLabel,
           style: Theme.of(context)
               .textTheme
-              .titleMedium!
+              .bodyMedium!
               .copyWith(color: customColorScheme.onSurface1),
         ),
         const SizedBox(height: padding10),
@@ -59,7 +59,7 @@ class CustomTextFieldSet extends StatelessWidget {
             captionText,
             style: Theme.of(context)
                 .textTheme
-                .bodySmall!
+                .labelMedium!
                 .copyWith(color: customColorScheme.onSurface3),
           ),
         ],

@@ -3,8 +3,7 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 enum CustomTextButtonTheme {
   primary('primary'),
-  secondary('secondary'),
-  tertiary('tertiary'),
+  black('black'),
   ;
 
   const CustomTextButtonTheme(this.key);
@@ -15,7 +14,7 @@ class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
     super.key,
     required this.text,
-    this.theme = CustomTextButtonTheme.tertiary,
+    this.theme = CustomTextButtonTheme.black,
     required this.onClick,
     this.trailingIcon,
   });
@@ -31,10 +30,8 @@ class CustomTextButton extends StatelessWidget {
       switch (theme) {
         case CustomTextButtonTheme.primary:
           return lightColorScheme.primary;
-        case CustomTextButtonTheme.secondary:
+        case CustomTextButtonTheme.black:
           return lightColorScheme.secondary;
-        case CustomTextButtonTheme.tertiary:
-          return lightColorScheme.tertiary;
         default:
           return Colors.black;
       }
@@ -44,10 +41,7 @@ class CustomTextButton extends StatelessWidget {
       switch (theme) {
         case CustomTextButtonTheme.primary:
           return lightColorScheme.primary.withAlpha(10);
-        case CustomTextButtonTheme.secondary:
-          return lightColorScheme.secondary.withAlpha(10);
-        case CustomTextButtonTheme.tertiary:
-          return lightColorScheme.tertiary.withAlpha(10);
+        case CustomTextButtonTheme.black:
         default:
           return Colors.black.withAlpha(10);
       }

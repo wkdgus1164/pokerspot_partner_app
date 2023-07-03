@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/components/dialogs/info_dialog/information_dialog_utils.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
 import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart';
-import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/token_provider.dart';
@@ -63,9 +62,6 @@ class _LoginViewState extends State<LoginView> {
                       await _tokenProvider.setIsAutoLogin();
                     },
                     onAutoLoginChecked: _tokenProvider.isAutoLogin,
-                    onSignupButtonPressed: () {
-                      context.pushNamed(MemberRoutes.signupRenewal.path);
-                    },
                   );
                 },
               ),

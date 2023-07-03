@@ -22,7 +22,7 @@ class SignupSuccessView extends StatelessWidget {
               Text(
                 '가입 완료',
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.bold,
                     ),
               ),
               const SizedBox(height: padding16),
@@ -45,7 +45,7 @@ class SignupSuccessView extends StatelessWidget {
                 ),
                 child: CustomFilledButton(
                   text: '확인',
-                  theme: CustomFilledButtonTheme.secondary,
+                  theme: CustomFilledButtonTheme.primary,
                   onPressed: () => context.pushNamed(MemberRoutes.login.path),
                 ),
               ),

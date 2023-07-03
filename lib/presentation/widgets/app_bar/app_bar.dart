@@ -3,28 +3,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 
-enum CustomAppBarTheme {
-  light('light'),
-  dark('dark');
-
-  const CustomAppBarTheme(this.key);
-
-  final String key;
-}
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
-    this.theme = CustomAppBarTheme.light,
-    this.left,
+    this.left = Icons.arrow_back_rounded,
+    this.isLeftButton = true,
     this.isCenterLogo = false,
     this.text = '',
     this.actions,
     this.bottomDivider = true,
   });
 
-  final CustomAppBarTheme theme;
   final IconData? left;
+  final bool isLeftButton;
   final bool isCenterLogo;
   final String text;
   final List<Widget>? actions;
@@ -32,18 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isLeftIconVisible = left != null;
-
-    Color setBackgroundColor() {
-      switch (theme) {
-        case CustomAppBarTheme.light:
-          return customColorScheme.surfaceWhite;
-        case CustomAppBarTheme.dark:
-          return customColorScheme.surfaceContainer1;
-        default:
-          return customColorScheme.surfaceContainer1;
-      }
-    }
+    bool isLeftIconVisible = isLeftButton;
 
     Widget setTitle() {
       switch (isCenterLogo) {
@@ -53,10 +33,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         case false:
           return Text(
             text,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: theme == CustomAppBarTheme.dark
-                      ? Colors.white
-                      : Colors.black,
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: Colors.white,
                 ),
           );
       }
@@ -67,17 +45,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       automaticallyImplyLeading: isLeftIconVisible,
-      surfaceTintColor: setBackgroundColor(),
-      backgroundColor: setBackgroundColor(),
-      leading: left != null
+      surfaceTintColor: customColorScheme.surfaceContainer1,
+      backgroundColor: customColorScheme.surfaceContainer1,
+      leading: isLeftButton
           ? IconButton(
               onPressed: () => Navigator.pop(context),
-              icon: Icon(
-                left,
-                color: theme == CustomAppBarTheme.light
-                    ? customColorScheme.onSurface1
-                    : customColorScheme.onSurfaceContainer1,
-              ),
+              icon: Icon(left, color: Colors.white),
             )
           : null,
       title: setTitle(),

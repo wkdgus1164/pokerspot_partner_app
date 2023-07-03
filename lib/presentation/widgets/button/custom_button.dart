@@ -16,7 +16,7 @@ class CustomFilledButton extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.text,
-    required this.theme,
+    this.theme = CustomFilledButtonTheme.primary,
   });
 
   final CustomFilledButtonTheme theme;

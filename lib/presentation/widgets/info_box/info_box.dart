@@ -1,64 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-
-enum BoxColor {
-  blue('blue'),
-  ;
-
-  const BoxColor(this.color);
-  final String color;
-}
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 class InfoBox extends StatelessWidget {
   const InfoBox({
     super.key,
-    required this.boxColor,
     required this.text,
   });
 
-  final BoxColor boxColor;
   final String text;
-
-  setBackgroundColor(BoxColor boxColor) {
-    switch (boxColor) {
-      case BoxColor.blue:
-        return const Color.fromRGBO(243, 248, 254, 1);
-      default:
-        return null;
-    }
-  }
-
-  setOnBackgroundColor(BoxColor boxColor) {
-    switch (boxColor) {
-      case BoxColor.blue:
-        return Colors.blue;
-      default:
-        return null;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(padding10),
+      padding: const EdgeInsets.all(padding16),
       decoration: BoxDecoration(
-        color: setBackgroundColor(boxColor),
+        color: lightColorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(defaultRadius),
       ),
       child: Row(
         children: [
           Icon(
             Icons.info_outline_rounded,
-            color: setOnBackgroundColor(boxColor),
+            color: lightColorScheme.onPrimaryContainer,
             size: 16,
           ),
           const SizedBox(width: 6),
           Expanded(
             child: Text(
               text,
-              style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: setOnBackgroundColor(boxColor),
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: lightColorScheme.onPrimaryContainer,
                   ),
             ),
           ),

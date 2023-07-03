@@ -99,7 +99,6 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                               ),
                               const SizedBox(height: padding10),
                               const InfoBox(
-                                boxColor: BoxColor.blue,
                                 text: '모든 참가비의 단위는 chip입니다.',
                               ),
                               const SizedBox(height: padding24),

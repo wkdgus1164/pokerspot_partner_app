@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/tournaments/components/tournaments/item_contents.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/tournaments/components/tournaments/item_switches.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/components/tournaments/item_contents.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/components/tournaments/item_switches.dart';
 
 class TournamentsItem extends StatelessWidget {
   const TournamentsItem({

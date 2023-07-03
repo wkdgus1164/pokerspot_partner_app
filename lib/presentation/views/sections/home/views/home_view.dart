@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/routes/base/home.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/coupon/coupon.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/header/store_header.dart';
@@ -35,7 +37,7 @@ class HomeView extends StatelessWidget {
         isLeftButton: false,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => context.pushNamed(HomeRoutes.notifiaction.path),
             icon: const Icon(
               Icons.notifications_none_outlined,
               color: Colors.white,

@@ -12,17 +12,15 @@ class BaseDialogContentSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width * 0.8,
       color: lightColorScheme.surface,
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 8,
-          horizontal: 24,
-        ),
+        padding: const EdgeInsets.all(16),
         child: Text(
           content,
-          style: TextStyle(
-            color: Colors.grey.shade900.withOpacity(0.8),
-          ),
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                color: customColorScheme.onSurface3,
+              ),
         ),
       ),
     );

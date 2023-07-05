@@ -12,9 +12,8 @@ class BaseDialogButtonSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
       color: lightColorScheme.surface,
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.only(right: 24, bottom: 16),
       child: child,
     );
   }

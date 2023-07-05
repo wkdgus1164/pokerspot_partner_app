@@ -31,7 +31,7 @@ class CustomTextButton extends StatelessWidget {
         case CustomTextButtonTheme.primary:
           return lightColorScheme.primary;
         case CustomTextButtonTheme.black:
-          return lightColorScheme.secondary;
+          return customColorScheme.onSurface3;
         default:
           return Colors.black;
       }

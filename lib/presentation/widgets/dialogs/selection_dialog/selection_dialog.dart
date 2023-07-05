@@ -12,6 +12,8 @@ class SelectionDialog extends StatefulWidget {
   final Widget icon;
   final String title;
   final String content;
+  final String confirmText;
+  final String cancelText;
   final VoidCallback? onConfirm;
   final VoidCallback? onCancel;
 
@@ -22,6 +24,8 @@ class SelectionDialog extends StatefulWidget {
     this.content = "",
     this.onConfirm,
     this.onCancel,
+    this.confirmText = '취소',
+    this.cancelText = '확인',
   });
 
   @override
@@ -32,6 +36,8 @@ class _SelectionDialogState extends State<SelectionDialog> {
   Widget get icon => widget.icon;
   String get title => widget.title;
   String get content => widget.content;
+  String get confirmText => widget.confirmText;
+  String get cancelText => widget.cancelText;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +46,10 @@ class _SelectionDialogState extends State<SelectionDialog> {
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Divider(height: 1, thickness: 1),
           _ContentSection(),
           const SizedBox(height: 20),
-          _ButtonSection()
+          _ButtonSection(),
         ],
       ),
     );
@@ -77,12 +84,16 @@ class _SelectionDialogState extends State<SelectionDialog> {
 
     return BaseDialogButtonSection(
       child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           BaseDialogCancelButton(
+            text: cancelText,
             onCancel: handleCancel,
           ),
           const SizedBox(width: 16),
           BaseDialogConfirmButton(
+            text: confirmText,
             onConfirm: handleConfirm,
           ),
         ],

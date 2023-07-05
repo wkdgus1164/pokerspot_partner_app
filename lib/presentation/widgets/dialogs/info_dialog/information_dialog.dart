@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/base/base_dialog.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/base/templates/buttons/base_dialog_button_section.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/base/templates/buttons/base_dialog_confirm_button.dart';
@@ -15,7 +16,7 @@ class InformationDialog extends StatefulWidget {
 
   const InformationDialog({
     super.key,
-    this.title = "",
+    this.title = "안내",
     this.content = "",
     this.onConfirm,
     this.confirmText = "확인",
@@ -36,9 +37,13 @@ class _InformationDialogState extends State<InformationDialog> {
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Divider(
+            color: lightColorScheme.outline,
+            height: 1,
+            thickness: 1,
+          ),
           _ContentSection(),
-          const SizedBox(height: 20),
-          _ButtonSection()
+          _ButtonSection(),
         ],
       ),
     );
@@ -69,6 +74,8 @@ class _InformationDialogState extends State<InformationDialog> {
 
     return BaseDialogButtonSection(
       child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           BaseDialogConfirmButton(
             onConfirm: handleConfirm,

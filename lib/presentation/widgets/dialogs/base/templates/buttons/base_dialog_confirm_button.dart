@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 
 class BaseDialogConfirmButton extends StatelessWidget {
   final String text;
-  final VoidCallback? onConfirm;
+  final Function() onConfirm;
 
   const BaseDialogConfirmButton({
     super.key,
     this.text = "확인",
-    this.onConfirm,
+    required this.onConfirm,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: CustomFilledButton(
-        text: text,
-        theme: CustomFilledButtonTheme.primary,
-        onPressed: onConfirm,
-      ),
+    return CustomTextButton(
+      onClick: onConfirm,
+      text: text,
+      theme: CustomTextButtonTheme.primary,
     );
   }
 }

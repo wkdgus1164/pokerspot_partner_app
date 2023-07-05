@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/selection_dialog/selection_dialog_utils.dart';
 
 PreferredSizeWidget reservationTabAppBar(BuildContext context, String? title) {
   return AppBar(
@@ -51,7 +53,16 @@ PreferredSizeWidget reservationTabAppBar(BuildContext context, String? title) {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: () => showSelectionDialog(
+            context: context,
+            title: '안내',
+            content: '예약을 마감하시겠습니까?\n다음날 오픈시간 6시간 전 자동으로 예약 재개상태로 변경됩니다.',
+            autoDismiss: false,
+            cancelText: '취소',
+            onCancel: () {},
+            confirmText: '임시 중단',
+            onConfirm: () {},
+          ),
           child: Text(
             '예약마감',
             style: Theme.of(context).textTheme.labelMedium!.copyWith(

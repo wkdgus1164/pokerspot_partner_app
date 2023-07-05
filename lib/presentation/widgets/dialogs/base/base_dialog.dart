@@ -16,6 +16,9 @@ class BaseDialog extends StatelessWidget {
       title: title,
       clipBehavior: Clip.hardEdge,
       surfaceTintColor: Colors.white,
+      insetPadding: const EdgeInsets.all(0),
+      titlePadding: const EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: const BorderSide(color: Colors.transparent),

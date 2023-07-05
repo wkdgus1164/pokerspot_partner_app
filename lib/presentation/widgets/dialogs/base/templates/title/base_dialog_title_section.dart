@@ -7,7 +7,7 @@ class BaseDialogTitleSection extends StatelessWidget {
 
   const BaseDialogTitleSection({
     super.key,
-    required this.icon,
+    this.icon = const Icon(Icons.info_outline_rounded),
     required this.title,
   });
 
@@ -15,17 +15,23 @@ class BaseDialogTitleSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: lightColorScheme.surface,
+      padding: const EdgeInsets.only(
+        left: 24,
+        top: 16,
+        bottom: 16,
+        right: 16,
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           icon,
-          const SizedBox(width: 12),
+          const SizedBox(width: 16),
           Text(
             title,
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 18,
-            ),
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: customColorScheme.onSurface2,
+                ),
           ),
         ],
       ),

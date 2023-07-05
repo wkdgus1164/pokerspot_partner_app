@@ -44,9 +44,9 @@ class ReservationView extends StatelessWidget {
 
         Expanded(
           child: ListView.builder(
-            itemBuilder: (_, __) => const ReservationNewItem(
+            itemBuilder: (_, __) => const ReservationItem(
               date: "10:35",
-              status: Status.waiting,
+              status: Status.complete,
               reservedAt: 38,
               time: "10:35",
               count: "3",

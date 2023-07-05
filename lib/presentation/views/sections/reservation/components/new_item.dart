@@ -7,6 +7,7 @@ import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outline
 
 enum Status {
   waiting('waiting'),
+  complete('complete'),
   ;
 
   const Status(this.status);
@@ -25,8 +26,8 @@ enum UserType {
   final String userType;
 }
 
-class ReservationNewItem extends StatelessWidget {
-  const ReservationNewItem({
+class ReservationItem extends StatelessWidget {
+  const ReservationItem({
     super.key,
     required this.date,
     required this.status,
@@ -53,6 +54,10 @@ class ReservationNewItem extends StatelessWidget {
     switch (status) {
       case Status.waiting:
         return '접수대기';
+      case Status.complete:
+        return '접수완료';
+      default:
+        return '알수없음';
     }
   }
 
@@ -97,7 +102,7 @@ class ReservationNewItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '$date · ${setStatus(status)}',
+                '$date · 접수대기',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: customColorScheme.onSurface3,
@@ -204,25 +209,31 @@ class ReservationNewItem extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: padding16),
-          Row(
-            children: [
-              Expanded(
-                child: CustomOutlinedButton(
-                  onPressed: () {},
-                  text: '거절',
-                  theme: CustomOutlinedButtonTheme.secondary,
+          if (status == Status.waiting) ...[
+            Column(
+              children: [
+                const SizedBox(height: padding16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomOutlinedButton(
+                        onPressed: () {},
+                        text: '거절',
+                        theme: CustomOutlinedButtonTheme.secondary,
+                      ),
+                    ),
+                    const SizedBox(width: padding16),
+                    Expanded(
+                      child: CustomFilledButton(
+                        text: '접수',
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(width: padding16),
-              Expanded(
-                child: CustomFilledButton(
-                  text: '접수',
-                  onPressed: () {},
-                ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ],
       ),
     );

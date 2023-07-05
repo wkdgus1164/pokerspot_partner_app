@@ -22,6 +22,7 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.readOnly = false,
     this.textAlign = TextAlign.left,
+    this.controller,
   });
 
   final String initText;
@@ -41,6 +42,7 @@ class CustomTextField extends StatelessWidget {
   final GestureTapCallback? onTap;
   final bool readOnly;
   final TextAlign textAlign;
+  final TextEditingController? controller;
 
   InputDecoration textFieldDecoration(BuildContext context) {
     return InputDecoration(
@@ -74,11 +76,12 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: (initText.isNotEmpty
-          ? (TextEditingController()
-            ..text = initText
-            ..selection = TextSelection.collapsed(offset: initText.length))
-          : null),
+      controller: controller ??
+          (initText.isNotEmpty
+              ? (TextEditingController()
+                ..text = initText
+                ..selection = TextSelection.collapsed(offset: initText.length))
+              : null),
       style: Theme.of(context).textTheme.bodyMedium,
       decoration: textFieldDecoration(context),
       onChanged: onTextFieldChanged,

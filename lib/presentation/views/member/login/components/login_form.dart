@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
+import 'package:pokerspot_partner_app/locator.dart';
+import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
@@ -103,8 +105,10 @@ class LoginForm extends StatelessWidget {
               CustomTextButton(
                 text: '회원가입하기',
                 theme: CustomTextButtonTheme.primary,
-                onClick: () =>
-                    context.pushNamed(MemberRoutes.signupAgreement.path),
+                onClick: () {
+                  locator<SignupProvider>().reset();
+                  return context.pushNamed(MemberRoutes.signupAgreement.path);
+                },
               ),
             ],
           ),

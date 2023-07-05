@@ -3,11 +3,13 @@ import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field
 
 class SignupPhoneNumber extends StatefulWidget {
   final ValueChanged<String> onTextFieldChanged;
+  final String phoneNumber;
   final bool isVerified;
 
   const SignupPhoneNumber({
     Key? key,
     required this.onTextFieldChanged,
+    this.phoneNumber = '',
     this.isVerified = false,
   }) : super(key: key);
 
@@ -21,6 +23,7 @@ class _SignupPhoneNumberState extends State<SignupPhoneNumber> {
   @override
   Widget build(BuildContext context) {
     return CustomTextFieldSet(
+      initText: widget.phoneNumber,
       inputLabel: '휴대폰 번호',
       keyboardType: TextInputType.number,
       isPassword: false,

@@ -3,10 +3,12 @@ import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field
 
 class SignupEmail extends StatefulWidget {
   final ValueChanged<String> onTextFieldChanged;
+  final String email;
 
   const SignupEmail({
     Key? key,
     required this.onTextFieldChanged,
+    this.email = '',
   }) : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class _SignupEmailState extends State<SignupEmail> {
   @override
   Widget build(BuildContext context) {
     return CustomTextFieldSet(
+      initText: widget.email,
       inputLabel: '이메일 주소',
       keyboardType: TextInputType.emailAddress,
       isPassword: false,

@@ -1,19 +1,19 @@
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/mypage_admin/mypage_admin_view.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/notice/notice_view.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/term/privacy_policy.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/term/term.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/find/category/views/category_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/find/id/views/id_find_success_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/find/id/views/id_find_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/find/password/views/pw_find_success_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/find/password/views/pw_find_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/views/agreement_view.dart';
-import 'package:pokerspot_partner_app/presentation/views/member/signup/signup/views/certification_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/mypage_admin/mypage_admin_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/notice/notice_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/term/privacy_policy.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/term/term.dart';
 
 import '../../../presentation/views/member/login/views/login_view.dart';
-import '../../../presentation/views/member/signup/signup/views/signup_view.dart';
+import '../../../presentation/views/member/signup/information/views/certification_view.dart';
+import '../../../presentation/views/member/signup/signup/views/signup_information_view.dart';
 import '../../../presentation/views/member/signup/success/views/success_view.dart';
 
 const String memberPath = 'member';
@@ -46,7 +46,7 @@ enum MemberRoutes {
 List<RouteBase> memberRoutes = [
   rightToLeft(
     MemberRoutes.signup.path,
-    const SignupView(),
+    const SignupInformationView(),
   ),
   rightToLeft(
     MemberRoutes.signupCertification.path,

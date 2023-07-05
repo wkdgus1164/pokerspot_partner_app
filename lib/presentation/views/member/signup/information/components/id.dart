@@ -3,12 +3,14 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 class SignupId extends StatefulWidget {
+  final String id;
   final ValueChanged<String>? onTextFieldChanged;
   final VoidCallback? onCheckTap;
   final bool checkedDuplicateId;
 
   const SignupId({
     Key? key,
+    this.id = '',
     this.onTextFieldChanged,
     this.onCheckTap,
     this.checkedDuplicateId = false,
@@ -72,6 +74,11 @@ class _SignupIdState extends State<SignupId> {
         ),
         const SizedBox(height: padding10),
         TextFormField(
+          controller: (widget.id.isNotEmpty
+              ? (TextEditingController()
+                ..text = widget.id
+                ..selection = TextSelection.collapsed(offset: widget.id.length))
+              : null),
           decoration: textFieldDecoration(),
           keyboardType: TextInputType.text,
           maxLength: 12,

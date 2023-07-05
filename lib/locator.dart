@@ -24,7 +24,7 @@ void setupLocator() {
   locator.registerLazySingleton(
       () => AuthProvider(locator(), locator(), locator()));
   locator.registerLazySingleton(() => TokenProvider());
-  locator.registerFactory(() => SignupProvider(locator()));
+  locator.registerLazySingleton(() => SignupProvider(locator()));
   locator.registerLazySingleton(() => HomeProvider(locator()));
   locator.registerLazySingleton(() => CreateStoreProvider(locator()));
   locator.registerFactory(() => NoticeProvider(locator()));

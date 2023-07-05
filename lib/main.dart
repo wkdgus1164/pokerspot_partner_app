@@ -9,6 +9,7 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
+import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'data/network/api_client.dart';
@@ -72,6 +73,9 @@ class MainApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (_) => locator<CreateStoreProvider>(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => locator<SignupProvider>(),
           ),
           ChangeNotifierProvider(
             create: (_) => locator<HomeProvider>(),

@@ -1,31 +1,25 @@
 import 'package:debounce_throttle/debounce_throttle.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
+import 'package:pokerspot_partner_app/domain/entities/signup/signup_agreement.dart';
 import 'package:pokerspot_partner_app/domain/usecases/signup_usecase.dart';
+
+import '../../domain/entities/signup/signup_information.dart';
 
 class SignupProvider with ChangeNotifier {
   final SignupUsecase _usecase;
 
-  String _id = '';
-  String get id => _id;
+  bool _isAllAgree = false;
+  bool get isAllAgree => _isAllAgree;
 
-  String _password = '';
-  String get password => _password;
+  SignupAgreementModel _agreement = SignupAgreementModel();
+  SignupAgreementModel get agreement => _agreement;
 
-  String _checkPassword = '';
-  String get checkPassword => _checkPassword;
+  SignupInformationModel _information = SignupInformationModel();
+  SignupInformationModel get information => _information;
 
-  String _email = '';
-  String get email => _email;
-
-  String _name = '';
-  String get name => _name;
-
-  String _phoneNumber = '';
-  String get phoneNumber => _phoneNumber;
-
-  String _impUid = '';
-  String get impUid => _impUid;
+  bool _validateAgreement = false;
+  bool get validateAgreement => _validateAgreement;
 
   bool _checkedDuplicateId = true;
   bool get checkedDuplicateId => _checkedDuplicateId;
@@ -52,6 +46,20 @@ class SignupProvider with ChangeNotifier {
     super.dispose();
   }
 
+  void setIsAllAgree(bool value) {
+    _isAllAgree = value;
+    _agreement = agreement
+      ..service = value
+      ..privacy = value
+      ..sensitivity = value;
+    _setValidateAgreement();
+  }
+
+  void setAgreement(SignupAgreementModel agreement) {
+    _agreement = agreement;
+    _setValidateAgreement();
+  }
+
   final updateBasketDebounce = Debouncer(
     const Duration(milliseconds: 200),
     initialValue: null,
@@ -59,67 +67,80 @@ class SignupProvider with ChangeNotifier {
   );
 
   void setId(String value) {
-    _id = value;
+    _information.id = value;
     updateBasketDebounce.setValue(null);
-    validateButton();
+    _setValidateInformation();
   }
 
   void setPassword(String value) {
-    _password = value;
-    validateButton();
+    _information.password = value;
+    _setValidateInformation();
   }
 
   void setCheckPassword(String value) {
-    _checkPassword = value;
-    validateButton();
+    _information.checkPassword = value;
+    _setValidateInformation();
   }
 
   void setEmail(String value) {
-    _email = value;
-    validateButton();
+    _information.email = value;
+    _setValidateInformation();
   }
 
   void setName(String value) {
-    _name = value;
-    validateButton();
+    _information.name = value;
+    _setValidateInformation();
   }
 
   void setPhoneNumber(String value) {
-    _phoneNumber = value;
-    validateButton();
+    _information.phoneNumber = value;
+    _setValidateInformation();
   }
 
   void setImpUid(Map<String, String>? value) {
-    _impUid = value?['imp_uid'] ?? '';
-    validateButton();
+    _information.impUid = value?['imp_uid'] ?? '';
+    _setValidateInformation();
   }
 
   Future<void> checkDuplicate() async {
-    _checkedDuplicateId = await _usecase.checkDuplicate(id);
+    _checkedDuplicateId = await _usecase.checkDuplicate(information.id);
     Logger.d('[checkedDuplicateId] $checkedDuplicateId');
-    validateButton();
+    _setValidateInformation();
   }
 
   Future<bool> checkPhoneNumber() async {
     _checkedPhoneNumber = await _usecase.checkPhoneNumber(
-        phoneNumber: phoneNumber, name: name, impUid: impUid);
-    validateButton();
+        phoneNumber: information.phoneNumber,
+        name: information.name,
+        impUid: information.impUid);
+    _setValidateInformation();
     return checkedPhoneNumber;
   }
 
-  void validateButton() {
-    _validateInput = _id.isNotEmpty &&
-        password.isNotEmpty &&
-        checkPassword.isNotEmpty &&
-        phoneNumber.isNotEmpty &&
-        name.isNotEmpty &&
-        checkedDuplicateId;
+  void _setValidateAgreement() {
+    _validateAgreement = _usecase.validateAgreement(agreement);
+    notifyListeners();
+  }
+
+  void _setValidateInformation() {
+    _validateInput =
+        _usecase.validateInformation(information) && checkedDuplicateId;
     _validateConfirm = _validateInput && _checkedPhoneNumber;
     notifyListeners();
   }
 
   Future<String?> signUp() {
-    return _usecase.signUp(
-        id, password, checkPassword, email, name, phoneNumber, impUid);
+    return _usecase.signUp(information);
+  }
+
+  void reset() {
+    _isAllAgree = false;
+    _agreement = SignupAgreementModel();
+    _information = SignupInformationModel();
+    _validateAgreement = false;
+    _checkedDuplicateId = true;
+    _checkedPhoneNumber = false;
+    _validateInput = false;
+    _validateConfirm = false;
   }
 }

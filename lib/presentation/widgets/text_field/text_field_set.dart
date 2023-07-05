@@ -20,6 +20,7 @@ class CustomTextFieldSet extends StatelessWidget {
     this.textInputAction,
     this.captionText = '',
     this.enabled = true,
+    this.controller,
   }) : super(key: key);
 
   final String initText;
@@ -40,6 +41,7 @@ class CustomTextFieldSet extends StatelessWidget {
   final String captionText;
 
   final bool enabled;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +67,7 @@ class CustomTextFieldSet extends StatelessWidget {
         ],
         const SizedBox(height: padding10),
         CustomTextField(
+          controller: controller,
           initText: initText,
           hint: inputHintText,
           errorText: inputErrorText,

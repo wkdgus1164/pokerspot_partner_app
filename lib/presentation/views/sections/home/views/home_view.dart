@@ -56,7 +56,6 @@ class HomeView extends StatelessWidget {
                 return SingleChildScrollView(
                   child: Column(
                     children: [
-                      // TODO: 스토어 이름
                       const HomeStoreHeader(name: '몬스터 홀덤펍'),
                       const HomeReservation(),
                       const HomeTournament(),

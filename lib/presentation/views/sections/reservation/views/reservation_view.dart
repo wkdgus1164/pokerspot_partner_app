@@ -1,12 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/count_tab.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/list_header.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/new_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/tab_header.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/home_provider.dart';
@@ -30,9 +27,6 @@ class ReservationView extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     // 매장 없음
     // return const NoStore();
-
-    // 데이터 없음
-    // return const ReservationNoData();
 
     return Column(
       mainAxisSize: MainAxisSize.max,

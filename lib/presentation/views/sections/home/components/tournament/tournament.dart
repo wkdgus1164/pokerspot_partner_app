@@ -47,8 +47,6 @@ class HomeTournament extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: padding24),
-
-              // TODO: 토너먼트 리스트 PROPS 변경
               Column(
                 children: tournamentList
                     .map(

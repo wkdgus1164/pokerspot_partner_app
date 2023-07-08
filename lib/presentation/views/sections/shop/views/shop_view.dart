@@ -6,6 +6,7 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/views/components/new_shop.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/views/components/shop_card.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:provider/provider.dart';
@@ -44,6 +45,7 @@ class _ShopViewState extends State<ShopView> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                const NewShop(),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: padding16,
@@ -53,12 +55,16 @@ class _ShopViewState extends State<ShopView> {
                     children: [
                       Text(
                         '보유 매장',
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: customColorScheme.onSurface1,
+                            ),
                       ),
                       const SizedBox(width: 6),
                       Text(
                         (provider.stores?.length ?? 0).toString(),
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
                               color: lightColorScheme.primary,
                             ),
                       ),
@@ -69,33 +75,34 @@ class _ShopViewState extends State<ShopView> {
                   Expanded(child: _buildStores(provider.stores ?? []))
                 else
                   Expanded(
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.info_outline_rounded,
-                            color: customColorScheme.onSurface3,
-                          ),
-                          const SizedBox(height: padding10),
-                          Text(
-                            '등록된 매장이 없습니다.\n매장을 등록해 주시기 바랍니다.',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .copyWith(
-                                  color: customColorScheme.onSurface3,
-                                ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: _buildEmpty(context),
                   ),
               ],
             );
           },
         ),
+      ),
+    );
+  }
+
+  Center _buildEmpty(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.info_outline_rounded,
+            color: customColorScheme.onSurface3,
+          ),
+          const SizedBox(height: padding10),
+          Text(
+            '등록된 매장이 없습니다.\n매장을 등록해 주시기 바랍니다.',
+            style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                  color: customColorScheme.onSurface3,
+                ),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }
@@ -110,7 +117,10 @@ class _ShopViewState extends State<ShopView> {
             thumbnail: storeList[index].storeImages.firstOrNull?.url ?? '',
             title: storeList[index].name,
             status: storeList[index].status,
-            onTap: () {},
+            isRunning: true,
+            isRunningCheckChanged: (v) {},
+            onCorporateButtonPressed: () {},
+            onEditButtonPressed: () {},
           ),
         ),
       ),

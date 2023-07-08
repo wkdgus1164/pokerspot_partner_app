@@ -4,7 +4,6 @@ import 'package:pokerspot_partner_app/presentation/views/sections/reservation/co
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/list_header.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/new_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/tab_header.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/picker_dialog/picker_dialog_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/selection_dialog/selection_dialog_utils.dart';
 import 'package:provider/provider.dart';

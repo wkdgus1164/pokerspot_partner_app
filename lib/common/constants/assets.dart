@@ -37,6 +37,8 @@ enum Assets {
 
   // Shop Register
   newAddShop('assets/new_add_shop.svg'),
+  shopAdmin('assets/shop_admin.svg'),
+  edit('assets/edit.svg'),
   imageUpload('assets/image_upload.png'),
   tonerPubOff('assets/pub_toner_off.svg'),
   tonerPubOn('assets/pub_toner_on.svg'),

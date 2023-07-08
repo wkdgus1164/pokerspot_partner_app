@@ -1,7 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/views/components/card_body.dart';
 
 class ShopCard extends StatelessWidget {
   const ShopCard({
@@ -10,14 +11,20 @@ class ShopCard extends StatelessWidget {
     required this.title,
     required this.type,
     required this.status,
-    this.onTap,
+    required this.onEditButtonPressed,
+    required this.onCorporateButtonPressed,
+    required this.isRunning,
+    required this.isRunningCheckChanged,
   }) : super(key: key);
 
   final String thumbnail;
   final String title;
   final String type;
   final String status;
-  final GestureTapCallback? onTap;
+  final Function() onEditButtonPressed;
+  final Function() onCorporateButtonPressed;
+  final bool isRunning;
+  final Function(bool?) isRunningCheckChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -27,29 +34,26 @@ class ShopCard extends StatelessWidget {
         right: padding16,
         bottom: padding16,
       ),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(defaultRadius * 2),
-        ),
-      ),
-      child: InkWell(
-        onTap: onTap,
-        splashColor: Colors.grey.shade50,
+      decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(
           Radius.circular(defaultRadius * 2),
         ),
-        child: Container(
-          padding: const EdgeInsets.all(padding16),
-          decoration: BoxDecoration(
-            border: Border.all(color: lightColorScheme.outline),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(defaultRadius * 2),
-            ),
+        boxShadow: [cardShadow],
+        color: lightColorScheme.surface,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: lightColorScheme.outline),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(defaultRadius * 2),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
                 children: [
                   Text(
                     '제휴기간',
@@ -74,98 +78,44 @@ class ShopCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: padding10),
-              const Divider(height: 1, thickness: 1),
-              const SizedBox(height: padding10),
-              Row(
+            ),
+            const Divider(height: 1, thickness: 1),
+            ShopCardBody(
+              title: title,
+              type: type,
+              status: status,
+              thumbnail: thumbnail,
+              onEditButtonPressed: onEditButtonPressed,
+              onCorporateButtonPressed: onCorporateButtonPressed,
+            ),
+            const Divider(height: 1, thickness: 1),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
                 children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style:
-                              Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    color: customColorScheme.onSurface2,
-                                  ),
+                  Text(
+                    '영업 중단',
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: customColorScheme.onSurface2,
                         ),
-                        const SizedBox(height: padding10),
-                        Text(
-                          type,
-                          style:
-                              Theme.of(context).textTheme.labelLarge!.copyWith(
-                                    color: customColorScheme.onSurface3,
-                                  ),
-                        ),
-                        const SizedBox(height: padding24),
-                        Row(
-                          children: [
-                            Container(
-                              width: 10,
-                              height: 10,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: status == 'ACCEPT'
-                                    ? const Color.fromRGBO(19, 181, 172, 1)
-                                    : lightColorScheme.error,
-                              ),
-                            ),
-                            const SizedBox(width: padding10),
-                            Expanded(
-                              child: Text(
-                                status == 'ACCEPT'
-                                    ? '제휴 진행 중'
-                                    : status == 'PENDING'
-                                        ? '제휴 준비 중'
-                                        : '제휴 만료',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelLarge!
-                                    .copyWith(
-                                      color: customColorScheme.onSurface3,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
                   ),
-                  Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: CachedNetworkImage(imageUrl: thumbnail),
+                  const Spacer(),
+                  SizedBox(
+                    width: 34,
+                    height: 20,
+                    child: Transform.scale(
+                      scale: 0.6,
+                      child: Switch(
+                        value: isRunning,
+                        onChanged: isRunningCheckChanged,
                       ),
-                      Container(
-                        width: 100,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(4),
-                            bottomRight: Radius.circular(4),
-                          ),
-                          color: Color.fromRGBO(0, 0, 0, 0.6),
-                        ),
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: Text(
-                          '영업중',
-                          style:
-                              Theme.of(context).textTheme.labelMedium!.copyWith(
-                                    color: Colors.white,
-                                  ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

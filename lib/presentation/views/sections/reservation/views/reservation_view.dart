@@ -4,6 +4,9 @@ import 'package:pokerspot_partner_app/presentation/views/sections/reservation/co
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/list_header.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/new_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/reservation/components/tab_header.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/picker_dialog/picker_dialog_utils.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/selection_dialog/selection_dialog_utils.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/home_provider.dart';
@@ -39,14 +42,24 @@ class ReservationView extends StatelessWidget {
         ReservationListHeader(
           date: '09.05(월)',
           startAt: '19:00',
-          onOneClickCancelButtonPressed: () {},
+          onOneClickCancelButtonPressed: () {
+            showSelectionDialog(
+              context: context,
+              title: '예약 일괄 취소',
+              content: '12명의 예약을 취소하시겠습니까?',
+              confirmText: '예약 취소',
+              onConfirm: () {},
+              cancelText: '취소',
+              onCancel: () {},
+            );
+          },
         ),
 
         Expanded(
           child: ListView.builder(
-            itemBuilder: (_, __) => const ReservationItem(
+            itemBuilder: (_, __) => ReservationItem(
               date: "10:35",
-              status: Status.complete,
+              status: Status.waiting,
               reservedAt: 38,
               time: "10:35",
               count: "3",
@@ -54,6 +67,31 @@ class ReservationView extends StatelessWidget {
               shopName: "몬스터 홀덤펍",
               userNickname: "유저닉네임",
               userType: UserType.vip,
+              onDenyButtonPressed: () {
+                showPickerDialog(
+                  context: context,
+                  title: '예약 거절',
+                  selections: [
+                    '예약이 꽉 찼습니다.',
+                    '곧 마감 시간입니다.',
+                    '기타 사정으로 일찍 마감했습니다.',
+                    '현재 영업시간이 아닙니다.',
+                  ],
+                  onCancel: () {},
+                  onConfirm: () {},
+                );
+              },
+              onConfirmButtonPressed: () {
+                showSelectionDialog(
+                  context: context,
+                  title: '예약 접수',
+                  content: '예약을 접수하시겠습니까?',
+                  confirmText: '확인',
+                  onConfirm: () {},
+                  cancelText: '취소',
+                  onCancel: () {},
+                );
+              },
             ),
             itemCount: 4,
           ),

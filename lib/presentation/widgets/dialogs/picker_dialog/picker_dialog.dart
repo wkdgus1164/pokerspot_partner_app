@@ -88,6 +88,7 @@ class _PickerDialogState extends State<PickerDialog> {
 
     return BaseDialogButtonSection(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           BaseDialogCancelButton(
             onCancel: handleCancel,

@@ -38,6 +38,8 @@ class ReservationItem extends StatelessWidget {
     required this.shopName,
     required this.userNickname,
     required this.userType,
+    this.onDenyButtonPressed,
+    this.onConfirmButtonPressed,
   });
 
   final String date;
@@ -49,6 +51,8 @@ class ReservationItem extends StatelessWidget {
   final String shopName;
   final String userNickname;
   final UserType userType;
+  final Function()? onDenyButtonPressed;
+  final Function()? onConfirmButtonPressed;
 
   String setStatus(Status status) {
     switch (status) {
@@ -217,7 +221,7 @@ class ReservationItem extends StatelessWidget {
                   children: [
                     Expanded(
                       child: CustomOutlinedButton(
-                        onPressed: () {},
+                        onPressed: onDenyButtonPressed,
                         text: '거절',
                         theme: CustomOutlinedButtonTheme.secondary,
                       ),
@@ -226,7 +230,7 @@ class ReservationItem extends StatelessWidget {
                     Expanded(
                       child: CustomFilledButton(
                         text: '접수',
-                        onPressed: () {},
+                        onPressed: onConfirmButtonPressed,
                       ),
                     ),
                   ],

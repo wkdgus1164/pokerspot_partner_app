@@ -18,7 +18,12 @@ class ReservationListHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(padding16),
+      padding: const EdgeInsets.only(
+        left: padding16,
+        top: 6,
+        bottom: 6,
+        right: 6,
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border(
@@ -47,9 +52,9 @@ class ReservationListHeader extends StatelessWidget {
               ],
             ),
           ),
-          CustomTextButton(
-            text: '예약 일괄취소',
-            onClick: onOneClickCancelButtonPressed,
+          TextButton(
+            onPressed: onOneClickCancelButtonPressed,
+            child: const Text('예약 일괄취소'),
           ),
         ],
       ),

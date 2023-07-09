@@ -3,8 +3,17 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 
+import '../../../../../../data/models/partner/partner_store.dart';
+
 class ShopSelectItem extends StatelessWidget {
-  const ShopSelectItem({super.key});
+  const ShopSelectItem({
+    super.key,
+    required this.store,
+  });
+
+  final PartnerStoreModel store;
+
+  bool get _isPartnership => store.status == 'ACCEPT';
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +38,9 @@ class ShopSelectItem extends StatelessWidget {
                   width: 60,
                   height: 60,
                   decoration: ShapeDecoration(
-                    image: const DecorationImage(
+                    image: DecorationImage(
                       image: NetworkImage(
-                        "https://via.placeholder.com/60x60",
+                        store.storeImages.first.url,
                       ),
                       fit: BoxFit.fill,
                     ),
@@ -53,7 +62,7 @@ class ShopSelectItem extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: Text(
-                    '몬스터 홀덤펍',
+                    store.name,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: customColorScheme.onSurface2,
                         ),
@@ -68,14 +77,16 @@ class ShopSelectItem extends StatelessWidget {
                     Container(
                       width: 10,
                       height: 10,
-                      decoration: const ShapeDecoration(
-                        color: Color(0xFF13B5AC),
-                        shape: OvalBorder(),
+                      decoration: ShapeDecoration(
+                        color: _isPartnership
+                            ? const Color(0xFF13B5AC)
+                            : const Color(0xFFDB2828),
+                        shape: const OvalBorder(),
                       ),
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      '제휴 진행중',
+                      _isPartnership ? '제휴 진행중' : '제휴 중단',
                       style: Theme.of(context).textTheme.labelMedium!.copyWith(
                             color: customColorScheme.onSurface3,
                           ),

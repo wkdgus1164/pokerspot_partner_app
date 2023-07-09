@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class Constants {
   Constants._privateConstructor();
 
@@ -7,5 +9,7 @@ class Constants {
     return _instance;
   }
 
-  static const apiUrl = 'https://partners-api.pokerspotground.com/v1';
+  static const apiUrl = kDebugMode
+      ? 'https://test-partners-api.pokerspotground.com/v1'
+      : 'https://partners-api.pokerspotground.com/v1';
 }

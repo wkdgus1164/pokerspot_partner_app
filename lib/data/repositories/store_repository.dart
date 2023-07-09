@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:pokerspot_partner_app/data/models/store/biz_validate_request.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
+import 'package:pokerspot_partner_app/data/models/store/reservations_status_count.dart';
 import 'package:pokerspot_partner_app/data/network/api_client.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 
@@ -68,6 +69,22 @@ class StoreRepository {
         data: {'bizNumber': bizNumber},
       );
       return const Right(true);
+    } catch (e) {
+      if (e is DioError) {
+        return Left(e.response?.data['message']);
+      }
+      Logger.e(e);
+      rethrow;
+    }
+  }
+
+  /// 메인 > 실시간 예약 현황
+  Future<Either<String, ReservationsStatusCountModel>>
+      getReservationsStatusCount() async {
+    try {
+      final response =
+          await _dio.get('/stores/{uid}/reservations/status-count');
+      return Right(ReservationsStatusCountModel.fromJson(response.data));
     } catch (e) {
       if (e is DioError) {
         return Left(e.response?.data['message']);

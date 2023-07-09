@@ -41,7 +41,7 @@ class HomeRealtimeReservation extends StatelessWidget {
           ),
           child: Row(
             children: [
-              _buildItem(context, true, waiting, '처리대기', true),
+              _buildItem(context, true, waiting, '처리대기', false),
               _buildItem(context, false, applied, '처리완료', false),
               _buildItem(context, false, denied, '예약거절', false),
             ],

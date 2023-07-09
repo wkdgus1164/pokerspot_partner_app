@@ -13,9 +13,10 @@ class HomeUsecase {
     return await _partnerRepository.getStores();
   }
 
-  Future<ReservationsStatusCountModel?> getReservationsStatusCount() async {
+  Future<ReservationsStatusCountModel?> getReservationsStatusCount(
+      String id) async {
     return await _storeRepository
-        .getReservationsStatusCount()
+        .getReservationsStatusCount(id)
         .then((value) => value.fold((l) => null, (r) => r));
   }
 }

@@ -35,7 +35,10 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> getReservationsStatusCount() async {
-    _reservationsStatusCount = await _usecase.getReservationsStatusCount();
-    notifyListeners();
+    if (selectedStore != null) {
+      _reservationsStatusCount =
+          await _usecase.getReservationsStatusCount(selectedStore!.uid);
+      notifyListeners();
+    }
   }
 }

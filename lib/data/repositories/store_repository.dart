@@ -80,10 +80,9 @@ class StoreRepository {
 
   /// 메인 > 실시간 예약 현황
   Future<Either<String, ReservationsStatusCountModel>>
-      getReservationsStatusCount() async {
+      getReservationsStatusCount(String id) async {
     try {
-      final response =
-          await _dio.get('/stores/{uid}/reservations/status-count');
+      final response = await _dio.get('/stores/$id/reservations/status-count');
       return Right(ReservationsStatusCountModel.fromJson(response.data));
     } catch (e) {
       if (e is DioError) {

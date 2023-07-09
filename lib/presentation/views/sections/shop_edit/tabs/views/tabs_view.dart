@@ -49,7 +49,7 @@ class ShopEditTabsView extends StatelessWidget {
             ),
             const Expanded(
               child: TabBarView(
-                children: [
+                children: <Widget>[
                   ShopEditBasicView(),
                   ShopEditOperationView(),
                   ShopEditGameView(),

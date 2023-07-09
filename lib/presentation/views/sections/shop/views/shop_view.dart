@@ -117,7 +117,9 @@ class _ShopViewState extends State<ShopView> {
             status: storeList[index].status,
             isRunning: true,
             isRunningCheckChanged: (v) {},
-            onCorporateButtonPressed: () {},
+            onCorporateButtonPressed: () {
+              context.pushNamed(ShopRoutes.partnership.path);
+            },
             onEditButtonPressed: () {
               context.pushNamed(ShopRoutes.editMain.path);
             },

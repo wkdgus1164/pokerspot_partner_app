@@ -1,6 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/bottom_to_top.dart';
 import 'package:pokerspot_partner_app/common/routes/custom_route/right_to_left.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/partnership/main/views/main_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/partnership/register/views/register_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/partnership/success/views/success_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/guide/views/guide_tab_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/intro/views/intro_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/business/views/business_view.dart';
@@ -26,8 +29,12 @@ enum ShopRoutes {
   processSuccess('$shopPath/process/success'),
 
   select('$shopPath/select'),
-
   editMain('$shopPath/edit'),
+
+  partnership('$shopPath/partnership'),
+  partnershipRegister('$shopPath/partnership_register'),
+  partnershipPay('$shopPath/partnership_pay'),
+  partnershipSuccess('$shopPath/partnership_success'),
   ;
 
   const ShopRoutes(this.path);
@@ -75,5 +82,21 @@ List<RouteBase> shopRoutes = [
   bottomToTop(
     ShopRoutes.editMain.path,
     const ShopEditTabsView(),
+  ),
+  bottomToTop(
+    ShopRoutes.partnership.path,
+    const PartnershipMainView(),
+  ),
+  rightToLeft(
+    ShopRoutes.partnershipRegister.path,
+    const PartnerRegisterView(),
+  ),
+  // rightToLeft(
+  //   ShopRoutes.partnershipPay.path,
+  //   const ShopEditTabsView(),
+  // ),
+  rightToLeft(
+    ShopRoutes.partnershipSuccess.path,
+    const PartnershipSuccessView(),
   ),
 ];

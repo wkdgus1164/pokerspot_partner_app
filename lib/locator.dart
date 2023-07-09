@@ -32,7 +32,7 @@ void setupLocator() {
   /// Usecase
   locator.registerFactory(() => SignupUsecase(locator()));
   locator.registerFactory(() => SignInUsecase(locator()));
-  locator.registerFactory(() => HomeUsecase(locator()));
+  locator.registerFactory(() => HomeUsecase(locator(), locator()));
   locator.registerFactory(() => CreateStoreUsecase(locator()));
   locator.registerFactory(() => NoticeUsecase(locator()));
   locator.registerFactory(() => MyUsecase(locator()));

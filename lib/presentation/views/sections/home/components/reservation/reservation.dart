@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/data/models/store/reservations_status_count.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/card.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/reservation/realtime_reservation.dart';
 
 class HomeReservation extends StatelessWidget {
-  const HomeReservation({Key? key}) : super(key: key);
+  const HomeReservation({
+    Key? key,
+    this.data,
+  }) : super(key: key);
+
+  final ReservationsStatusCountModel? data;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +31,9 @@ class HomeReservation extends StatelessWidget {
           const SizedBox(height: padding16),
           HomeCard(
             child: HomeRealtimeReservation(
-              waiting: 8,
-              applied: 4,
-              denied: 4,
+              waiting: data?.pending ?? 0,
+              applied: data?.accept ?? 0,
+              denied: data?.reject ?? 0,
               time: '19',
               onRefreshButtonPressed: () {},
             ),

@@ -3,6 +3,8 @@ import 'package:pokerspot_partner_app/data/models/store/create_store_request.dar
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/domain/usecases/create_store_usecase.dart';
 
+import '../../data/models/store/mtt_game.dart';
+
 class CreateStoreProvider with ChangeNotifier {
   final CreateStoreUsecase _usecase;
 

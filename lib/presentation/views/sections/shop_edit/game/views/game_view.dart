@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop_edit/game/views/components/game_item.dart';
+
+import '../../../../../../data/models/store/mtt_game.dart';
 
 class ShopEditGameView extends StatelessWidget {
   const ShopEditGameView({super.key});

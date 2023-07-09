@@ -3,6 +3,7 @@ import 'package:pokerspot_partner_app/data/models/store/reservations_status_coun
 import 'package:pokerspot_partner_app/domain/usecases/home_usecase.dart';
 
 import '../../data/models/partner/partner_store.dart';
+import '../../data/models/store/mtt_game.dart';
 
 class HomeProvider with ChangeNotifier {
   final HomeUsecase _usecase;
@@ -17,6 +18,9 @@ class HomeProvider with ChangeNotifier {
   ReservationsStatusCountModel? get reservationsStatusCount =>
       _reservationsStatusCount;
 
+  List<MttGameModel> _games = [];
+  List<MttGameModel> get games => _games;
+
   HomeProvider(this._usecase) {
     init();
   }
@@ -27,6 +31,7 @@ class HomeProvider with ChangeNotifier {
       _selectedStore = stores?.first;
     }
     getReservationsStatusCount();
+    getGames();
   }
 
   Future<void> getStores() async {
@@ -38,6 +43,13 @@ class HomeProvider with ChangeNotifier {
     if (selectedStore != null) {
       _reservationsStatusCount =
           await _usecase.getReservationsStatusCount(selectedStore!.uid);
+      notifyListeners();
+    }
+  }
+
+  Future<void> getGames() async {
+    if (selectedStore != null) {
+      _games = await _usecase.getGames(selectedStore!.uid);
       notifyListeners();
     }
   }

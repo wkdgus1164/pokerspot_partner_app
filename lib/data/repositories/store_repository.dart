@@ -6,6 +6,8 @@ import 'package:pokerspot_partner_app/data/models/store/reservations_status_coun
 import 'package:pokerspot_partner_app/data/network/api_client.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 
+import '../models/store/mtt_game.dart';
+
 class StoreRepository {
   final DioClient _dio;
 
@@ -84,6 +86,23 @@ class StoreRepository {
     try {
       final response = await _dio.get('/stores/$id/reservations/status-count');
       return Right(ReservationsStatusCountModel.fromJson(response.data));
+    } catch (e) {
+      if (e is DioError) {
+        return Left(e.response?.data['message']);
+      }
+      Logger.e(e);
+      rethrow;
+    }
+  }
+
+  /// 메인 > 매장 토너먼트 현황
+  Future<Either<String, List<MttGameModel>>> getGames(String id) async {
+    try {
+      final response = await _dio.get('/stores/$id/games');
+      Logger.d(response.data);
+      return Right((response.data['mttGames'] as List)
+          .map((e) => MttGameModel.fromJson(e))
+          .toList());
     } catch (e) {
       if (e is DioError) {
         return Left(e.response?.data['message']);

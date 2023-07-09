@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
+
+import '../../../../../../../data/models/store/mtt_game.dart';
 
 class ShopEditGameItem extends StatelessWidget {
   const ShopEditGameItem({

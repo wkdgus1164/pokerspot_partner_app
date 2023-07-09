@@ -1,6 +1,8 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'mtt_game.dart';
+
 part 'create_store_request.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -71,39 +73,4 @@ class CreateStoreImageModel {
   factory CreateStoreImageModel.fromJson(Map<String, dynamic> json) =>
       _$CreateStoreImageModelFromJson(json);
   Map<String, dynamic> toJson() => _$CreateStoreImageModelToJson(this);
-}
-
-@CopyWith()
-@JsonSerializable()
-class MttGameModel {
-  final TonerType type;
-  final int entryPrice;
-  final int entryMin;
-  final int? entryMax;
-  final String prize;
-  final String targetMttName;
-  final int gtdMinReward;
-  final bool isDaily;
-
-  MttGameModel({
-    this.type = TonerType.daily,
-    this.entryPrice = 10000,
-    this.entryMin = 1,
-    this.entryMax,
-    this.prize = '100%',
-    this.targetMttName = '',
-    this.gtdMinReward = 1000000,
-    this.isDaily = false,
-  });
-
-  factory MttGameModel.fromJson(Map<String, dynamic> json) =>
-      _$MttGameModelFromJson(json);
-  Map<String, dynamic> toJson() => _$MttGameModelToJson(this);
-}
-
-@JsonEnum(fieldRename: FieldRename.screamingSnake)
-enum TonerType {
-  daily,
-  seed,
-  gtd,
 }

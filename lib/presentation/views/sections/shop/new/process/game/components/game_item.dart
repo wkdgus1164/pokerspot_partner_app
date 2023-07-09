@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/dialogs/input_dialog_with_checkbox/input_dialog_with_checkbox_utils.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/dialogs/picker_dialog/picker_dialog_utils.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/input_dialog_with_checkbox/input_dialog_with_checkbox_utils.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/picker_dialog/picker_dialog_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 
-import '../../../../../../../../data/models/store/create_store_request.dart';
+import '../../../../../../../../data/models/store/mtt_game.dart';
 
 class GameItem extends StatefulWidget {
   const GameItem({

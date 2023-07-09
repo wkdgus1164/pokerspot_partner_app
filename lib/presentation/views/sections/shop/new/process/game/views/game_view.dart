@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/steps.dart';
@@ -14,6 +13,7 @@ import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outline
 import 'package:pokerspot_partner_app/presentation/widgets/info_box/info_box.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../../../../data/models/store/mtt_game.dart';
 import '../../../../../../../../locator.dart';
 import '../../../../../../../providers/create_store_provider.dart';
 import '../../../../../../../providers/home_provider.dart';

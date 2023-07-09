@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/home.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/models/tournament_model.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/tournament_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
-import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/tournament_item.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/data/tournament_data.dart';
+
+import '../../../../../../data/models/store/mtt_game.dart';
 
 class HomeTournament extends StatelessWidget {
-  const HomeTournament({Key? key}) : super(key: key);
+  const HomeTournament({
+    Key? key,
+    required this.games,
+  }) : super(key: key);
+
+  final List<MttGameModel> games;
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +53,17 @@ class HomeTournament extends StatelessWidget {
               ),
               const SizedBox(height: padding24),
               Column(
-                children: tournamentList
+                children: games
                     .map(
-                      (it) => const HomeTournamentItem(
-                        tournamentType: TournamentType.daily,
-                        displayIndex: 1,
-                        displayName: '가나다라 시드권 토너먼트',
-                        isToday: true,
-                        isRealtime: true,
-                        entryMin: 10,
-                        entryMax: 25,
-                        prize: 80,
+                      (it) => HomeTournamentItem(
+                        tournamentType: it.type,
+                        displayIndex: it.priority,
+                        displayName: it.name,
+                        isToday: it.isToday,
+                        isRealtime: it.isRealTime,
+                        entryMin: it.entryMin,
+                        entryMax: it.entryMax ?? 0,
+                        prize: it.prize,
                       ),
                     )
                     .toList(),

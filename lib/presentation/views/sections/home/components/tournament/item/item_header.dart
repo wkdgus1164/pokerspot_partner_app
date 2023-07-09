@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/models/tournament_model.dart';
+
+import '../../../../../../../data/models/store/mtt_game.dart';
 
 class TournamentItemHeader extends StatelessWidget {
   const TournamentItemHeader({
     super.key,
-    required this.displayIndex,
+    this.displayIndex,
     required this.tournamentType,
   });
 
-  final int displayIndex;
-  final TournamentType tournamentType;
+  final int? displayIndex;
+  final TonerType tournamentType;
 
   String setDisplayName() {
     switch (tournamentType) {
-      case TournamentType.daily:
+      case TonerType.daily:
         return "데일리 토너";
-      case TournamentType.seed:
+      case TonerType.seed:
         return "시드권 토너";
       default:
         return "GTD 토너";
@@ -54,28 +55,29 @@ class TournamentItemHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-          decoration: ShapeDecoration(
-            color: lightColorScheme.error,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100),
+        if (displayIndex != null)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+            decoration: ShapeDecoration(
+              color: lightColorScheme.error,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100),
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  '노출 순서 $displayIndex',
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                        color: lightColorScheme.onSecondary,
+                      ),
+                ),
+              ],
             ),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                '노출 순서 $displayIndex',
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      color: lightColorScheme.onSecondary,
-                    ),
-              ),
-            ],
-          ),
-        ),
       ],
     );
   }

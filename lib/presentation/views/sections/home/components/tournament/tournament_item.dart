@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/item/item_footer.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/item/item_body.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/item/item_footer.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/item/item_header.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/models/tournament_model.dart';
+
+import '../../../../../../data/models/store/mtt_game.dart';
 
 class HomeTournamentItem extends StatelessWidget {
   const HomeTournamentItem({
@@ -20,14 +21,14 @@ class HomeTournamentItem extends StatelessWidget {
     required this.prize,
   }) : super(key: key);
 
-  final TournamentType tournamentType;
-  final int displayIndex;
+  final TonerType tournamentType;
+  final int? displayIndex;
   final String displayName;
   final bool isToday;
   final bool isRealtime;
   final int entryMin;
   final int entryMax;
-  final int prize;
+  final String prize;
 
   @override
   Widget build(BuildContext context) {

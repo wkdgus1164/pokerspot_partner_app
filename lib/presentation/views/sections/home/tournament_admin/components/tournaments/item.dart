@@ -51,7 +51,7 @@ class TournamentsItem extends StatelessWidget {
             tournamentTitle: tournamentTitle,
             entryMin: entryMin,
             entryMax: entryMax,
-            prize: prize,
+            prize: prize.toString(),
           ),
           const Divider(height: 1, thickness: 1),
           TournamentsItemSwitches(

@@ -12,7 +12,7 @@ class TournamentItemFooter extends StatelessWidget {
 
   final int entryMin;
   final int entryMax;
-  final int prize;
+  final String prize;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class TournamentItemFooter extends StatelessWidget {
       children: [
         _buildTemplate(context, 'ENTRY', '$entryMin - $entryMax'),
         const SizedBox(width: padding16),
-        _buildTemplate(context, 'PRIZE', '$prize%'),
+        _buildTemplate(context, 'PRIZE', prize),
       ],
     );
   }

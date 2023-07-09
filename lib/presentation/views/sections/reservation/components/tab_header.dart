@@ -6,11 +6,6 @@ import 'package:pokerspot_partner_app/presentation/widgets/dialogs/selection_dia
 
 PreferredSizeWidget reservationTabAppBar(BuildContext context, String? title) {
   return AppBar(
-    centerTitle: true,
-    automaticallyImplyLeading: false,
-    surfaceTintColor: Colors.white,
-    backgroundColor: const Color.fromRGBO(42, 50, 59, 1),
-    elevation: 0,
     title: GestureDetector(
       onTap: () {
         if (title != null) {
@@ -20,14 +15,7 @@ PreferredSizeWidget reservationTabAppBar(BuildContext context, String? title) {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            title ?? '예약관리',
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Colors.white,
-                  fontWeight:
-                      title != null ? FontWeight.bold : FontWeight.normal,
-                ),
-          ),
+          Text(title ?? '예약관리'),
           if (title != null)
             Icon(
               Icons.keyboard_arrow_down_rounded,

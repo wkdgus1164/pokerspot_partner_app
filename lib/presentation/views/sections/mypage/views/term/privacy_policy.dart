@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 
 class PrivacyPolicyView extends StatelessWidget {
   const PrivacyPolicyView({super.key});
@@ -10,7 +9,7 @@ class PrivacyPolicyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: '개인정보처리방침'),
+      appBar: AppBar(title: const Text('개인정보처리방침')),
       body: Container(
         padding: const EdgeInsets.all(padding16),
         child: SizedBox.expand(

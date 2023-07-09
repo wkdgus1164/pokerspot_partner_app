@@ -8,7 +8,6 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/views/components/new_shop.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/views/components/shop_card.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/home_provider.dart';
@@ -24,9 +23,8 @@ class _ShopViewState extends State<ShopView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        text: '매장관리',
-        bottomDivider: false,
+      appBar: AppBar(
+        title: const Text('매장관리'),
         actions: [
           IconButton(
             onPressed: () {
@@ -120,7 +118,9 @@ class _ShopViewState extends State<ShopView> {
             isRunning: true,
             isRunningCheckChanged: (v) {},
             onCorporateButtonPressed: () {},
-            onEditButtonPressed: () {},
+            onEditButtonPressed: () {
+              context.pushNamed(ShopRoutes.editMain.path);
+            },
           ),
         ),
       ),

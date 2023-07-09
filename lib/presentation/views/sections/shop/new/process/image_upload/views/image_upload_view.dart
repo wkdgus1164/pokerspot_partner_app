@@ -8,7 +8,6 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/steps.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/image_upload/components/image_item.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:provider/provider.dart';
@@ -82,7 +81,7 @@ class _ShopProcessImageUploadViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: '신규 매장 등록'),
+      appBar: AppBar(title: const Text('신규 매장 등록')),
       body: SafeArea(
         child: Column(
           children: [

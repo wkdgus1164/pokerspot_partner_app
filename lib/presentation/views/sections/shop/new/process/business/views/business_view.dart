@@ -9,7 +9,6 @@ import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/steps.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +23,7 @@ class ShopProcessBusinessView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: '신규 매장 등록'),
+      appBar: AppBar(title: const Text('신규 매장 등록')),
       body: SafeArea(
         child: Consumer<CreateStoreProvider>(
           builder: (_, __, ___) {

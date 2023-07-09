@@ -13,7 +13,7 @@ class CustomTextFieldSet extends StatelessWidget {
     this.inputErrorText,
     required this.inputHintText,
     this.onEditingComplete,
-    required this.onTextFieldChanged,
+    this.onTextFieldChanged,
     this.maxLength,
     this.minLines,
     this.maxLines,
@@ -31,7 +31,7 @@ class CustomTextFieldSet extends StatelessWidget {
   final bool isPassword;
 
   final VoidCallback? onEditingComplete;
-  final Function(String value) onTextFieldChanged;
+  final Function(String value)? onTextFieldChanged;
   final TextInputAction? textInputAction;
 
   final int? maxLength;
@@ -50,10 +50,10 @@ class CustomTextFieldSet extends StatelessWidget {
       children: [
         Text(
           inputLabel,
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium!
-              .copyWith(color: customColorScheme.onSurface1),
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color: customColorScheme.onSurface1,
+                fontWeight: FontWeight.bold,
+              ),
         ),
         const SizedBox(height: padding10),
         if (captionText.isNotEmpty) ...[

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/providers/notice_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/notice/components/item.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../locator.dart';
@@ -12,7 +11,7 @@ class NoticeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: '공지사항'),
+      appBar: AppBar(title: const Text('공지사항')),
       body: SafeArea(
         child: ChangeNotifierProvider<NoticeProvider>(
           create: (_) => locator(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
+import 'package:pokerspot_partner_app/common/theme/app_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/bottom_navigation_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/button.dart';
 import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
@@ -27,6 +28,7 @@ ThemeData _createThemeData({required BuildContext context}) {
     outlinedButtonTheme: outlinedButtonThemeData,
     scaffoldBackgroundColor: lightColorScheme.surface,
     bottomNavigationBarTheme: bottomNavigationBarThemeData,
+    appBarTheme: appBarTheme,
     textTheme: Theme.of(context).textTheme.apply(),
     splashFactory: InkRipple.splashFactory,
   );

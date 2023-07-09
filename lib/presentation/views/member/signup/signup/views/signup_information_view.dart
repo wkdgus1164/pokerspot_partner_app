@@ -11,7 +11,6 @@ import 'package:pokerspot_partner_app/presentation/views/member/signup/informati
 import 'package:pokerspot_partner_app/presentation/views/member/signup/information/components/password.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/information/components/password_confirm.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/information/components/phone_number.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/verify_button.dart';
 import 'package:provider/provider.dart';
@@ -25,9 +24,7 @@ class SignupInformationView extends StatelessWidget {
       ..text = locator<SignupProvider>().information.name;
 
     return Scaffold(
-      appBar: const CustomAppBar(
-        text: '회원가입',
-      ),
+      appBar: AppBar(title: const Text('회원가입')),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(

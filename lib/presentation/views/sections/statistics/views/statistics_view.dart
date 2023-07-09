@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/presentation/views/common/no_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/statistics/components/list_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/statistics/components/total.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/home_provider.dart';
@@ -17,11 +16,7 @@ class StatisticsView extends StatelessWidget {
       builder: (_, provider, __) {
         final title = provider.stores?.firstOrNull?.name;
         return Scaffold(
-          appBar: const CustomAppBar(
-            text: '통계',
-            bottomDivider: false,
-            isLeftButton: false,
-          ),
+          appBar: AppBar(title: const Text('통계')),
           body: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,

@@ -3,7 +3,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/components/display_index/display_index.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/components/tournaments/tournaments.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 
@@ -13,10 +12,7 @@ class TournamentAdminView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        text: '토너먼트 현황 변경',
-        left: Icons.close_rounded,
-      ),
+      appBar: AppBar(title: const Text('토너먼트 현황 변경')),
       body: SingleChildScrollView(
         child: Container(
           color: lightColorScheme.surface,

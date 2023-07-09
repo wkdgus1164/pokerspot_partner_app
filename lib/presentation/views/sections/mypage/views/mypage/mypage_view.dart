@@ -4,7 +4,6 @@ import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/mypage/components/menu_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/mypage/components/myinfo.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 
 class MypageView extends StatelessWidget {
   const MypageView({super.key});
@@ -12,7 +11,7 @@ class MypageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: '내정보'),
+      appBar: AppBar(title: const Text('내정보')),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

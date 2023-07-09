@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/routes/base/home.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/coupon/coupon.dart';
@@ -9,21 +11,8 @@ import 'package:pokerspot_partner_app/presentation/views/sections/home/component
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/reservation/reservation.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/store_list/store_list.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/tournament.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:provider/provider.dart';
-
-enum HomeType {
-  none('none'),
-  blindBuyIn('blind_buyin'),
-  toner('toner'),
-  all('all'),
-  ;
-
-  const HomeType(this.path);
-
-  final String path;
-}
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -31,17 +20,12 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        bottomDivider: false,
-        isCenterLogo: true,
-        isLeftButton: false,
+      appBar: AppBar(
+        title: SvgPicture.asset(Assets.poker.path),
         actions: [
           IconButton(
             onPressed: () => context.pushNamed(HomeRoutes.notifiaction.path),
-            icon: const Icon(
-              Icons.notifications_none_outlined,
-              color: Colors.white,
-            ),
+            icon: const Icon(Icons.notifications_none_outlined),
           ),
         ],
       ),

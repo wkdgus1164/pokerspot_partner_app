@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/guide/tabs/register_introduction.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/guide/tabs/register_process.dart';
@@ -50,10 +49,7 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
       initialIndex: 1,
       length: tabBarTitles.length,
       child: Scaffold(
-        appBar: const CustomAppBar(
-          text: '신규 매장 등록 가이드',
-          left: Icons.close_rounded,
-        ),
+        appBar: AppBar(title: const Text('신규 매장 등록 가이드')),
         body: Column(
           children: [
             TabBar(

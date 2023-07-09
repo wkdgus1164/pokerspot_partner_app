@@ -7,7 +7,6 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/mypage_admin/components/information_item.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:provider/provider.dart';
 
@@ -17,10 +16,7 @@ class MypageAdminView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        text: '내 정보 관리',
-        left: Icons.keyboard_arrow_left_rounded,
-      ),
+      appBar: AppBar(title: const Text('내 정보 관리')),
       body: SafeArea(
         child: Container(
           color: lightColorScheme.surface,

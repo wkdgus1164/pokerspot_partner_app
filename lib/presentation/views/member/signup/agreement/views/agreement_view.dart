@@ -5,7 +5,6 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/components/agreement_category.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/components/agreement_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/components/auto_check.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/app_bar/app_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +16,7 @@ class SignupAgreementView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: '회원가입'),
+      appBar: AppBar(title: const Text('회원가입')),
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(16),

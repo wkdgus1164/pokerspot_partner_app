@@ -28,46 +28,47 @@ class RegisterInformationCard extends StatelessWidget {
                 padding: const EdgeInsets.all(padding16),
                 child: Text(
                   model.title,
-                  style: Theme.of(context).textTheme.titleSmall,
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               ),
-              Divider(
-                height: 1,
-                indent: 1,
-                color: lightColorScheme.outline,
-              ),
+              const Divider(height: 1, indent: 1),
               Padding(
                 padding: const EdgeInsets.all(padding10),
                 child: Column(
                   children: model.contents
-                      .map((it) => Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Row(
-                              children: [
-                                Text(
-                                  '·',
+                      .map(
+                        (it) => Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: Row(
+                            children: [
+                              Text(
+                                '·',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge!
+                                    .copyWith(
+                                      color: customColorScheme.onSurface4,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  it,
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelLarge!
                                       .copyWith(
-                                        color: Colors.grey.shade400,
+                                        color: customColorScheme.onSurface2,
                                       ),
                                 ),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: Text(
-                                    it,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelMedium!
-                                        .copyWith(
-                                          color: customColorScheme.onSurface3,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ))
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
                       .toList(),
                 ),
               ),

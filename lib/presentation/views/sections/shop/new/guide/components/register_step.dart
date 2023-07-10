@@ -32,16 +32,17 @@ class RegisterStepCard extends StatelessWidget {
                         Text(
                           'Step. 0${entry.key + 1}',
                           style:
-                              Theme.of(context).textTheme.labelLarge!.copyWith(
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
                                     color: lightColorScheme.primary,
+                                    fontWeight: FontWeight.bold,
                                   ),
                         ),
                         const SizedBox(height: padding10),
                         Text(
                           entry.value,
                           style:
-                              Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    fontWeight: FontWeight.w600,
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                    color: customColorScheme.onSurface2,
                                   ),
                         ),
                       ],

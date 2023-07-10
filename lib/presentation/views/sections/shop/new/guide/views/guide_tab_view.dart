@@ -37,8 +37,8 @@ class _ShopNewGuideTabViewState extends State<ShopNewGuideTabView>
           .map((title) => Tab(
                 child: Text(
                   title,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: Colors.black,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
                 ),
               ))

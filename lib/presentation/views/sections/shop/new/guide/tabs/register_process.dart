@@ -25,11 +25,17 @@ class ShopRegisterProcessTab extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('● 매장 등록 절차', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              '매장 등록 절차',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: customColorScheme.onSurface2,
+                  ),
+            ),
             const SizedBox(height: 6),
             Text(
               '매장 등록은 다음과 같은 절차로 진행됩니다.',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+              style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     color: customColorScheme.onSurface3,
                   ),
             ),

@@ -50,8 +50,8 @@ class CustomTextFieldSet extends StatelessWidget {
       children: [
         Text(
           inputLabel,
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: customColorScheme.onSurface1,
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                color: customColorScheme.onSurface2,
                 fontWeight: FontWeight.bold,
               ),
         ),
@@ -59,10 +59,9 @@ class CustomTextFieldSet extends StatelessWidget {
         if (captionText.isNotEmpty) ...[
           Text(
             captionText,
-            style: Theme.of(context)
-                .textTheme
-                .labelMedium!
-                .copyWith(color: customColorScheme.onSurface3),
+            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  color: customColorScheme.onSurface3,
+                ),
           ),
         ],
         const SizedBox(height: padding10),

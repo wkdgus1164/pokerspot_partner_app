@@ -18,35 +18,23 @@ class VerifyButton extends StatelessWidget {
     return OutlinedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.grey.shade300,
-        backgroundColor: Colors.white,
+        backgroundColor: isVerified ? lightColorScheme.primary : Colors.white,
         elevation: 0,
-        side: BorderSide(color: Colors.grey.shade300),
+        side: BorderSide(color: lightColorScheme.primary),
         minimumSize: const Size(double.infinity, 50),
         disabledBackgroundColor: Colors.grey.shade200,
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const SizedBox(width: 24),
-          Text(
-            isVerified ? '인증이 완료되었습니다.' : label,
-            style: isVerified
-                ? Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(color: lightColorScheme.primary)
-                : Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(color: customColorScheme.onSurface1),
-          ),
-          Icon(
-            isVerified ? Icons.check : null,
-            color: lightColorScheme.primary,
-          ),
-        ],
+      child: Text(
+        isVerified ? '인증이 완료되었습니다.' : label,
+        style: isVerified
+            ? Theme.of(context)
+                .textTheme
+                .labelLarge!
+                .copyWith(color: lightColorScheme.onPrimary)
+            : Theme.of(context)
+                .textTheme
+                .labelLarge!
+                .copyWith(color: lightColorScheme.primary),
       ),
     );
   }

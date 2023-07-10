@@ -37,26 +37,10 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(4),
         ),
-        hintText: '주소 입력',
+        hintText: '주소를 검색하세요.',
         hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
               color: Colors.grey.shade400,
             ),
-        suffixIcon: InkWell(
-          onTap: onSearchTap,
-          child: Container(
-            width: 80,
-            alignment: Alignment.center,
-            margin: const EdgeInsets.only(top: 6, bottom: 6, right: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              border: Border.all(color: Colors.grey.shade300),
-            ),
-            child: Text(
-              '주소찾기',
-              style: Theme.of(context).textTheme.labelLarge,
-            ),
-          ),
-        ),
       );
     }
 
@@ -65,34 +49,50 @@ class ShopProcessEssentialAddressForm extends StatelessWidget {
       children: [
         Text(
           '매장 주소 입력',
-          style: Theme.of(context)
-              .textTheme
-              .labelLarge!
-              .copyWith(fontWeight: FontWeight.w500),
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
         ),
         const SizedBox(height: padding10),
         Text(
           '사업자 등록증에 기재된 주소를 입력해주세요.',
-          style: Theme.of(context).textTheme.labelMedium!.copyWith(
+          style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 color: customColorScheme.onSurface3,
               ),
         ),
         const SizedBox(height: padding10),
-        TextFormField(
-          controller: (initAddress.isNotEmpty
-              ? (TextEditingController()
-                ..text = initAddress
-                ..selection = TextSelection.collapsed(
-                  offset: initAddress.length,
-                ))
-              : null),
-          decoration: textFieldDecoration(),
-          keyboardType: TextInputType.text,
-          minLines: 1,
-          maxLines: 1,
-          onEditingComplete: () {},
-          onChanged: onAddressFieldChanged,
-          obscureText: false,
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: TextFormField(
+                controller: (initAddress.isNotEmpty
+                    ? (TextEditingController()
+                      ..text = initAddress
+                      ..selection = TextSelection.collapsed(
+                        offset: initAddress.length,
+                      ))
+                    : null),
+                decoration: textFieldDecoration(),
+                keyboardType: TextInputType.text,
+                minLines: 1,
+                maxLines: 1,
+                onEditingComplete: () {},
+                onChanged: onAddressFieldChanged,
+                obscureText: false,
+                enabled: false,
+              ),
+            ),
+            const SizedBox(width: 10),
+            SizedBox(
+              height: 55,
+              child: OutlinedButton(
+                onPressed: onSearchTap,
+                child: const Text('주소 찾기'),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: padding10),
         CustomTextField(

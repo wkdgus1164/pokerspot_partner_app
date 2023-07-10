@@ -5,11 +5,11 @@ import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/locator.dart';
-import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/steps.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/verify_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
 import 'package:provider/provider.dart';
 
@@ -38,18 +38,29 @@ class ShopProcessBusinessView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          const ShopProcessSteps(index: 1),
-                          const SizedBox(height: padding16),
+                          const CustomProgressBar(percent: 0.2),
+                          const SizedBox(height: padding24),
                           Text(
                             '사업자 정보',
-                            style: Theme.of(context).textTheme.headlineSmall,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  color: customColorScheme.onSurface1,
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
                           const SizedBox(height: padding10),
                           Text(
                             '사업자 정보를 입력해주세요.',
-                            style: Theme.of(context).textTheme.bodySmall,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(
+                                  color: customColorScheme.onSurface3,
+                                ),
                           ),
-                          const SizedBox(height: padding48),
+                          const SizedBox(height: padding24),
 
                           // 사업자등록번호
                           _buildBusinessNumber(),
@@ -82,12 +93,7 @@ class ShopProcessBusinessView extends StatelessWidget {
   Container _buildNextButton(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.only(
-        top: padding16,
-        left: padding16,
-        right: padding16,
-        bottom: padding32,
-      ),
+      padding: const EdgeInsets.all(padding16),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -100,8 +106,6 @@ class ShopProcessBusinessView extends StatelessWidget {
         ],
       ),
       child: Row(children: [
-        const Expanded(child: SizedBox()),
-        const SizedBox(width: padding16),
         Expanded(
           child: CustomFilledButton(
             text: '다음',
@@ -110,7 +114,13 @@ class ShopProcessBusinessView extends StatelessWidget {
               if (_provider.checkedBiz) {
                 context.pushNamed(ShopRoutes.processEssential.path);
               } else {
-                showToast(context: context, message: '사업자 인증 미완료');
+                showInformationDialog(
+                  context: context,
+                  title: '안내',
+                  content: '사업자 인증이 완료되지 않았어요.',
+                  confirmText: '확인',
+                  onConfirm: () {},
+                );
               }
             },
           ),
@@ -121,7 +131,7 @@ class ShopProcessBusinessView extends StatelessWidget {
 
   VerifyButton _buildVerify(BuildContext context) {
     return VerifyButton(
-      label: '사업자 인증',
+      label: '사업자 인증하기',
       isVerified: _provider.checkedBiz,
       onPressed: _provider.checkedBiz
           ? null
@@ -129,12 +139,22 @@ class ShopProcessBusinessView extends StatelessWidget {
               String? error = await _provider.storeValidate(_store.bizNumber);
               if (error != null) {
                 if (context.mounted) {
-                  showToast(context: context, message: error);
+                  showInformationDialog(
+                    context: context,
+                    title: '안내',
+                    content: error,
+                    onConfirm: () {},
+                  );
                 }
               } else {
                 error = await _provider.bizValidate();
                 if (error != null && context.mounted) {
-                  showToast(context: context, message: error);
+                  showInformationDialog(
+                    context: context,
+                    title: '안내',
+                    content: error,
+                    onConfirm: () {},
+                  );
                 }
               }
             },
@@ -147,11 +167,11 @@ class ShopProcessBusinessView extends StatelessWidget {
       inputLabel: '개업연월일',
       keyboardType: TextInputType.number,
       isPassword: false,
-      inputHintText: '예시 : 20230519',
+      inputHintText: '예시) 20230519',
       onTextFieldChanged: (value) {
         _provider.setStore(_store.copyWith(bizStartYMD: value));
       },
-      captionText: '※ 사업자 등록증에 기재된 개업연월일을 입력해주세요.',
+      captionText: '사업자 등록증에 기재된 개업연월일을 입력해주세요.',
     );
   }
 
@@ -168,7 +188,7 @@ class ShopProcessBusinessView extends StatelessWidget {
           notify: false,
         );
       },
-      captionText: '※ 사업자 등록증에 기재된 대표자명을 입력해주세요.',
+      captionText: '사업자 등록증에 기재된 대표자명을 입력해주세요.',
     );
   }
 

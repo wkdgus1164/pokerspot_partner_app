@@ -6,7 +6,7 @@ import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/steps.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/essential/components/address_form.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
@@ -39,16 +39,21 @@ class ShopProcessEssentialView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      const ShopProcessSteps(index: 2),
-                      const SizedBox(height: padding16),
+                      const CustomProgressBar(percent: 0.4),
+                      const SizedBox(height: padding24),
                       Text(
                         '기본 정보',
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              color: customColorScheme.onSurface1,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                       const SizedBox(height: padding10),
                       Text(
                         '기본 정보를 입력해주세요.',
-                        style: Theme.of(context).textTheme.bodySmall,
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              color: customColorScheme.onSurface3,
+                            ),
                       ),
                       const SizedBox(height: padding48),
 
@@ -97,38 +102,6 @@ class ShopProcessEssentialView extends StatelessWidget {
                         );
                       }),
                       const SizedBox(height: padding24),
-
-                      // 업태
-                      CustomTextFieldSet(
-                        inputLabel: '업태',
-                        initText: _store.bizCategory,
-                        isPassword: false,
-                        inputHintText: '예) 숙박 및 음식점업',
-                        onTextFieldChanged: (value) {
-                          _provider.setStore(
-                            _store.copyWith(bizCategory: value),
-                          );
-                        },
-                        keyboardType: TextInputType.text,
-                        captionText: '사업자 등록증에 기재된 업태를 입력해주세요.',
-                      ),
-                      const SizedBox(height: padding32),
-
-                      // 종목
-                      CustomTextFieldSet(
-                        initText: _store.bizCategoryDetail,
-                        inputLabel: '종목',
-                        isPassword: false,
-                        inputHintText: '예) 일반 유흥 주점업',
-                        onTextFieldChanged: (value) {
-                          _provider.setStore(
-                            _store.copyWith(bizCategoryDetail: value),
-                          );
-                        },
-                        keyboardType: TextInputType.text,
-                        captionText: '사업자 등록증에 기재된 종목을 입력해주세요.',
-                      ),
-                      const SizedBox(height: padding32),
                     ],
                   ),
                 ),

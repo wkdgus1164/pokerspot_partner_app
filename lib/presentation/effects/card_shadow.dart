@@ -6,3 +6,10 @@ BoxShadow cardShadow = const BoxShadow(
   offset: Offset(0, 1),
   spreadRadius: 0,
 );
+
+BoxShadow toolbarShadow = BoxShadow(
+  color: Colors.grey.withOpacity(0.2),
+  spreadRadius: 2,
+  blurRadius: 4,
+  offset: const Offset(0, -1),
+);

@@ -6,7 +6,7 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/steps.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/image_upload/components/image_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
@@ -94,16 +94,20 @@ class _ShopProcessImageUploadViewState
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      const ShopProcessSteps(index: 3),
-                      const SizedBox(height: padding16),
+                      const CustomProgressBar(percent: 0.6),
+                      const SizedBox(height: padding24),
                       Text(
                         '매장 사진',
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                       const SizedBox(height: padding10),
                       Text(
                         '2장~5장의 매장 사진을 등록해주세요.',
-                        style: Theme.of(context).textTheme.bodySmall,
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              color: customColorScheme.onSurface3,
+                            ),
                       ),
                       const SizedBox(height: padding48),
                       Consumer<CreateStoreProvider>(
@@ -114,30 +118,36 @@ class _ShopProcessImageUploadViewState
                             direction: Axis.horizontal,
                             children: [
                               ShopProcessImageItem(
-                                caption: '대표사진',
                                 imageUrl: _imageUrl(0),
                                 isPrimary: true,
                                 onPressed: () => _setImageUrl(0),
+                                onEditButtonPressed: () {},
+                                onDeleteButtonPressed: () {},
                               ),
                               ShopProcessImageItem(
-                                caption: '필수 1',
                                 imageUrl: _imageUrl(1),
+                                isEssential: true,
                                 onPressed: () => _setImageUrl(1),
+                                onEditButtonPressed: () {},
+                                onDeleteButtonPressed: () {},
                               ),
                               ShopProcessImageItem(
-                                caption: '선택 1',
                                 imageUrl: _imageUrl(2),
                                 onPressed: () => _setImageUrl(2),
+                                onEditButtonPressed: () {},
+                                onDeleteButtonPressed: () {},
                               ),
                               ShopProcessImageItem(
-                                caption: '선택 2',
                                 imageUrl: _imageUrl(3),
                                 onPressed: () => _setImageUrl(3),
+                                onEditButtonPressed: () {},
+                                onDeleteButtonPressed: () {},
                               ),
                               ShopProcessImageItem(
-                                caption: '선택 3',
                                 imageUrl: _imageUrl(4),
                                 onPressed: () => _setImageUrl(4),
+                                onEditButtonPressed: () {},
+                                onDeleteButtonPressed: () {},
                               ),
                             ],
                           );

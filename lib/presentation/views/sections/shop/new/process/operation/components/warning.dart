@@ -23,60 +23,63 @@ class ShopProcessOperationWarning extends StatelessWidget {
     ];
 
     return Padding(
-      padding: const EdgeInsets.only(top: padding10, left: 6),
+      padding: const EdgeInsets.only(left: 6),
       child: Column(
         children: warningTitles
             .asMap()
             .entries
-            .map((titleEntry) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: padding24),
-                    Text(
-                      titleEntry.value,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    const SizedBox(height: 6),
-                    Column(
-                      children: warningContents
-                          .asMap()
-                          .entries
-                          .map((contentEntry) => Padding(
-                                padding: const EdgeInsets.only(top: 6),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      '·',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelMedium!
-                                          .copyWith(
-                                            color: customColorScheme.onSurface4,
-                                          ),
-                                    ),
-                                    const SizedBox(width: 6),
-                                    Expanded(
-                                      child: Text(
-                                        warningContents[titleEntry.key]
-                                            [contentEntry.key],
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelMedium!
-                                            .copyWith(
-                                              color:
-                                                  customColorScheme.onSurface3,
-                                            ),
+            .map(
+              (titleEntry) => Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: padding24),
+                  Text(
+                    titleEntry.value,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(height: 6),
+                  Column(
+                    children: warningContents
+                        .asMap()
+                        .entries
+                        .map(
+                          (contentEntry) => Padding(
+                            padding: const EdgeInsets.only(top: 6),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(width: 4),
+                                Text(
+                                  '·',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelMedium!
+                                      .copyWith(
+                                        color: customColorScheme.onSurface4,
                                       ),
-                                    ),
-                                  ],
                                 ),
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ))
+                                const SizedBox(width: 6),
+                                Expanded(
+                                  child: Text(
+                                    warningContents[titleEntry.key]
+                                        [contentEntry.key],
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelMedium!
+                                        .copyWith(
+                                          color: customColorScheme.onSurface3,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ],
+              ),
+            )
             .toList(),
       ),
     );

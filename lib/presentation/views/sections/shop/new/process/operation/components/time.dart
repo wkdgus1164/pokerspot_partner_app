@@ -8,11 +8,13 @@ class ShopProcessOperationTime extends StatelessWidget {
     required this.onTap,
     this.time = '00:00',
     required this.text,
+    this.isSelected = false,
   });
 
   final Function()? onTap;
   final String text;
   final String time;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +38,11 @@ class ShopProcessOperationTime extends StatelessWidget {
                   const SizedBox(height: padding16),
                   Text(
                     time,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: customColorScheme.onSurface1,
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: isSelected
+                              ? customColorScheme.onSurface1
+                              : customColorScheme.onSurface4,
+                          fontWeight: FontWeight.bold,
                         ),
                   ),
                 ],

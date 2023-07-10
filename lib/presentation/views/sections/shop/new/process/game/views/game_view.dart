@@ -5,9 +5,10 @@ import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/steps.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/components/add_button.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/components/game_item.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/components/game_item2.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/info_box/info_box.dart';
@@ -84,26 +85,40 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              const ShopProcessSteps(index: 5),
-                              const SizedBox(height: padding16),
+                              const CustomProgressBar(percent: 1),
+                              const SizedBox(height: padding24),
                               Text(
                                 '게임 정보',
-                                style:
-                                    Theme.of(context).textTheme.headlineSmall,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(
+                                      color: customColorScheme.onSurface1,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
                               const SizedBox(height: padding10),
                               Text(
                                 '최소 1개의 토너먼트 목록을 작성해주세요.',
-                                style: Theme.of(context).textTheme.bodySmall,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge!
+                                    .copyWith(
+                                      color: customColorScheme.onSurface3,
+                                    ),
                               ),
                               const SizedBox(height: padding10),
-                              const InfoBox(
-                                text: '모든 참가비의 단위는 chip입니다.',
-                              ),
+                              const InfoBox(text: '모든 참가비의 단위는 chip입니다.'),
                               const SizedBox(height: padding24),
                               Text(
                                 '토너먼트',
-                                style: Theme.of(context).textTheme.titleMedium,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge!
+                                    .copyWith(
+                                      color: customColorScheme.onSurface2,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
                               const SizedBox(height: padding10),
 
@@ -112,6 +127,30 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                               ...List.generate(
                                 _games.length,
                                 (index) => _buildGame(index),
+                              ),
+
+                              GameItem2(
+                                title: '3만 데일리 토너먼트',
+                                isEveryDay: true,
+                                onEditPressed: () {},
+                                onDeletePressed: () {},
+                                tonerType: '시드권 토너',
+                                entryFee: 3,
+                                entryMin: '15',
+                                entryMax: '20',
+                                prize: 80,
+                                targetToner: 'OOOO 토너먼트',
+                              ),
+                              GameItem2(
+                                title: '3만 데일리 토너먼트',
+                                onEditPressed: () {},
+                                onDeletePressed: () {},
+                                tonerType: '시드권 토너',
+                                entryFee: 3,
+                                entryMin: '15',
+                                entryMax: '20',
+                                prize: 80,
+                                targetToner: 'OOOO 토너먼트',
                               ),
                             ],
                           );

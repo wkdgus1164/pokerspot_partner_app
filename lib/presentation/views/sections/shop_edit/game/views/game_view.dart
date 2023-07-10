@@ -9,7 +9,7 @@ class ShopEditGameView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             ShopEditGameItem(
@@ -21,6 +21,8 @@ class ShopEditGameView extends StatelessWidget {
               prize: 80,
               isEveryday: true,
               targetToner: 'OOOO 토너먼트',
+              onEditButtonPressed: () {},
+              onDeleteButtonPressed: () {},
             ),
             ShopEditGameItem(
               name: '3만 데일리 토너먼트',
@@ -31,6 +33,8 @@ class ShopEditGameView extends StatelessWidget {
               prize: 80,
               isEveryday: false,
               targetToner: 'OOOO 토너먼트',
+              onEditButtonPressed: () {},
+              onDeleteButtonPressed: () {},
             ),
             ShopEditGameItem(
               name: '3만 데일리 토너먼트',
@@ -41,6 +45,8 @@ class ShopEditGameView extends StatelessWidget {
               prize: 80,
               isEveryday: true,
               targetToner: 'OOOO 토너먼트',
+              onEditButtonPressed: () {},
+              onDeleteButtonPressed: () {},
             ),
             ShopEditGameItem(
               name: '3만 데일리 토너먼트',
@@ -51,6 +57,8 @@ class ShopEditGameView extends StatelessWidget {
               prize: 80,
               isEveryday: true,
               targetToner: 'OOOO 토너먼트',
+              onEditButtonPressed: () {},
+              onDeleteButtonPressed: () {},
             ),
             ShopEditGameItem(
               name: '3만 데일리 토너먼트',
@@ -61,6 +69,8 @@ class ShopEditGameView extends StatelessWidget {
               prize: 80,
               isEveryday: false,
               targetToner: 'OOOO 토너먼트',
+              onEditButtonPressed: () {},
+              onDeleteButtonPressed: () {},
             ),
             ShopEditGameItem(
               name: '3만 데일리 토너먼트',
@@ -71,8 +81,10 @@ class ShopEditGameView extends StatelessWidget {
               prize: 80,
               isEveryday: true,
               targetToner: 'OOOO 토너먼트',
+              onEditButtonPressed: () {},
+              onDeleteButtonPressed: () {},
             ),
-            SizedBox(height: 80),
+            const SizedBox(height: 80),
           ],
         ),
       ),

@@ -15,6 +15,8 @@ class ShopEditGameItem extends StatelessWidget {
     required this.maxEntry,
     required this.prize,
     required this.targetToner,
+    required this.onEditButtonPressed,
+    required this.onDeleteButtonPressed,
   });
 
   final String name;
@@ -25,6 +27,8 @@ class ShopEditGameItem extends StatelessWidget {
   final int maxEntry;
   final int prize;
   final String targetToner;
+  final Function() onEditButtonPressed;
+  final Function() onDeleteButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -90,14 +94,14 @@ class ShopEditGameItem extends StatelessWidget {
                     Row(
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: onEditButtonPressed,
                           icon: Icon(
                             Icons.edit_rounded,
                             color: customColorScheme.onSurface3,
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: onDeleteButtonPressed,
                           icon: Icon(
                             Icons.delete_rounded,
                             color: customColorScheme.onSurface3,

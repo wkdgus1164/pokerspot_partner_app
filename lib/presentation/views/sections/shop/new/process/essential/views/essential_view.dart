@@ -4,12 +4,13 @@ import 'package:kpostal/kpostal.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
+import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/essential/components/address_form.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
 import 'package:provider/provider.dart';
 
@@ -125,14 +126,7 @@ class ShopProcessEssentialView extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 4,
-            offset: const Offset(0, -1),
-          ),
-        ],
+        boxShadow: [toolbarShadow],
       ),
       child: Row(
         children: [
@@ -152,7 +146,11 @@ class ShopProcessEssentialView extends StatelessWidget {
                 if (_provider.validateEssential()) {
                   return context.pushNamed(ShopRoutes.processImageUpload.path);
                 } else {
-                  showToast(context: context, message: '모든 정보를 입력해주세요.');
+                  showInformationDialog(
+                    context: context,
+                    content: '모든 정보를 입력해 주세요.',
+                    onConfirm: () {},
+                  );
                 }
               },
             ),

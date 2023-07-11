@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
@@ -91,14 +92,7 @@ class _GameItemState extends State<GameItem> {
         borderRadius: BorderRadius.circular(defaultRadius),
         border: Border.all(color: lightColorScheme.outline),
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 2,
-            offset: const Offset(0, 1),
-          ),
-        ],
+        boxShadow: [cardShadow],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

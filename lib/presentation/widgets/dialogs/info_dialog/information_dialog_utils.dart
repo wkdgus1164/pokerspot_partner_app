@@ -4,7 +4,7 @@ import 'information_dialog.dart';
 
 void showInformationDialog({
   required BuildContext context,
-  String title = "",
+  String title = "안내",
   String content = "",
   VoidCallback? onConfirm,
   String confirmText = "확인",

@@ -15,7 +15,7 @@ class VerifyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
+    return OutlinedButton.icon(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: isVerified ? lightColorScheme.primary : Colors.white,
@@ -24,8 +24,11 @@ class VerifyButton extends StatelessWidget {
         minimumSize: const Size(double.infinity, 50),
         disabledBackgroundColor: Colors.grey.shade200,
       ),
-      child: Text(
-        isVerified ? '인증이 완료되었습니다.' : label,
+      icon: isVerified
+          ? const Icon(Icons.check_rounded, color: Colors.white)
+          : Container(),
+      label: Text(
+        isVerified ? '인증이 완료되었어요.' : label,
         style: isVerified
             ? Theme.of(context)
                 .textTheme

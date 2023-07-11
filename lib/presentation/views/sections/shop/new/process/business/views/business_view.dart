@@ -5,11 +5,13 @@ import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/locator.dart';
+import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/verify_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/info_box/info_box.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
 import 'package:provider/provider.dart';
 
@@ -64,10 +66,21 @@ class ShopProcessBusinessView extends StatelessWidget {
 
                           // 사업자등록번호
                           _buildBusinessNumber(),
+                          const SizedBox(height: padding10),
+
+                          const InfoBox(
+                            text:
+                                '해당 사업자 정보로 이미 등록된 매장 혹은 등록 대기 중인 매장이 있을 경우, 동일한 사업자 정보로 신규 매장 등록이 어려울 수 있어요.',
+                          ),
                           const SizedBox(height: padding24),
 
                           // 대표자명
                           _buildName(),
+                          const SizedBox(height: padding10),
+
+                          const InfoBox(
+                            text: '포커스팟에 회원가입 시 등록하셨던 명의자와 명의와 일치해야 해요.',
+                          ),
                           const SizedBox(height: padding24),
 
                           // 개업연월일
@@ -96,14 +109,7 @@ class ShopProcessBusinessView extends StatelessWidget {
       padding: const EdgeInsets.all(padding16),
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 4,
-            offset: const Offset(0, -1),
-          ),
-        ],
+        boxShadow: [toolbarShadow],
       ),
       child: Row(children: [
         Expanded(
@@ -134,7 +140,7 @@ class ShopProcessBusinessView extends StatelessWidget {
       label: '사업자 인증하기',
       isVerified: _provider.checkedBiz,
       onPressed: _provider.checkedBiz
-          ? null
+          ? () {}
           : () async {
               String? error = await _provider.storeValidate(_store.bizNumber);
               if (error != null) {

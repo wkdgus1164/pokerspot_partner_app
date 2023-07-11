@@ -6,6 +6,7 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
+import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/image_upload/components/image_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
@@ -176,14 +177,7 @@ class _ShopProcessImageUploadViewState
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 4,
-            offset: const Offset(0, -1),
-          ),
-        ],
+        boxShadow: [toolbarShadow],
       ),
       child: Row(
         children: [

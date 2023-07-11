@@ -12,10 +12,10 @@ class GameAddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
+    return OutlinedButton.icon(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        side: BorderSide(color: lightColorScheme.outline),
+        side: BorderSide(color: lightColorScheme.primary),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(defaultRadius),
@@ -24,20 +24,14 @@ class GameAddButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: padding16),
         backgroundColor: Colors.white,
       ),
-      child: Row(
+      icon: const Icon(Icons.add),
+      label: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            Icons.add,
-            color: lightColorScheme.onSurfaceVariant,
-            size: 20,
-          ),
           const SizedBox(width: 4),
           Text(
             '추가하기',
-            style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+            style: TextStyle(color: lightColorScheme.primary),
           ),
         ],
       ),

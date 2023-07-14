@@ -10,6 +10,7 @@ import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/proce
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/components/add_button.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/components/game_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/components/game_item/game_item2.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/game_dialog.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/info_box/info_box.dart';
@@ -34,16 +35,27 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
   List<MttGameModel> get _games => _provider.mttGames;
 
   void _addGame() {
-    _provider.addGame();
-    Future.delayed(const Duration(milliseconds: 50)).then(
-      (value) {
-        _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.easeOutCubic,
-        );
-      },
+    showDialog(
+      context: context,
+      builder: (_) => Theme(
+        data: Theme.of(context).copyWith(
+          dialogBackgroundColor: Colors.white,
+        ),
+        child: const Dialog(
+          child: GameDialog(),
+        ),
+      ),
     );
+    // _provider.addGame();
+    // Future.delayed(const Duration(milliseconds: 50)).then(
+    //   (value) {
+    //     _scrollController.animateTo(
+    //       _scrollController.position.maxScrollExtent,
+    //       duration: const Duration(milliseconds: 400),
+    //       curve: Curves.easeOutCubic,
+    //     );
+    //   },
+    // );
   }
 
   @override

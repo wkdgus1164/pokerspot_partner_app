@@ -28,6 +28,7 @@ ThemeData _createThemeData({required BuildContext context}) {
     outlinedButtonTheme: outlinedButtonThemeData,
     scaffoldBackgroundColor: lightColorScheme.surface,
     bottomNavigationBarTheme: bottomNavigationBarThemeData,
+    dialogBackgroundColor: Colors.white,
     appBarTheme: appBarTheme,
     textTheme: Theme.of(context).textTheme.apply(),
     splashFactory: InkRipple.splashFactory,

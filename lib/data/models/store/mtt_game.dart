@@ -44,11 +44,22 @@ class MttGameModel {
   factory MttGameModel.fromJson(Map<String, dynamic> json) =>
       _$MttGameModelFromJson(json);
   Map<String, dynamic> toJson() => _$MttGameModelToJson(this);
+
+  Map<String, dynamic> toRequestPriority() =>
+      {"uid": uid, "priority": priority};
 }
 
 @JsonEnum(fieldRename: FieldRename.screamingSnake)
 enum TonerType {
-  daily,
-  seed,
-  gtd,
+  daily('데일리 토너'),
+  seed('시드권 토너'),
+  gtd('GTD 토너'),
+
+  primary('primary'),
+  secondary('secondary'),
+  ;
+
+  const TonerType(this.kr);
+
+  final String kr;
 }

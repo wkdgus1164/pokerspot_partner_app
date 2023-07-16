@@ -22,8 +22,10 @@ class TournamentsItemSwitches extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildwitchSet(context, '당일 진행', true, onFirstSwitchChanged, false),
-        _buildwitchSet(context, '실시간 진행', false, onSecondSwitchChanged, true),
+        _buildwitchSet(context, '당일 진행', firstSwitchValue, onFirstSwitchChanged,
+            !firstSwitchValue),
+        _buildwitchSet(context, '실시간 진행', secondSwitchValue,
+            onSecondSwitchChanged, !secondSwitchValue),
       ],
     );
   }

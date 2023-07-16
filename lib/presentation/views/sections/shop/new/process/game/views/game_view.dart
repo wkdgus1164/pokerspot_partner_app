@@ -258,6 +258,8 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
         return '${games[index].entryPrice ~/ 10000}만 ${games[index].targetMttName.replaceAll('토너먼트', '')} 시드권 토너먼트';
       case TonerType.gtd:
         return '${games[index].gtdMinReward ~/ 10000}만 GTD 토너먼트';
+      default:
+        return '알수없음';
     }
   }
 

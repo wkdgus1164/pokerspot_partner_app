@@ -22,8 +22,8 @@ class TournamentsItem extends StatelessWidget {
   final String tournamentType;
   final String tournamentTitle;
   final int entryMin;
-  final int entryMax;
-  final int prize;
+  final int? entryMax;
+  final String prize;
   final bool isToday;
   final bool isRealtime;
   final Function(bool)? onTodaySwitchChanged;
@@ -51,7 +51,7 @@ class TournamentsItem extends StatelessWidget {
             tournamentTitle: tournamentTitle,
             entryMin: entryMin,
             entryMax: entryMax,
-            prize: prize.toString(),
+            prize: prize,
           ),
           const Divider(height: 1, thickness: 1),
           TournamentsItemSwitches(

@@ -16,7 +16,7 @@ class TournamentsItemContents extends StatelessWidget {
   final String tournamentType;
   final String tournamentTitle;
   final int entryMin;
-  final int entryMax;
+  final int? entryMax;
   final String prize;
 
   @override

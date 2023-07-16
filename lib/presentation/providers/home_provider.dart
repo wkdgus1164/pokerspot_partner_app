@@ -48,21 +48,21 @@ class HomeProvider with ChangeNotifier {
     if (selectedStore != null) {
       _reservationsStatusCount =
           await _usecase.getReservationsStatusCount(selectedStore!.uid);
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   Future<void> getGames() async {
     if (selectedStore != null) {
       _games = await _usecase.getGames(selectedStore!.uid);
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   Future<void> getCoupons() async {
     if (selectedStore != null) {
       _coupons = await _usecase.getCoupons(selectedStore!.uid);
-      notifyListeners();
     }
+    notifyListeners();
   }
 }

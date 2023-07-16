@@ -44,8 +44,10 @@ class HomeView extends StatelessWidget {
                       HomeReservation(
                         data: provider.reservationsStatusCount,
                       ),
-                      HomeTournament(games: provider.games),
-                      HomeCoupon(coupons: provider.coupons),
+                      if (provider.games.isNotEmpty)
+                        HomeTournament(games: provider.games),
+                      if (provider.coupons.isNotEmpty)
+                        HomeCoupon(coupons: provider.coupons),
                       const CustomDivider(),
                       const HomeNotice(),
                       HomeStore(storeList: provider.stores ?? []),

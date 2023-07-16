@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/base/home.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/tournament_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
@@ -36,6 +37,7 @@ class _HomeTournamentState extends State<HomeTournament> {
 
   @override
   Widget build(BuildContext context) {
+    Logger.e("build ${widget.games.length}");
     return Column(
       children: [
         Container(

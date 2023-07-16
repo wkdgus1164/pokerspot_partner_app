@@ -24,11 +24,11 @@ class GameRepository {
   }
 
   /// 토너 게임 우선순위 수정
-  Future<bool> updateGamePriority({required MttGameModel data}) async {
+  Future<bool> updateGamePriority({required List<MttGameModel> data}) async {
     try {
       await _dio.patch(
         '/games/mtt/priority',
-        data: data.toRequestPriority(),
+        data: {'mttGames': data.map((e) => e.toRequestPriority()).toList()},
       );
       return true;
     } catch (e) {

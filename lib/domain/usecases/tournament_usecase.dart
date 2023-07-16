@@ -10,7 +10,7 @@ class TournamentUsecase {
     return await _repository.updateGame(id: game.uid, data: game);
   }
 
-  Future<bool> updateGamePriority(MttGameModel game) async {
-    return await _repository.updateGamePriority(data: game);
+  Future<bool> updateGamePriority(List<MttGameModel> games) async {
+    return await _repository.updateGamePriority(data: games);
   }
 }

@@ -5,6 +5,11 @@ import 'package:pokerspot_partner_app/presentation/views/sections/home/tournamen
 import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/components/tournaments/tournaments.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../../locator.dart';
+import '../../../../../providers/tournament_provider.dart';
+import '../../../../../widgets/dialogs/info_dialog/information_dialog_utils.dart';
 
 class TournamentAdminView extends StatelessWidget {
   const TournamentAdminView({super.key});
@@ -14,36 +19,53 @@ class TournamentAdminView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('토너먼트 현황 변경')),
       body: SingleChildScrollView(
-        child: Container(
-          color: lightColorScheme.surface,
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(padding16),
-                child: const Column(
-                  children: [
-                    TournamentAdminTournaments(),
-                  ],
-                ),
+        child: ChangeNotifierProvider<TournamentProvider>(
+          create: (_) => locator(),
+          child: Consumer<TournamentProvider>(builder: (_, provider, __) {
+            return Container(
+              color: lightColorScheme.surface,
+              child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(padding16),
+                    child: const Column(
+                      children: [
+                        TournamentAdminTournaments(),
+                      ],
+                    ),
+                  ),
+                  const CustomDivider(),
+                  Container(
+                    padding: const EdgeInsets.all(padding16),
+                    child: const Column(
+                      children: [
+                        TournamentAdminDisplayIndex(),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(padding16),
+                    child: CustomFilledButton(
+                      text: '변경하기',
+                      onPressed: () async {
+                        provider.updateGamePriority().then((value) {
+                          if (value) {
+                            Navigator.pop(context);
+                          } else {
+                            showInformationDialog(
+                                context: context,
+                                title: '변경 실패',
+                                content: '변경을 실패했습니다.',
+                                onConfirm: () {});
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                ],
               ),
-              const CustomDivider(),
-              Container(
-                padding: const EdgeInsets.all(padding16),
-                child: const Column(
-                  children: [
-                    TournamentAdminDisplayIndex(),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(padding16),
-                child: CustomFilledButton(
-                  text: '변경하기',
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ),
-            ],
-          ),
+            );
+          }),
         ),
       ),
     );

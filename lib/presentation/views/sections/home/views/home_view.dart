@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/routes/base/home.dart';
+import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/common/no_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/coupon/coupon.dart';
@@ -19,6 +20,8 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    locator<HomeProvider>().init();
+
     return Scaffold(
       appBar: AppBar(
         title: SvgPicture.asset(Assets.poker.path),

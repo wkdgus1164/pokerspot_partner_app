@@ -6,7 +6,20 @@ import 'package:pokerspot_partner_app/presentation/views/sections/home/tournamen
 import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/components/display_index/item_header.dart';
 
 class DisplayIndexItem extends StatelessWidget {
-  const DisplayIndexItem({super.key});
+  const DisplayIndexItem({
+    super.key,
+    required this.title,
+    required this.type,
+    required this.isToday,
+    required this.isRealtime,
+    required this.index,
+  });
+
+  final String title;
+  final String type;
+  final bool isToday;
+  final bool isRealtime;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +38,17 @@ class DisplayIndexItem extends StatelessWidget {
               ),
               shadows: [cardShadow],
             ),
-            child: const Column(
+            child: Column(
               children: [
                 DisplayIndexItemHeader(
-                  text: '시드권 토너 ',
-                  index: 1,
+                  text: type,
+                  index: index,
                 ),
-                SizedBox(height: padding10),
+                const SizedBox(height: padding10),
                 DisplayIndexItemBody(
-                  text: '가나다라 시드권 토너먼트',
-                  isToday: true,
-                  isRealtime: true,
+                  text: title,
+                  isToday: isToday,
+                  isRealtime: isRealtime,
                 ),
               ],
             ),

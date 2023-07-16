@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
+import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/notice/notice_item.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/home/data/notice_data.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
+
+import '../../../../../../common/routes/base/member.dart';
+import '../../../../../../data/models/notice/notice.dart';
 
 class HomeNotice extends StatelessWidget {
-  const HomeNotice({Key? key}) : super(key: key);
+  const HomeNotice({
+    Key? key,
+    required this.notices,
+  }) : super(key: key);
+
+  final List<NoticeModel> notices;
 
   @override
   Widget build(BuildContext context) {
     // 더보기
-    onMoreButtonPressed() {}
+    onMoreButtonPressed() {
+      context.pushNamed(MemberRoutes.notice.path);
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,12 +56,11 @@ class HomeNotice extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Wrap(
-            children: noticeList
-                .asMap()
-                .entries
-                .map((entry) => HomeNoticeItem(
-                      title: noticeList[entry.key].title,
-                      createdAt: noticeList[entry.key].createdAt,
+            children: notices
+                .map((notice) => HomeNoticeItem(
+                      title: notice.title,
+                      createdAt:
+                          DateFormat('yyyy. MM. dd.').format(notice.createdAt),
                       onItemPressed: () {},
                     ))
                 .toList(),

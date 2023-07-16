@@ -5,6 +5,7 @@ import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/routes/base/home.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
+import 'package:pokerspot_partner_app/presentation/providers/notice_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/common/no_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/coupon/coupon.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/header/store_header.dart';
@@ -33,32 +34,36 @@ class HomeView extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-        child: Consumer<HomeProvider>(
-          builder: (_, provider, __) {
-            switch (provider.stores?.length) {
-              case null:
-              case 0:
-                return const Center(child: NoStore());
-              default:
-                return SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      HomeStoreHeader(name: provider.selectedStore?.name ?? ''),
-                      HomeReservation(
-                        data: provider.reservationsStatusCount,
-                      ),
-                      if (provider.games.isNotEmpty)
-                        HomeTournament(games: provider.games),
-                      if (provider.coupons.isNotEmpty)
-                        HomeCoupon(coupons: provider.coupons),
-                      const CustomDivider(),
-                      const HomeNotice(),
-                      HomeStore(storeList: provider.stores ?? []),
-                    ],
-                  ),
-                );
-            }
-          },
+        child: ChangeNotifierProvider<NoticeProvider>(
+          create: (_) => locator(),
+          child: Consumer2<HomeProvider, NoticeProvider>(
+            builder: (_, provider, nProvider, __) {
+              switch (provider.stores?.length) {
+                case null:
+                case 0:
+                  return const Center(child: NoStore());
+                default:
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        HomeStoreHeader(
+                            name: provider.selectedStore?.name ?? ''),
+                        HomeReservation(
+                          data: provider.reservationsStatusCount,
+                        ),
+                        if (provider.games.isNotEmpty)
+                          HomeTournament(games: provider.games),
+                        if (provider.coupons.isNotEmpty)
+                          HomeCoupon(coupons: provider.coupons),
+                        const CustomDivider(),
+                        HomeNotice(notices: nProvider.notices),
+                        HomeStore(storeList: provider.stores ?? []),
+                      ],
+                    ),
+                  );
+              }
+            },
+          ),
         ),
       ),
     );

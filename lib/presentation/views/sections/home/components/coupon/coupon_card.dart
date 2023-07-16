@@ -8,6 +8,7 @@ import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 class CouponCard extends StatelessWidget {
   const CouponCard({
     super.key,
+    required this.image,
     required this.title,
     required this.description,
     required this.total,
@@ -16,6 +17,7 @@ class CouponCard extends StatelessWidget {
     this.isClickable = false,
   });
 
+  final String image;
   final String title;
   final String description;
   final int total;

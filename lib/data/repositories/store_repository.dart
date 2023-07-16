@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:pokerspot_partner_app/data/models/store/biz_validate_request.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/data/models/store/reservations_status_count.dart';
+import 'package:pokerspot_partner_app/data/models/store/store_coupon.dart';
 import 'package:pokerspot_partner_app/data/network/api_client.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 
@@ -99,7 +100,6 @@ class StoreRepository {
   Future<Either<String, List<MttGameModel>>> getGames(String id) async {
     try {
       final response = await _dio.get('/stores/$id/games');
-      Logger.d(response.data);
       return Right((response.data['mttGames'] as List)
           .map((e) => MttGameModel.fromJson(e))
           .toList());
@@ -109,6 +109,19 @@ class StoreRepository {
       }
       Logger.e(e);
       rethrow;
+    }
+  }
+
+  /// 메인 > 쿠폰 현황
+  Future<List<StoreCouponModel>> getCoupons(String id) async {
+    try {
+      final response = await _dio.get('/stores/$id/coupons');
+      return (response.data['storeCoupons'] as List)
+          .map((e) => StoreCouponModel.fromJson(e))
+          .toList();
+    } catch (e) {
+      Logger.e(e);
+      return [];
     }
   }
 }

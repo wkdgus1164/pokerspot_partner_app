@@ -18,7 +18,8 @@ class CouponAdminView extends StatelessWidget {
           // 쿠폰 정보
           Container(
             padding: const EdgeInsets.all(padding16),
-            child: const CouponCard(
+            child: CouponCard(
+              image: '',
               title: '1만원 즉시할인 쿠폰',
               description: '매장이용권 1맘ㄴ원 할인 · 기간 무제한',
               total: 8,

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:pokerspot_partner_app/data/models/store/reservations_status_count.dart';
+import 'package:pokerspot_partner_app/data/models/store/store_coupon.dart';
 import 'package:pokerspot_partner_app/domain/usecases/home_usecase.dart';
 
 import '../../data/models/partner/partner_store.dart';
@@ -21,6 +22,9 @@ class HomeProvider with ChangeNotifier {
   List<MttGameModel> _games = [];
   List<MttGameModel> get games => _games;
 
+  List<StoreCouponModel> _coupons = [];
+  List<StoreCouponModel> get coupons => _coupons;
+
   HomeProvider(this._usecase) {
     init();
   }
@@ -32,6 +36,7 @@ class HomeProvider with ChangeNotifier {
     }
     getReservationsStatusCount();
     getGames();
+    getCoupons();
   }
 
   Future<void> getStores() async {
@@ -50,6 +55,13 @@ class HomeProvider with ChangeNotifier {
   Future<void> getGames() async {
     if (selectedStore != null) {
       _games = await _usecase.getGames(selectedStore!.uid);
+      notifyListeners();
+    }
+  }
+
+  Future<void> getCoupons() async {
+    if (selectedStore != null) {
+      _coupons = await _usecase.getCoupons(selectedStore!.uid);
       notifyListeners();
     }
   }

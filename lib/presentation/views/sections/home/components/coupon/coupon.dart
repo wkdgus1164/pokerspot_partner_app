@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/data/models/store/store_coupon.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/coupon/coupon_card.dart';
 
 class HomeCoupon extends StatelessWidget {
-  const HomeCoupon({super.key});
+  const HomeCoupon({
+    super.key,
+    required this.coupons,
+  });
+
+  final List<StoreCouponModel> coupons;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +30,19 @@ class HomeCoupon extends StatelessWidget {
                 ),
           ),
           const SizedBox(height: padding16),
-          const CouponCard(
-            title: '1만원 즉시할인 쿠폰',
-            description: '매장이용권 1만원 할인 · 기간 무제한',
-            total: 8,
-            used: 4,
-            last: 4,
-            isClickable: true,
+          SingleChildScrollView(
+            child: Row(
+                children: coupons
+                    .map((e) => CouponCard(
+                          image: e.image,
+                          title: e.title,
+                          description: e.subtitle,
+                          total: e.totalAmount,
+                          used: e.usedAmount,
+                          last: e.remainAmount,
+                          isClickable: true,
+                        ))
+                    .toList()),
           ),
         ],
       ),

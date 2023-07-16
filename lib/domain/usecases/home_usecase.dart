@@ -1,5 +1,6 @@
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/data/models/store/reservations_status_count.dart';
+import 'package:pokerspot_partner_app/data/models/store/store_coupon.dart';
 import 'package:pokerspot_partner_app/data/repositories/partner_repository.dart';
 import 'package:pokerspot_partner_app/data/repositories/store_repository.dart';
 
@@ -26,5 +27,9 @@ class HomeUsecase {
     return await _storeRepository
         .getGames(id)
         .then((value) => value.fold((l) => [], (r) => r));
+  }
+
+  Future<List<StoreCouponModel>> getCoupons(String id) async {
+    return await _storeRepository.getCoupons(id);
   }
 }

@@ -65,4 +65,16 @@ class HomeProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  Future<bool> updateCoupon(StoreCouponModel data) async {
+    if (selectedStore != null) {
+      final result = await _usecase.updateCoupon(
+          storeId: selectedStore!.uid,
+          couponId: data.uid,
+          remainAmount: data.remainAmount);
+      return result;
+    } else {
+      return false;
+    }
+  }
 }

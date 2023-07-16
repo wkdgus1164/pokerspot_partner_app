@@ -30,20 +30,12 @@ class HomeCoupon extends StatelessWidget {
                 ),
           ),
           const SizedBox(height: padding16),
-          SingleChildScrollView(
-            child: Row(
-                children: coupons
-                    .map((e) => CouponCard(
-                          image: e.image,
-                          title: e.title,
-                          description: e.subtitle,
-                          total: e.totalAmount,
-                          used: e.usedAmount,
-                          last: e.remainAmount,
-                          isClickable: true,
-                        ))
-                    .toList()),
-          ),
+          ...coupons
+              .map((e) => CouponCard(
+                    coupon: e,
+                    isClickable: true,
+                  ))
+              .toList()
         ],
       ),
     );

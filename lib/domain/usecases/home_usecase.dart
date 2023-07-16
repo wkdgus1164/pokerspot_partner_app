@@ -32,4 +32,16 @@ class HomeUsecase {
   Future<List<StoreCouponModel>> getCoupons(String id) async {
     return await _storeRepository.getCoupons(id);
   }
+
+  Future<bool> updateCoupon({
+    required String storeId,
+    required String couponId,
+    required int remainAmount,
+  }) async {
+    return await _storeRepository.updateCoupon(
+      storeId: storeId,
+      couponId: couponId,
+      remainAmount: remainAmount,
+    );
+  }
 }

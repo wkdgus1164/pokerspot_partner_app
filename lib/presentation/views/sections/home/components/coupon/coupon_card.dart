@@ -1,28 +1,20 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/home.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/data/models/store/store_coupon.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
+
+import '../../coupon_admin/views/coupon_admin.dart';
 
 class CouponCard extends StatelessWidget {
   const CouponCard({
     super.key,
-    required this.image,
-    required this.title,
-    required this.description,
-    required this.total,
-    required this.used,
-    required this.last,
+    required this.coupon,
     this.isClickable = false,
   });
 
-  final String image;
-  final String title;
-  final String description;
-  final int total;
-  final int used;
-  final int last;
+  final StoreCouponModel coupon;
   final bool isClickable;
 
   @override
@@ -30,7 +22,12 @@ class CouponCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (isClickable) {
-          context.pushNamed(HomeRoutes.coupon.path);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => CouponAdminView(coupon: coupon),
+            ),
+          );
         } else {
           return;
         }
@@ -60,7 +57,9 @@ class CouponCard extends StatelessWidget {
                       ),
                       shadows: [cardShadow],
                     ),
-                    child: Container(),
+                    child: CachedNetworkImage(
+                      imageUrl: coupon.image,
+                    ),
                   ),
                   const SizedBox(width: padding16),
                   Expanded(
@@ -68,7 +67,7 @@ class CouponCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          title,
+                          coupon.title,
                           style:
                               Theme.of(context).textTheme.titleMedium!.copyWith(
                                     color: customColorScheme.onSurface1,
@@ -77,7 +76,7 @@ class CouponCard extends StatelessWidget {
                         ),
                         const SizedBox(height: padding10),
                         Text(
-                          description,
+                          coupon.subtitle,
                           style:
                               Theme.of(context).textTheme.labelMedium!.copyWith(
                                     color: customColorScheme.onSurface3,
@@ -95,9 +94,9 @@ class CouponCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: padding16),
               child: Row(
                 children: [
-                  _buildItem(context, true, total, '총 수량'),
-                  _buildItem(context, false, used, '사용 완료'),
-                  _buildItem(context, false, last, '남은 수량'),
+                  _buildItem(context, true, coupon.totalAmount, '총 수량'),
+                  _buildItem(context, false, coupon.usedAmount, '사용 완료'),
+                  _buildItem(context, false, coupon.remainAmount, '남은 수량'),
                 ],
               ),
             ),

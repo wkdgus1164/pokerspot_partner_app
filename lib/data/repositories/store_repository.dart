@@ -124,4 +124,20 @@ class StoreRepository {
       return [];
     }
   }
+
+  /// 메인 > 쿠폰 정보 > 남은 수량 수정
+  Future<bool> updateCoupon(
+      {required String storeId,
+      required String couponId,
+      required int remainAmount}) async {
+    try {
+      await _dio.patch('/stores/$storeId/coupons/$couponId', data: {
+        'remainAmount': remainAmount,
+      });
+      return true;
+    } catch (e) {
+      Logger.e(e);
+      return false;
+    }
+  }
 }

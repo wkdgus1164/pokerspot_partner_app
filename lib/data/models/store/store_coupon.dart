@@ -10,7 +10,7 @@ class StoreCouponModel {
   final String image;
   final int totalAmount;
   final int usedAmount;
-  final int remainAmount;
+  int remainAmount;
 
   StoreCouponModel({
     required this.uid,

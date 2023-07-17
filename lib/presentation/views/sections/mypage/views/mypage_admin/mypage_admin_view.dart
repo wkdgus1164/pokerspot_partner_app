@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/selection_dialog/selection_dialog_utils.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/member.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
@@ -41,7 +41,7 @@ class MypageAdminView extends StatelessWidget {
                       CustomOutlinedButton(
                         onPressed: () {
                           provider.logout();
-                          context.goNamed(MemberRoutes.login.path);
+                          context.pushReplacement(CustomRouter.login.path);
                         },
                         text: '로그아웃',
                       ),
@@ -56,7 +56,9 @@ class MypageAdminView extends StatelessWidget {
                                 if (context.mounted) {
                                   if (success) {
                                     provider.logout();
-                                    context.goNamed(MemberRoutes.login.path);
+                                    context.pushReplacement(
+                                      CustomRouter.login.path,
+                                    );
                                   } else {
                                     showToast(
                                         context: context,

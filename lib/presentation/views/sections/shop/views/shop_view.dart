@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/views/components/new_shop.dart';
@@ -28,7 +28,7 @@ class _ShopViewState extends State<ShopView> {
         actions: [
           IconButton(
             onPressed: () {
-              context.pushNamed(ShopRoutes.newIntro.path);
+              context.push(CustomRouter.shopNewIntro.path);
             },
             icon: Icon(
               Icons.add,
@@ -118,10 +118,10 @@ class _ShopViewState extends State<ShopView> {
             isRunning: true,
             isRunningCheckChanged: (v) {},
             onCorporateButtonPressed: () {
-              context.pushNamed(ShopRoutes.partnership.path);
+              context.push(CustomRouter.partnership.path);
             },
             onEditButtonPressed: () {
-              context.pushNamed(ShopRoutes.editMain.path);
+              context.push(CustomRouter.shopEdit.path);
             },
           ),
         ),

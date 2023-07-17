@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
-import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/token_provider.dart';
@@ -24,7 +24,7 @@ class _LoginViewState extends State<LoginView> {
   Future<void> _login() async {
     final success = await _authProvider.login();
     if (success && context.mounted) {
-      context.replaceNamed(BottomNavigationRoutes.home.path);
+      context.pushReplacement(CustomRouter.home.path);
     } else {
       showInformationDialog(
         context: context,

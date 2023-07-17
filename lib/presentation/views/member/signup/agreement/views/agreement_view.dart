@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/routes/base/member.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/components/agreement_category.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/components/agreement_item.dart';
@@ -133,7 +133,7 @@ class SignupAgreementView extends StatelessWidget {
                   text: '동의하기',
                   theme: CustomFilledButtonTheme.primary,
                   onPressed: provider.validateAgreement
-                      ? () => context.pushNamed(MemberRoutes.signup.path)
+                      ? () => context.push(CustomRouter.signup.path)
                       : null,
                 ),
               ],

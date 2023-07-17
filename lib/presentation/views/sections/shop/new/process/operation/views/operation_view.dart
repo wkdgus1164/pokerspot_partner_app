@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/operation/components/warning_container.dart';
@@ -8,7 +9,6 @@ import 'package:pokerspot_partner_app/presentation/widgets/dialogs/picker_dialog
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/picker_dialog_with_checkbox/picker_dialog_with_checkbox_utils.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/operation/components/pub.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/operation/components/time.dart';
@@ -256,7 +256,7 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
               theme: CustomFilledButtonTheme.primary,
               onPressed: () {
                 if (_provider.validateOperation()) {
-                  context.pushNamed(ShopRoutes.processGame.path);
+                  context.push(CustomRouter.shopProcessGame.path);
                 } else {
                   showInformationDialog(
                     context: context,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/member.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
@@ -94,8 +94,8 @@ class SignupInformationView extends StatelessWidget {
                       isVerified: provider.checkedPhoneNumber,
                       onPressed: provider.validateInput
                           ? () async {
-                              final data = await context.pushNamed(
-                                MemberRoutes.signupCertification.path,
+                              final data = await context.push(
+                                CustomRouter.signupCertification.path,
                               );
                               provider.setImpUid(
                                 data as Map<String, String>?,
@@ -123,9 +123,7 @@ class SignupInformationView extends StatelessWidget {
                           ? () async {
                               final result = await provider.signUp();
                               if (result == null && context.mounted) {
-                                context.pushNamed(
-                                  MemberRoutes.signupSuccess.path,
-                                );
+                                context.push(CustomRouter.signupSuccess.path);
                               } else {
                                 showToast(
                                   context: context,

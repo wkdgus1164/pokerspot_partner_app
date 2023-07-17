@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/routes/base/member.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
@@ -48,7 +48,7 @@ class PwFindSuccessView extends StatelessWidget {
             CustomFilledButton(
               text: '로그인하기',
               theme: CustomFilledButtonTheme.primary,
-              onPressed: () => context.pushNamed(MemberRoutes.login.path),
+              onPressed: () => context.push(CustomRouter.login.path),
             ),
           ],
         ),

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
@@ -26,11 +26,11 @@ class _ShopNewIntroViewState extends State<ShopNewIntroView> {
   @override
   Widget build(BuildContext context) {
     onGuideButtonPressed() {
-      context.pushNamed(ShopRoutes.newGuide.path);
+      context.push(CustomRouter.shopNewGuide.path);
     }
 
     onAddNewButtonPressed() {
-      context.pushNamed(ShopRoutes.processGame.path);
+      context.push(CustomRouter.shopProcessBusiness.path);
     }
 
     return Scaffold(

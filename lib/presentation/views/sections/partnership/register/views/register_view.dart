@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/partnership/register/views/components/selection.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/partnership/register/views/components/warning.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
@@ -31,9 +31,7 @@ class PartnerRegisterView extends StatelessWidget {
             child: CustomFilledButton(
               text: '제휴 신청하기',
               onPressed: () {
-                context.pushReplacementNamed(
-                  ShopRoutes.partnershipSuccess.path,
-                );
+                context.pushReplacement(CustomRouter.partnershipSuccess.path);
               },
             ),
           ),

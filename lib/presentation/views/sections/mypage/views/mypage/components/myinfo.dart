@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/member.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -33,9 +33,7 @@ class MypageMyinfo extends StatelessWidget {
                   Material(
                     borderRadius: BorderRadius.circular(30),
                     child: InkWell(
-                      onTap: () => context.pushNamed(
-                        MemberRoutes.mypageAdmin.path,
-                      ),
+                      onTap: () => context.push(CustomRouter.mypageAdmin.path),
                       splashColor: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(30),
                       child: Container(

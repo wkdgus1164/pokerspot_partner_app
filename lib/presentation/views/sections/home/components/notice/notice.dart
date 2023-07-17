@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/notice/notice_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 
-import '../../../../../../common/routes/base/member.dart';
 import '../../../../../../data/models/notice/notice.dart';
 
 class HomeNotice extends StatelessWidget {
@@ -21,7 +21,7 @@ class HomeNotice extends StatelessWidget {
   Widget build(BuildContext context) {
     // 더보기
     onMoreButtonPressed() {
-      context.pushNamed(MemberRoutes.notice.path);
+      context.push(CustomRouter.notice.path);
     }
 
     return Column(

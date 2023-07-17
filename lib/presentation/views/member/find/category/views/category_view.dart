@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/routes/base/member.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 
@@ -34,7 +34,7 @@ class FindCategoryView extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: CustomOutlinedButton(
-                  onPressed: () => context.pushNamed(MemberRoutes.findId.path),
+                  onPressed: () => context.push(CustomRouter.findId.path),
                   text: '아이디',
                 ),
               ),
@@ -42,7 +42,7 @@ class FindCategoryView extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: CustomOutlinedButton(
-                  onPressed: () => context.pushNamed(MemberRoutes.findPw.path),
+                  onPressed: () => context.push(CustomRouter.findPw.path),
                   text: '비밀번호',
                 ),
               ),

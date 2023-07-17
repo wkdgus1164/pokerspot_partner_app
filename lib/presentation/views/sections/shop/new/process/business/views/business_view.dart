@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/locator.dart';
@@ -118,7 +118,7 @@ class ShopProcessBusinessView extends StatelessWidget {
             theme: CustomFilledButtonTheme.primary,
             onPressed: () {
               if (_provider.checkedBiz) {
-                context.pushNamed(ShopRoutes.processEssential.path);
+                context.push(CustomRouter.shopProcessEssential.path);
               } else {
                 showInformationDialog(
                   context: context,

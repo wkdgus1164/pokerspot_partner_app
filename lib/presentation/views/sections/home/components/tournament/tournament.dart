@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/home.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/tournament_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
@@ -63,7 +63,7 @@ class _HomeTournamentState extends State<HomeTournament> {
                     text: '옵션 변경',
                     theme: CustomTextButtonTheme.primary,
                     onClick: () =>
-                        context.pushNamed(HomeRoutes.tournaments.path),
+                        context.push(CustomRouter.homeTournaments.path),
                   ),
                 ],
               ),

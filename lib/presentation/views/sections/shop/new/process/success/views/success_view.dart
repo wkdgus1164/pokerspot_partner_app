@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/bottom_navigation.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 
 class ShopProcessSuccessView extends StatelessWidget {
@@ -40,8 +40,8 @@ class ShopProcessSuccessView extends StatelessWidget {
                 child: CustomFilledButton(
                   text: '확인',
                   theme: CustomFilledButtonTheme.secondary,
-                  onPressed: () => context.goNamed(
-                    BottomNavigationRoutes.home.path,
+                  onPressed: () => context.pushReplacement(
+                    CustomRouter.home.path,
                   ),
                 ),
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/member.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
@@ -73,7 +73,7 @@ class LoginForm extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () => context.pushNamed(MemberRoutes.findCategory.path),
+                onTap: () => context.push(CustomRouter.findCategory.path),
                 borderRadius: BorderRadius.circular(4),
                 child: Padding(
                   padding: const EdgeInsets.all(8),
@@ -107,7 +107,7 @@ class LoginForm extends StatelessWidget {
                 theme: CustomTextButtonTheme.primary,
                 onClick: () {
                   locator<SignupProvider>().reset();
-                  return context.pushNamed(MemberRoutes.signupAgreement.path);
+                  return context.push(CustomRouter.signupAgreement.path);
                 },
               ),
             ],

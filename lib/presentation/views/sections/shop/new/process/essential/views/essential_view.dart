@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kpostal/kpostal.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
@@ -144,7 +144,7 @@ class ShopProcessEssentialView extends StatelessWidget {
               theme: CustomFilledButtonTheme.primary,
               onPressed: () {
                 if (_provider.validateEssential()) {
-                  return context.pushNamed(ShopRoutes.processImageUpload.path);
+                  return context.push(CustomRouter.shopProcessImageUpload.path);
                 } else {
                   showInformationDialog(
                     context: context,

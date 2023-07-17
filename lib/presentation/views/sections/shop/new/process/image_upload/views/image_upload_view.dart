@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
@@ -195,9 +195,7 @@ class _ShopProcessImageUploadViewState
               theme: CustomFilledButtonTheme.primary,
               onPressed: () {
                 if (_provider.validateImages()) {
-                  context.pushNamed(
-                    ShopRoutes.processOperation.path,
-                  );
+                  context.push(CustomRouter.shopProcessOperation.path);
                 } else {
                   showToast(context: context, message: '필수 이미지를 업로드 해주세요.');
                 }

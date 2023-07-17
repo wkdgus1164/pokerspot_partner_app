@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/partnership/main/views/components/header.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
@@ -38,7 +38,7 @@ class PartnershipMainView extends StatelessWidget {
               color: customColorScheme.onSurface4,
             ),
             onTap: () {
-              context.pushNamed(ShopRoutes.partnershipRegister.path);
+              context.push(CustomRouter.partnershipRegister.path);
             },
           ),
           const Divider(height: 1, thickness: 1),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/base/shop.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 
 class HomeStoreHeader extends StatelessWidget {
@@ -12,7 +12,7 @@ class HomeStoreHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(ShopRoutes.select.path),
+      onTap: () => context.push(CustomRouter.shopSelect.path),
       child: Container(
         color: customColorScheme.surfaceContainer2,
         padding: const EdgeInsets.symmetric(vertical: padding16),

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/everyday.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/max_entry.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/min_entry.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/prize.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/register_fee.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/target.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/toner_name.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/toner_type.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 
 class GameDialog extends StatelessWidget {
   const GameDialog({super.key});
@@ -56,6 +62,34 @@ class GameDialog extends StatelessWidget {
           // 참가비
           const GameDialogRegisterFee(isSelected: false),
           const SizedBox(height: padding10),
+
+          // 최소 엔트리
+          const GameDialogMinEntry(isSelected: false),
+          const SizedBox(height: padding10),
+
+          // 최대 엔트리
+          GameDialogMaxEntry(
+            isSelected: false,
+            onInfinitePressed: () {},
+            isInfinite: true,
+          ),
+          const SizedBox(height: padding24),
+
+          // 프라이즈
+          const GameDialogPrize(isSelected: false),
+          const SizedBox(height: padding10),
+
+          // 타겟 토너
+          const GameDialogTarget(isSelected: false),
+          const SizedBox(height: padding10),
+
+          // 추가하기
+          CustomFilledButton(
+            text: '추가하기',
+            onPressed: () {
+              context.pop();
+            },
+          ),
         ],
       ),
     );

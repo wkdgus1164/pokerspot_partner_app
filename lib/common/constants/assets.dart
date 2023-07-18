@@ -34,6 +34,7 @@ enum Assets {
   settingNoti('assets/setting_noti.svg'),
   ask('assets/ask.svg'),
   term('assets/term.svg'),
+  search('assets/search.svg'),
 
   // Shop Register
   newAddShop('assets/new_add_shop.svg'),

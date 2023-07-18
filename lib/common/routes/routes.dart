@@ -17,6 +17,7 @@ import 'package:pokerspot_partner_app/presentation/views/sections/bottom_navigat
 import 'package:pokerspot_partner_app/presentation/views/sections/home/coupon_admin/views/coupon_admin.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/notification/views/notification_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/views/tournament_admin_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/guest/views/guest_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/mypage_admin/mypage_admin_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/notice/notice_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/term/privacy_policy.dart';
@@ -40,154 +41,58 @@ const String memberPrefix = '/member';
 const String shopPrefix = '/shop';
 
 enum CustomRouter {
-  splash(
-    '/',
-    'splash',
-  ),
-  intro(
-    '/intro',
-    'intro',
-  ),
+  splash('/'),
+  intro('/intro'),
 
   // main
-  home(homePrefix, 'home'),
-  homeTournaments(
-    '$homePrefix/tournaments',
-    'home_tournaments',
-  ),
-  homeNotification(
-    '$homePrefix/noti',
-    'home_noti',
-  ),
-  homeCoupon(
-    '$homePrefix/coupon',
-    'home_coupon',
-  ),
+  home(homePrefix),
+  homeTournaments('$homePrefix/tournaments'),
+  homeNotification('$homePrefix/noti'),
+  homeCoupon('$homePrefix/coupon'),
 
   // member
-  signup(
-    '$memberPrefix/signup',
-    'member_signup',
-  ),
-  signupCertification(
-    '$memberPrefix/signup/cert',
-    'member_signup_cert',
-  ),
-  signupAgreement(
-    '$memberPrefix/signup/agreement',
-    'member_signup_agreement',
-  ),
-  signupSuccess(
-    '$memberPrefix/signup/success',
-    'member_signup_success',
-  ),
-  login(
-    '$memberPrefix/login',
-    'member_login',
-  ),
-  findCategory(
-    '$memberPrefix/find/category',
-    'member_find_category',
-  ),
-  findId(
-    '$memberPrefix/find/id',
-    'member_find_id',
-  ),
-  findIdSuccess(
-    '$memberPrefix/find/id/success',
-    'member_find_id_success',
-  ),
-  findPw(
-    '$memberPrefix/find/pw',
-    'member_find_pw',
-  ),
-  findPwSuccess(
-    '$memberPrefix/find/pw/success',
-    'member_find_pw_success',
-  ),
-  mypageAdmin(
-    '$memberPrefix/mypage/admin',
-    'member_mypage_admin',
-  ),
-  term(
-    '$memberPrefix/mypage/term',
-    'member_mypage_term',
-  ),
-  privacy(
-    '$memberPrefix/mypage/privacy',
-    'member_mypage_privacy',
-  ),
-  notice(
-    '$memberPrefix/mypage/notice',
-    'member_mypage_notice',
-  ),
+  signup('$memberPrefix/signup'),
+  signupCertification('$memberPrefix/signup/cert'),
+  signupAgreement('$memberPrefix/signup/agreement'),
+  signupSuccess('$memberPrefix/signup/success'),
+  login('$memberPrefix/login'),
+  findCategory('$memberPrefix/find/category'),
+  findId('$memberPrefix/find/id'),
+  findIdSuccess('$memberPrefix/find/id/success'),
+  findPw('$memberPrefix/find/pw'),
+  findPwSuccess('$memberPrefix/find/pw/success'),
+
+  // mypage
+  mypageAdmin('$memberPrefix/mypage/admin'),
+
+  guest('$memberPrefix/mypage/guest'),
+  term('$memberPrefix/mypage/term'),
+  privacy('$memberPrefix/mypage/privacy'),
+  notice('$memberPrefix/mypage/notice'),
 
   // shop
-  shopNewIntro(
-    '$shopPrefix/new/intro',
-    'shop_new_intro',
-  ),
-  shopNewGuide(
-    '$shopPrefix/new/guide',
-    'shop_new_guide',
-  ),
+  shopNewIntro('$shopPrefix/new/intro'),
+  shopNewGuide('$shopPrefix/new/guide'),
 
-  shopProcessBusiness(
-    '$shopPrefix/process/business',
-    'shop_process_business',
-  ),
-  shopProcessEssential(
-    '$shopPrefix/process/essential',
-    'shop_process_essential',
-  ),
-  shopProcessImageUpload(
-    '$shopPrefix/process/image_upload',
-    'shop_process_image_upload',
-  ),
-  shopProcessOperation(
-    '$shopPrefix/process/operation',
-    'shop_process_operation',
-  ),
-  shopProcessGame(
-    '$shopPrefix/process/game',
-    'shop_process_game',
-  ),
-  shopProcessSuccess(
-    '$shopPrefix/process/success',
-    'shop_process_success',
-  ),
+  shopProcessBusiness('$shopPrefix/process/business'),
+  shopProcessEssential('$shopPrefix/process/essential'),
+  shopProcessImageUpload('$shopPrefix/process/image_upload'),
+  shopProcessOperation('$shopPrefix/process/operation'),
+  shopProcessGame('$shopPrefix/process/game'),
+  shopProcessSuccess('$shopPrefix/process/success'),
 
-  shopSelect(
-    '$shopPrefix/select',
-    'shop_select',
-  ),
-  shopEdit(
-    '$shopPrefix/edit',
-    'shop_edit',
-  ),
+  shopSelect('$shopPrefix/select'),
+  shopEdit('$shopPrefix/edit'),
 
-  partnership(
-    '$shopPrefix/partnership',
-    'shop_partnership',
-  ),
-  partnershipRegister(
-    '$shopPrefix/partnership/register',
-    'shop_partnership_register',
-  ),
-  partnershipPay(
-    '$shopPrefix/partnership/pay',
-    'shop_partnership_pay',
-  ),
-  partnershipSuccess(
-    '$shopPrefix/partnership/success',
-    'shop_partnership_success',
-  ),
+  partnership('$shopPrefix/partnership'),
+  partnershipRegister('$shopPrefix/partnership/register'),
+  partnershipPay('$shopPrefix/partnership/pay'),
+  partnershipSuccess('$shopPrefix/partnership/success'),
   ;
 
-  const CustomRouter(this.path, this.name);
+  const CustomRouter(this.path);
 
   final String path;
-  final String name;
 }
 
 final GoRouter router = GoRouter(
@@ -304,10 +209,18 @@ final GoRouter router = GoRouter(
         return animateHorizontal(context, state, const PwFindSuccessView());
       },
     ),
+
+    // mypage
     GoRoute(
       path: CustomRouter.mypageAdmin.path,
       pageBuilder: (context, state) {
         return animateHorizontal(context, state, const MypageAdminView());
+      },
+    ),
+    GoRoute(
+      path: CustomRouter.guest.path,
+      pageBuilder: (context, state) {
+        return animateHorizontal(context, state, const GuestView());
       },
     ),
     GoRoute(

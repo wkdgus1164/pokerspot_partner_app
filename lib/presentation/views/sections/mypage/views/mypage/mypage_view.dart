@@ -27,7 +27,7 @@ class MypageView extends StatelessWidget {
             MypageMenuItem(
               text: '내 정보 관리',
               materialIcon: Icons.badge_outlined,
-              onTap: () => context.push(CustomRouter.notice.path),
+              onTap: () => context.push(CustomRouter.mypageAdmin.path),
             ),
             MypageMenuItem(
               text: '공지사항',
@@ -37,12 +37,12 @@ class MypageView extends StatelessWidget {
             MypageMenuItem(
               text: '알림설정',
               materialIcon: Icons.settings_outlined,
-              onTap: () => context.push(CustomRouter.notice.path),
+              onTap: () => context.push(CustomRouter.noti.path),
             ),
             MypageMenuItem(
               text: '1 : 1 문의',
               svgIcon: Assets.ask.path,
-              onTap: () => context.push(CustomRouter.notice.path),
+              onTap: () => context.push(CustomRouter.inquiry.path),
             ),
             MypageMenuItem(
               text: '약관 및 정책',

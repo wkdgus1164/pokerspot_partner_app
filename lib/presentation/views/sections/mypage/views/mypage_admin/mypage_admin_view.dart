@@ -6,7 +6,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/mypage_admin/components/information_item.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:provider/provider.dart';
 
@@ -17,40 +16,82 @@ class MypageAdminView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('내 정보 관리')),
-      body: SafeArea(
-        child: Container(
-          color: lightColorScheme.surface,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      body: Consumer<AuthProvider>(
+        builder: (_, provider, __) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Consumer<AuthProvider>(builder: (_, provider, __) {
-                return Padding(
-                  padding: const EdgeInsets.all(padding16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      InformationItem(
-                        title: '아이디',
-                        value: provider.partner?.identifier ?? '',
+              ListTile(
+                title: Text(
+                  '아이디',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: customColorScheme.onSurface1,
                       ),
-                      InformationItem(
-                        title: '휴대폰 번호',
-                        value: provider.partner?.phoneNumber ?? '',
+                ),
+                trailing: Text(
+                  provider.partner?.identifier ?? '',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: customColorScheme.onSurface3,
                       ),
-                      const SizedBox(height: padding48),
-                      CustomOutlinedButton(
-                        onPressed: () {
-                          provider.logout();
-                          context.pushReplacement(CustomRouter.login.path);
-                        },
-                        text: '로그아웃',
+                ),
+              ),
+              Divider(
+                height: 1,
+                thickness: 1,
+                color: lightColorScheme.outline,
+              ),
+              ListTile(
+                title: Text(
+                  '휴대폰 번호',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: customColorScheme.onSurface1,
                       ),
-                      const SizedBox(height: padding16),
-                      CustomOutlinedButton(
+                ),
+                trailing: Text(
+                  provider.partner?.phoneNumber ?? '',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: customColorScheme.onSurface3,
+                      ),
+                ),
+              ),
+              Divider(
+                height: 1,
+                thickness: 1,
+                color: lightColorScheme.outline,
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.all(padding16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    CustomOutlinedButton(
+                      onPressed: () {
+                        provider.logout();
+                        context.pushReplacement(CustomRouter.login.path);
+                      },
+                      text: '비밀번호 변경하기',
+                      leadingIcon: Icons.lock_outline,
+                    ),
+                    const SizedBox(height: padding16),
+                    CustomOutlinedButton(
+                      onPressed: () {
+                        provider.logout();
+                        context.pushReplacement(CustomRouter.login.path);
+                      },
+                      text: '로그아웃',
+                      leadingIcon: Icons.logout_outlined,
+                    ),
+                    const SizedBox(height: padding16),
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
                         onPressed: () {
                           showSelectionDialog(
                               context: context,
-                              title: '회원탈퇴를 하시겠습니까?',
+                              title: '회원 탈퇴',
+                              content:
+                                  '회원 탈퇴하시겠습니까?\n회원 관련 정보는 모두 삭제되며, 복구가 불가능합니다.',
                               onConfirm: () async {
                                 final success = await provider.delete();
                                 if (context.mounted) {
@@ -61,21 +102,25 @@ class MypageAdminView extends StatelessWidget {
                                     );
                                   } else {
                                     showToast(
-                                        context: context,
-                                        message: '회원탈퇴를 실패했습니다.');
+                                      context: context,
+                                      message: '회원탈퇴를 실패했습니다.',
+                                    );
                                   }
                                 }
                               });
                         },
-                        text: '회원탈퇴',
+                        child: Text(
+                          '회원 탈퇴 신청하기',
+                          style: TextStyle(color: customColorScheme.onSurface4),
+                        ),
                       ),
-                    ],
-                  ),
-                );
-              }),
+                    ),
+                  ],
+                ),
+              ),
             ],
-          ),
-        ),
+          );
+        },
       ),
     );
   }

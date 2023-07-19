@@ -18,7 +18,10 @@ import 'package:pokerspot_partner_app/presentation/views/sections/home/coupon_ad
 import 'package:pokerspot_partner_app/presentation/views/sections/home/notification/views/notification_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/views/tournament_admin_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/guest/views/guest_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/inquiry/views/inquiry_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/inquiry_create/views/inquiry_create_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/mypage_admin/mypage_admin_view.dart';
+import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/noti/views/noti_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/notice/notice_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/term/privacy_policy.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/term/term.dart';
@@ -69,6 +72,9 @@ enum CustomRouter {
   term('$memberPrefix/mypage/term'),
   privacy('$memberPrefix/mypage/privacy'),
   notice('$memberPrefix/mypage/notice'),
+  noti('$memberPrefix/mypage/noti'),
+  inquiry('$memberPrefix/mypage/inquiry'),
+  inquiryCreate('$memberPrefix/mypage/inquiry/create'),
 
   // shop
   shopNewIntro('$shopPrefix/new/intro'),
@@ -224,6 +230,12 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
+      path: CustomRouter.noti.path,
+      pageBuilder: (context, state) {
+        return animateHorizontal(context, state, const NotiSettingView());
+      },
+    ),
+    GoRoute(
       path: CustomRouter.term.path,
       pageBuilder: (context, state) {
         return animateHorizontal(context, state, const TermView());
@@ -239,6 +251,18 @@ final GoRouter router = GoRouter(
       path: CustomRouter.notice.path,
       pageBuilder: (context, state) {
         return animateHorizontal(context, state, const NoticeView());
+      },
+    ),
+    GoRoute(
+      path: CustomRouter.inquiry.path,
+      pageBuilder: (context, state) {
+        return animateHorizontal(context, state, const InquiryView());
+      },
+    ),
+    GoRoute(
+      path: CustomRouter.inquiryCreate.path,
+      pageBuilder: (context, state) {
+        return animateHorizontal(context, state, const InquiryCreateView());
       },
     ),
 

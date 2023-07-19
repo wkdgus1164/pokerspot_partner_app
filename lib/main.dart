@@ -7,6 +7,7 @@ import 'package:pokerspot_partner_app/common/theme/bottom_navigation_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/button.dart';
 import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
@@ -30,7 +31,7 @@ ThemeData _createThemeData({required BuildContext context}) {
     bottomNavigationBarTheme: bottomNavigationBarThemeData,
     dialogBackgroundColor: Colors.white,
     appBarTheme: appBarTheme,
-    textTheme: Theme.of(context).textTheme.apply(),
+    textTheme: textTheme,
     splashFactory: InkRipple.splashFactory,
   );
 }

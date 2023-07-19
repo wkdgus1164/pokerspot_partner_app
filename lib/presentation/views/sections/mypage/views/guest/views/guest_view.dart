@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/guest/views/components/filter.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/guest/views/components/list_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/guest/views/components/search.dart';
@@ -25,7 +27,51 @@ class GuestView extends StatelessWidget {
             originalNickname: '예전닉네임',
             latestVisitedDate: '2022.09.03',
             latestVisitedPlace: '몬스터 홀',
-            onEditButtonPressed: () {},
+            onEditButtonPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (_) => Container(
+                  padding: const EdgeInsets.all(padding10),
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(padding16),
+                        child: Text(
+                          '홍길동 님을',
+                          style:
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                      ),
+                      Divider(
+                        color: lightColorScheme.outline,
+                        height: 1,
+                        thickness: 1,
+                      ),
+                      Column(
+                        children: [
+                          ListTile(
+                            title: const Text('단골로 설정'),
+                            onTap: () {},
+                          ),
+                          ListTile(
+                            title: const Text('블랙리스트로 설정'),
+                            onTap: () {},
+                          ),
+                          ListTile(
+                            title: const Text('설정 없음'),
+                            onTap: () {},
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
           GuestListItem(
             guestType: GuestType.common,

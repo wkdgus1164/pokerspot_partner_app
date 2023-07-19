@@ -35,109 +35,116 @@ class GuestListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(padding16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 48,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: Icon(
-                    Icons.person_rounded,
-                    size: 48,
-                    color: customColorScheme.onSurface3,
-                  ),
-                ),
-                const SizedBox(width: padding10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(padding16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: Icon(
+                        Icons.person_rounded,
+                        size: 48,
+                        color: customColorScheme.onSurface4,
+                      ),
+                    ),
+                    const SizedBox(width: padding10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            latestNickname,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(
-                                  color: customColorScheme.onSurface1,
-                                ),
-                          ),
-                          if (originalNickname != null) ...[
-                            const SizedBox(width: 4),
-                            Flexible(
-                              child: Text(
-                                '($originalNickname)',
+                          Row(
+                            children: [
+                              Text(
+                                latestNickname,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleSmall!
                                     .copyWith(
-                                      color: customColorScheme.onSurface3,
+                                      color: customColorScheme.onSurface1,
                                     ),
-                                overflow: TextOverflow.ellipsis,
                               ),
-                            ),
-                          ],
-                          if (guestType == GuestType.vip) ...[
-                            const SizedBox(width: 4),
-                            Text(
-                              '단골손님',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelSmall!
-                                  .copyWith(
-                                    color: lightColorScheme.primary,
+                              if (originalNickname != null) ...[
+                                const SizedBox(width: 4),
+                                Flexible(
+                                  child: Text(
+                                    '($originalNickname)',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                          color: customColorScheme.onSurface3,
+                                        ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                            ),
-                          ],
-                          if (guestType == GuestType.black) ...[
-                            const SizedBox(width: 4),
-                            Text(
-                              '블랙리스트',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelSmall!
-                                  .copyWith(
-                                    color: lightColorScheme.error,
-                                  ),
-                            ),
-                          ],
-                        ],
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        '마지막 방문일: $latestVisitedDate ($latestVisitedPlace)',
-                        style:
-                            Theme.of(context).textTheme.labelMedium!.copyWith(
+                                ),
+                              ],
+                              if (guestType == GuestType.vip) ...[
+                                const SizedBox(width: 4),
+                                Text(
+                                  '단골손님',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall!
+                                      .copyWith(
+                                        color: lightColorScheme.primary,
+                                      ),
+                                ),
+                              ],
+                              if (guestType == GuestType.black) ...[
+                                const SizedBox(width: 4),
+                                Text(
+                                  '블랙리스트',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall!
+                                      .copyWith(
+                                        color: lightColorScheme.error,
+                                      ),
+                                ),
+                              ],
+                            ],
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            '마지막 방문일: $latestVisitedDate ($latestVisitedPlace)',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .copyWith(
                                   color: customColorScheme.onSurface4,
                                 ),
-                        overflow: TextOverflow.ellipsis,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(width: padding16),
+              IconButton(
+                icon: SvgPicture.asset(Assets.edit.path),
+                onPressed: onEditButtonPressed,
+              ),
+            ],
           ),
-          const SizedBox(width: padding16),
-          IconButton(
-            icon: SvgPicture.asset(Assets.edit.path),
-            onPressed: onEditButtonPressed,
-          ),
-        ],
-      ),
+        ),
+        Divider(height: 1, thickness: 1, color: lightColorScheme.outline),
+      ],
     );
   }
 }

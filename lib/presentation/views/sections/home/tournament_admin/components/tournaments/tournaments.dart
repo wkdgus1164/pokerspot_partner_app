@@ -3,7 +3,6 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/store/mtt_game.dart';
 import 'package:pokerspot_partner_app/presentation/providers/tournament_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/components/tournaments/item.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:provider/provider.dart';
 
 class TournamentAdminTournaments extends StatelessWidget {
@@ -38,10 +37,9 @@ class TournamentAdminTournaments extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 4),
-            CustomTextButton(
-              text: '토너먼츠 추가/변경',
-              onClick: () {},
-              theme: CustomTextButtonTheme.primary,
+            TextButton(
+              child: const Text('토너먼츠 추가/변경'),
+              onPressed: () {},
             ),
           ],
         ),

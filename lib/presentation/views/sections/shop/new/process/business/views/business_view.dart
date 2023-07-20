@@ -8,7 +8,6 @@ import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/verify_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/info_box/info_box.dart';
@@ -111,27 +110,28 @@ class ShopProcessBusinessView extends StatelessWidget {
         color: Colors.white,
         boxShadow: [toolbarShadow],
       ),
-      child: Row(children: [
-        Expanded(
-          child: CustomFilledButton(
-            text: '다음',
-            theme: CustomFilledButtonTheme.primary,
-            onPressed: () {
-              if (_provider.checkedBiz) {
-                context.push(CustomRouter.shopProcessEssential.path);
-              } else {
-                showInformationDialog(
-                  context: context,
-                  title: '안내',
-                  content: '사업자 인증이 완료되지 않았어요.',
-                  confirmText: '확인',
-                  onConfirm: () {},
-                );
-              }
-            },
+      child: Row(
+        children: [
+          Expanded(
+            child: FilledButton(
+              onPressed: () {
+                if (_provider.checkedBiz) {
+                  context.push(CustomRouter.shopProcessEssential.path);
+                } else {
+                  showInformationDialog(
+                    context: context,
+                    title: '안내',
+                    content: '사업자 인증이 완료되지 않았어요.',
+                    confirmText: '확인',
+                    onConfirm: () {},
+                  );
+                }
+              },
+              child: const Text('다음'),
+            ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 

@@ -11,7 +11,6 @@ import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/proce
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/target.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/toner_name.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/toner_type.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 
 class GameDialog extends StatelessWidget {
   const GameDialog({super.key});
@@ -84,8 +83,8 @@ class GameDialog extends StatelessWidget {
           const SizedBox(height: padding10),
 
           // 추가하기
-          CustomFilledButton(
-            text: '추가하기',
+          FilledButton(
+            child: const Text('추가하기'),
             onPressed: () {
               context.pop();
             },

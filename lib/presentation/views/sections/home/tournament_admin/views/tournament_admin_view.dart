@@ -3,7 +3,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/components/display_index/display_index.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/tournament_admin/components/tournaments/tournaments.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:provider/provider.dart';
 
@@ -45,21 +44,27 @@ class TournamentAdminView extends StatelessWidget {
                   ),
                   Container(
                     padding: const EdgeInsets.all(padding16),
-                    child: CustomFilledButton(
-                      text: '변경하기',
-                      onPressed: () async {
-                        provider.updateGamePriority().then((value) {
-                          if (value) {
-                            Navigator.pop(context);
-                          } else {
-                            showInformationDialog(
-                                context: context,
-                                title: '변경 실패',
-                                content: '변경을 실패했습니다.',
-                                onConfirm: () {});
-                          }
-                        });
-                      },
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: FilledButton(
+                        onPressed: () async {
+                          provider.updateGamePriority().then(
+                            (value) {
+                              if (value) {
+                                Navigator.pop(context);
+                              } else {
+                                showInformationDialog(
+                                  context: context,
+                                  title: '변경 실패',
+                                  content: '변경을 실패했습니다.',
+                                  onConfirm: () {},
+                                );
+                              }
+                            },
+                          );
+                        },
+                        child: const Text('변경하기'),
+                      ),
                     ),
                   ),
                 ],

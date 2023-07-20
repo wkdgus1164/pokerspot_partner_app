@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/notice/notice_item.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 
 import '../../../../../../data/models/notice/notice.dart';
@@ -44,11 +43,9 @@ class HomeNotice extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              CustomTextButton(
-                text: '더보기',
-                theme: CustomTextButtonTheme.primary,
-                trailingIcon: Icons.keyboard_arrow_right,
-                onClick: onMoreButtonPressed,
+              TextButton(
+                onPressed: onMoreButtonPressed,
+                child: const Text('더보기'),
               ),
             ],
           ),
@@ -57,12 +54,14 @@ class HomeNotice extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Wrap(
             children: notices
-                .map((notice) => HomeNoticeItem(
-                      title: notice.title,
-                      createdAt:
-                          DateFormat('yyyy. MM. dd.').format(notice.createdAt),
-                      onItemPressed: () {},
-                    ))
+                .map(
+                  (notice) => HomeNoticeItem(
+                    title: notice.title,
+                    createdAt:
+                        DateFormat('yyyy. MM. dd.').format(notice.createdAt),
+                    onItemPressed: () {},
+                  ),
+                )
                 .toList(),
           ),
         ),

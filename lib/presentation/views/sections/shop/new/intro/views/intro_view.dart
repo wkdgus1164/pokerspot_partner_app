@@ -6,7 +6,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 
 class ShopNewIntroView extends StatefulWidget {
   const ShopNewIntroView({Key? key}) : super(key: key);
@@ -95,10 +94,12 @@ class _ShopNewIntroViewState extends State<ShopNewIntroView> {
               padding: const EdgeInsets.all(padding16),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: padding16),
-                child: CustomFilledButton(
-                  text: '신규 매장 등록하기',
-                  theme: CustomFilledButtonTheme.primary,
-                  onPressed: onAddNewButtonPressed,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: onAddNewButtonPressed,
+                    child: const Text('신규 매장 등록하기'),
+                  ),
                 ),
               ),
             ),

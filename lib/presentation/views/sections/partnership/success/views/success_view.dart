@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 
 class PartnershipSuccessView extends StatelessWidget {
   const PartnershipSuccessView({super.key});
@@ -56,11 +55,14 @@ class PartnershipSuccessView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(padding16),
-            child: CustomFilledButton(
-              text: '확인',
-              onPressed: () {
-                context.pushReplacement(CustomRouter.partnership.path);
-              },
+            child: SizedBox(
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: () => context.pushReplacement(
+                  CustomRouter.partnership.path,
+                ),
+                child: const Text('확인'),
+              ),
             ),
           )
         ],

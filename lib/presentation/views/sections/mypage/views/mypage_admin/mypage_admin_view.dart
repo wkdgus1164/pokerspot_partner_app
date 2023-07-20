@@ -6,7 +6,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:provider/provider.dart';
 
 class MypageAdminView extends StatelessWidget {
@@ -65,22 +64,20 @@ class MypageAdminView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    CustomOutlinedButton(
+                    OutlinedButton(
                       onPressed: () {
                         provider.logout();
                         context.pushReplacement(CustomRouter.login.path);
                       },
-                      text: '비밀번호 변경하기',
-                      leadingIcon: Icons.lock_outline,
+                      child: const Text('비밀번호 변경하기'),
                     ),
                     const SizedBox(height: padding16),
-                    CustomOutlinedButton(
+                    OutlinedButton(
                       onPressed: () {
                         provider.logout();
                         context.pushReplacement(CustomRouter.login.path);
                       },
-                      text: '로그아웃',
-                      leadingIcon: Icons.logout_outlined,
+                      child: const Text('로그아웃'),
                     ),
                     const SizedBox(height: padding16),
                     SizedBox(

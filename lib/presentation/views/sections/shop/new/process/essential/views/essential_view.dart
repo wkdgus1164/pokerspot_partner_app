@@ -8,8 +8,6 @@ import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/essential/components/address_form.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
 import 'package:provider/provider.dart';
@@ -131,20 +129,17 @@ class ShopProcessEssentialView extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: CustomOutlinedButton(
-              text: '이전',
-              theme: CustomOutlinedButtonTheme.secondary,
+            child: OutlinedButton(
+              child: const Text('이전'),
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
           const SizedBox(width: padding16),
           Expanded(
-            child: CustomFilledButton(
-              text: '다음',
-              theme: CustomFilledButtonTheme.primary,
+            child: FilledButton(
               onPressed: () {
                 if (_provider.validateEssential()) {
-                  return context.push(CustomRouter.shopProcessImageUpload.path);
+                  context.push(CustomRouter.shopProcessImageUpload.path);
                 } else {
                   showInformationDialog(
                     context: context,
@@ -153,6 +148,7 @@ class ShopProcessEssentialView extends StatelessWidget {
                   );
                 }
               },
+              child: const Text('다음'),
             ),
           ),
         ],

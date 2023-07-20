@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/input_dialog_with_checkbox/input_dialog_with_checkbox_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/picker_dialog/picker_dialog_utils.dart';
@@ -382,19 +380,17 @@ class _GameItemState extends State<GameItem> {
           Row(
             children: [
               Expanded(
-                child: CustomOutlinedButton(
-                  text: '삭제',
-                  theme: CustomOutlinedButtonTheme.secondary,
+                child: OutlinedButton(
                   onPressed: widget.onDeleteButtonPressed,
+                  child: const Text('삭제'),
                 ),
               ),
               if (widget.onsaveButtonPressed != null) ...[
                 const SizedBox(width: padding16),
                 Expanded(
-                  child: CustomFilledButton(
-                    text: '저장',
-                    theme: CustomFilledButtonTheme.primary,
+                  child: FilledButton(
                     onPressed: widget.onsaveButtonPressed,
+                    child: const Text('저장'),
                   ),
                 ),
               ],

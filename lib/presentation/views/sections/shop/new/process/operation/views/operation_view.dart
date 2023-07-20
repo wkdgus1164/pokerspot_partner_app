@@ -12,8 +12,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/operation/components/pub.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/operation/components/time.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 import 'package:provider/provider.dart';
 
@@ -243,17 +241,15 @@ class _ShopProcessOperationViewState extends State<ShopProcessOperationView> {
       child: Row(
         children: [
           Expanded(
-            child: CustomOutlinedButton(
-              text: '이전',
-              theme: CustomOutlinedButtonTheme.neutral,
+            child: OutlinedButton(
+              child: const Text('이전'),
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
           const SizedBox(width: padding16),
           Expanded(
-            child: CustomFilledButton(
-              text: '다음',
-              theme: CustomFilledButtonTheme.primary,
+            child: FilledButton(
+              child: const Text('다음'),
               onPressed: () {
                 if (_provider.validateOperation()) {
                   context.push(CustomRouter.shopProcessGame.path);

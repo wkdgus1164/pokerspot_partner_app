@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/common/constants/assets.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 
@@ -43,10 +42,12 @@ class SignupSuccessView extends StatelessWidget {
                   left: padding64,
                   right: padding64,
                 ),
-                child: CustomFilledButton(
-                  text: '확인',
-                  theme: CustomFilledButtonTheme.primary,
-                  onPressed: () => context.push(CustomRouter.login.path),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: () => context.push(CustomRouter.login.path),
+                    child: const Text('확인'),
+                  ),
                 ),
               ),
             ],

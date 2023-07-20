@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 
 class BaseDialogCancelButton extends StatelessWidget {
   final String text;
@@ -13,10 +12,9 @@ class BaseDialogCancelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTextButton(
-      onClick: onCancel,
-      text: text,
-      theme: CustomTextButtonTheme.black,
+    return TextButton(
+      onPressed: onCancel,
+      child: Text(text),
     );
   }
 }

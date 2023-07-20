@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 
 enum Status {
   waiting('waiting'),
@@ -220,17 +218,16 @@ class ReservationItem extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: CustomOutlinedButton(
+                      child: OutlinedButton(
                         onPressed: onDenyButtonPressed,
-                        text: '거절',
-                        theme: CustomOutlinedButtonTheme.secondary,
+                        child: const Text('거절'),
                       ),
                     ),
                     const SizedBox(width: padding16),
                     Expanded(
-                      child: CustomFilledButton(
-                        text: '접수',
+                      child: FilledButton(
                         onPressed: onConfirmButtonPressed,
+                        child: const Text('확인'),
                       ),
                     ),
                   ],

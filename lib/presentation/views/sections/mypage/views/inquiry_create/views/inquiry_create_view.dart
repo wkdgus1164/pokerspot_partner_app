@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
 
@@ -26,8 +25,9 @@ class InquiryCreateView extends StatelessWidget {
               inputHintText: '문의 내용을 입력해주세요.',
             ),
             const Spacer(),
-            CustomFilledButton(
-                text: '문의하기',
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton(
                 onPressed: () {
                   showInformationDialog(
                     context: context,
@@ -37,7 +37,10 @@ class InquiryCreateView extends StatelessWidget {
                       context.pushReplacement(CustomRouter.inquiry.path);
                     },
                   );
-                }),
+                },
+                child: const Text('문의하기'),
+              ),
+            ),
           ],
         ),
       ),

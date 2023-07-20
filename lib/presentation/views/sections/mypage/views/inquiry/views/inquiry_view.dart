@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/inquiry/views/components/item.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 
 class InquiryView extends StatelessWidget {
@@ -16,11 +15,12 @@ class InquiryView extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
-            child: CustomFilledButton(
-              text: '새 문의 작성',
-              onPressed: () {
-                context.pushReplacement(CustomRouter.inquiryCreate.path);
-              },
+            child: SizedBox(
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: () => context.push(CustomRouter.inquiryCreate.path),
+                child: const Text('새 문의 작성'),
+              ),
             ),
           ),
           const CustomDivider(),

@@ -11,7 +11,6 @@ import 'package:pokerspot_partner_app/presentation/views/member/signup/informati
 import 'package:pokerspot_partner_app/presentation/views/member/signup/information/components/password.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/information/components/password_confirm.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/information/components/phone_number.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/button/verify_button.dart';
 import 'package:provider/provider.dart';
 
@@ -116,22 +115,25 @@ class SignupInformationView extends StatelessWidget {
                     const SizedBox(height: padding24),
 
                     // 가입 완료
-                    CustomFilledButton(
-                      theme: CustomFilledButtonTheme.primary,
-                      text: '가입 완료',
-                      onPressed: provider.validateConfirm
-                          ? () async {
-                              final result = await provider.signUp();
-                              if (result == null && context.mounted) {
-                                context.push(CustomRouter.signupSuccess.path);
-                              } else {
-                                showToast(
-                                  context: context,
-                                  message: result ?? '',
-                                );
+
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton(
+                        onPressed: provider.validateConfirm
+                            ? () async {
+                                final result = await provider.signUp();
+                                if (result == null && context.mounted) {
+                                  context.push(CustomRouter.signupSuccess.path);
+                                } else {
+                                  showToast(
+                                    context: context,
+                                    message: result ?? '',
+                                  );
+                                }
                               }
-                            }
-                          : null,
+                            : null,
+                        child: const Text('가입 완료'),
+                      ),
                     ),
                   ],
                 );

@@ -5,8 +5,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/tournament/tournament_item.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 
 import '../../../../../../data/models/store/mtt_game.dart';
@@ -59,11 +57,11 @@ class _HomeTournamentState extends State<HomeTournament> {
                           ),
                     ),
                   ),
-                  CustomTextButton(
-                    text: '옵션 변경',
-                    theme: CustomTextButtonTheme.primary,
-                    onClick: () =>
-                        context.push(CustomRouter.homeTournaments.path),
+                  TextButton(
+                    child: const Text('옵션 변경'),
+                    onPressed: () => context.push(
+                      CustomRouter.homeTournaments.path,
+                    ),
                   ),
                 ],
               ),
@@ -94,14 +92,13 @@ class _HomeTournamentState extends State<HomeTournament> {
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: padding16),
-            child: CustomOutlinedButton(
+            child: OutlinedButton(
               onPressed: () {
                 setState(() {
                   _isMoreCount += 5;
                 });
               },
-              text: '더보기',
-              leadingIcon: Icons.add,
+              child: const Text('더보기'),
             ),
           ),
         const SizedBox(height: padding16),

@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/partnership/register/views/components/selection.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/partnership/register/views/components/warning.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 
 class PartnerRegisterView extends StatelessWidget {
@@ -28,11 +27,14 @@ class PartnerRegisterView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16),
-            child: CustomFilledButton(
-              text: '제휴 신청하기',
-              onPressed: () {
-                context.pushReplacement(CustomRouter.partnershipSuccess.path);
-              },
+            child: SizedBox(
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: () => context.pushReplacement(
+                  CustomRouter.partnershipSuccess.path,
+                ),
+                child: const Text('제휴 신청하기'),
+              ),
             ),
           ),
         ],

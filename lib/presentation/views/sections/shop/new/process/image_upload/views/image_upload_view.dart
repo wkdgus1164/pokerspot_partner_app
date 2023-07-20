@@ -9,8 +9,6 @@ import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/effects/card_shadow.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/components/progress_bar.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/image_upload/components/image_item.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../../../locator.dart';
@@ -182,17 +180,15 @@ class _ShopProcessImageUploadViewState
       child: Row(
         children: [
           Expanded(
-            child: CustomOutlinedButton(
-              text: '이전',
-              theme: CustomOutlinedButtonTheme.secondary,
+            child: OutlinedButton(
+              child: const Text('이전'),
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
           const SizedBox(width: padding16),
           Expanded(
-            child: CustomFilledButton(
-              text: '다음',
-              theme: CustomFilledButtonTheme.primary,
+            child: FilledButton(
+              child: const Text('다음'),
               onPressed: () {
                 if (_provider.validateImages()) {
                   context.push(CustomRouter.shopProcessOperation.path);

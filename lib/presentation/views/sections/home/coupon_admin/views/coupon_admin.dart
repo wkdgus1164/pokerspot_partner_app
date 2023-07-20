@@ -6,7 +6,6 @@ import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart'
 import 'package:pokerspot_partner_app/presentation/views/sections/home/components/coupon/coupon_card.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/coupon_admin/components/count.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/home/coupon_admin/components/information.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/info_dialog/information_dialog_utils.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 
@@ -74,8 +73,9 @@ class _CouponAdminViewState extends State<CouponAdminView> {
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(padding16),
-            child: CustomFilledButton(
-                text: '변경하기',
+            child: SizedBox(
+              width: double.infinity,
+              child: FilledButton(
                 onPressed: () async {
                   locator<HomeProvider>().updateCoupon(_coupon).then((value) {
                     if (value) {
@@ -88,7 +88,10 @@ class _CouponAdminViewState extends State<CouponAdminView> {
                           onConfirm: () {});
                     }
                   });
-                }),
+                },
+                child: const Text('변경하기'),
+              ),
+            ),
           ),
         ],
       ),

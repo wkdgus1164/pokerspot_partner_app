@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 
 class IdFindSuccessView extends StatelessWidget {
   const IdFindSuccessView({super.key});
@@ -55,10 +54,12 @@ class IdFindSuccessView extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            CustomFilledButton(
-              text: '로그인하기',
-              theme: CustomFilledButtonTheme.primary,
-              onPressed: () => context.push(CustomRouter.login.path),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: () => context.push(CustomRouter.login.path),
+                child: const Text('로그인하기'),
+              ),
             ),
           ],
         ),

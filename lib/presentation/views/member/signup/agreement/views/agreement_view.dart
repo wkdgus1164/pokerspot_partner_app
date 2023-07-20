@@ -5,7 +5,6 @@ import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/components/agreement_category.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/components/agreement_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/components/auto_check.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../providers/signup_provider.dart';
@@ -129,12 +128,14 @@ class SignupAgreementView extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                CustomFilledButton(
-                  text: '동의하기',
-                  theme: CustomFilledButtonTheme.primary,
-                  onPressed: provider.validateAgreement
-                      ? () => context.push(CustomRouter.signup.path)
-                      : null,
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: provider.validateAgreement
+                        ? () => context.push(CustomRouter.signup.path)
+                        : null,
+                    child: const Text('동의하기'),
+                  ),
                 ),
               ],
             );

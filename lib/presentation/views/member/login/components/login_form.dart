@@ -4,8 +4,6 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_with_delete_icon.dart';
 
@@ -86,10 +84,12 @@ class LoginForm extends StatelessWidget {
             ],
           ),
           const SizedBox(height: padding16),
-          CustomFilledButton(
-            text: '로그인',
-            theme: CustomFilledButtonTheme.primary,
-            onPressed: onLogin,
+          SizedBox(
+            width: double.infinity,
+            child: FilledButton(
+              onPressed: onLogin,
+              child: const Text('로그인'),
+            ),
           ),
           const SizedBox(height: padding32),
           Column(
@@ -102,13 +102,12 @@ class LoginForm extends StatelessWidget {
                     ),
               ),
               const SizedBox(height: 6),
-              CustomTextButton(
-                text: '회원가입하기',
-                theme: CustomTextButtonTheme.primary,
-                onClick: () {
+              TextButton(
+                onPressed: () {
                   locator<SignupProvider>().reset();
-                  return context.push(CustomRouter.signupAgreement.path);
+                  context.push(CustomRouter.signupAgreement.path);
                 },
+                child: const Text('회원가입하기'),
               ),
             ],
           ),

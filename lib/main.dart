@@ -27,6 +27,7 @@ ThemeData _createThemeData({required BuildContext context}) {
     checkboxTheme: checkboxTheme,
     filledButtonTheme: filledButtonThemeData,
     outlinedButtonTheme: outlinedButtonThemeData,
+    textButtonTheme: textButtonThemeData,
     scaffoldBackgroundColor: lightColorScheme.surface,
     bottomNavigationBarTheme: bottomNavigationBarThemeData,
     dialogBackgroundColor: Colors.white,

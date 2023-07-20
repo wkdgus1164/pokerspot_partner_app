@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/text_button.dart';
 
 class BaseDialogConfirmButton extends StatelessWidget {
   final String text;
@@ -13,10 +12,9 @@ class BaseDialogConfirmButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTextButton(
-      onClick: onConfirm,
-      text: text,
-      theme: CustomTextButtonTheme.primary,
+    return TextButton(
+      onPressed: onConfirm,
+      child: Text(text),
     );
   }
 }

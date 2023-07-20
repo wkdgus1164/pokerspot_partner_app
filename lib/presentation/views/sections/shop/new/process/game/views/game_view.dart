@@ -11,8 +11,6 @@ import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/proce
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/components/game_item.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/components/game_item/game_item2.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/game/dialog/game_dialog.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_button.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/button/custom_outlined_button.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/info_box/info_box.dart';
 import 'package:provider/provider.dart';
 
@@ -216,30 +214,30 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
       child: Row(
         children: [
           Expanded(
-            child: CustomOutlinedButton(
-              text: '이전',
-              theme: CustomOutlinedButtonTheme.secondary,
+            child: OutlinedButton(
+              child: const Text('이전'),
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
           const SizedBox(width: padding16),
           Expanded(
-            child: CustomFilledButton(
-              text: '완료',
-              theme: CustomFilledButtonTheme.primary,
+            child: FilledButton(
+              child: const Text('완료'),
               onPressed: () async {
                 if (!_provider.validateGame()) {
                   showToast(context: context, message: '게임 정보를 모두 입력해주세요.');
                   return;
                 }
-                await _provider.createStore().then((error) {
-                  if (error == null) {
-                    locator<HomeProvider>().getStores();
-                    context.push(CustomRouter.shopProcessSuccess.path);
-                  } else {
-                    showToast(context: context, message: error);
-                  }
-                });
+                await _provider.createStore().then(
+                  (error) {
+                    if (error == null) {
+                      locator<HomeProvider>().getStores();
+                      context.push(CustomRouter.shopProcessSuccess.path);
+                    } else {
+                      showToast(context: context, message: error);
+                    }
+                  },
+                );
               },
             ),
           ),

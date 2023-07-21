@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/routes/routes.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/dialogs/selection_dialog/selection_dialog_utils.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
+import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/dialog/toast.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/dialogs/selection_dialog/selection_dialog_utils.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../member/find/password/views/pw_find_success_view.dart';
 
 class MypageAdminView extends StatelessWidget {
   const MypageAdminView({super.key});
@@ -66,8 +68,13 @@ class MypageAdminView extends StatelessWidget {
                   children: [
                     OutlinedButton(
                       onPressed: () {
-                        provider.logout();
-                        context.pushReplacement(CustomRouter.login.path);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            ///TODO 토큰 처리
+                            builder: (_) => const PwFindSuccessView(token: ''),
+                          ),
+                        );
                       },
                       child: const Text('비밀번호 변경하기'),
                     ),

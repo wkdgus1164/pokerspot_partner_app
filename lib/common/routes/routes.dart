@@ -6,7 +6,6 @@ import 'package:pokerspot_partner_app/presentation/views/intro/views/splash_view
 import 'package:pokerspot_partner_app/presentation/views/member/find/category/views/category_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/find/id/views/id_find_success_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/find/id/views/id_find_view.dart';
-import 'package:pokerspot_partner_app/presentation/views/member/find/password/views/pw_find_success_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/find/password/views/pw_find_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/login/views/login_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/member/signup/agreement/views/agreement_view.dart';
@@ -60,7 +59,7 @@ enum CustomRouter {
   findId('$memberPrefix/find/id'),
   findIdSuccess('$memberPrefix/find/id/success'),
   findPw('$memberPrefix/find/pw'),
-  findPwSuccess('$memberPrefix/find/pw/success'),
+  // findPwSuccess('$memberPrefix/find/pw/success'),
 
   // mypage
   mypageAdmin('$memberPrefix/mypage/admin'),
@@ -206,12 +205,12 @@ final GoRouter router = GoRouter(
         return animateHorizontal(context, state, const PwFindView());
       },
     ),
-    GoRoute(
-      path: CustomRouter.findPwSuccess.path,
-      pageBuilder: (context, state) {
-        return animateHorizontal(context, state, const PwFindSuccessView());
-      },
-    ),
+    // GoRoute(
+    //   path: CustomRouter.findPwSuccess.path,
+    //   pageBuilder: (context, state) {
+    //     return animateHorizontal(context, state, const PwFindSuccessView());
+    //   },
+    // ),
 
     // mypage
     GoRoute(

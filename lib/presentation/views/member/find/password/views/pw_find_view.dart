@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/presentation/views/member/find/password/views/pw_find_success_view.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_set.dart';
 
 class PwFindView extends StatelessWidget {
@@ -73,8 +72,15 @@ class PwFindView extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: FilledButton(
-                  onPressed: () =>
-                      context.push(CustomRouter.findPwSuccess.path),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        ///TODO 토큰 처리
+                        builder: (_) => const PwFindSuccessView(token: ''),
+                      ),
+                    );
+                  },
                   child: const Text('다음'),
                 ),
               ),

@@ -8,6 +8,7 @@ import 'package:pokerspot_partner_app/data/models/store/store_coupon.dart';
 import 'package:pokerspot_partner_app/data/network/api_client.dart';
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 
+import '../models/store/affiliate.dart';
 import '../models/store/mtt_game.dart';
 
 class StoreRepository {
@@ -190,6 +191,17 @@ class StoreRepository {
     } catch (e) {
       Logger.e(e);
       return false;
+    }
+  }
+
+  /// 매장관리 > 제휴관리 > 신청가능한 제휴 목록 id
+  Future<String?> getAffiliates() async {
+    try {
+      final response = await _dio.get('/affiliates');
+      return AffiliateModel.fromJson(response.data['affiliates'][0]).uid;
+    } catch (e) {
+      Logger.e(e);
+      return null;
     }
   }
 

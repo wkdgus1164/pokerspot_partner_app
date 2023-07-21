@@ -138,7 +138,7 @@ class _ShopViewState extends State<ShopView> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const PartnershipMainView(),
+                    builder: (_) => PartnershipMainView(store: store),
                   ),
                 );
               },

@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
-import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/partnership/main/views/components/header.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/divider/divider.dart';
 
+import '../../register/views/register_view.dart';
+
 class PartnershipMainView extends StatelessWidget {
-  const PartnershipMainView({super.key});
+  const PartnershipMainView({
+    super.key,
+    required this.store,
+  });
+
+  final PartnerStoreModel store;
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +22,21 @@ class PartnershipMainView extends StatelessWidget {
       appBar: AppBar(title: const Text('제휴 연장/등록')),
       body: Column(
         children: [
-          const PartnershipMainHeader(
-            lastDays: 24,
-            name: '몬스터 홀덤펍',
-            startedAt: '2022.09.06',
-            finishedAt: '2022.10.06',
+          PartnershipMainHeader(
+            lastDays: store.storeAffiliate != null
+                ? store.storeAffiliate!.startAt
+                    .difference(store.storeAffiliate!.endAt)
+                    .inDays
+                : 0,
+            name: store.name,
+            startedAt: store.storeAffiliate != null
+                ? DateFormat('yyyy. MM. dd.')
+                    .format(store.storeAffiliate!.startAt)
+                : '제휴 준비 중',
+            finishedAt: store.storeAffiliate != null
+                ? DateFormat('yyyy. MM. dd.')
+                    .format(store.storeAffiliate!.endAt)
+                : '제휴 준비 중',
           ),
           const CustomDivider(),
           ListTile(
@@ -38,7 +55,14 @@ class PartnershipMainView extends StatelessWidget {
               color: customColorScheme.onSurface4,
             ),
             onTap: () {
-              context.push(CustomRouter.partnershipRegister.path);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => PartnerRegisterView(
+                    storeId: store.uid,
+                  ),
+                ),
+              );
             },
           ),
           const Divider(height: 1, thickness: 1),

@@ -55,7 +55,7 @@ class PartnershipStatusInfo extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                '$finishAt ($lastDays일 남음)',
+                '$finishAt${lastDays != 0 ? ' ($lastDays일 남음)' : ''}',
                 style: Theme.of(context).textTheme.labelLarge!.copyWith(
                       color: customColorScheme.onSurface2,
                     ),

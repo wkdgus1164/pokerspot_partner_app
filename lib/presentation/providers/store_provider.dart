@@ -96,14 +96,18 @@ class StoreProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> applyAffiliate(
-      {required String storeId, required String affiliateId}) async {
+  /// TODO 무료 제휴 외 제휴 id도 받을수 있도록 변경 필요
+  Future<bool> applyAffiliate() async {
     return _storeUsecase.applyAffiliate(
-        storeId: storeId, affiliateId: affiliateId);
+        storeId: _storeId, affiliateId: await getAffiliates() ?? '');
   }
 
   Future<bool> getAffiliate() async {
     return _storeUsecase.getAffiliate(_storeId);
+  }
+
+  Future<String?> getAffiliates() async {
+    return _storeUsecase.getAffiliates();
   }
 
   Future<bool> pause(String id) async {

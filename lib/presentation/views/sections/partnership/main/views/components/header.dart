@@ -25,7 +25,7 @@ class PartnershipMainHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const PartnershipMainBasicInfo(lastDays: 1),
+          PartnershipMainBasicInfo(lastDays: lastDays),
           const SizedBox(height: padding16),
           Text(
             name,

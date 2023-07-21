@@ -25,8 +25,6 @@ import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/n
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/notice/notice_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/term/privacy_policy.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/mypage/views/term/term.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/partnership/main/views/main_view.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/partnership/register/views/register_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/partnership/success/views/success_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/guide/views/guide_tab_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/intro/views/intro_view.dart';
@@ -90,7 +88,7 @@ enum CustomRouter {
   // shopEdit('$shopPrefix/edit'),
 
   partnership('$shopPrefix/partnership'),
-  partnershipRegister('$shopPrefix/partnership/register'),
+  // partnershipRegister('$shopPrefix/partnership/register'),
   partnershipPay('$shopPrefix/partnership/pay'),
   partnershipSuccess('$shopPrefix/partnership/success'),
   ;
@@ -329,18 +327,18 @@ final GoRouter router = GoRouter(
     //     return animateHorizontal(context, state, const ShopEditTabsView());
     //   },
     // ),
-    GoRoute(
-      path: CustomRouter.partnership.path,
-      pageBuilder: (context, state) {
-        return animateHorizontal(context, state, const PartnershipMainView());
-      },
-    ),
-    GoRoute(
-      path: CustomRouter.partnershipRegister.path,
-      pageBuilder: (context, state) {
-        return animateHorizontal(context, state, const PartnerRegisterView());
-      },
-    ),
+    // GoRoute(
+    //   path: CustomRouter.partnership.path,
+    //   pageBuilder: (context, state) {
+    //     return animateHorizontal(context, state, const PartnershipMainView());
+    //   },
+    // ),
+    // GoRoute(
+    //   path: CustomRouter.partnershipRegister.path,
+    //   pageBuilder: (context, state) {
+    //     return animateHorizontal(context, state, const PartnerRegisterView());
+    //   },
+    // ),
     // GoRoute(
     //   path: CustomRouter.partnershipPay.path,
     //   pageBuilder: (context, state) {

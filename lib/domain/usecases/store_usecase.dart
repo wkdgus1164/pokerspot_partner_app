@@ -24,6 +24,10 @@ class StoreUsecase {
     return _repository.getAffiliate(id);
   }
 
+  Future<String?> getAffiliates() async {
+    return _repository.getAffiliates();
+  }
+
   Future<bool> pause(String id) async {
     return _repository.pause(id);
   }

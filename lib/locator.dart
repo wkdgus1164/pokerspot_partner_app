@@ -10,6 +10,7 @@ import 'package:pokerspot_partner_app/domain/usecases/my_usecase.dart';
 import 'package:pokerspot_partner_app/domain/usecases/notice_usecase.dart';
 import 'package:pokerspot_partner_app/domain/usecases/reservation_usecase.dart';
 import 'package:pokerspot_partner_app/domain/usecases/signup_usecase.dart';
+import 'package:pokerspot_partner_app/domain/usecases/store_usecase.dart';
 import 'package:pokerspot_partner_app/domain/usecases/tournament_usecase.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
@@ -17,6 +18,7 @@ import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart'
 import 'package:pokerspot_partner_app/presentation/providers/notice_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/reservation_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
+import 'package:pokerspot_partner_app/presentation/providers/store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/token_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/tournament_provider.dart';
 
@@ -38,6 +40,7 @@ void setupLocator() {
       () => TournamentProvider(locator(), locator<HomeProvider>().games));
   locator.registerFactory(() => ReservationProvider(
       locator<HomeProvider>().selectedStore?.uid ?? '', locator()));
+  locator.registerFactory(() => StoreProvider(locator()));
 
   /// Usecase
   locator.registerFactory(() => SignupUsecase(locator()));
@@ -48,6 +51,7 @@ void setupLocator() {
   locator.registerFactory(() => MyUsecase(locator()));
   locator.registerFactory(() => TournamentUsecase(locator()));
   locator.registerFactory(() => ReservationUsecase(locator()));
+  locator.registerFactory(() => StoreUsecase(locator()));
 
   /// Network
   locator.registerLazySingleton(() => DioClient(locator()));

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
 import 'package:pokerspot_partner_app/data/models/store/biz_validate_request.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/data/models/store/reservations_status_count.dart';
@@ -134,6 +135,63 @@ class StoreRepository {
       await _dio.patch('/stores/$storeId/coupons/$couponId', data: {
         'remainAmount': remainAmount,
       });
+      return true;
+    } catch (e) {
+      Logger.e(e);
+      return false;
+    }
+  }
+
+  /// 매장관리 > 정보 수정
+  Future<bool> updateStore(PartnerStoreModel model) async {
+    try {
+      await _dio.patch('/stores/$id', data: model.toJson());
+      return true;
+    } catch (e) {
+      Logger.e(e);
+      return false;
+    }
+  }
+
+  /// 매장관리 > 제휴관리 > 제휴 신청
+  Future<bool> applyAffiliate(
+      {required String storeId, required String affiliateId}) async {
+    try {
+      await _dio
+          .post('/stores/$id/affiliate', data: {'affiliateUid': affiliateId});
+      return true;
+    } catch (e) {
+      Logger.e(e);
+      return false;
+    }
+  }
+
+  /// 매장관리 > 제휴관리 > 제휴 내역
+  Future<bool> getAffiliate(PartnerStoreModel model) async {
+    try {
+      await _dio.get('/stores/$id/affiliate');
+      return true;
+    } catch (e) {
+      Logger.e(e);
+      return false;
+    }
+  }
+
+  /// 매장관리 > 영업 중단
+  Future<bool> pause(String id) async {
+    try {
+      await _dio.patch('/stores/$id/pause');
+      return true;
+    } catch (e) {
+      Logger.e(e);
+      return false;
+    }
+  }
+
+  /// 매장관리 > 영업 중단 해제
+  Future<bool> unPause(String id) async {
+    try {
+      await _dio.patch('/stores/$id/unpause');
       return true;
     } catch (e) {
       Logger.e(e);

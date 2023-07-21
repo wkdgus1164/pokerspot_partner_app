@@ -6,6 +6,8 @@ import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
+import 'package:pokerspot_partner_app/locator.dart';
+import 'package:pokerspot_partner_app/presentation/providers/store_provider.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/views/components/new_shop.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/views/components/shop_card.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +22,9 @@ class ShopView extends StatefulWidget {
 }
 
 class _ShopViewState extends State<ShopView> {
+  final StoreProvider _storeProvider = locator();
+  final HomeProvider _homeProvider = locator();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,20 +115,30 @@ class _ShopViewState extends State<ShopView> {
       child: Column(
         children: List.generate(
           storeList.length,
-          (index) => ShopCard(
-            type: '토너펍',
-            thumbnail: storeList[index].storeImages.firstOrNull?.url ?? '',
-            title: storeList[index].name,
-            status: storeList[index].status,
-            isRunning: true,
-            isRunningCheckChanged: (v) {},
-            onCorporateButtonPressed: () {
-              context.push(CustomRouter.partnership.path);
-            },
-            onEditButtonPressed: () {
-              context.push(CustomRouter.shopEdit.path);
-            },
-          ),
+          (index) {
+            final store = storeList[index];
+            return ShopCard(
+              type: store.type,
+              thumbnail: store.storeImages.firstOrNull?.url ?? '',
+              title: store.name,
+              status: store.status,
+              isRunning: !store.isPaused,
+              isRunningCheckChanged: (v) async {
+                if (v == false) {
+                  await _storeProvider.pause(store.uid);
+                } else {
+                  await _storeProvider.unPause(store.uid);
+                }
+                await _homeProvider.getStores();
+              },
+              onCorporateButtonPressed: () {
+                context.push(CustomRouter.partnership.path);
+              },
+              onEditButtonPressed: () {
+                context.push(CustomRouter.shopEdit.path);
+              },
+            );
+          },
         ),
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:pokerspot_partner_app/data/models/partner/partner_store.dart';
+import 'package:pokerspot_partner_app/data/models/partner/partner_store_detail.dart';
 import 'package:pokerspot_partner_app/data/models/store/biz_validate_request.dart';
 import 'package:pokerspot_partner_app/data/models/store/create_store_request.dart';
 import 'package:pokerspot_partner_app/data/models/store/reservations_status_count.dart';
@@ -142,10 +142,26 @@ class StoreRepository {
     }
   }
 
-  /// 매장관리 > 정보 수정
-  Future<bool> updateStore(PartnerStoreModel model) async {
+  /// 매장 상세 조회
+  Future<PartnerStoreDetailModel?> getStore(String id) async {
     try {
-      await _dio.patch('/stores/$id', data: model.toJson());
+      final response = await _dio.get('/stores/$id');
+      return PartnerStoreDetailModel.fromJson(response.data);
+    } catch (e) {
+      Logger.e(e);
+      return null;
+    }
+  }
+
+  /// 매장관리 > 정보 수정
+  Future<bool> updateStore(PartnerStoreDetailModel model) async {
+    try {
+      await _dio.patch('/stores/${model.uid}', data: {
+        "name": model.name,
+        "storeImages": model.storeImages,
+        "openTime": model.openTime,
+        "closeTime": model.closeTime,
+      });
       return true;
     } catch (e) {
       Logger.e(e);
@@ -167,7 +183,7 @@ class StoreRepository {
   }
 
   /// 매장관리 > 제휴관리 > 제휴 내역
-  Future<bool> getAffiliate(PartnerStoreModel model) async {
+  Future<bool> getAffiliate(String id) async {
     try {
       await _dio.get('/stores/$id/affiliate');
       return true;

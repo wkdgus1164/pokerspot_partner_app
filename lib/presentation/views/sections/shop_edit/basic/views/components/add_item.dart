@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 
+import '../../../../../../../common/constants/sizes.dart';
+
 class ShopEditImageAddItem extends StatelessWidget {
   const ShopEditImageAddItem({super.key, required this.onPressed});
 
@@ -13,6 +15,7 @@ class ShopEditImageAddItem extends StatelessWidget {
       child: Container(
         width: 160,
         height: 160,
+        margin: const EdgeInsets.symmetric(horizontal: padding16),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(

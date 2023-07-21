@@ -37,7 +37,6 @@ import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/proce
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/operation/views/operation_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/new/process/success/views/success_view.dart';
 import 'package:pokerspot_partner_app/presentation/views/sections/shop/select/views/select.dart';
-import 'package:pokerspot_partner_app/presentation/views/sections/shop_edit/tabs/views/tabs_view.dart';
 
 const String homePrefix = '/home';
 const String memberPrefix = '/member';
@@ -88,7 +87,7 @@ enum CustomRouter {
   shopProcessSuccess('$shopPrefix/process/success'),
 
   shopSelect('$shopPrefix/select'),
-  shopEdit('$shopPrefix/edit'),
+  // shopEdit('$shopPrefix/edit'),
 
   partnership('$shopPrefix/partnership'),
   partnershipRegister('$shopPrefix/partnership/register'),
@@ -324,12 +323,12 @@ final GoRouter router = GoRouter(
         return animateHorizontal(context, state, const StoreSelectView());
       },
     ),
-    GoRoute(
-      path: CustomRouter.shopEdit.path,
-      pageBuilder: (context, state) {
-        return animateHorizontal(context, state, const ShopEditTabsView());
-      },
-    ),
+    // GoRoute(
+    //   path: CustomRouter.shopEdit.path,
+    //   pageBuilder: (context, state) {
+    //     return animateHorizontal(context, state, const ShopEditTabsView());
+    //   },
+    // ),
     GoRoute(
       path: CustomRouter.partnership.path,
       pageBuilder: (context, state) {
@@ -342,12 +341,12 @@ final GoRouter router = GoRouter(
         return animateHorizontal(context, state, const PartnerRegisterView());
       },
     ),
-    GoRoute(
-      path: CustomRouter.partnershipPay.path,
-      pageBuilder: (context, state) {
-        return animateHorizontal(context, state, const ShopEditTabsView());
-      },
-    ),
+    // GoRoute(
+    //   path: CustomRouter.partnershipPay.path,
+    //   pageBuilder: (context, state) {
+    //     return animateHorizontal(context, state, const ShopEditTabsView());
+    //   },
+    // ),
     GoRoute(
       path: CustomRouter.partnershipSuccess.path,
       pageBuilder: (context, state) {

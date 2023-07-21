@@ -1,6 +1,7 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../partner/partner_store.dart';
 import 'mtt_game.dart';
 
 part 'create_store_request.g.dart';
@@ -33,7 +34,7 @@ class CreateStoreModel {
   final double lng;
   final String bizCategory;
   final String bizCategoryDetail;
-  final List<CreateStoreImageModel> storeImages;
+  final List<StoreImageModel> storeImages;
   final String openTime;
   final String? closeTime;
   final String type;
@@ -58,19 +59,4 @@ class CreateStoreModel {
   factory CreateStoreModel.fromJson(Map<String, dynamic> json) =>
       _$CreateStoreModelFromJson(json);
   Map<String, dynamic> toJson() => _$CreateStoreModelToJson(this);
-}
-
-@JsonSerializable()
-class CreateStoreImageModel {
-  final String url;
-  final int priority;
-
-  CreateStoreImageModel({
-    required this.url,
-    this.priority = 0,
-  });
-
-  factory CreateStoreImageModel.fromJson(Map<String, dynamic> json) =>
-      _$CreateStoreImageModelFromJson(json);
-  Map<String, dynamic> toJson() => _$CreateStoreImageModelToJson(this);
 }

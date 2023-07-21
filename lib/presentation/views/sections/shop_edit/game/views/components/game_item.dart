@@ -25,7 +25,7 @@ class ShopEditGameItem extends StatelessWidget {
   final int startFee;
   final int minEntry;
   final int maxEntry;
-  final int prize;
+  final String prize;
   final String targetToner;
   final Function() onEditButtonPressed;
   final Function() onDeleteButtonPressed;
@@ -129,7 +129,7 @@ class ShopEditGameItem extends StatelessWidget {
                           ),
                     ),
                     Text(
-                      type.toString(),
+                      type.kr,
                       style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: customColorScheme.onSurface2,
                           ),
@@ -147,7 +147,7 @@ class ShopEditGameItem extends StatelessWidget {
                           ),
                     ),
                     Text(
-                      '$startFee만 chip',
+                      '${startFee ~/ 10000}만 chip',
                       style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: customColorScheme.onSurface2,
                           ),
@@ -183,7 +183,7 @@ class ShopEditGameItem extends StatelessWidget {
                           ),
                     ),
                     Text(
-                      '$prize%',
+                      prize,
                       style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: customColorScheme.onSurface2,
                           ),

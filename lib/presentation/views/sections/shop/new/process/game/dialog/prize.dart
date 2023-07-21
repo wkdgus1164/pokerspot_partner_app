@@ -6,11 +6,13 @@ class GameDialogPrize extends StatelessWidget {
   const GameDialogPrize({
     super.key,
     required this.isSelected,
-    this.selectedValue = 0,
+    this.selectedValue,
+    required this.onTap,
   });
 
   final bool isSelected;
-  final int? selectedValue;
+  final String? selectedValue;
+  final Function(String) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +60,15 @@ class GameDialogPrize extends StatelessWidget {
                         child: ListView.builder(
                           shrinkWrap: true,
                           itemCount: 100,
-                          itemBuilder: (_, int index) => ListTile(
-                            title: Text('${index + 1}%'),
-                            onTap: () {},
-                          ),
+                          itemBuilder: (_, int index) {
+                            final value = '${index + 1}%';
+                            return ListTile(
+                              title: Text(value),
+                              onTap: () {
+                                onTap.call(value);
+                              },
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -79,7 +86,7 @@ class GameDialogPrize extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      isSelected ? selectedValue.toString() : '프라이즈',
+                      isSelected ? selectedValue ?? '프라이즈' : '프라이즈',
                       style: Theme.of(context).textTheme.labelMedium!.copyWith(
                             color: isSelected
                                 ? customColorScheme.onSurface2

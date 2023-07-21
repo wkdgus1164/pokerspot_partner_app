@@ -27,7 +27,7 @@ abstract class _$CreateStoreModelCWProxy {
 
   CreateStoreModel bizCategoryDetail(String bizCategoryDetail);
 
-  CreateStoreModel storeImages(List<CreateStoreImageModel> storeImages);
+  CreateStoreModel storeImages(List<StoreImageModel> storeImages);
 
   CreateStoreModel openTime(String openTime);
 
@@ -52,7 +52,7 @@ abstract class _$CreateStoreModelCWProxy {
     double? lng,
     String? bizCategory,
     String? bizCategoryDetail,
-    List<CreateStoreImageModel>? storeImages,
+    List<StoreImageModel>? storeImages,
     String? openTime,
     String? closeTime,
     String? type,
@@ -100,7 +100,7 @@ class _$CreateStoreModelCWProxyImpl implements _$CreateStoreModelCWProxy {
       this(bizCategoryDetail: bizCategoryDetail);
 
   @override
-  CreateStoreModel storeImages(List<CreateStoreImageModel> storeImages) =>
+  CreateStoreModel storeImages(List<StoreImageModel> storeImages) =>
       this(storeImages: storeImages);
 
   @override
@@ -185,7 +185,7 @@ class _$CreateStoreModelCWProxyImpl implements _$CreateStoreModelCWProxy {
           storeImages == const $CopyWithPlaceholder() || storeImages == null
               ? _value.storeImages
               // ignore: cast_nullable_to_non_nullable
-              : storeImages as List<CreateStoreImageModel>,
+              : storeImages as List<StoreImageModel>,
       openTime: openTime == const $CopyWithPlaceholder() || openTime == null
           ? _value.openTime
           // ignore: cast_nullable_to_non_nullable
@@ -242,8 +242,7 @@ CreateStoreModel _$CreateStoreModelFromJson(Map<String, dynamic> json) =>
       bizCategory: json['bizCategory'] as String? ?? '',
       bizCategoryDetail: json['bizCategoryDetail'] as String? ?? '',
       storeImages: (json['storeImages'] as List<dynamic>?)
-              ?.map((e) =>
-                  CreateStoreImageModel.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => StoreImageModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       openTime: json['openTime'] as String? ?? '00:00',
@@ -267,18 +266,4 @@ Map<String, dynamic> _$CreateStoreModelToJson(CreateStoreModel instance) =>
       'openTime': instance.openTime,
       'closeTime': instance.closeTime,
       'type': instance.type,
-    };
-
-CreateStoreImageModel _$CreateStoreImageModelFromJson(
-        Map<String, dynamic> json) =>
-    CreateStoreImageModel(
-      url: json['url'] as String,
-      priority: json['priority'] as int? ?? 0,
-    );
-
-Map<String, dynamic> _$CreateStoreImageModelToJson(
-        CreateStoreImageModel instance) =>
-    <String, dynamic>{
-      'url': instance.url,
-      'priority': instance.priority,
     };

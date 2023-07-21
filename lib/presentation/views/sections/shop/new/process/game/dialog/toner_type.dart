@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/common/constants/sizes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 
+import '../../../../../../../../data/models/store/mtt_game.dart';
+
 class GameDialogTonerType extends StatelessWidget {
   const GameDialogTonerType({
     super.key,
     required this.isSelected,
     this.selectedValue = 'GTD 토너',
+    required this.onTap,
   });
 
   final bool isSelected;
   final String? selectedValue;
+  final Function(TonerType) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +60,21 @@ class GameDialogTonerType extends StatelessWidget {
                             ),
                             ListTile(
                               title: const Text('데일리 토너'),
-                              onTap: () {},
+                              onTap: () {
+                                onTap.call(TonerType.daily);
+                              },
                             ),
                             ListTile(
                               title: const Text('시드권 토너'),
-                              onTap: () {},
+                              onTap: () {
+                                onTap.call(TonerType.seed);
+                              },
                             ),
                             ListTile(
                               title: const Text('GTD 토너'),
-                              onTap: () {},
+                              onTap: () {
+                                onTap.call(TonerType.gtd);
+                              },
                             ),
                           ],
                         ),

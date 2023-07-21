@@ -36,11 +36,13 @@ Map<String, dynamic> _$PartnerStoreModelToJson(PartnerStoreModel instance) =>
 StoreImageModel _$StoreImageModelFromJson(Map<String, dynamic> json) =>
     StoreImageModel(
       url: json['url'] as String,
+      priority: json['priority'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$StoreImageModelToJson(StoreImageModel instance) =>
     <String, dynamic>{
       'url': instance.url,
+      'priority': instance.priority,
     };
 
 StoreAffiliateModel _$StoreAffiliateModelFromJson(Map<String, dynamic> json) =>

@@ -1,13 +1,16 @@
+import 'package:pokerspot_partner_app/data/models/partner/partner_store_detail.dart';
 import 'package:pokerspot_partner_app/data/repositories/store_repository.dart';
-
-import '../../data/models/partner/partner_store.dart';
 
 class StoreUsecase {
   final StoreRepository _repository;
 
   StoreUsecase(this._repository);
 
-  Future<bool> updateStore(PartnerStoreModel model) async {
+  Future<PartnerStoreDetailModel?> getStore(String id) async {
+    return _repository.getStore(id);
+  }
+
+  Future<bool> updateStore(PartnerStoreDetailModel model) async {
     return _repository.updateStore(model);
   }
 
@@ -17,8 +20,8 @@ class StoreUsecase {
         storeId: storeId, affiliateId: affiliateId);
   }
 
-  Future<bool> getAffiliate(PartnerStoreModel model) async {
-    return _repository.getAffiliate(model);
+  Future<bool> getAffiliate(String id) async {
+    return _repository.getAffiliate(id);
   }
 
   Future<bool> pause(String id) async {

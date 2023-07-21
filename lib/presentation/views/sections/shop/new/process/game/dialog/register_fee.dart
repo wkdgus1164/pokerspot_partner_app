@@ -7,10 +7,12 @@ class GameDialogRegisterFee extends StatelessWidget {
     super.key,
     required this.isSelected,
     this.selectedValue = 'GTD 토너',
+    required this.onTap,
   });
 
   final bool isSelected;
   final String? selectedValue;
+  final Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,9 @@ class GameDialogRegisterFee extends StatelessWidget {
                           itemCount: 30,
                           itemBuilder: (_, int index) => ListTile(
                             title: Text('${index + 1}만'),
-                            onTap: () {},
+                            onTap: () {
+                              onTap.call((index + 1) * 10000);
+                            },
                           ),
                         ),
                       ),

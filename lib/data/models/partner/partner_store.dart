@@ -30,8 +30,12 @@ class PartnerStoreModel {
 @JsonSerializable()
 class StoreImageModel {
   final String url;
+  final int priority;
 
-  StoreImageModel({required this.url});
+  StoreImageModel({
+    required this.url,
+    this.priority = 0,
+  });
 
   factory StoreImageModel.fromJson(Map<String, dynamic> json) =>
       _$StoreImageModelFromJson(json);

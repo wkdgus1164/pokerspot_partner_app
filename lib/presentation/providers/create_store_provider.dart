@@ -3,6 +3,7 @@ import 'package:pokerspot_partner_app/data/models/store/create_store_request.dar
 import 'package:pokerspot_partner_app/data/utils/logger.dart';
 import 'package:pokerspot_partner_app/domain/usecases/create_store_usecase.dart';
 
+import '../../data/models/partner/partner_store.dart';
 import '../../data/models/store/mtt_game.dart';
 
 class CreateStoreProvider with ChangeNotifier {
@@ -14,8 +15,8 @@ class CreateStoreProvider with ChangeNotifier {
   List<MttGameModel> _mttGames = [MttGameModel()];
   List<MttGameModel> get mttGames => _mttGames;
 
-  List<CreateStoreImageModel?> _images = List.generate(5, (_) => null);
-  List<CreateStoreImageModel?> get images => _images;
+  List<StoreImageModel?> _images = List.generate(5, (_) => null);
+  List<StoreImageModel?> get images => _images;
 
   bool _checkedBiz = false;
   bool get checkedBiz => _checkedBiz;
@@ -37,7 +38,7 @@ class CreateStoreProvider with ChangeNotifier {
   }
 
   void setImage(int index, String url) {
-    _images[index] = CreateStoreImageModel(url: url, priority: index);
+    _images[index] = StoreImageModel(url: url, priority: index);
     notifyListeners();
   }
 
@@ -88,7 +89,7 @@ class CreateStoreProvider with ChangeNotifier {
 
   bool validateImages() {
     final validate = images[0] != null && images[1] != null;
-    List<CreateStoreImageModel> models = [];
+    List<StoreImageModel> models = [];
     for (final image in images) {
       if (image != null) {
         models.add(image);

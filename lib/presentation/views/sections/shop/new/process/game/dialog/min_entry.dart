@@ -7,10 +7,12 @@ class GameDialogMinEntry extends StatelessWidget {
     super.key,
     required this.isSelected,
     this.selectedValue = 0,
+    required this.onTap,
   });
 
   final bool isSelected;
   final int? selectedValue;
+  final Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,9 @@ class GameDialogMinEntry extends StatelessWidget {
                           itemCount: 100,
                           itemBuilder: (_, int index) => ListTile(
                             title: Text('${index + 1}만'),
-                            onTap: () {},
+                            onTap: () {
+                              onTap.call((index + 1) * 10000);
+                            },
                           ),
                         ),
                       ),
@@ -79,7 +83,7 @@ class GameDialogMinEntry extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      isSelected ? selectedValue.toString() : '최소 엔트리',
+                      isSelected ? '$selectedValue만' : '최소 엔트리',
                       style: Theme.of(context).textTheme.labelMedium!.copyWith(
                             color: isSelected
                                 ? customColorScheme.onSurface2

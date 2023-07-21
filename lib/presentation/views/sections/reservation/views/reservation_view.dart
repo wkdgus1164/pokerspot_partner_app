@@ -124,9 +124,7 @@ class _ReservationViewState extends State<ReservationView> {
             ),
             ReservationListHeader(
               date: DateFormat('MM.dd(E)').format(DateTime.now()),
-              startAt: store.storeAffiliate != null
-                  ? DateFormat('HH:mm').format(store.storeAffiliate!.startAt)
-                  : '',
+              startAt: '',
               onOneClickCancelButtonPressed: () {
                 showSelectionDialog(
                   context: context,

@@ -18,6 +18,7 @@ import '../../../../../../../../data/models/store/mtt_game.dart';
 import '../../../../../../../../locator.dart';
 import '../../../../../../../providers/create_store_provider.dart';
 import '../../../../../../../providers/home_provider.dart';
+import '../../../../../../../widgets/dialogs/selection_dialog/selection_dialog_utils.dart';
 
 class ShopProcessGameView extends StatefulWidget {
   const ShopProcessGameView({super.key});
@@ -32,15 +33,25 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
 
   List<MttGameModel> get _games => _provider.mttGames;
 
-  void _addGame() {
+  void _addGame(
+      {required int index, required MttGameModel game, required bool isEdit}) {
+    if (!isEdit) {
+      _provider.addGame();
+    }
     showDialog(
       context: context,
       builder: (_) => Theme(
         data: Theme.of(context).copyWith(
           dialogBackgroundColor: Colors.white,
         ),
-        child: const Dialog(
-          child: GameDialog(),
+        child: Dialog(
+          child: GameDialog(
+            game: game,
+            isEdit: isEdit,
+            onConfirm: (game) {
+              _provider.setGame(index: index, model: game);
+            },
+          ),
         ),
       ),
     );
@@ -134,54 +145,42 @@ class _ShopProcessGameViewState extends State<ShopProcessGameView> {
                             const SizedBox(height: padding10),
 
                             // 추가하기 버튼
-                            GameAddButton(onPressed: () => _addGame()),
-                            // ...List.generate(
-                            //   _games.length,
-                            //   (index) => _buildGame(index),
-                            // ),
-
-                            GameItem2(
-                              title: '3만 데일리 토너먼트',
-                              isEveryDay: true,
-                              onEditPressed: () {},
-                              onDeletePressed: () {},
-                              tonerType: '시드권 토너',
-                              entryFee: 3,
-                              entryMin: '15',
-                              entryMax: '20',
-                              prize: 80,
-                              targetToner: 'OOOO 토너먼트',
-                            ),
-                            GameItem2(
-                              title: '3만 데일리 토너먼트',
-                              onEditPressed: () {},
-                              onDeletePressed: () {},
-                              tonerType: '시드권 토너',
-                              entryFee: 3,
-                              entryMin: '15',
-                              entryMax: '20',
-                              prize: 80,
-                            ),
-                            GameItem2(
-                              title: '3만 데일리 토너먼트',
-                              onEditPressed: () {},
-                              onDeletePressed: () {},
-                              tonerType: '시드권 토너',
-                              entryFee: 3,
-                              entryMin: '15',
-                              entryMax: '20',
-                              prize: 80,
-                            ),
-                            GameItem2(
-                              title: '3만 데일리 토너먼트',
-                              onEditPressed: () {},
-                              onDeletePressed: () {},
-                              tonerType: '시드권 토너',
-                              entryFee: 3,
-                              entryMin: '15',
-                              entryMax: '20',
-                              prize: 80,
-                              targetToner: 'OOOO 토너먼트',
+                            GameAddButton(
+                                onPressed: () => _addGame(
+                                    index: _games.length,
+                                    isEdit: false,
+                                    game: MttGameModel())),
+                            ...List.generate(
+                              _games.length,
+                              (index) {
+                                final game = _games[index];
+                                return GameItem2(
+                                  title: game.name,
+                                  isEveryDay: game.isDaily,
+                                  onEditPressed: () {
+                                    _addGame(
+                                        index: index,
+                                        isEdit: true,
+                                        game: MttGameModel());
+                                  },
+                                  onDeletePressed: () {
+                                    showSelectionDialog(
+                                        context: context,
+                                        title: '게임 삭제',
+                                        content: '${game.name}를 삭제하시겠습니까?',
+                                        onConfirm: () {
+                                          _provider.deleteGame(index);
+                                        });
+                                  },
+                                  tonerType: game.type.kr,
+                                  entryFee: game.entryPrice,
+                                  entryMin: game.entryMin.toString(),
+                                  entryMax: game.entryMax.toString(),
+                                  prize:
+                                      int.parse(game.prize.replaceAll('%', '')),
+                                  targetToner: game.targetMttName,
+                                );
+                              },
                             ),
                           ],
                         );

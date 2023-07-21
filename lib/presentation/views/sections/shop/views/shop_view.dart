@@ -13,6 +13,8 @@ import 'package:pokerspot_partner_app/presentation/views/sections/shop/views/com
 import 'package:provider/provider.dart';
 
 import '../../../../providers/home_provider.dart';
+import '../../partnership/main/views/main_view.dart';
+import '../../shop_edit/tabs/views/tabs_view.dart';
 
 class ShopView extends StatefulWidget {
   const ShopView({super.key});
@@ -22,7 +24,6 @@ class ShopView extends StatefulWidget {
 }
 
 class _ShopViewState extends State<ShopView> {
-  final StoreProvider _storeProvider = locator();
   final HomeProvider _homeProvider = locator();
 
   @override
@@ -117,6 +118,8 @@ class _ShopViewState extends State<ShopView> {
           storeList.length,
           (index) {
             final store = storeList[index];
+            final provider =
+                StoreProvider(locator(), locator(), locator(), store.uid);
             return ShopCard(
               type: store.type,
               thumbnail: store.storeImages.firstOrNull?.url ?? '',
@@ -125,17 +128,27 @@ class _ShopViewState extends State<ShopView> {
               isRunning: !store.isPaused,
               isRunningCheckChanged: (v) async {
                 if (v == false) {
-                  await _storeProvider.pause(store.uid);
+                  await provider.pause(store.uid);
                 } else {
-                  await _storeProvider.unPause(store.uid);
+                  await provider.unPause(store.uid);
                 }
                 await _homeProvider.getStores();
               },
               onCorporateButtonPressed: () {
-                context.push(CustomRouter.partnership.path);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const PartnershipMainView(),
+                  ),
+                );
               },
               onEditButtonPressed: () {
-                context.push(CustomRouter.shopEdit.path);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ShopEditTabsView(storeId: store.uid),
+                  ),
+                );
               },
             );
           },

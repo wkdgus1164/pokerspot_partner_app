@@ -10,18 +10,23 @@ class GameDialogMaxEntry extends StatelessWidget {
     this.selectedValue = 0,
     this.isInfinite = false,
     required this.onInfinitePressed,
+    required this.onTap,
   });
 
   final bool isSelected;
   final int? selectedValue;
   final bool? isInfinite;
   final Function() onInfinitePressed;
+  final Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
     String setMaxEntry() {
       if (isSelected) {
-        return selectedValue.toString();
+        if (selectedValue == null) {
+          return '제한 없음';
+        }
+        return '$selectedValue만';
       }
 
       if (!isSelected && !isInfinite!) {
@@ -86,7 +91,9 @@ class GameDialogMaxEntry extends StatelessWidget {
                                 itemCount: 100,
                                 itemBuilder: (_, int index) => ListTile(
                                   title: Text('${index + 1}만'),
-                                  onTap: () {},
+                                  onTap: () {
+                                    onTap.call((index + 1) * 10000);
+                                  },
                                 ),
                               ),
                             ),

@@ -7,6 +7,10 @@ environment:
   sdk: '>=2.19.4 <4.0.0'
 
 dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   card_swiper: ^2.0.4
   collection: ^1.17.0
   dio: ^5.1.2
@@ -14,8 +18,6 @@ dependencies:
   firebase_auth: ^4.5.0
   firebase_core: ^2.11.0
   firebase_messaging: ^14.5.0
-  flutter:
-    sdk: flutter
   flutter_launcher_icons: ^0.13.1
   flutter_local_notifications: ^14.0.0+1
   flutter_svg: ^2.0.5
@@ -37,7 +39,7 @@ dependencies:
   flutter_inappwebview: ^5.7.2+3
   dartz: ^0.10.1
   percent_indicator: ^4.2.3
-  intl: ^0.18.1
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:

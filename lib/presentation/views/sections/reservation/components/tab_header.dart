@@ -4,7 +4,11 @@ import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/dialogs/selection_dialog/selection_dialog_utils.dart';
 
-PreferredSizeWidget reservationTabAppBar(BuildContext context, String? title) {
+PreferredSizeWidget reservationTabAppBar(
+    {required BuildContext context,
+    String? title,
+    required VoidCallback cancelReservation,
+    required bool isPaused}) {
   return AppBar(
     title: GestureDetector(
       onTap: () {
@@ -48,10 +52,10 @@ PreferredSizeWidget reservationTabAppBar(BuildContext context, String? title) {
             cancelText: '취소',
             onCancel: () {},
             confirmText: '임시 중단',
-            onConfirm: () {},
+            onConfirm: cancelReservation,
           ),
           child: Text(
-            '예약마감',
+            isPaused ? '예약재개' : '예약마감',
             style: Theme.of(context).textTheme.labelMedium!.copyWith(
                   color: customColorScheme.onSurfaceContainer1,
                 ),

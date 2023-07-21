@@ -230,4 +230,6 @@ const _$TonerTypeEnumMap = {
   TonerType.daily: 'DAILY',
   TonerType.seed: 'SEED',
   TonerType.gtd: 'GTD',
+  TonerType.primary: 'PRIMARY',
+  TonerType.secondary: 'SECONDARY',
 };

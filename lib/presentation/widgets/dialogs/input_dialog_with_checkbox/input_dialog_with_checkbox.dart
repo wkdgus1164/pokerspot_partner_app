@@ -70,7 +70,6 @@ class _PickerDialogState extends State<InputDialogWithCheckbox> {
               hint: '숫자로 입력',
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
-              maxLines: 1,
               maxLength: 3,
               enabled: !disableOnChecked,
               onTextFieldChanged: widget.onTextFieldChanged,

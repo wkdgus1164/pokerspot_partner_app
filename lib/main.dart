@@ -7,6 +7,7 @@ import 'package:pokerspot_partner_app/common/theme/bottom_navigation_bar.dart';
 import 'package:pokerspot_partner_app/common/theme/button.dart';
 import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
 import 'package:pokerspot_partner_app/common/theme/color.dart';
+import 'package:pokerspot_partner_app/common/theme/text_field.dart';
 import 'package:pokerspot_partner_app/common/theme/typography.dart';
 import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
 import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
@@ -30,6 +31,7 @@ ThemeData _createThemeData({required BuildContext context}) {
     textButtonTheme: textButtonThemeData,
     scaffoldBackgroundColor: lightColorScheme.surface,
     bottomNavigationBarTheme: bottomNavigationBarThemeData,
+    inputDecorationTheme: inputDecorationTheme,
     dialogBackgroundColor: Colors.white,
     appBarTheme: appBarTheme,
     textTheme: textTheme,

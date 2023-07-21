@@ -5,7 +5,7 @@ import 'package:pokerspot_partner_app/common/routes/routes.dart';
 import 'package:pokerspot_partner_app/locator.dart';
 import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
 import 'package:pokerspot_partner_app/presentation/widgets/checkbox/checkbox.dart';
-import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field_with_delete_icon.dart';
+import 'package:pokerspot_partner_app/presentation/widgets/text_field/text_field.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -30,15 +30,16 @@ class LoginForm extends StatelessWidget {
       child: Column(
         children: [
           CustomTextField(
-            hintText: '아이디',
-            textInputType: TextInputType.text,
-            onChanged: onIDChanged,
+            hint: '아이디',
+            keyboardType: TextInputType.text,
+            onTextFieldChanged: onIDChanged,
           ),
           const SizedBox(height: padding16),
           CustomTextField(
-            hintText: '비밀번호',
-            textInputType: TextInputType.visiblePassword,
-            onChanged: onPWChanged,
+            hint: '비밀번호',
+            keyboardType: TextInputType.visiblePassword,
+            onTextFieldChanged: onPWChanged,
+            obscureText: true,
           ),
           const SizedBox(height: padding16),
           Row(

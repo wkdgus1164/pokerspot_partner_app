@@ -74,11 +74,9 @@ class CustomTextFieldSet extends StatelessWidget {
               ? TextInputType.text
               : keyboardType,
           maxLength: maxLength,
-          minLines: minLines,
-          maxLines: maxLines,
           onEditingComplete: onEditingComplete,
           onTextFieldChanged: onTextFieldChanged,
-          isPassword: isPassword,
+          obscureText: isPassword,
           textInputAction: textInputAction,
           enabled: enabled,
         ),

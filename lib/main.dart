@@ -1,103 +1,125 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:intl/intl.dart';
-import 'package:pokerspot_partner_app/common/routes/routes.dart';
-import 'package:pokerspot_partner_app/common/theme/app_bar.dart';
-import 'package:pokerspot_partner_app/common/theme/bottom_navigation_bar.dart';
-import 'package:pokerspot_partner_app/common/theme/button.dart';
-import 'package:pokerspot_partner_app/common/theme/checkbox.dart';
-import 'package:pokerspot_partner_app/common/theme/color.dart';
-import 'package:pokerspot_partner_app/common/theme/text_field.dart';
-import 'package:pokerspot_partner_app/common/theme/typography.dart';
-import 'package:pokerspot_partner_app/presentation/providers/auth_provider.dart';
-import 'package:pokerspot_partner_app/presentation/providers/create_store_provider.dart';
-import 'package:pokerspot_partner_app/presentation/providers/home_provider.dart';
-import 'package:pokerspot_partner_app/presentation/providers/signup_provider.dart';
-import 'package:provider/provider.dart';
-
-import 'data/network/api_client.dart';
-import 'locator.dart';
-import 'presentation/providers/token_provider.dart';
-
-const storage = FlutterSecureStorage();
-
-ThemeData _createThemeData({required BuildContext context}) {
-  return ThemeData(
-    useMaterial3: true,
-    colorScheme: lightColorScheme,
-    checkboxTheme: checkboxTheme,
-    filledButtonTheme: filledButtonThemeData,
-    outlinedButtonTheme: outlinedButtonThemeData,
-    textButtonTheme: textButtonThemeData,
-    scaffoldBackgroundColor: lightColorScheme.surface,
-    bottomNavigationBarTheme: bottomNavigationBarThemeData,
-    inputDecorationTheme: inputDecorationTheme,
-    dialogBackgroundColor: Colors.white,
-    appBarTheme: appBarTheme,
-    textTheme: textTheme,
-    splashFactory: InkRipple.splashFactory,
-  );
-}
 
 void main() {
-  Intl.defaultLocale = 'ko_KR';
-  setupLocator();
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a purple toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
+    return Scaffold(
+      appBar: AppBar(
+        // TRY THIS: Try changing the color here to a specific color (to
+        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+        // change color while the other colors stay the same.
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
       ),
-    );
-
-    MaterialApp materialApp() {
-      return MaterialApp.router(
-        routeInformationProvider: router.routeInformationProvider,
-        routeInformationParser: router.routeInformationParser,
-        routerDelegate: router.routerDelegate,
-        theme: _createThemeData(context: context),
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-      );
-    }
-
-    return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (_) => locator<TokenProvider>(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => locator<AuthProvider>(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => locator<DioClient>(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => locator<CreateStoreProvider>(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => locator<SignupProvider>(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => locator<HomeProvider>(),
-          ),
-        ],
-        child: materialApp(),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          // Column is also a layout widget. It takes a list of children and
+          // arranges them vertically. By default, it sizes itself to fit its
+          // children horizontally, and tries to be as tall as its parent.
+          //
+          // Column has various properties to control how it sizes itself and
+          // how it positions its children. Here we use mainAxisAlignment to
+          // center the children vertically; the main axis here is the vertical
+          // axis because Columns are vertical (the cross axis would be
+          // horizontal).
+          //
+          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+          // action in the IDE, or press "p" in the console), to see the
+          // wireframe for each widget.
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
+        ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

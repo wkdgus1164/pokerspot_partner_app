@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "105285744426",
+    "project_id": "ontheground-pokerspot-partner",
+    "storage_bucket": "ontheground-pokerspot-partner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105285744426:android:6636bfbcd2f45c4e7dd053",
+        "android_client_info": {
+          "package_name": "com.pokerspot.partner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXU2ysEMYoVQICgASWSiGRJ1McA-vvm2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

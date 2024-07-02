@@ -5,6 +5,7 @@ FilledButtonThemeData filledButtonThemeData = FilledButtonThemeData(
   style: FilledButton.styleFrom(
     foregroundColor: colorBrand100,
     backgroundColor: colorBrand50,
+    disabledBackgroundColor: colorGrey95,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
     ),
@@ -24,6 +25,7 @@ OutlinedButtonThemeData outlinedButtonThemeData = OutlinedButtonThemeData(
     side: const BorderSide(color: colorBrand60),
     foregroundColor: colorBrand50,
     backgroundColor: Colors.transparent,
+    disabledBackgroundColor: colorGrey95,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
       side: const BorderSide(color: colorBrand60),
@@ -43,6 +45,7 @@ TextButtonThemeData textButtonThemeData = TextButtonThemeData(
   style: OutlinedButton.styleFrom(
     foregroundColor: colorBrand50,
     backgroundColor: Colors.transparent,
+    disabledBackgroundColor: colorGrey95,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
     ),

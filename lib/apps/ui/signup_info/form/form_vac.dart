@@ -11,9 +11,22 @@ class SignupInfoFormVac extends StatelessWidget {
     required this.handlePasswordChange,
     required this.handlePasswordConfirmChange,
     required this.handleTermClick,
+    required this.handleIdClearClick,
+    this.isPwVisible = false,
+    this.isPwConfirmVisible = false,
+    required this.togglePwVisibilityClick,
+    required this.togglePwConfirmVisibilityClick,
   });
 
   final Function(String?) handleIdChange;
+  final Function() handleIdClearClick;
+
+  final bool isPwVisible;
+  final bool isPwConfirmVisible;
+
+  final Function() togglePwVisibilityClick;
+  final Function() togglePwConfirmVisibilityClick;
+
   final Function(String?) handlePasswordChange;
   final Function(String?) handlePasswordConfirmChange;
   final Function() handleTermClick;
@@ -47,6 +60,7 @@ class SignupInfoFormVac extends StatelessWidget {
               icon: Icons.close_rounded,
               handleChange: handleIdChange,
               autofocus: true,
+              handleIconClick: handleIdClearClick,
               inputFormatters: [
                 FilteringTextInputFormatter.allow(
                   Regexps.id,
@@ -57,9 +71,12 @@ class SignupInfoFormVac extends StatelessWidget {
             PTextField(
               labelText: '비밀번호',
               hintText: '비밀번호를 입력해주세요.',
-              obscureText: true,
+              obscureText: !isPwVisible,
               handleChange: handlePasswordChange,
-              icon: Icons.visibility_rounded,
+              handleIconClick: togglePwVisibilityClick,
+              icon: isPwVisible
+                  ? Icons.visibility_rounded
+                  : Icons.visibility_off_rounded,
               inputFormatters: [
                 FilteringTextInputFormatter.allow(
                   Regexps.password,
@@ -70,8 +87,11 @@ class SignupInfoFormVac extends StatelessWidget {
             PTextField(
               labelText: '비밀번호 확인',
               hintText: '비밀번호를 한번 더 입력해주세요.',
-              obscureText: true,
-              icon: Icons.visibility_rounded,
+              obscureText: !isPwConfirmVisible,
+              icon: isPwConfirmVisible
+                  ? Icons.visibility_rounded
+                  : Icons.visibility_off_rounded,
+              handleIconClick: togglePwConfirmVisibilityClick,
               handleChange: handlePasswordConfirmChange,
               inputFormatters: [
                 FilteringTextInputFormatter.allow(

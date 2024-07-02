@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_info/form/form_view.dart';
+import 'package:pokerspot_partner_app/apps/ui/signup_info/providers/data.dart';
 import 'package:pokerspot_partner_app/common/dialog/dialog_utils.dart';
 
 class SignupInfoPage extends StatefulHookConsumerWidget {
@@ -15,6 +16,20 @@ class SignupInfoPage extends StatefulHookConsumerWidget {
 class _SignupInfoPageState extends ConsumerState<SignupInfoPage> {
   @override
   Widget build(BuildContext context) {
+    // ID
+    final id = ref.watch(signupInfoDataProvider).id;
+
+    // PW
+    final pw = ref.watch(signupInfoDataProvider).password;
+    final pwConfirm = ref.watch(signupInfoDataProvider).passwordConfirm;
+
+    final handleSubmit = pw.isNotEmpty &&
+            pwConfirm.isNotEmpty &&
+            id.isNotEmpty &&
+            pw == pwConfirm
+        ? _handleSubmit
+        : null;
+
     return Scaffold(
       appBar: AppBar(title: const Text('가입 정보 입력하기')),
       body: Column(
@@ -24,7 +39,7 @@ class _SignupInfoPageState extends ConsumerState<SignupInfoPage> {
           Padding(
             padding: const EdgeInsets.all(16),
             child: FilledButton(
-              onPressed: _handleSubmit,
+              onPressed: handleSubmit,
               child: const Text('회원 가입하기'),
             ),
           ),

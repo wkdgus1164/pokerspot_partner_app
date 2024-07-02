@@ -43,19 +43,13 @@ class _SigninPageState extends ConsumerState<SigninPage> {
   }
 
   void _handleIdInputChange(String? value) {
-    if (value != null) {
-      ref.read(signinDataProvider.notifier).setId(value);
-    } else {
-      ref.read(signinDataProvider.notifier).clearId();
-    }
+    if (value == null) return;
+    ref.read(signinDataProvider.notifier).setId(value);
   }
 
   void _handlePwInputChange(String? value) {
-    if (value != null) {
-      ref.read(signinDataProvider.notifier).setPassword(value);
-    } else {
-      ref.read(signinDataProvider.notifier).clearPassword();
-    }
+    if (value == null) return;
+    ref.read(signinDataProvider.notifier).setPassword(value);
   }
 
   void _handleIdClearClick(TextEditingController idController) {

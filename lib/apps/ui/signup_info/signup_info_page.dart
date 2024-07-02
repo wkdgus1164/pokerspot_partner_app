@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_info/form/form_view.dart';
+import 'package:pokerspot_partner_app/common/dialog/dialog_utils.dart';
 
 class SignupInfoPage extends StatefulHookConsumerWidget {
   const SignupInfoPage({super.key});
@@ -30,5 +33,14 @@ class _SignupInfoPageState extends ConsumerState<SignupInfoPage> {
     );
   }
 
-  void _handleSubmit() {}
+  void _handleSubmit() {
+    return context.showCustomDialog(
+      title: '회원가입 완료!',
+      content: '로그인하고 바로 매장을 등록해보세요.',
+      confirmText: '로그인',
+      onConfirm: () {
+        context.go(CustomRouter.signin.path);
+      },
+    );
+  }
 }

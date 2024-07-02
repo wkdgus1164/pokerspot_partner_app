@@ -5,7 +5,6 @@ import 'package:pokerspot_partner_app/apps/ui/intro/intro_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/signin/signin_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_info/signup_info_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_intro/signup_intro_page.dart';
-import 'package:pokerspot_partner_app/apps/ui/signup_verify/signup_verify_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/splash/splash_page.dart';
 
 enum CustomRouter {
@@ -47,10 +46,6 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.signupIntro.path,
       builder: (context, state) => const SignupIntroPage(),
-    ),
-    GoRoute(
-      path: CustomRouter.signupVerify.path,
-      builder: (context, state) => const SignupVerifyPage(),
     ),
     GoRoute(
       path: CustomRouter.signupInfo.path,

@@ -1,11 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/apps/ui/intro/intro_page.dart';
-import 'package:pokerspot_partner_app/apps/ui/signin/signin_page.dart';
-import 'package:pokerspot_partner_app/apps/ui/signup_info/signup_info_page.dart';
-import 'package:pokerspot_partner_app/apps/ui/signup_intro/signup_intro_page.dart';
-import 'package:pokerspot_partner_app/apps/ui/splash/splash_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/ui.dart';
 
 enum CustomRouter {
   splash('/splash'),
@@ -14,6 +10,7 @@ enum CustomRouter {
   signin('/signin'),
   signupVerify('/signup-verify'),
   signupInfo('/signup-info'),
+  navigation('/navigation'),
   ;
 
   const CustomRouter(this.path);
@@ -50,6 +47,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.signupInfo.path,
       builder: (context, state) => const SignupInfoPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.navigation.path,
+      builder: (context, state) => const NavigationPage(),
     ),
   ],
 );

@@ -9,5 +9,6 @@ export 'theme/fab.dart';
 export 'theme/list_tile.dart';
 export 'theme/slider.dart';
 export 'theme/typo.dart';
+export 'theme/text_field.dart';
 export 'routes/routes.dart';
 export 'constants/assets.dart';

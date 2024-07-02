@@ -68,6 +68,7 @@ ThemeData _createThemeData({required BuildContext context}) {
     chipTheme: chipThemeData,
     splashColor: colorGrey98,
     dialogBackgroundColor: Colors.white,
+    inputDecorationTheme: inputDecorationTheme,
   );
 }
 

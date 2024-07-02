@@ -10,20 +10,25 @@ class SigninVac extends StatelessWidget {
     super.key,
     required this.handleIdInputChange,
     required this.handlePwInputChange,
-    required this.handleIdClearClick,
+    this.handleIdClearClick,
     required this.togglePwVisibilityClick,
-    required this.handleSigninButtonClick,
+    this.handleSigninButtonClick,
     required this.handleForgetButtonClick,
+    this.isPwVisible = false,
+    required this.idController,
   });
 
   final Function(String?) handleIdInputChange;
   final Function(String?) handlePwInputChange;
 
-  final Function() handleIdClearClick;
+  final Function()? handleIdClearClick;
   final Function() togglePwVisibilityClick;
 
-  final Function() handleSigninButtonClick;
+  final Function()? handleSigninButtonClick;
   final Function() handleForgetButtonClick;
+
+  final TextEditingController idController;
+  final bool isPwVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +50,7 @@ class SigninVac extends StatelessWidget {
                 ),
                 const SizedBox(height: 64),
                 PTextField(
+                  controller: idController,
                   labelText: '아이디',
                   hintText: '로그인 아이디를 입력해주세요.',
                   handleChange: handleIdInputChange,
@@ -52,7 +58,7 @@ class SigninVac extends StatelessWidget {
                   handleIconClick: handleIdClearClick,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
-                      Regexps.password,
+                      Regexps.id,
                     ),
                   ],
                 ),
@@ -61,16 +67,18 @@ class SigninVac extends StatelessWidget {
                   labelText: '비밀번호',
                   hintText: '비밀번호를 입력해주세요.',
                   handleChange: handlePwInputChange,
-                  icon: Icons.visibility_rounded,
+                  icon: isPwVisible
+                      ? Icons.visibility_rounded
+                      : Icons.visibility_off_rounded,
                   handleIconClick: togglePwVisibilityClick,
-                  obscureText: true,
+                  obscureText: !isPwVisible,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
                       Regexps.password,
                     ),
                   ],
                 ),
-                const SizedBox(height: 64),
+                const SizedBox(height: 16),
                 FilledButton(
                   onPressed: handleSigninButtonClick,
                   child: const Text('로그인'),

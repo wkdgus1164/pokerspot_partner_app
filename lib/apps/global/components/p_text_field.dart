@@ -14,6 +14,7 @@ class PTextField extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.autofocus = false,
+    this.controller,
   });
 
   final String labelText;
@@ -25,6 +26,7 @@ class PTextField extends StatelessWidget {
   final bool obscureText;
   final TextInputType keyboardType;
   final bool autofocus;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,7 @@ class PTextField extends StatelessWidget {
             children: [
               Expanded(
                 child: TextField(
+                  controller: controller,
                   onChanged: handleChange,
                   decoration: InputDecoration(
                     hintText: hintText,

@@ -2,11 +2,13 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/apps/ui/intro/intro_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/signup_intro/signup_intro_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/splash/splash_page.dart';
 
 enum CustomRouter {
   splash('/splash'),
   intro('/intro'),
+  signupIntro('/signup-intro'),
   ;
 
   const CustomRouter(this.path);
@@ -31,6 +33,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.intro.path,
       builder: (context, state) => const IntroPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.signupIntro.path,
+      builder: (context, state) => const SignupIntroPage(),
     ),
   ],
 );

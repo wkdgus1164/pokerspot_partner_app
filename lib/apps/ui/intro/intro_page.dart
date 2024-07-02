@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 
@@ -76,7 +77,9 @@ class _IntroPageState extends ConsumerState<IntroPage> {
                         ),
                         const SizedBox(height: 32),
                         FilledButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.push(CustomRouter.signupIntro.path);
+                          },
                           child: const Text('시작하기'),
                         ),
                         TextButton(

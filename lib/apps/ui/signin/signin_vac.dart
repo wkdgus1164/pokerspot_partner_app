@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/apps/global/components/p_text_field.dart';
 import 'package:pokerspot_partner_app/apps/global/constants/assets.dart';
+import 'package:pokerspot_partner_app/apps/global/constants/regexps.dart';
 
 class SigninVac extends StatelessWidget {
   const SigninVac({
@@ -51,9 +52,8 @@ class SigninVac extends StatelessWidget {
                   handleIconClick: handleIdClearClick,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
-                      RegExp(r'[a-zA-Z0-9]'),
+                      Regexps.password,
                     ),
-                    LengthLimitingTextInputFormatter(20),
                   ],
                 ),
                 const SizedBox(height: 16),
@@ -66,9 +66,8 @@ class SigninVac extends StatelessWidget {
                   obscureText: true,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
-                      RegExp(r'[a-zA-Z0-9!@#$%^&*()]'),
+                      Regexps.password,
                     ),
-                    LengthLimitingTextInputFormatter(20),
                   ],
                 ),
                 const SizedBox(height: 64),

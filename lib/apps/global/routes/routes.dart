@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/apps/ui/intro/intro_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/signin/signin_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/signup_info/signup_info_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_intro/signup_intro_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/signup_verify/signup_verify_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/splash/splash_page.dart';
 
 enum CustomRouter {
@@ -11,6 +13,8 @@ enum CustomRouter {
   intro('/intro'),
   signupIntro('/signup-intro'),
   signin('/signin'),
+  signupVerify('/signup-verify'),
+  signupInfo('/signup-info'),
   ;
 
   const CustomRouter(this.path);
@@ -37,12 +41,20 @@ final router = GoRouter(
       builder: (context, state) => const IntroPage(),
     ),
     GoRoute(
+      path: CustomRouter.signin.path,
+      builder: (context, state) => const SigninPage(),
+    ),
+    GoRoute(
       path: CustomRouter.signupIntro.path,
       builder: (context, state) => const SignupIntroPage(),
     ),
     GoRoute(
-      path: CustomRouter.signin.path,
-      builder: (context, state) => const SigninPage(),
+      path: CustomRouter.signupVerify.path,
+      builder: (context, state) => const SignupVerifyPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.signupInfo.path,
+      builder: (context, state) => const SignupInfoPage(),
     ),
   ],
 );

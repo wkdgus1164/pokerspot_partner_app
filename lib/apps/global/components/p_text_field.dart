@@ -13,6 +13,7 @@ class PTextField extends StatelessWidget {
     this.inputFormatters,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
+    this.autofocus = false,
   });
 
   final String labelText;
@@ -23,6 +24,7 @@ class PTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool obscureText;
   final TextInputType keyboardType;
+  final bool autofocus;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,7 @@ class PTextField extends StatelessWidget {
                   inputFormatters: inputFormatters,
                   obscureText: obscureText,
                   keyboardType: keyboardType,
+                  autofocus: autofocus,
                 ),
               ),
               if (icon != null) ...[

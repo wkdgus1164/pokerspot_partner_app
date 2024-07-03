@@ -81,5 +81,6 @@ ThemeData _createThemeData({required BuildContext context}) {
     splashColor: colorGrey98,
     dialogBackgroundColor: Colors.white,
     inputDecorationTheme: inputDecorationTheme,
+    drawerTheme: drawerThemeData,
   );
 }

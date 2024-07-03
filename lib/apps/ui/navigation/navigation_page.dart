@@ -20,7 +20,7 @@ class _NavigationPageState extends ConsumerState<NavigationPage> {
         items: NavigationHelper().getBottomNavigationItems(),
         onTap: _handleMenuIndexChange,
       ),
-      body: Container(),
+      body: NavigationHelper().pages[currentPageIndex],
     );
   }
 

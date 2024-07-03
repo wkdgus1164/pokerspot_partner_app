@@ -10,5 +10,6 @@ export 'theme/list_tile.dart';
 export 'theme/slider.dart';
 export 'theme/typo.dart';
 export 'theme/text_field.dart';
+export 'theme/drawer.dart';
 export 'routes/routes.dart';
 export 'constants/assets.dart';

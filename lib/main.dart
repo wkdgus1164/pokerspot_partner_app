@@ -52,9 +52,7 @@ class MyApp extends StatelessWidget {
 ThemeData _createThemeData({required BuildContext context}) {
   return ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: colorBrand50,
-    ),
+    colorScheme: colorScheme,
     appBarTheme: appBarTheme,
     scaffoldBackgroundColor: colorBrand100,
     splashFactory: InkRipple.splashFactory,

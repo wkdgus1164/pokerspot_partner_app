@@ -37,8 +37,8 @@ const ColorScheme colorScheme = ColorScheme(
   onPrimaryContainer: colorBrand50,
   error: colorBrand50,
   onError: colorBrand50,
-  secondary: Colors.white,
-  onSecondary: Colors.black,
+  secondary: colorBrand95,
+  onSecondary: colorBrand50,
   surface: Colors.white,
   onSurface: Colors.black,
 );

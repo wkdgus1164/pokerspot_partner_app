@@ -1,8 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/global/theme/typo.dart';
+import 'package:pokerspot_partner_app/apps/ui/navigation/drawer/drawer_view.dart';
+import 'package:pokerspot_partner_app/apps/ui/statistics/chart/chart_section.dart';
+import 'package:pokerspot_partner_app/apps/ui/statistics/recent_numbers/recent_numbers_view.dart';
+import 'package:pokerspot_partner_app/common/placeholder/empty_with_button.dart';
 
 class StatisticsPage extends StatefulHookConsumerWidget {
   const StatisticsPage({super.key});
@@ -18,118 +19,50 @@ class _StatisticsPageState extends ConsumerState<StatisticsPage> {
       appBar: AppBar(
         title: const Text('통계'),
       ),
-      drawer: Drawer(
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Container(
-                              width: 60,
-                              height: 60,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: colorBrand60,
-                              ),
-                            ),
-                            Container(
-                              width: 54,
-                              height: 54,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              clipBehavior: Clip.antiAlias,
-                              child: CachedNetworkImage(
-                                imageUrl:
-                                    'https://d1gfto9ehui3w0.cloudfront.net/A0037-0.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Text(
-                                '몬스터 홀덤펍',
-                                style: textTheme.titleMedium!.copyWith(
-                                  color: colorGrey20,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              Text(
-                                '서울시 강남구 역삼동 123-45',
-                                style: textTheme.labelMedium!.copyWith(
-                                  color: colorGrey60,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text('몬스터 홀덤펍'),
-                    trailing: const Icon(
-                      Icons.chevron_right_rounded,
-                      color: colorGrey80,
-                    ),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: const Text('몬스터 홀덤펍'),
-                    trailing: const Icon(
-                      Icons.chevron_right_rounded,
-                      color: colorGrey80,
-                    ),
-                    onTap: () {},
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Divider(),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.add_rounded,
-                      color: colorGrey80,
-                    ),
-                    title: Text(
-                      '새로운 매장 등록하기',
-                      style: textTheme.bodyLarge!.copyWith(
-                        color: colorGrey40,
-                      ),
-                    ),
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            ],
-          ),
+      drawer: const NavigationDrawerView(),
+      body: const SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            StatisticsRecentNumbersView(),
+            StatisticsChartSection(
+              startText: '내 매장을 ',
+              number: 10,
+              endText: ' 조회했어요',
+              dots: [1, 2, 5, 9, 5, 6, 7],
+              caption: '손님이 매장을 조회한 횟수를 확인할 수 있어요',
+            ),
+            StatisticsChartSection(
+              startText: '오픈채팅방을 ',
+              number: 10,
+              endText: ' 접속했어요',
+              dots: [1, 2, 5, 9, 5, 6, 7],
+              caption: '손님이 내 매장의 상세 페이지에서 오픈채팅방 버튼을 누른 횟수에요',
+            ),
+            StatisticsChartSection(
+              startText: '전화를 ',
+              number: 10,
+              endText: ' 걸었어요',
+              dots: [1, 2, 5, 9, 5, 6, 7],
+              caption: '손님이 내 매장의 상세 페이지에서 전화걸기 버튼을 누른 횟수에요',
+            ),
+          ],
+        ),
+      ),
+      // _buildPlaceholder(),
+    );
+  }
+
+  Widget _buildPlaceholder() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: EmptyWithButton(
+          icon: Icons.bar_chart_rounded,
+          message:
+              '아직 매장 통계가 없어요.\n최근에 등록한 매장이라면 아직 통계 데이터가 없을 수 있어요.\n\n아직 등록한 매장이 없다면, 새로운 매장을 등록해 보세요.',
+          buttonText: '매장 등록하기',
+          handleButtonClick: () {},
         ),
       ),
     );

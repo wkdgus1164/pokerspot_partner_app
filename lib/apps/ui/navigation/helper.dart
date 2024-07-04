@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
+import 'package:pokerspot_partner_app/apps/ui/games/games_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/statistics/statistics_page.dart';
 
 final List<String> _defaultIcons = [
@@ -32,7 +33,7 @@ class NavigationHelper {
 
   List<Widget> pages = [
     const StatisticsPage(),
-    const Center(child: CircularProgressIndicator.adaptive()),
+    const GamesPage(),
     const Center(child: CircularProgressIndicator.adaptive()),
     const Center(child: CircularProgressIndicator.adaptive()),
   ];

@@ -7,8 +7,12 @@ ChipThemeData chipThemeData = ChipThemeData(
   selectedColor: colorGrey95,
   secondarySelectedColor: colorGrey80,
   shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(12),
+    borderRadius: BorderRadius.circular(8),
     side: const BorderSide(color: Colors.transparent),
   ),
-  labelStyle: const TextStyle(color: colorGrey40),
+  labelStyle: const TextStyle(
+    fontSize: 12,
+    color: colorGrey40,
+  ),
+  padding: EdgeInsets.zero,
 );

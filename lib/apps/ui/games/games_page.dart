@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/constants/enums.dart';
 import 'package:pokerspot_partner_app/apps/ui/games/components/game_card.dart';
+import 'package:pokerspot_partner_app/apps/ui/games/components/modal_bottom_sheet.dart';
 import 'package:pokerspot_partner_app/apps/ui/navigation/drawer/drawer_view.dart';
 import 'package:pokerspot_partner_app/common/caption/caption.dart';
 import 'package:pokerspot_partner_app/common/placeholder/empty_with_button.dart';
@@ -24,7 +25,18 @@ class _GamesPageState extends ConsumerState<GamesPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                useSafeArea: true,
+                builder: (context) {
+                  return GamesCreateModalBottomSheet(
+                    handleDailyClick: _handleDailyClick,
+                    handleGTDClick: _handleGTDClick,
+                  );
+                },
+              );
+            },
           ),
         ],
       ),
@@ -70,6 +82,9 @@ class _GamesPageState extends ConsumerState<GamesPage> {
       // _buildPlaceholder(),
     );
   }
+
+  void _handleDailyClick() {}
+  void _handleGTDClick() {}
 }
 
 Widget _buildPlaceholder() {

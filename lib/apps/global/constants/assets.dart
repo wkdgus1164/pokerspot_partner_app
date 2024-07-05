@@ -12,6 +12,8 @@ enum Assets {
   bnStoreOff('$assetPath/bn_store_off.svg'),
   bnMyOn('$assetPath/bn_my_on.svg'),
   bnMyOff('$assetPath/bn_my_off.svg'),
+  daily('$assetPath/daily.svg'),
+  gtd('$assetPath/gtd.svg'),
   ;
 
   const Assets(this.path);

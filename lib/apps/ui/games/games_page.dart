@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/constants/enums.dart';
+import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/games/components/game_card.dart';
 import 'package:pokerspot_partner_app/apps/ui/games/components/modal_bottom_sheet.dart';
 import 'package:pokerspot_partner_app/apps/ui/navigation/drawer/drawer_view.dart';
@@ -83,7 +85,10 @@ class _GamesPageState extends ConsumerState<GamesPage> {
     );
   }
 
-  void _handleDailyClick() {}
+  void _handleDailyClick() {
+    context.push(CustomRouter.gameCreateDaily.path);
+  }
+
   void _handleGTDClick() {}
 }
 

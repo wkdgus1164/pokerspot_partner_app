@@ -4,11 +4,11 @@ import 'package:pokerspot_partner_app/apps/global/global.dart';
 class Caption extends StatelessWidget {
   const Caption({
     super.key,
-    required this.title,
+    this.title,
     required this.caption,
   });
 
-  final String title;
+  final String? title;
   final String caption;
 
   @override
@@ -24,29 +24,31 @@ class Caption extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                '📌',
-                style: textTheme.titleMedium!.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: colorGrey40,
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  title,
+          if (title != null) ...[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  '📌',
                   style: textTheme.titleMedium!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: colorGrey40,
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    title!,
+                    style: textTheme.titleMedium!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: colorGrey40,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+          ],
           Text(
             caption,
             style: textTheme.labelLarge!.copyWith(

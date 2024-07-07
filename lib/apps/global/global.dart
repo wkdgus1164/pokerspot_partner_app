@@ -13,3 +13,5 @@ export 'theme/text_field.dart';
 export 'theme/drawer.dart';
 export 'routes/routes.dart';
 export 'constants/assets.dart';
+export 'components/p_selector.dart';
+export 'components/p_text_field.dart';

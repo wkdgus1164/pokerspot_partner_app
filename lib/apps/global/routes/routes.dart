@@ -1,6 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/daily/game_create_daily_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/ui.dart';
 
 enum CustomRouter {
@@ -11,6 +12,7 @@ enum CustomRouter {
   signupVerify('/signup-verify'),
   signupInfo('/signup-info'),
   navigation('/navigation'),
+  gameCreateDaily('/game-create-daily'),
   ;
 
   const CustomRouter(this.path);
@@ -51,6 +53,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.navigation.path,
       builder: (context, state) => const NavigationPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.gameCreateDaily.path,
+      builder: (context, state) => const GameCreateDailyPage(),
     ),
   ],
 );

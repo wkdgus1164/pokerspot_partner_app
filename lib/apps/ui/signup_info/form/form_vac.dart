@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pokerspot_partner_app/apps/global/components/p_text_field.dart';
 import 'package:pokerspot_partner_app/apps/global/constants/regexps.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 

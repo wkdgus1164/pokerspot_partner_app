@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/game_name/game_name_form_data.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/daily/game_create_daily_form.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/providers/data.dart';
 import 'package:pokerspot_partner_app/common/caption/caption.dart';
 
 class GameCreateDailyPage extends StatefulHookConsumerWidget {
@@ -17,7 +17,8 @@ class GameCreateDailyPage extends StatefulHookConsumerWidget {
 class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
   @override
   Widget build(BuildContext context) {
-    final gameName = ref.watch(gameCreateDailyDataProvider).gameName;
+    final gameName =
+        ref.watch(gameCreateDailyGameNameFormDataProvider).gameName;
     Logger().i('gameName: $gameName');
 
     return Scaffold(

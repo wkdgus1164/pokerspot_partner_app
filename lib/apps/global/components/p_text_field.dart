@@ -15,6 +15,7 @@ class PTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.autofocus = false,
     this.controller,
+    this.endText,
   });
 
   final String labelText;
@@ -27,6 +28,7 @@ class PTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool autofocus;
   final TextEditingController? controller;
+  final String? endText;
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +76,17 @@ class PTextField extends StatelessWidget {
                   child: Icon(
                     icon!,
                     color: colorGrey80,
+                  ),
+                ),
+              ],
+              if (endText != null) ...[
+                const SizedBox(width: 8),
+                Text(
+                  endText!,
+                  style: const TextStyle(
+                    color: colorGrey70,
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
               ],

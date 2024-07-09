@@ -26,21 +26,28 @@ class _GamesPageState extends ConsumerState<GamesPage> {
         title: Text(_title),
         actions: [
           IconButton(
-            icon: const Icon(Icons.add),
+            icon: const Icon(Icons.format_line_spacing_rounded),
             onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                useSafeArea: true,
-                builder: (context) {
-                  return GamesCreateModalBottomSheet(
-                    handleDailyClick: _handleDailyClick,
-                    handleGTDClick: _handleGTDClick,
-                  );
-                },
-              );
+              context.push(CustomRouter.gameSort.path);
             },
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        label: const Text('토너먼트 생성'),
+        icon: const Icon(Icons.add_rounded),
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            useSafeArea: true,
+            builder: (context) {
+              return GamesCreateModalBottomSheet(
+                handleDailyClick: _handleDailyClick,
+                handleGTDClick: _handleGTDClick,
+              );
+            },
+          );
+        },
       ),
       drawer: const NavigationDrawerView(),
       body: SingleChildScrollView(

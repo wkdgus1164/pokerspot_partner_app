@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/daily/game_create_daily_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/gtd/game_create_gtd_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_sort/game_sort_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/ui.dart';
 
 enum CustomRouter {
@@ -15,6 +16,7 @@ enum CustomRouter {
   navigation('/navigation'),
   gameCreateDaily('/game-create-daily'),
   gameCreateGtd('/game-create-gtd'),
+  gameSort('/game-sort'),
   ;
 
   const CustomRouter(this.path);
@@ -63,6 +65,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.gameCreateGtd.path,
       builder: (context, state) => const GameCreateGTDPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.gameSort.path,
+      builder: (context, state) => const GameSortPage(),
     ),
   ],
 );

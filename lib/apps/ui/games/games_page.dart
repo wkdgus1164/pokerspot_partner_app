@@ -89,7 +89,9 @@ class _GamesPageState extends ConsumerState<GamesPage> {
     context.push(CustomRouter.gameCreateDaily.path);
   }
 
-  void _handleGTDClick() {}
+  void _handleGTDClick() {
+    context.push(CustomRouter.gameCreateGtd.path);
+  }
 }
 
 Widget _buildPlaceholder() {

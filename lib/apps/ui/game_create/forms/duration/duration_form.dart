@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/duration/duration_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/duration/duration_form_data.dart';
 
 class GameCreateDailyDurationFormView extends StatefulHookConsumerWidget {
   const GameCreateDailyDurationFormView({super.key});
@@ -26,9 +26,9 @@ class _GameCreateDailyDurationFormViewState
 
   void _handleChange(String? v) {
     if (v!.isEmpty) {
-      ref.read(gameCreateDailyDurationFormDataProvider.notifier).setDuration(0);
+      ref.read(gameCreateDurationFormDataProvider.notifier).setDuration(0);
     } else {
-      ref.read(gameCreateDailyDurationFormDataProvider.notifier).setDuration(
+      ref.read(gameCreateDurationFormDataProvider.notifier).setDuration(
             int.parse(v),
           );
     }

@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/game_create_daily_form.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/daily/providers/game_create_daily_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/gtd/game_create_gtd_form.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/gtd/providers/game_create_gtd_form_data.dart';
 import 'package:pokerspot_partner_app/common/caption/caption.dart';
 import 'package:pokerspot_partner_app/common/dialog/dialog_utils.dart';
 
-class GameCreateDailyPage extends StatefulHookConsumerWidget {
-  const GameCreateDailyPage({super.key});
+class GameCreateGTDPage extends StatefulHookConsumerWidget {
+  const GameCreateGTDPage({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _GameCreateDailyPageState();
+      _GameCreateGTDPageState();
 }
 
-class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
+class _GameCreateGTDPageState extends ConsumerState<GameCreateGTDPage> {
   @override
   Widget build(BuildContext context) {
     final model = ref.watch(gameCreateDailyFormDataProvider);
     final handleSubmit = !model.isValid ? null : () => _handleSubmit();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('데일리 토너먼트 추가')),
+      appBar: AppBar(title: const Text('GTD 토너먼트 추가')),
       body: Column(
         children: [
           Expanded(
@@ -31,7 +32,7 @@ class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    model.buyIn == 0 ? '토너먼트 이름' : '${model.buyIn}만 데일리 토너먼트',
+                    model.buyIn == 0 ? '토너먼트 이름' : '${model.buyIn}만 GTD 토너먼트',
                     style: textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: model.buyIn == 0 ? colorGrey80 : colorGrey20,
@@ -39,7 +40,7 @@ class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
                   ),
                   const SizedBox(height: 16),
                   const Caption(caption: '아래 조건을 설정하면 자동으로 이름이 생성돼요'),
-                  const GameCreateDailyForm(),
+                  const GameCreateGTDForm(),
                 ],
               ),
             ),
@@ -58,12 +59,12 @@ class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
   }
 
   _handleSubmit() {
-    final model = ref.read(gameCreateDailyFormDataProvider);
+    final model = ref.read(gameCreateGTDFormDataProvider);
 
     context.showCustomDialog(
-      title: '데일리 토너먼트 등록하기',
+      title: 'GTD 토너먼트 등록하기',
       content:
-          'buyIn: ${model.buyIn}\nminEntry: ${model.minEntry}\nmaxEntry: ${model.maxEntry}\nprize: ${model.prize}\nduration: ${model.duration}\nfirstGame: ${model.firstGame}\neveryDay: ${model.everyDay}',
+          'buyIn: ${model.buyIn}\nminEntry: ${model.minEntry}\nmaxEntry: ${model.maxEntry}\nprize: ${model.prize}\nduration: ${model.duration}\nminReward: ${model.minReward}\nfirstGame: ${model.firstGame}\neveryDay: ${model.everyDay}',
       confirmText: '확인',
     );
   }

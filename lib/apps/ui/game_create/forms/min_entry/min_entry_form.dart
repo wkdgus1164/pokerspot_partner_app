@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/constants/utils.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/min_entry/min_entry_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/min_entry/min_entry_form_data.dart';
 
 class GaneCreateMinEntryFormView extends StatefulHookConsumerWidget {
   const GaneCreateMinEntryFormView({super.key});

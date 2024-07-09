@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/components/p_switch.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/every_day/every_day_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/every_day/every_day_form_data.dart';
 
 class GameCreateFirstGameFormView extends StatefulHookConsumerWidget {
   const GameCreateFirstGameFormView({super.key});

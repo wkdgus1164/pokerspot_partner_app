@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/max_entry/max_entry_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/max_entry/max_entry_form_data.dart';
 
 class GameCreateDailyMaxEntryFormView extends StatefulHookConsumerWidget {
   const GameCreateDailyMaxEntryFormView({super.key});

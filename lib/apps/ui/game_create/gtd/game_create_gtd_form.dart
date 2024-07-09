@@ -5,10 +5,11 @@ import 'package:pokerspot_partner_app/apps/ui/game_create/forms/every_day/every_
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/first_game/first_game_form.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/max_entry/max_entry_form.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/min_entry/min_entry_form.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/min_reward/min_reward_form.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/prize/prize_form.dart';
 
-class GameCreateDailyForm extends StatelessWidget {
-  const GameCreateDailyForm({super.key});
+class GameCreateGTDForm extends StatelessWidget {
+  const GameCreateGTDForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,8 @@ class GameCreateDailyForm extends StatelessWidget {
         GameCreateDailyPrizeFormView(),
         SizedBox(height: 16),
         GameCreateDailyDurationFormView(),
+        SizedBox(height: 16),
+        GameCreateMinRewardFormView(),
         SizedBox(height: 16),
         GameCreateFirstGameFormView(),
         SizedBox(height: 16),

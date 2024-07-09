@@ -4,8 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'duration_form_data.g.dart';
 
 @riverpod
-class GameCreateDailyDurationFormData
-    extends _$GameCreateDailyDurationFormData {
+class GameCreateDurationFormData extends _$GameCreateDurationFormData {
   @override
   GameDurationModel build() {
     return GameDurationModel(duration: 0);

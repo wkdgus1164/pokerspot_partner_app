@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:logger/logger.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/buy_in/buy_in_form_data.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/duration/duration_form_data.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/every_day/every_day_form_data.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/first_game/first_game_form_data.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/game_name/game_name_form_data.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/max_entry/max_entry_form_data.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/min_entry/min_entry_form_data.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/prize/prize_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/buy_in/buy_in_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/duration/duration_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/every_day/every_day_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/first_game/first_game_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/game_name/game_name_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/max_entry/max_entry_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/min_entry/min_entry_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/forms/prize/prize_form_data.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'game_create_daily_form_data.freezed.dart';
@@ -43,7 +43,7 @@ class GameCreateDailyFormData extends _$GameCreateDailyFormData {
         ref.watch(gameCreateMaxEntryFormDataProvider).maxEntry;
     final prizeModel = ref.watch(gameCreatePrizeFormDataProvider).prize;
     final durationModel =
-        ref.watch(gameCreateDailyDurationFormDataProvider).duration;
+        ref.watch(gameCreateDurationFormDataProvider).duration;
     final everyDayModel =
         ref.watch(gameCreateEverydayFormDataProvider).everyDay;
     final firstGameModel =
@@ -72,7 +72,7 @@ class GameCreateDailyFormData extends _$GameCreateDailyFormData {
         ref.watch(gameCreateMaxEntryFormDataProvider).maxEntry;
     final prizeModel = ref.watch(gameCreatePrizeFormDataProvider).prize;
     final durationModel =
-        ref.watch(gameCreateDailyDurationFormDataProvider).duration;
+        ref.watch(gameCreateDurationFormDataProvider).duration;
     final everyDayModel =
         ref.watch(gameCreateEverydayFormDataProvider).everyDay;
     final firstGameModel =

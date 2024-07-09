@@ -7,7 +7,7 @@ part of 'game_create_daily_form_data.dart';
 // **************************************************************************
 
 String _$gameCreateDailyFormDataHash() =>
-    r'16e8ec1dc4cca3d12130ba00a924d633b1a80e9a';
+    r'f40b862c0288899cac3164bfa01be148b4c83b14';
 
 /// See also [GameCreateDailyFormData].
 @ProviderFor(GameCreateDailyFormData)

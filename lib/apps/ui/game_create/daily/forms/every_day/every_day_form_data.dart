@@ -4,8 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'every_day_form_data.g.dart';
 
 @riverpod
-class GameCreateDailyEverydayFormData
-    extends _$GameCreateDailyEverydayFormData {
+class GameCreateEverydayFormData extends _$GameCreateEverydayFormData {
   @override
   GameEveryDayModel build() {
     return GameEveryDayModel(everyDay: false);

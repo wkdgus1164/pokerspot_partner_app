@@ -5,8 +5,8 @@ import 'package:pokerspot_partner_app/apps/global/constants/utils.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/min_entry/min_entry_form_data.dart';
 
-class GaneCreateDailyMinEntryFormView extends StatefulHookConsumerWidget {
-  const GaneCreateDailyMinEntryFormView({super.key});
+class GaneCreateMinEntryFormView extends StatefulHookConsumerWidget {
+  const GaneCreateMinEntryFormView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -14,7 +14,7 @@ class GaneCreateDailyMinEntryFormView extends StatefulHookConsumerWidget {
 }
 
 class _GaneCreateDailyMinEntryFormViewState
-    extends ConsumerState<GaneCreateDailyMinEntryFormView> {
+    extends ConsumerState<GaneCreateMinEntryFormView> {
   @override
   Widget build(BuildContext context) {
     return PTextField(
@@ -38,9 +38,9 @@ class _GaneCreateDailyMinEntryFormViewState
 
   void _handleChange(String? v) {
     if (v!.isEmpty) {
-      ref.read(gameCreateDailyMinEntryFormDataProvider.notifier).setMinEntry(0);
+      ref.read(gameCreateMinEntryFormDataProvider.notifier).setMinEntry(0);
     } else {
-      ref.read(gameCreateDailyMinEntryFormDataProvider.notifier).setMinEntry(
+      ref.read(gameCreateMinEntryFormDataProvider.notifier).setMinEntry(
             int.parse(v),
           );
     }

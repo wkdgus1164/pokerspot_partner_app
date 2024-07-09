@@ -6,22 +6,22 @@ part of 'prize_form_data.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$gameCreateDailyPrizeFormDataHash() =>
-    r'fdcc81860900728634ba4db1bc6026c442fdc00b';
+String _$gameCreatePrizeFormDataHash() =>
+    r'2a2f6536808dcd544f072e4fb3296ed2713bf5a0';
 
-/// See also [GameCreateDailyPrizeFormData].
-@ProviderFor(GameCreateDailyPrizeFormData)
-final gameCreateDailyPrizeFormDataProvider = AutoDisposeNotifierProvider<
-    GameCreateDailyPrizeFormData, GamePrizeModel>.internal(
-  GameCreateDailyPrizeFormData.new,
-  name: r'gameCreateDailyPrizeFormDataProvider',
+/// See also [GameCreatePrizeFormData].
+@ProviderFor(GameCreatePrizeFormData)
+final gameCreatePrizeFormDataProvider = AutoDisposeNotifierProvider<
+    GameCreatePrizeFormData, GamePrizeModel>.internal(
+  GameCreatePrizeFormData.new,
+  name: r'gameCreatePrizeFormDataProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$gameCreateDailyPrizeFormDataHash,
+      : _$gameCreatePrizeFormDataHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$GameCreateDailyPrizeFormData = AutoDisposeNotifier<GamePrizeModel>;
+typedef _$GameCreatePrizeFormData = AutoDisposeNotifier<GamePrizeModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

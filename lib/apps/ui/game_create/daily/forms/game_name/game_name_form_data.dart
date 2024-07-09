@@ -4,8 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'game_name_form_data.g.dart';
 
 @riverpod
-class GameCreateDailyGameNameFormData
-    extends _$GameCreateDailyGameNameFormData {
+class GameCreateGameNameFormData extends _$GameCreateGameNameFormData {
   @override
   GameNameModel build() {
     return GameNameModel(gameName: '');

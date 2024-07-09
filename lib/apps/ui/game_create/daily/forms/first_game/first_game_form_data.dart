@@ -4,8 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'first_game_form_data.g.dart';
 
 @riverpod
-class GameCreateDailyFirstGameFormData
-    extends _$GameCreateDailyFirstGameFormData {
+class GameCreateFirstGameFormData extends _$GameCreateFirstGameFormData {
   @override
   GameFirstGameModel build() {
     return GameFirstGameModel(firstGame: false);

@@ -38,9 +38,9 @@ class _GameCreateDailyPrizeFormViewState
 
   void _handleChange(String? v) {
     if (v!.isEmpty) {
-      ref.read(gameCreateDailyPrizeFormDataProvider.notifier).setPrize(0);
+      ref.read(gameCreatePrizeFormDataProvider.notifier).setPrize(0);
     } else {
-      ref.read(gameCreateDailyPrizeFormDataProvider.notifier).setPrize(
+      ref.read(gameCreatePrizeFormDataProvider.notifier).setPrize(
             int.parse(v),
           );
     }

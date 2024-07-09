@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'buy_in_form_data.g.dart';
 
 @riverpod
-class GameCreateDailyBuyInFormData extends _$GameCreateDailyBuyInFormData {
+class GameCreateBuyInFormData extends _$GameCreateBuyInFormData {
   @override
   GameBuyInModel build() {
     return GameBuyInModel(buyIn: 0);

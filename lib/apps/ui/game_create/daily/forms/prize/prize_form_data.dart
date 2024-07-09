@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'prize_form_data.g.dart';
 
 @riverpod
-class GameCreateDailyPrizeFormData extends _$GameCreateDailyPrizeFormData {
+class GameCreatePrizeFormData extends _$GameCreatePrizeFormData {
   @override
   GamePrizeModel build() {
     return GamePrizeModel(prize: 0);

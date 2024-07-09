@@ -26,9 +26,9 @@ class _GameCreateDailyMaxEntryFormViewState
 
   void _handleChange(String? v) {
     if (v!.isEmpty) {
-      ref.read(gameCreateDailyMaxEntryFormDataProvider.notifier).setMaxEntry(0);
+      ref.read(gameCreateMaxEntryFormDataProvider.notifier).setMaxEntry(0);
     } else {
-      ref.read(gameCreateDailyMaxEntryFormDataProvider.notifier).setMaxEntry(
+      ref.read(gameCreateMaxEntryFormDataProvider.notifier).setMaxEntry(
             int.parse(v),
           );
     }

@@ -35,19 +35,19 @@ class GameCreateDailyFormData extends _$GameCreateDailyFormData {
   @override
   GameCreateDailyFormModel build() {
     final gameNameModel =
-        ref.watch(gameCreateDailyGameNameFormDataProvider).gameName;
-    final buyInModel = ref.watch(gameCreateDailyBuyInFormDataProvider).buyIn;
+        ref.watch(gameCreateGameNameFormDataProvider).gameName;
+    final buyInModel = ref.watch(gameCreateBuyInFormDataProvider).buyIn;
     final minEntryModel =
-        ref.watch(gameCreateDailyMinEntryFormDataProvider).minEntry;
+        ref.watch(gameCreateMinEntryFormDataProvider).minEntry;
     final maxEntryModel =
-        ref.watch(gameCreateDailyMaxEntryFormDataProvider).maxEntry;
-    final prizeModel = ref.watch(gameCreateDailyPrizeFormDataProvider).prize;
+        ref.watch(gameCreateMaxEntryFormDataProvider).maxEntry;
+    final prizeModel = ref.watch(gameCreatePrizeFormDataProvider).prize;
     final durationModel =
         ref.watch(gameCreateDailyDurationFormDataProvider).duration;
     final everyDayModel =
-        ref.watch(gameCreateDailyEverydayFormDataProvider).everyDay;
+        ref.watch(gameCreateEverydayFormDataProvider).everyDay;
     final firstGameModel =
-        ref.watch(gameCreateDailyFirstGameFormDataProvider).firstGame;
+        ref.watch(gameCreateFirstGameFormDataProvider).firstGame;
 
     return GameCreateDailyFormModel(
       gameName: gameNameModel,
@@ -64,19 +64,19 @@ class GameCreateDailyFormData extends _$GameCreateDailyFormData {
 
   createGame() {
     final gameNameModel =
-        ref.watch(gameCreateDailyGameNameFormDataProvider).gameName;
-    final buyInModel = ref.watch(gameCreateDailyBuyInFormDataProvider).buyIn;
+        ref.watch(gameCreateGameNameFormDataProvider).gameName;
+    final buyInModel = ref.watch(gameCreateBuyInFormDataProvider).buyIn;
     final minEntryModel =
-        ref.watch(gameCreateDailyMinEntryFormDataProvider).minEntry;
+        ref.watch(gameCreateMinEntryFormDataProvider).minEntry;
     final maxEntryModel =
-        ref.watch(gameCreateDailyMaxEntryFormDataProvider).maxEntry;
-    final prizeModel = ref.watch(gameCreateDailyPrizeFormDataProvider).prize;
+        ref.watch(gameCreateMaxEntryFormDataProvider).maxEntry;
+    final prizeModel = ref.watch(gameCreatePrizeFormDataProvider).prize;
     final durationModel =
         ref.watch(gameCreateDailyDurationFormDataProvider).duration;
     final everyDayModel =
-        ref.watch(gameCreateDailyEverydayFormDataProvider).everyDay;
+        ref.watch(gameCreateEverydayFormDataProvider).everyDay;
     final firstGameModel =
-        ref.watch(gameCreateDailyFirstGameFormDataProvider).firstGame;
+        ref.watch(gameCreateFirstGameFormDataProvider).firstGame;
     Logger().i(
       'createGame: $gameNameModel, $buyInModel, $minEntryModel, $maxEntryModel, $prizeModel, $durationModel, $everyDayModel, $firstGameModel',
     );

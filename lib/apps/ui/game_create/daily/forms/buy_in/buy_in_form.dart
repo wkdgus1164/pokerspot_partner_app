@@ -6,8 +6,8 @@ import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/buy_in/buy_in_form_data.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/game_name/game_name_form_data.dart';
 
-class GameCreateDailyBuyinFormView extends StatefulHookConsumerWidget {
-  const GameCreateDailyBuyinFormView({super.key});
+class GameCreateBuyinFormView extends StatefulHookConsumerWidget {
+  const GameCreateBuyinFormView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -15,7 +15,7 @@ class GameCreateDailyBuyinFormView extends StatefulHookConsumerWidget {
 }
 
 class _GameCreateDailyBuyinFormViewState
-    extends ConsumerState<GameCreateDailyBuyinFormView> {
+    extends ConsumerState<GameCreateBuyinFormView> {
   @override
   Widget build(BuildContext context) {
     return PTextField(
@@ -40,15 +40,15 @@ class _GameCreateDailyBuyinFormViewState
 
   void _handleChange(String? v) {
     if (v!.isEmpty) {
-      ref.read(gameCreateDailyBuyInFormDataProvider.notifier).setBuyIn(0);
-      ref.read(gameCreateDailyGameNameFormDataProvider.notifier).setGameName(
+      ref.read(gameCreateBuyInFormDataProvider.notifier).setBuyIn(0);
+      ref.read(gameCreateGameNameFormDataProvider.notifier).setGameName(
             '',
           );
     } else {
-      ref.read(gameCreateDailyBuyInFormDataProvider.notifier).setBuyIn(
+      ref.read(gameCreateBuyInFormDataProvider.notifier).setBuyIn(
             int.parse(v),
           );
-      ref.read(gameCreateDailyGameNameFormDataProvider.notifier).setGameName(
+      ref.read(gameCreateGameNameFormDataProvider.notifier).setGameName(
             '${int.parse(v)}만 데일리 토너먼트',
           );
     }

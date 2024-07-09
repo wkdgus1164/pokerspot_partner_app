@@ -4,8 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'max_entry_form_data.g.dart';
 
 @riverpod
-class GameCreateDailyMaxEntryFormData
-    extends _$GameCreateDailyMaxEntryFormData {
+class GameCreateMaxEntryFormData extends _$GameCreateMaxEntryFormData {
   @override
   GameMaxEntryModel build() {
     return GameMaxEntryModel(maxEntry: 0);

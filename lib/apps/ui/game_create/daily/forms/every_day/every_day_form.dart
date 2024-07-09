@@ -15,7 +15,7 @@ class _GameCreateEveryDayFormViewState
     extends ConsumerState<GameCreateEveryDayFormView> {
   @override
   Widget build(BuildContext context) {
-    final data = ref.watch(gameCreateDailyFirstGameFormDataProvider).firstGame;
+    final data = ref.watch(gameCreateFirstGameFormDataProvider).firstGame;
 
     return PSwitch(
       isOn: data,
@@ -25,6 +25,6 @@ class _GameCreateEveryDayFormViewState
   }
 
   void _handleChange(bool v) {
-    ref.read(gameCreateDailyFirstGameFormDataProvider.notifier).setFirstGame(v);
+    ref.read(gameCreateFirstGameFormDataProvider.notifier).setFirstGame(v);
   }
 }

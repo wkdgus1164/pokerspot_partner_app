@@ -18,8 +18,7 @@ class GameCreateDailyPage extends StatefulHookConsumerWidget {
 class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
   @override
   Widget build(BuildContext context) {
-    final gameName =
-        ref.watch(gameCreateDailyGameNameFormDataProvider).gameName;
+    final gameName = ref.watch(gameCreateGameNameFormDataProvider).gameName;
     Logger().i('gameName: $gameName');
 
     final model = ref.watch(gameCreateDailyFormDataProvider);

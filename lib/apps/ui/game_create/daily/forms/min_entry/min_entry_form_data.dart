@@ -4,8 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'min_entry_form_data.g.dart';
 
 @riverpod
-class GameCreateDailyMinEntryFormData
-    extends _$GameCreateDailyMinEntryFormData {
+class GameCreateMinEntryFormData extends _$GameCreateMinEntryFormData {
   @override
   GameMinEntryModel build() {
     return GameMinEntryModel(minEntry: 0);

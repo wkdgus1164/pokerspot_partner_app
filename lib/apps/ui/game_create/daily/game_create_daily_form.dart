@@ -23,9 +23,9 @@ class _GameCreateDailyFormState extends ConsumerState<GameCreateDailyForm> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SizedBox(height: 16),
-        GameCreateDailyBuyinFormView(),
+        GameCreateBuyinFormView(),
         SizedBox(height: 16),
-        GaneCreateDailyMinEntryFormView(),
+        GaneCreateMinEntryFormView(),
         SizedBox(height: 16),
         GameCreateDailyMaxEntryFormView(),
         SizedBox(height: 16),

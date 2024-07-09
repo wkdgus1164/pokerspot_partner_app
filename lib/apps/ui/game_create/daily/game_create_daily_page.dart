@@ -4,6 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/game_name/game_name_form_data.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/daily/game_create_daily_form.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/daily/game_create_daily_form_data.dart';
 import 'package:pokerspot_partner_app/common/caption/caption.dart';
 
 class GameCreateDailyPage extends StatefulHookConsumerWidget {
@@ -20,6 +21,9 @@ class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
     final gameName =
         ref.watch(gameCreateDailyGameNameFormDataProvider).gameName;
     Logger().i('gameName: $gameName');
+
+    final model = ref.watch(gameCreateDailyFormDataProvider);
+    final handleSubmit = !model.isValid ? null : () => _handleSubmit();
 
     return Scaffold(
       appBar: AppBar(title: const Text('데일리 토너먼트 추가')),
@@ -49,12 +53,16 @@ class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             child: FilledButton(
-              onPressed: () {},
+              onPressed: handleSubmit,
               child: const Text('추가하기'),
             ),
           ),
         ],
       ),
     );
+  }
+
+  _handleSubmit() {
+    ref.read(gameCreateDailyFormDataProvider.notifier).createGame();
   }
 }

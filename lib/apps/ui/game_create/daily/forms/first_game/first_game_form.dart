@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/components/p_switch.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/first_game/first_game_form_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_create/daily/forms/every_day/every_day_form_data.dart';
 
 class GameCreateFirstGameFormView extends StatefulHookConsumerWidget {
   const GameCreateFirstGameFormView({super.key});
@@ -15,7 +15,7 @@ class _GameCreateFirstGameFormViewState
     extends ConsumerState<GameCreateFirstGameFormView> {
   @override
   Widget build(BuildContext context) {
-    final data = ref.watch(gameCreateDailyFirstGameFormDataProvider).firstGame;
+    final data = ref.watch(gameCreateDailyEverydayFormDataProvider).everyDay;
 
     return PSwitch(
       isOn: data,
@@ -25,6 +25,6 @@ class _GameCreateFirstGameFormViewState
   }
 
   void _handleChange(bool v) {
-    ref.read(gameCreateDailyFirstGameFormDataProvider.notifier).setFirstGame(v);
+    ref.read(gameCreateDailyEverydayFormDataProvider.notifier).setEveryDay(v);
   }
 }

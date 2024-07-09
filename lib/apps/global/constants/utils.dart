@@ -10,7 +10,7 @@ class Utils {
       return newValue;
     }
     final int? value = int.tryParse(newValue.text);
-    if (value != null && value <= max) {
+    if (value != null && value > 0 && value <= max) {
       return newValue;
     }
     return oldValue;

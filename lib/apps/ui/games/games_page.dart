@@ -79,7 +79,7 @@ class _GamesPageState extends ConsumerState<GamesPage> {
                   isFirstGame: true,
                   gameType: GameType.DAILY,
                   isDailyGame: true,
-                  handleEditButtonClick: () {},
+                  handleUpdateButtonClick: _handleUpdateButtonClick,
                   toggleNextGameSwitch: (bool state) {},
                   toggleRealtimeSwitch: (bool state) {},
                 );
@@ -98,6 +98,10 @@ class _GamesPageState extends ConsumerState<GamesPage> {
 
   void _handleGTDClick() {
     context.push(CustomRouter.gameCreateGtd.path);
+  }
+
+  void _handleUpdateButtonClick() {
+    context.push(CustomRouter.gameUpdateDaily.path);
   }
 }
 

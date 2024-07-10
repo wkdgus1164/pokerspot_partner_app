@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/daily/game_create_daily_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/gtd/game_create_gtd_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_sort/game_sort_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/game_update/daily/game_update_daily_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/ui.dart';
 
 enum CustomRouter {
@@ -17,6 +18,7 @@ enum CustomRouter {
   gameCreateDaily('/game-create-daily'),
   gameCreateGtd('/game-create-gtd'),
   gameSort('/game-sort'),
+  gameUpdateDaily('/game-update-daily'),
   ;
 
   const CustomRouter(this.path);
@@ -69,6 +71,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.gameSort.path,
       builder: (context, state) => const GameSortPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.gameUpdateDaily.path,
+      builder: (context, state) => const GameUpdateDailyPage(),
     ),
   ],
 );

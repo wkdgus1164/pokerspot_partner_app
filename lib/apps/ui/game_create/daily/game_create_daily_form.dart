@@ -25,7 +25,7 @@ class GameCreateDailyForm extends StatelessWidget {
         SizedBox(height: 16),
         GameCreateDailyPrizeFormView(),
         SizedBox(height: 16),
-        GameCreateDailyDurationFormView(),
+        GameCreateDurationFormView(),
         SizedBox(height: 16),
         GameCreateFirstGameFormView(),
         SizedBox(height: 16),

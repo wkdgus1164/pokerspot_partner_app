@@ -21,7 +21,7 @@ class GameCard extends StatelessWidget {
     required this.isDailyGame,
     this.toggleRealtimeSwitch,
     this.toggleNextGameSwitch,
-    required this.handleEditButtonClick,
+    required this.handleUpdateButtonClick,
   });
 
   final String gameTitle;
@@ -37,7 +37,7 @@ class GameCard extends StatelessWidget {
   final bool isDailyGame;
   final Function(bool)? toggleRealtimeSwitch;
   final Function(bool)? toggleNextGameSwitch;
-  final Function() handleEditButtonClick;
+  final Function() handleUpdateButtonClick;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class GameCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 IconButton(
-                  onPressed: handleEditButtonClick,
+                  onPressed: handleUpdateButtonClick,
                   icon: const Icon(
                     Icons.edit_rounded,
                     color: colorGrey60,

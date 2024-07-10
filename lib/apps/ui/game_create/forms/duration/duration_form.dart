@@ -3,16 +3,16 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/duration/duration_form_data.dart';
 
-class GameCreateDailyDurationFormView extends StatefulHookConsumerWidget {
-  const GameCreateDailyDurationFormView({super.key});
+class GameCreateDurationFormView extends StatefulHookConsumerWidget {
+  const GameCreateDurationFormView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _GameCreateDailyDurationFormViewState();
+      _GameCreateDurationFormViewState();
 }
 
-class _GameCreateDailyDurationFormViewState
-    extends ConsumerState<GameCreateDailyDurationFormView> {
+class _GameCreateDurationFormViewState
+    extends ConsumerState<GameCreateDurationFormView> {
   @override
   Widget build(BuildContext context) {
     return PTextField(

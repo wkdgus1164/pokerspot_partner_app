@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:logger/logger.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/buy_in/buy_in_form_data.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/duration/duration_form_data.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/every_day/every_day_form_data.dart';
@@ -52,6 +53,9 @@ class GameCreateGTDFormData extends _$GameCreateGTDFormData {
     final firstGameModel =
         ref.watch(gameCreateFirstGameFormDataProvider).firstGame;
 
+    Logger().i(
+        '$gameNameModel $buyInModel $minEntryModel $maxEntryModel $prizeModel $durationModel $minRewardModel $everyDayModel $firstGameModel');
+
     return GameCreateGTDFormModel(
       gameName: gameNameModel,
       buyIn: buyInModel,
@@ -62,7 +66,7 @@ class GameCreateGTDFormData extends _$GameCreateGTDFormData {
       minReward: minRewardModel,
       everyDay: everyDayModel,
       firstGame: firstGameModel,
-      isValid: true,
+      isValid: buyInModel > 0,
     );
   }
 }

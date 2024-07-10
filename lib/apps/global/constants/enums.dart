@@ -1,9 +1,9 @@
 // ignore_for_file: constant_identifier_names
 
 enum GameType {
-  DAILY('데일리 토너'),
-  SEED('시드권 토너'),
-  GTD('GTD 토너'),
+  DAILY('데일리 토너먼트'),
+  SEED('시드권 토너먼트'),
+  GTD('GTD 토너먼트'),
   ALL('전체'),
   ;
 

@@ -49,6 +49,9 @@ class GameCreateDailyFormData extends _$GameCreateDailyFormData {
     final firstGameModel =
         ref.watch(gameCreateFirstGameFormDataProvider).firstGame;
 
+    Logger().i(
+        '$gameNameModel $buyInModel $minEntryModel $maxEntryModel $prizeModel $durationModel $everyDayModel $firstGameModel');
+
     return GameCreateDailyFormModel(
       gameName: gameNameModel,
       buyIn: buyInModel,
@@ -59,26 +62,6 @@ class GameCreateDailyFormData extends _$GameCreateDailyFormData {
       everyDay: everyDayModel,
       firstGame: firstGameModel,
       isValid: buyInModel > 0,
-    );
-  }
-
-  createGame() {
-    final gameNameModel =
-        ref.watch(gameCreateGameNameFormDataProvider).gameName;
-    final buyInModel = ref.watch(gameCreateBuyInFormDataProvider).buyIn;
-    final minEntryModel =
-        ref.watch(gameCreateMinEntryFormDataProvider).minEntry;
-    final maxEntryModel =
-        ref.watch(gameCreateMaxEntryFormDataProvider).maxEntry;
-    final prizeModel = ref.watch(gameCreatePrizeFormDataProvider).prize;
-    final durationModel =
-        ref.watch(gameCreateDurationFormDataProvider).duration;
-    final everyDayModel =
-        ref.watch(gameCreateEverydayFormDataProvider).everyDay;
-    final firstGameModel =
-        ref.watch(gameCreateFirstGameFormDataProvider).firstGame;
-    Logger().i(
-      'createGame: $gameNameModel, $buyInModel, $minEntryModel, $maxEntryModel, $prizeModel, $durationModel, $everyDayModel, $firstGameModel',
     );
   }
 }

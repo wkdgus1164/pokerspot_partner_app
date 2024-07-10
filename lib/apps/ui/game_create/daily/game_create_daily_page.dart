@@ -62,8 +62,14 @@ class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
 
     context.showCustomDialog(
       title: '데일리 토너먼트 등록하기',
-      content:
-          'buyIn: ${model.buyIn}\nminEntry: ${model.minEntry}\nmaxEntry: ${model.maxEntry}\nprize: ${model.prize}\nduration: ${model.duration}\nfirstGame: ${model.firstGame}\neveryDay: ${model.everyDay}',
+      content: '''
+buyIn: ${model.buyIn}\n
+minEntry: ${model.minEntry}\n
+maxEntry: ${model.maxEntry}\n
+prize: ${model.prize}\n
+duration: ${model.duration}\n
+firstGame: ${model.firstGame}\n
+everyDay: ${model.everyDay}''',
       confirmText: '확인',
     );
   }

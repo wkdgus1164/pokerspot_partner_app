@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pokerspot_partner_app/apps/global/constants/enums.dart';
 import 'package:pokerspot_partner_app/apps/global/constants/utils.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/buy_in/buy_in_form_data.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/game_name/game_name_form_data.dart';
 
 class GameCreateBuyinFormView extends StatefulHookConsumerWidget {
-  const GameCreateBuyinFormView({super.key});
+  const GameCreateBuyinFormView({
+    super.key,
+    required this.gameType,
+  });
+
+  final GameType gameType;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -16,6 +22,8 @@ class GameCreateBuyinFormView extends StatefulHookConsumerWidget {
 
 class _GameCreateDailyBuyinFormViewState
     extends ConsumerState<GameCreateBuyinFormView> {
+  GameType get _gameType => widget.gameType;
+
   @override
   Widget build(BuildContext context) {
     return PTextField(
@@ -49,7 +57,7 @@ class _GameCreateDailyBuyinFormViewState
             int.parse(v),
           );
       ref.read(gameCreateGameNameFormDataProvider.notifier).setGameName(
-            '${int.parse(v)}만 데일리 토너먼트',
+            '${int.parse(v)}만 ${_gameType.kr}',
           );
     }
   }

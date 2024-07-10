@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/min_reward/min_reward_form_data.dart';
@@ -22,9 +21,6 @@ class _GameCreateMinRewardFormViewState
       hintText: '최소 상금을 입력해주세요',
       handleChange: _handleChange,
       endText: '만',
-      inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp(r'^\d+')),
-      ],
     );
   }
 

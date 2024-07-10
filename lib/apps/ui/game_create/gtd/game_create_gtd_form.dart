@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/apps/global/constants/enums.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/buy_in/buy_in_form.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/duration/duration_form.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/forms/every_day/every_day_form.dart';
@@ -17,7 +18,7 @@ class GameCreateGTDForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SizedBox(height: 16),
-        GameCreateBuyinFormView(),
+        GameCreateBuyinFormView(gameType: GameType.GTD),
         SizedBox(height: 16),
         GaneCreateMinEntryFormView(),
         SizedBox(height: 16),

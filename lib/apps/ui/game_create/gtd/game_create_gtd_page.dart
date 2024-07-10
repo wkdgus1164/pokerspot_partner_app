@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/providers/game_create_daily_form_data.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/gtd/game_create_gtd_form.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_create/gtd/providers/game_create_gtd_form_data.dart';
 import 'package:pokerspot_partner_app/common/caption/caption.dart';
@@ -18,7 +17,7 @@ class GameCreateGTDPage extends StatefulHookConsumerWidget {
 class _GameCreateGTDPageState extends ConsumerState<GameCreateGTDPage> {
   @override
   Widget build(BuildContext context) {
-    final model = ref.watch(gameCreateDailyFormDataProvider);
+    final model = ref.watch(gameCreateGTDFormDataProvider);
     final handleSubmit = !model.isValid ? null : () => _handleSubmit();
 
     return Scaffold(
@@ -63,8 +62,15 @@ class _GameCreateGTDPageState extends ConsumerState<GameCreateGTDPage> {
 
     context.showCustomDialog(
       title: 'GTD 토너먼트 등록하기',
-      content:
-          'buyIn: ${model.buyIn}\nminEntry: ${model.minEntry}\nmaxEntry: ${model.maxEntry}\nprize: ${model.prize}\nduration: ${model.duration}\nminReward: ${model.minReward}\nfirstGame: ${model.firstGame}\neveryDay: ${model.everyDay}',
+      content: '''
+buyIn: ${model.buyIn}\n
+minEntry: ${model.minEntry}\n
+maxEntry: ${model.maxEntry}\n
+prize: ${model.prize}\n
+duration: ${model.duration}\n
+minReward: ${model.minReward}\n
+firstGame: ${model.firstGame}\n
+everyDay: ${model.everyDay}''',
       confirmText: '확인',
     );
   }

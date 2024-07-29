@@ -58,6 +58,7 @@ dependencies:
   flutter_inappwebview: ^5.8.0
   iamport_flutter: ^0.10.19
   fl_chart: ^0.68.0
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_lints: ^4.0.0

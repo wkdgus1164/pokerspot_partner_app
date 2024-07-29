@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pokerspot_partner_app/apps/global/routes/routes.dart';
 import 'package:pokerspot_partner_app/apps/ui/store_business_info/store_business_info_vac.dart';
 
 class StoreBusinessInfoPage extends StatefulHookConsumerWidget {
@@ -19,7 +21,9 @@ class _StoreBusinessInfoPageState extends ConsumerState<StoreBusinessInfoPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.edit_rounded),
-            onPressed: () {},
+            onPressed: () {
+              context.push(CustomRouter.storeBusinessInfoEdit.path);
+            },
           ),
         ],
       ),

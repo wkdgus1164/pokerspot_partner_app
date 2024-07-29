@@ -5,6 +5,7 @@ import 'package:pokerspot_partner_app/apps/ui/game_create/daily/game_create_dail
 import 'package:pokerspot_partner_app/apps/ui/game_create/gtd/game_create_gtd_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_sort/game_sort_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game_update/daily/game_update_daily_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/store_business_info/store_business_info_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/ui.dart';
 
 enum CustomRouter {
@@ -19,6 +20,7 @@ enum CustomRouter {
   gameCreateGtd('/game-create-gtd'),
   gameSort('/game-sort'),
   gameUpdateDaily('/game-update-daily'),
+  storeBusinessInfo('/store-business-info'),
   ;
 
   const CustomRouter(this.path);
@@ -75,6 +77,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.gameUpdateDaily.path,
       builder: (context, state) => const GameUpdateDailyPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.storeBusinessInfo.path,
+      builder: (context, state) => const StoreBusinessInfoPage(),
     ),
   ],
 );

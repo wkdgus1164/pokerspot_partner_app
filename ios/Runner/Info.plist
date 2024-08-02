@@ -36,5 +36,11 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>갤러리에서 이미지 자료를 가져오기 위해 갤러리 접근 권한이 필요해요.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>갤러리에서 이미지 자료를 가져오기 위해 갤러리 접근 권한이 필요해요.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>갤러리에서 이미지 자료를 가져오기 위해 갤러리 접근 권한이 필요해요.</string>
 </dict>
 </plist>

@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'image_picker_service.dart';
+part of 'edit_page_data.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$imagePickerServiceHash() =>
-    r'b8d1072cb8feb39b26e33949e3f9b5b1b320fbd8';
+String _$businessInfoEditDataHash() =>
+    r'f12ace46e84e8efca61f1b9b576f2377f9ca0d23';
 
-/// See also [ImagePickerService].
-@ProviderFor(ImagePickerService)
-final imagePickerServiceProvider =
-    AutoDisposeNotifierProvider<ImagePickerService, ImagePickerModel>.internal(
-  ImagePickerService.new,
-  name: r'imagePickerServiceProvider',
+/// See also [BusinessInfoEditData].
+@ProviderFor(BusinessInfoEditData)
+final businessInfoEditDataProvider = AutoDisposeNotifierProvider<
+    BusinessInfoEditData, BusinessInfoEditModel>.internal(
+  BusinessInfoEditData.new,
+  name: r'businessInfoEditDataProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$imagePickerServiceHash,
+      : _$businessInfoEditDataHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ImagePickerService = AutoDisposeNotifier<ImagePickerModel>;
+typedef _$BusinessInfoEditData = AutoDisposeNotifier<BusinessInfoEditModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

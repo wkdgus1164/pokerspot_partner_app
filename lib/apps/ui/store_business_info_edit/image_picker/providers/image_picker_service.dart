@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/providers/edit_page_data.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -26,6 +27,17 @@ class ImagePickerService extends _$ImagePickerService {
 
     if (pickedFile != null) {
       state = state.copyWith(image: File(pickedFile.path));
+      ref.read(businessInfoEditDataProvider.notifier).validate();
+    }
+  }
+
+  Future<void> shotCamera() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.camera);
+
+    if (pickedFile != null) {
+      state = state.copyWith(image: File(pickedFile.path));
+      ref.read(businessInfoEditDataProvider.notifier).validate();
     }
   }
 }

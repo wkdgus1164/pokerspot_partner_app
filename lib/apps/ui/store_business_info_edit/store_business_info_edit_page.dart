@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/image_picker/image_picker_view.dart';
+import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/providers/edit_page_data.dart';
 
 class StoreBusinessInfoEditPage extends StatefulHookConsumerWidget {
   const StoreBusinessInfoEditPage({super.key});
@@ -15,6 +16,10 @@ class _StoreBusinessInfoEditPageState
     extends ConsumerState<StoreBusinessInfoEditPage> {
   @override
   Widget build(BuildContext context) {
+    final isValid = ref.watch(businessInfoEditDataProvider).isValid;
+
+    final handleValidClick = isValid ? () {} : null;
+
     return Scaffold(
       appBar: AppBar(title: const Text('사업자 정보 수정')),
       body: Column(
@@ -49,7 +54,7 @@ class _StoreBusinessInfoEditPageState
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             child: FilledButton(
-              onPressed: () {},
+              onPressed: handleValidClick,
               child: const Text('변경 신청하기'),
             ),
           ),

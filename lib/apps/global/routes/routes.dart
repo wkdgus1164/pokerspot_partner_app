@@ -1,10 +1,10 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/daily/game_create_daily_page.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_create/gtd/game_create_gtd_page.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_sort/game_sort_page.dart';
-import 'package:pokerspot_partner_app/apps/ui/game_update/daily/game_update_daily_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/game/create/daily/create_daily_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/game/create/gtd/create_gtd_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/game/sort/sort_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/game/update/daily/update_daily_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store_business_info/store_business_info_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/store_business_info_edit_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/ui.dart';

@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/routes/routes.dart';
-import 'package:pokerspot_partner_app/apps/ui/store_business_info/store_business_info_vac.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/biz/biz_vac.dart';
 
-class StoreBusinessInfoPage extends StatefulHookConsumerWidget {
-  const StoreBusinessInfoPage({super.key});
+class StoreBizPage extends StatefulHookConsumerWidget {
+  const StoreBizPage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _StoreBusinessInfoPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _StoreBizPageState();
 }
 
-class _StoreBusinessInfoPageState extends ConsumerState<StoreBusinessInfoPage> {
+class _StoreBizPageState extends ConsumerState<StoreBizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +26,7 @@ class _StoreBusinessInfoPageState extends ConsumerState<StoreBusinessInfoPage> {
           ),
         ],
       ),
-      body: const StoreBusinessInfoVac(
+      body: const StoreBizVac(
         businessName: '포커스팟 홀덤펍',
         ceoName: '홍길동',
         address: '서울특별시 강남구 역삼동 123-456',

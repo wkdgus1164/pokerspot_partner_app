@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/providers/edit_page_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/providers/edit_page_data.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';

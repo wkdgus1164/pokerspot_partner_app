@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/image_picker/image_picker_view.dart';
-import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/providers/edit_page_data.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/image_picker/image_picker_view.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/providers/edit_page_data.dart';
 
-class StoreBusinessInfoEditPage extends StatefulHookConsumerWidget {
-  const StoreBusinessInfoEditPage({super.key});
+class StoreBizEditPage extends StatefulHookConsumerWidget {
+  const StoreBizEditPage({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _StoreBusinessInfoEditPageState();
+      _StoreBizEditPageState();
 }
 
-class _StoreBusinessInfoEditPageState
-    extends ConsumerState<StoreBusinessInfoEditPage> {
+class _StoreBizEditPageState extends ConsumerState<StoreBizEditPage> {
   @override
   Widget build(BuildContext context) {
     final isValid = ref.watch(businessInfoEditDataProvider).isValid;

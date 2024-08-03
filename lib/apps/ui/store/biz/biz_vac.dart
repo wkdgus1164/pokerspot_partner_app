@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 
-class StoreBusinessInfoVac extends StatelessWidget {
-  const StoreBusinessInfoVac({
+class StoreBizVac extends StatelessWidget {
+  const StoreBizVac({
     super.key,
     required this.businessName,
     required this.ceoName,

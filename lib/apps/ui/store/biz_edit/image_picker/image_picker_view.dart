@@ -6,9 +6,9 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/image_picker/image_picker_action_sheet.dart';
-import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/image_picker/image_picker_bottom_sheet.dart';
-import 'package:pokerspot_partner_app/apps/ui/store_business_info_edit/image_picker/providers/image_picker_service.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/image_picker/image_picker_action_sheet.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/image_picker/image_picker_bottom_sheet.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/image_picker/providers/image_picker_service.dart';
 
 class StoreBusinessInfoEditImagePickerView extends StatefulHookConsumerWidget {
   const StoreBusinessInfoEditImagePickerView({super.key});

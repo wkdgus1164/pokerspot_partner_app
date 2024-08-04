@@ -4,18 +4,18 @@ import 'package:pokerspot_partner_app/apps/global/global.dart';
 class StoreBizVac extends StatelessWidget {
   const StoreBizVac({
     super.key,
-    required this.businessName,
+    required this.bizName,
     required this.ceoName,
     required this.address,
     required this.industry,
-    required this.businessType,
+    required this.bizType,
   });
 
-  final String businessName;
+  final String bizName;
   final String ceoName;
   final String address;
   final String industry;
-  final String businessType;
+  final String bizType;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class StoreBizVac extends StatelessWidget {
             ),
             child: Column(
               children: [
-                _buildRow(title: '상호명', value: businessName),
+                _buildRow(title: '상호명', value: bizName),
                 const Divider(),
                 _buildRow(title: '대표자명', value: ceoName),
                 const Divider(),
@@ -48,7 +48,7 @@ class StoreBizVac extends StatelessWidget {
                 const Divider(),
                 _buildRow(title: '업종', value: industry),
                 const Divider(),
-                _buildRow(title: '업태', value: businessType),
+                _buildRow(title: '업태', value: bizType),
               ],
             ),
           ),

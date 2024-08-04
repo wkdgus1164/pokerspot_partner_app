@@ -15,29 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$BusinessInfoEditModel {
+mixin _$BizEditModel {
   File get fileName => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $BusinessInfoEditModelCopyWith<BusinessInfoEditModel> get copyWith =>
+  $BizEditModelCopyWith<BizEditModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BusinessInfoEditModelCopyWith<$Res> {
-  factory $BusinessInfoEditModelCopyWith(BusinessInfoEditModel value,
-          $Res Function(BusinessInfoEditModel) then) =
-      _$BusinessInfoEditModelCopyWithImpl<$Res, BusinessInfoEditModel>;
+abstract class $BizEditModelCopyWith<$Res> {
+  factory $BizEditModelCopyWith(
+          BizEditModel value, $Res Function(BizEditModel) then) =
+      _$BizEditModelCopyWithImpl<$Res, BizEditModel>;
   @useResult
   $Res call({File fileName, bool isValid});
 }
 
 /// @nodoc
-class _$BusinessInfoEditModelCopyWithImpl<$Res,
-        $Val extends BusinessInfoEditModel>
-    implements $BusinessInfoEditModelCopyWith<$Res> {
-  _$BusinessInfoEditModelCopyWithImpl(this._value, this._then);
+class _$BizEditModelCopyWithImpl<$Res, $Val extends BizEditModel>
+    implements $BizEditModelCopyWith<$Res> {
+  _$BizEditModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -64,24 +63,22 @@ class _$BusinessInfoEditModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$BusinessInfoEditModelImplCopyWith<$Res>
-    implements $BusinessInfoEditModelCopyWith<$Res> {
-  factory _$$BusinessInfoEditModelImplCopyWith(
-          _$BusinessInfoEditModelImpl value,
-          $Res Function(_$BusinessInfoEditModelImpl) then) =
-      __$$BusinessInfoEditModelImplCopyWithImpl<$Res>;
+abstract class _$$BizEditModelImplCopyWith<$Res>
+    implements $BizEditModelCopyWith<$Res> {
+  factory _$$BizEditModelImplCopyWith(
+          _$BizEditModelImpl value, $Res Function(_$BizEditModelImpl) then) =
+      __$$BizEditModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({File fileName, bool isValid});
 }
 
 /// @nodoc
-class __$$BusinessInfoEditModelImplCopyWithImpl<$Res>
-    extends _$BusinessInfoEditModelCopyWithImpl<$Res,
-        _$BusinessInfoEditModelImpl>
-    implements _$$BusinessInfoEditModelImplCopyWith<$Res> {
-  __$$BusinessInfoEditModelImplCopyWithImpl(_$BusinessInfoEditModelImpl _value,
-      $Res Function(_$BusinessInfoEditModelImpl) _then)
+class __$$BizEditModelImplCopyWithImpl<$Res>
+    extends _$BizEditModelCopyWithImpl<$Res, _$BizEditModelImpl>
+    implements _$$BizEditModelImplCopyWith<$Res> {
+  __$$BizEditModelImplCopyWithImpl(
+      _$BizEditModelImpl _value, $Res Function(_$BizEditModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +87,7 @@ class __$$BusinessInfoEditModelImplCopyWithImpl<$Res>
     Object? fileName = null,
     Object? isValid = null,
   }) {
-    return _then(_$BusinessInfoEditModelImpl(
+    return _then(_$BizEditModelImpl(
       fileName: null == fileName
           ? _value.fileName
           : fileName // ignore: cast_nullable_to_non_nullable
@@ -105,8 +102,8 @@ class __$$BusinessInfoEditModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$BusinessInfoEditModelImpl implements _BusinessInfoEditModel {
-  _$BusinessInfoEditModelImpl({required this.fileName, required this.isValid});
+class _$BizEditModelImpl implements _BizEditModel {
+  _$BizEditModelImpl({required this.fileName, required this.isValid});
 
   @override
   final File fileName;
@@ -115,14 +112,14 @@ class _$BusinessInfoEditModelImpl implements _BusinessInfoEditModel {
 
   @override
   String toString() {
-    return 'BusinessInfoEditModel(fileName: $fileName, isValid: $isValid)';
+    return 'BizEditModel(fileName: $fileName, isValid: $isValid)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BusinessInfoEditModelImpl &&
+            other is _$BizEditModelImpl &&
             (identical(other.fileName, fileName) ||
                 other.fileName == fileName) &&
             (identical(other.isValid, isValid) || other.isValid == isValid));
@@ -134,15 +131,14 @@ class _$BusinessInfoEditModelImpl implements _BusinessInfoEditModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BusinessInfoEditModelImplCopyWith<_$BusinessInfoEditModelImpl>
-      get copyWith => __$$BusinessInfoEditModelImplCopyWithImpl<
-          _$BusinessInfoEditModelImpl>(this, _$identity);
+  _$$BizEditModelImplCopyWith<_$BizEditModelImpl> get copyWith =>
+      __$$BizEditModelImplCopyWithImpl<_$BizEditModelImpl>(this, _$identity);
 }
 
-abstract class _BusinessInfoEditModel implements BusinessInfoEditModel {
-  factory _BusinessInfoEditModel(
+abstract class _BizEditModel implements BizEditModel {
+  factory _BizEditModel(
       {required final File fileName,
-      required final bool isValid}) = _$BusinessInfoEditModelImpl;
+      required final bool isValid}) = _$BizEditModelImpl;
 
   @override
   File get fileName;
@@ -150,6 +146,6 @@ abstract class _BusinessInfoEditModel implements BusinessInfoEditModel {
   bool get isValid;
   @override
   @JsonKey(ignore: true)
-  _$$BusinessInfoEditModelImplCopyWith<_$BusinessInfoEditModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BizEditModelImplCopyWith<_$BizEditModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

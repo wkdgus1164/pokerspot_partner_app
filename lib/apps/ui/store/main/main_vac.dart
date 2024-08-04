@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class StoreMainVac extends StatelessWidget {
   const StoreMainVac({
     super.key,
-    required this.handleBusinessInfoClick,
+    required this.handleBizInfoClick,
     required this.handleImageClick,
     required this.handleIntroductionClick,
     required this.handleBusinessHoursClick,
     required this.handlePreviewClick,
   });
 
-  final Function() handleBusinessInfoClick;
+  final Function() handleBizInfoClick;
   final Function() handleImageClick;
   final Function() handleIntroductionClick;
   final Function() handleBusinessHoursClick;
@@ -27,7 +27,7 @@ class StoreMainVac extends StatelessWidget {
             title: const Text('사업자 정보 관리'),
             subtitle: const Text('매장 사업자 정보를 관리할 수 있어요.'),
             trailing: const Icon(Icons.chevron_right_rounded),
-            onTap: handleBusinessInfoClick,
+            onTap: handleBizInfoClick,
           ),
           ListTile(
             leading: const Icon(Icons.image_rounded),

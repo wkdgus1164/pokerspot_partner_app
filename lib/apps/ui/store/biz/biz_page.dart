@@ -21,17 +21,17 @@ class _StoreBizPageState extends ConsumerState<StoreBizPage> {
           IconButton(
             icon: const Icon(Icons.edit_rounded),
             onPressed: () {
-              context.push(CustomRouter.storeBusinessInfoEdit.path);
+              context.push(CustomRouter.storeBizInfoEdit.path);
             },
           ),
         ],
       ),
       body: const StoreBizVac(
-        businessName: '포커스팟 홀덤펍',
+        bizName: '포커스팟 홀덤펍',
         ceoName: '홍길동',
         address: '서울특별시 강남구 역삼동 123-456',
         industry: '음식점',
-        businessType: '개인사업자',
+        bizType: '개인사업자',
       ),
     );
   }

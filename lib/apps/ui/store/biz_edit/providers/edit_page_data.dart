@@ -7,21 +7,18 @@ part 'edit_page_data.freezed.dart';
 part 'edit_page_data.g.dart';
 
 @freezed
-class BusinessInfoEditModel with _$BusinessInfoEditModel {
-  factory BusinessInfoEditModel({
+class BizEditModel with _$BizEditModel {
+  factory BizEditModel({
     required File fileName,
     required bool isValid,
-  }) = _BusinessInfoEditModel;
-
-  // factory BusinessInfoEditModel.fromJson(Map<String, dynamic> json) =>
-  //     _$BusinessInfoEditModelFromJson(json);
+  }) = _BizEditModel;
 }
 
 @riverpod
-class BusinessInfoEditData extends _$BusinessInfoEditData {
+class BizEditData extends _$BizEditData {
   @override
-  BusinessInfoEditModel build() {
-    return BusinessInfoEditModel(
+  BizEditModel build() {
+    return BizEditModel(
       fileName: File(""),
       isValid: false,
     );

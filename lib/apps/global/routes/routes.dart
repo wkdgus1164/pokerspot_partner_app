@@ -21,8 +21,8 @@ enum CustomRouter {
   gameCreateGtd('/game-create-gtd'),
   gameSort('/game-sort'),
   gameUpdateDaily('/game-update-daily'),
-  storeBusinessInfo('/store-business-info'),
-  storeBusinessInfoEdit('/store-business-info-edit'),
+  storeBizInfo('/store-biz-info'),
+  storeBizInfoEdit('/store-biz-info-edit'),
   ;
 
   const CustomRouter(this.path);
@@ -81,11 +81,11 @@ final router = GoRouter(
       builder: (context, state) => const GameUpdateDailyPage(),
     ),
     GoRoute(
-      path: CustomRouter.storeBusinessInfo.path,
+      path: CustomRouter.storeBizInfo.path,
       builder: (context, state) => const StoreBizPage(),
     ),
     GoRoute(
-      path: CustomRouter.storeBusinessInfoEdit.path,
+      path: CustomRouter.storeBizInfoEdit.path,
       builder: (context, state) => const StoreBizEditPage(),
     ),
   ],

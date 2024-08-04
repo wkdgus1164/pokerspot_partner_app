@@ -7,16 +7,16 @@ import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/image_picker/provid
 import 'package:pokerspot_partner_app/common/sheet/sheet_data.dart';
 import 'package:pokerspot_partner_app/common/sheet/sheet_utils.dart';
 
-class StoreBusinessInfoEditImagePickerView extends StatefulHookConsumerWidget {
-  const StoreBusinessInfoEditImagePickerView({super.key});
+class StoreBizEditImagePickerView extends StatefulHookConsumerWidget {
+  const StoreBizEditImagePickerView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _StoreBusinessInfoEditImagePickerViewState();
+      _StoreBizEditImagePickerViewState();
 }
 
-class _StoreBusinessInfoEditImagePickerViewState
-    extends ConsumerState<StoreBusinessInfoEditImagePickerView> {
+class _StoreBizEditImagePickerViewState
+    extends ConsumerState<StoreBizEditImagePickerView> {
   @override
   Widget build(BuildContext context) {
     final image = ref.watch(imagePickerServiceProvider);

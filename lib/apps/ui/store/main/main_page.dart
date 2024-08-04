@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/navigation/drawer/drawer_view.dart';
-import 'package:pokerspot_partner_app/apps/ui/store_main/store_main_vac.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/main/main_vac.dart';
 import 'package:pokerspot_partner_app/common/placeholder/empty_with_button.dart';
 
 class StoreMainPage extends StatefulHookConsumerWidget {
@@ -24,8 +24,8 @@ class _StoreMainPageState extends ConsumerState<StoreMainPage> {
       ),
       drawer: const NavigationDrawerView(),
       body: StoreMainVac(
-        handleBusinessInfoClick: () {
-          context.push(CustomRouter.storeBusinessInfo.path);
+        handleBizInfoClick: () {
+          context.push(CustomRouter.storeBizInfo.path);
         },
         handleImageClick: () {},
         handleIntroductionClick: () {},

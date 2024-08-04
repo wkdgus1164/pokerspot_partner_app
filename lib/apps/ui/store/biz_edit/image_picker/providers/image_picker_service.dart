@@ -27,7 +27,7 @@ class ImagePickerService extends _$ImagePickerService {
 
     if (pickedFile != null) {
       state = state.copyWith(image: File(pickedFile.path));
-      ref.read(businessInfoEditDataProvider.notifier).validate();
+      ref.read(bizEditDataProvider.notifier).validate();
     }
   }
 
@@ -37,7 +37,7 @@ class ImagePickerService extends _$ImagePickerService {
 
     if (pickedFile != null) {
       state = state.copyWith(image: File(pickedFile.path));
-      ref.read(businessInfoEditDataProvider.notifier).validate();
+      ref.read(bizEditDataProvider.notifier).validate();
     }
   }
 }

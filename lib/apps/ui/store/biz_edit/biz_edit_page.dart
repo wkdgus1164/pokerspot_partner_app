@@ -15,7 +15,7 @@ class StoreBizEditPage extends StatefulHookConsumerWidget {
 class _StoreBizEditPageState extends ConsumerState<StoreBizEditPage> {
   @override
   Widget build(BuildContext context) {
-    final isValid = ref.watch(businessInfoEditDataProvider).isValid;
+    final isValid = ref.watch(bizEditDataProvider).isValid;
 
     final handleValidClick = isValid ? () {} : null;
 
@@ -44,7 +44,7 @@ class _StoreBizEditPageState extends ConsumerState<StoreBizEditPage> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const StoreBusinessInfoEditImagePickerView(),
+                  const StoreBizEditImagePickerView(),
                 ],
               ),
             ),

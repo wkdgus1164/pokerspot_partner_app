@@ -1,14 +1,11 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/image_picker/image_picker_action_sheet.dart';
-import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/image_picker/image_picker_bottom_sheet.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/image_picker/providers/image_picker_service.dart';
+import 'package:pokerspot_partner_app/common/sheet/sheet_data.dart';
+import 'package:pokerspot_partner_app/common/sheet/sheet_utils.dart';
 
 class StoreBusinessInfoEditImagePickerView extends StatefulHookConsumerWidget {
   const StoreBusinessInfoEditImagePickerView({super.key});
@@ -29,41 +26,28 @@ class _StoreBusinessInfoEditImagePickerViewState
     if (image.image == null) {
       return GestureDetector(
         onTap: () {
-          if (Platform.isAndroid) {
-            showModalBottomSheet(
-              context: context,
-              builder: (_) {
-                return StoreImageSelectionModalBottomSheet(
-                  onGalleryClick: () {
-                    ref.read(imagePickerServiceProvider.notifier).pickImage();
-                    context.pop();
-                  },
-                  onCameraClick: () {
-                    ref.read(imagePickerServiceProvider.notifier).shotCamera();
-                    context.pop();
-                  },
-                );
-              },
-            );
-          }
-
-          if (Platform.isIOS) {
-            showCupertinoModalPopup(
-              context: context,
-              builder: (_) {
-                return StoreImageSelectionCupertinoActionSheet(
-                  handleGalleryClick: () {
-                    ref.read(imagePickerServiceProvider.notifier).pickImage();
-                    context.pop();
-                  },
-                  handleCameraClick: () {
-                    ref.read(imagePickerServiceProvider.notifier).shotCamera();
-                    context.pop();
-                  },
-                );
-              },
-            );
-          }
+          context.showCustomBottomSheet(
+            items: [
+              CustomSheetModel(
+                icon: const Icon(Icons.browse_gallery_rounded),
+                title: '갤러리에서 선택',
+                subtitle: '갤러리에서 사진을 선택할 수 있어요.',
+                onTap: () {
+                  ref.read(imagePickerServiceProvider.notifier).pickImage();
+                  context.pop();
+                },
+              ),
+              CustomSheetModel(
+                icon: const Icon(Icons.camera_alt_rounded),
+                title: '카메라로 촬영',
+                subtitle: '사진을 찍어서 업로드할 수 있어요.',
+                onTap: () {
+                  ref.read(imagePickerServiceProvider.notifier).shotCamera();
+                  context.pop();
+                },
+              ),
+            ],
+          );
         },
         child: AspectRatio(
           aspectRatio: 210 / 297,

@@ -8,6 +8,7 @@ import 'package:pokerspot_partner_app/apps/ui/game/update/daily/update_daily_pag
 import 'package:pokerspot_partner_app/apps/ui/store/biz/biz_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/biz_edit_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/images/images_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/images_edit/image_edit_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/ui.dart';
 
 enum CustomRouter {
@@ -25,6 +26,7 @@ enum CustomRouter {
   storeBizInfo('/store-biz-info'),
   storeBizInfoEdit('/store-biz-info-edit'),
   storeImages('/store-images'),
+  storeImagesEdit('/store-image-edit'),
   ;
 
   const CustomRouter(this.path);
@@ -93,6 +95,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.storeImages.path,
       builder: (context, state) => const StoreImagesPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.storeImagesEdit.path,
+      builder: (context, state) => const StoreImagesEditPage(),
     ),
   ],
 );

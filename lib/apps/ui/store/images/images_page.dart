@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/common/placeholder/empty_with_button.dart';
@@ -20,7 +21,9 @@ class _StoreImagesPageState extends ConsumerState<StoreImagesPage> {
         title: const Text('이미지 관리'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push(CustomRouter.storeImagesEdit.path);
+            },
             icon: const Icon(Icons.edit_rounded),
           ),
         ],

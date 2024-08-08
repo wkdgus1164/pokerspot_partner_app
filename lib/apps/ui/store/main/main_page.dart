@@ -30,7 +30,9 @@ class _StoreMainPageState extends ConsumerState<StoreMainPage> {
         handleImageClick: () {
           context.push(CustomRouter.storeImages.path);
         },
-        handleIntroductionClick: () {},
+        handleMentClick: () {
+          context.push(CustomRouter.storeMent.path);
+        },
         handleBusinessHoursClick: () {},
         handlePreviewClick: () {},
       ),

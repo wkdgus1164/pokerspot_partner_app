@@ -5,14 +5,14 @@ class StoreMainVac extends StatelessWidget {
     super.key,
     required this.handleBizInfoClick,
     required this.handleImageClick,
-    required this.handleIntroductionClick,
+    required this.handleMentClick,
     required this.handleBusinessHoursClick,
     required this.handlePreviewClick,
   });
 
   final Function() handleBizInfoClick;
   final Function() handleImageClick;
-  final Function() handleIntroductionClick;
+  final Function() handleMentClick;
   final Function() handleBusinessHoursClick;
   final Function() handlePreviewClick;
 
@@ -41,7 +41,7 @@ class StoreMainVac extends StatelessWidget {
             title: const Text('매장 소개 관리'),
             subtitle: const Text('매장 소개 문구를 관리할 수 있어요.'),
             trailing: const Icon(Icons.chevron_right_rounded),
-            onTap: handleIntroductionClick,
+            onTap: handleMentClick,
           ),
           ListTile(
             leading: const Icon(Icons.access_time_filled_rounded),

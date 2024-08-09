@@ -33,7 +33,9 @@ class _StoreMainPageState extends ConsumerState<StoreMainPage> {
         handleMentClick: () {
           context.push(CustomRouter.storeMent.path);
         },
-        handleBusinessHoursClick: () {},
+        handleOperationTimeClick: () {
+          context.push(CustomRouter.storeOperationTime.path);
+        },
         handlePreviewClick: () {},
       ),
       // _buildPlaceholder(),

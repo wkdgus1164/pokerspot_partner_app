@@ -6,14 +6,14 @@ class StoreMainVac extends StatelessWidget {
     required this.handleBizInfoClick,
     required this.handleImageClick,
     required this.handleMentClick,
-    required this.handleBusinessHoursClick,
+    required this.handleOperationTimeClick,
     required this.handlePreviewClick,
   });
 
   final Function() handleBizInfoClick;
   final Function() handleImageClick;
   final Function() handleMentClick;
-  final Function() handleBusinessHoursClick;
+  final Function() handleOperationTimeClick;
   final Function() handlePreviewClick;
 
   @override
@@ -48,7 +48,7 @@ class StoreMainVac extends StatelessWidget {
             title: const Text('영업 시간 관리'),
             subtitle: const Text('매장 영업 시간 정보를 관리할 수 있어요.'),
             trailing: const Icon(Icons.chevron_right_rounded),
-            onTap: handleBusinessHoursClick,
+            onTap: handleOperationTimeClick,
           ),
           ListTile(
             leading: const Icon(Icons.preview_rounded),

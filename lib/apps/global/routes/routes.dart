@@ -10,6 +10,7 @@ import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/biz_edit_page.dart'
 import 'package:pokerspot_partner_app/apps/ui/store/images/images_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/images_edit/image_edit_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/ment/ment_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/store/operation_time/operation_time_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/ui.dart';
 
 enum CustomRouter {
@@ -20,15 +21,16 @@ enum CustomRouter {
   signupVerify('/signup-verify'),
   signupInfo('/signup-info'),
   navigation('/navigation'),
-  gameCreateDaily('/game-create-daily'),
-  gameCreateGtd('/game-create-gtd'),
-  gameSort('/game-sort'),
+  gameCreateDaily('/game/create-daily'),
+  gameCreateGtd('/game/create-gtd'),
+  gameSort('/game/sort'),
   gameUpdateDaily('/game-update-daily'),
-  storeBizInfo('/store-biz-info'),
-  storeBizInfoEdit('/store-biz-info-edit'),
-  storeImages('/store-images'),
-  storeImagesEdit('/store-image-edit'),
-  storeMent('/store-ment'),
+  storeBizInfo('/store/biz-info'),
+  storeBizInfoEdit('/store/biz-info/edit'),
+  storeImages('/store/images'),
+  storeImagesEdit('/store/image-edit'),
+  storeMent('/store/ment'),
+  storeOperationTime('/store/operation-time'),
   ;
 
   const CustomRouter(this.path);
@@ -105,6 +107,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.storeMent.path,
       builder: (context, state) => const StoreMentPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.storeOperationTime.path,
+      builder: (context, state) => const StoreOperationTimePage(),
     ),
   ],
 );

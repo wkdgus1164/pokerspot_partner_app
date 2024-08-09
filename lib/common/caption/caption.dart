@@ -47,7 +47,7 @@ class Caption extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 16),
           ],
           Text(
             caption,

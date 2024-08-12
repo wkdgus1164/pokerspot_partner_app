@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class MyMainVac extends StatelessWidget {
   const MyMainVac({
     super.key,
-    required this.handleAdminClick,
+    required this.handleAccountClick,
     required this.handlePasswordChangeClick,
     required this.handleSignOutClick,
     required this.handleMemberBreakClick,
   });
 
-  final Function() handleAdminClick;
+  final Function() handleAccountClick;
   final Function() handlePasswordChangeClick;
   final Function() handleSignOutClick;
   final Function() handleMemberBreakClick;
@@ -25,7 +25,7 @@ class MyMainVac extends StatelessWidget {
             title: const Text('개인 정보 관리'),
             subtitle: const Text('통신사에 인증된 실명 정보를 재인증해서 수정할 수 있어요.'),
             trailing: const Icon(Icons.chevron_right_rounded),
-            onTap: handleAdminClick,
+            onTap: handleAccountClick,
           ),
           ListTile(
             leading: const Icon(Icons.lock_rounded),

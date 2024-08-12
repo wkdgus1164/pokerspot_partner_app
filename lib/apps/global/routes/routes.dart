@@ -5,6 +5,7 @@ import 'package:pokerspot_partner_app/apps/ui/game/create/daily/create_daily_pag
 import 'package:pokerspot_partner_app/apps/ui/game/create/gtd/create_gtd_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/sort/sort_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/update/daily/update_daily_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/my/account/account_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/my/main/main_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/biz/biz_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/biz_edit_page.dart';
@@ -33,6 +34,7 @@ enum CustomRouter {
   storeMent('/store/ment'),
   storeOperationTime('/store/operation-time'),
   myMain('/my/main'),
+  myAccount('/my/account'),
   ;
 
   const CustomRouter(this.path);
@@ -117,6 +119,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.myMain.path,
       builder: (context, state) => const MyMainPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.myAccount.path,
+      builder: (context, state) => const MyAccountPage(),
     ),
   ],
 );

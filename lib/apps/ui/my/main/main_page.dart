@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/my/main/main_vac.dart';
 
 class MyMainPage extends StatefulHookConsumerWidget {
@@ -18,7 +20,9 @@ class _MyMainPageState extends ConsumerState<MyMainPage> {
         title: Text('$_name님'),
       ),
       body: MyMainVac(
-        handleAdminClick: () {},
+        handleAccountClick: () {
+          context.push(CustomRouter.myAccount.path);
+        },
         handlePasswordChangeClick: () {},
         handleSignOutClick: () {},
         handleMemberBreakClick: () {},

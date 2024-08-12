@@ -6,11 +6,13 @@ class TimePickerTextField extends StatelessWidget {
     super.key,
     required this.labelText,
     required this.hintText,
+    this.valueText,
     this.handleClick,
   });
 
   final String labelText;
   final String hintText;
+  final String? valueText;
   final Function()? handleClick;
 
   @override
@@ -53,9 +55,9 @@ class TimePickerTextField extends StatelessWidget {
                       vertical: 11,
                     ),
                     child: Text(
-                      hintText,
-                      style: const TextStyle(
-                        color: colorGrey70,
+                      valueText ?? hintText,
+                      style: TextStyle(
+                        color: valueText != null ? colorGrey40 : colorGrey70,
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
                       ),

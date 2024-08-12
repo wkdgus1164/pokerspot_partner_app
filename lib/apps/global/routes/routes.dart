@@ -5,6 +5,7 @@ import 'package:pokerspot_partner_app/apps/ui/game/create/daily/create_daily_pag
 import 'package:pokerspot_partner_app/apps/ui/game/create/gtd/create_gtd_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/sort/sort_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/update/daily/update_daily_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/my/main/main_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/biz/biz_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/biz_edit_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/images/images_page.dart';
@@ -31,6 +32,7 @@ enum CustomRouter {
   storeImagesEdit('/store/image-edit'),
   storeMent('/store/ment'),
   storeOperationTime('/store/operation-time'),
+  myMain('/my/main'),
   ;
 
   const CustomRouter(this.path);
@@ -111,6 +113,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.storeOperationTime.path,
       builder: (context, state) => const StoreOperationTimePage(),
+    ),
+    GoRoute(
+      path: CustomRouter.myMain.path,
+      builder: (context, state) => const MyMainPage(),
     ),
   ],
 );

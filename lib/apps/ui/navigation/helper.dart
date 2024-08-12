@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/list/list_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/my/main/main_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/statistics/statistics_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/main/main_page.dart';
 
@@ -36,7 +37,7 @@ class NavigationHelper {
     const StatisticsPage(),
     const GameListPage(),
     const StoreMainPage(),
-    const Center(child: CircularProgressIndicator.adaptive()),
+    const MyMainPage(),
   ];
 
   List<BottomNavigationBarItem> getBottomNavigationItems() {

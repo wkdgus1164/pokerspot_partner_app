@@ -4,7 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_info/form/form_view.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_info/providers/data.dart';
-import 'package:pokerspot_partner_app/common/dialog/dialog_utils.dart';
 
 class SignupInfoPage extends StatefulHookConsumerWidget {
   const SignupInfoPage({super.key});
@@ -48,13 +47,22 @@ class _SignupInfoPageState extends ConsumerState<SignupInfoPage> {
     );
   }
 
-  void _handleSubmit() {
-    return context.showCustomDialog(
-      title: '회원가입 완료!',
-      content: '로그인하고 바로 매장을 등록해보세요.',
-      confirmText: '로그인',
-      onConfirm: () {
-        context.go(CustomRouter.signin.path);
+  Future _handleSubmit() {
+    return showAdaptiveDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: const Text('회원가입 완료!'),
+          content: const Text('로그인하고 바로 매장을 등록해보세요.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                context.go(CustomRouter.signin.path);
+              },
+              child: const Text('로그인'),
+            ),
+          ],
+        );
       },
     );
   }

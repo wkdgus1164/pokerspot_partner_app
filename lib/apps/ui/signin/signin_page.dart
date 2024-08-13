@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -5,7 +6,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/signin/providers/data.dart';
 import 'package:pokerspot_partner_app/apps/ui/signin/signin_vac.dart';
-import 'package:pokerspot_partner_app/common/dialog/dialog_utils.dart';
 
 class SigninPage extends StatefulHookConsumerWidget {
   const SigninPage({super.key});
@@ -68,10 +68,23 @@ class _SigninPageState extends ConsumerState<SigninPage> {
   }
 
   void _handleForgetButtonClick() {
-    context.showCustomDialog(
-      title: '회원정보 찾기',
-      content: '회원정보 찾기',
-      confirmText: '확인',
+    showAdaptiveDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: const Text('회원정보 찾기'),
+          content: const Text('회원정보 찾기'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('확인'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

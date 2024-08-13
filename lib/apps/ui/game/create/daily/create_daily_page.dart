@@ -4,7 +4,6 @@ import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/create/daily/create_daily_form.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/create/daily/providers/daily_form_data.dart';
 import 'package:pokerspot_partner_app/common/caption/caption.dart';
-import 'package:pokerspot_partner_app/common/dialog/dialog_utils.dart';
 
 class GameCreateDailyPage extends StatefulHookConsumerWidget {
   const GameCreateDailyPage({super.key});
@@ -60,9 +59,13 @@ class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
   _handleSubmit() {
     final model = ref.read(gameCreateDailyFormDataProvider);
 
-    context.showCustomDialog(
-      title: '데일리 토너먼트 등록하기',
-      content: '''
+    showAdaptiveDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: const Text('데일리 토너먼트 등록하기'),
+          content: Text(
+            '''
 buyIn: ${model.buyIn}\n
 minEntry: ${model.minEntry}\n
 maxEntry: ${model.maxEntry}\n
@@ -70,7 +73,15 @@ prize: ${model.prize}\n
 duration: ${model.duration}\n
 firstGame: ${model.firstGame}\n
 everyDay: ${model.everyDay}''',
-      confirmText: '확인',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {},
+              child: const Text('확인'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -24,11 +24,6 @@ class _StoreOpenTimeDialogState extends ConsumerState<StoreOpenTimeDialog> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            '오픈 시간 선택',
-            style: textTheme.titleMedium!.copyWith(color: colorGrey20),
-          ),
-          const SizedBox(height: 16),
           Row(
             children: [
               Expanded(

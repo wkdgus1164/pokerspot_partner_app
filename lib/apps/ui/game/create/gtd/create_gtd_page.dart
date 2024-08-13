@@ -4,7 +4,6 @@ import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/create/gtd/create_gtd_form.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/create/gtd/providers/gtd_form_data.dart';
 import 'package:pokerspot_partner_app/common/caption/caption.dart';
-import 'package:pokerspot_partner_app/common/dialog/dialog_utils.dart';
 
 class GameCreateGTDPage extends StatefulHookConsumerWidget {
   const GameCreateGTDPage({super.key});
@@ -60,9 +59,13 @@ class _GameCreateGTDPageState extends ConsumerState<GameCreateGTDPage> {
   _handleSubmit() {
     final model = ref.read(gameCreateGTDFormDataProvider);
 
-    context.showCustomDialog(
-      title: 'GTD 토너먼트 등록하기',
-      content: '''
+    showAdaptiveDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: const Text('GTD 토너먼트 등록하기'),
+          content: Text(
+            '''
 buyIn: ${model.buyIn}\n
 minEntry: ${model.minEntry}\n
 maxEntry: ${model.maxEntry}\n
@@ -71,7 +74,15 @@ duration: ${model.duration}\n
 minReward: ${model.minReward}\n
 firstGame: ${model.firstGame}\n
 everyDay: ${model.everyDay}''',
-      confirmText: '확인',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {},
+              child: const Text('확인'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

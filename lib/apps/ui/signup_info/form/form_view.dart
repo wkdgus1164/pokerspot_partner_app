@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_info/form/form_vac.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_info/providers/data.dart';
-import 'package:pokerspot_partner_app/common/dialog/dialog_utils.dart';
 
 class SignupInfoFormView extends StatefulHookConsumerWidget {
   const SignupInfoFormView({super.key});
@@ -60,10 +59,20 @@ class _SignupInfoFormViewState extends ConsumerState<SignupInfoFormView> {
   }
 
   void _handleTermClick() {
-    context.showCustomDialog(
-      title: 'title',
-      content: 'content',
-      confirmText: 'confirmText',
+    showAdaptiveDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: const Text('이용약관'),
+          content: const Text('이용약관 내용'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('확인'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

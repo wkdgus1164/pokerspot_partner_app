@@ -5,7 +5,6 @@ import 'package:pokerspot_partner_app/apps/global/constants/enums.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/list/card/card_tag.dart';
 import 'package:pokerspot_partner_app/common/caption/caption.dart';
-import 'package:pokerspot_partner_app/common/dialog/dialog_utils.dart';
 
 class GameSortPage extends StatefulHookConsumerWidget {
   const GameSortPage({super.key});
@@ -90,13 +89,22 @@ class _GameSortPageState extends ConsumerState<GameSortPage> {
             padding: const EdgeInsets.all(16),
             child: FilledButton(
               onPressed: () {
-                context.showCustomDialog(
-                  title: '순서 변경 완료',
-                  content: '토너먼트 순서를 변경했어요',
-                  confirmText: '확인',
-                  onConfirm: () {
-                    context.pop();
-                    context.pop();
+                showAdaptiveDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog.adaptive(
+                      title: const Text('순서 변경 완료'),
+                      content: const Text('토너먼트 순서를 변경했어요'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            context.pop();
+                            context.pop();
+                          },
+                          child: const Text('확인'),
+                        ),
+                      ],
+                    );
                   },
                 );
               },

@@ -21,37 +21,39 @@ class _GameCreateDailyPageState extends ConsumerState<GameCreateDailyPage> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('데일리 토너먼트 추가')),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    model.buyIn == 0 ? '토너먼트 이름' : '${model.buyIn}만 데일리 토너먼트',
-                    style: textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: model.buyIn == 0 ? colorGrey80 : colorGrey20,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      model.buyIn == 0 ? '토너먼트 이름' : '${model.buyIn}만 데일리 토너먼트',
+                      style: textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: model.buyIn == 0 ? colorGrey80 : colorGrey20,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  const Caption(caption: '아래 조건을 설정하면 자동으로 이름이 생성돼요'),
-                  const GameCreateDailyForm(),
-                ],
+                    const SizedBox(height: 16),
+                    const Caption(caption: '아래 조건을 설정하면 자동으로 이름이 생성돼요'),
+                    const GameCreateDailyForm(),
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            child: FilledButton(
-              onPressed: handleSubmit,
-              child: const Text('추가하기'),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              child: FilledButton(
+                onPressed: handleSubmit,
+                child: const Text('추가하기'),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

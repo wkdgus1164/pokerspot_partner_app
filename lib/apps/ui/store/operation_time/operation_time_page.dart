@@ -34,41 +34,43 @@ class _StoreOperationTimePageState
       appBar: AppBar(
         title: const Text('영업 시간 관리'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            const Caption(
-              title: '시간 단위 안내',
-              caption: """
-24시간 단위로 선택해주세요.
-00시는 자정, 12시는 정오입니다.\n
-오픈 시간과 마감 시간은 서로 다르게 선택해주세요.
-(예: 오픈 시간과 마감 시간이 모두 10:00 일 수 없어요.)""",
-            ),
-            const SizedBox(height: 16),
-            TimePickerTextField(
-              labelText: '오픈 시간',
-              hintText: '오픈 시간을 선택해주세요.',
-              valueText: openTimeValue,
-              handleClick: () => _handleOpenTimeClick(context),
-            ),
-            const SizedBox(height: 16),
-            TimePickerTextField(
-              labelText: '마감 시간',
-              hintText: '마감 시간을 선택해주세요.',
-              valueText: closeTimeValue,
-              handleClick: () => _handleCloseTimeClick(context),
-            ),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton(
-                onPressed: () {},
-                child: const Text('적용하기'),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              const Caption(
+                title: '시간 단위 안내',
+                caption: """
+        24시간 단위로 선택해주세요.
+        00시는 자정, 12시는 정오입니다.\n
+        오픈 시간과 마감 시간은 서로 다르게 선택해주세요.
+        (예: 오픈 시간과 마감 시간이 모두 10:00 일 수 없어요.)""",
               ),
-            ),
-          ],
+              const SizedBox(height: 16),
+              TimePickerTextField(
+                labelText: '오픈 시간',
+                hintText: '오픈 시간을 선택해주세요.',
+                valueText: openTimeValue,
+                handleClick: () => _handleOpenTimeClick(context),
+              ),
+              const SizedBox(height: 16),
+              TimePickerTextField(
+                labelText: '마감 시간',
+                hintText: '마감 시간을 선택해주세요.',
+                valueText: closeTimeValue,
+                handleClick: () => _handleCloseTimeClick(context),
+              ),
+              const Spacer(),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: () {},
+                  child: const Text('적용하기'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

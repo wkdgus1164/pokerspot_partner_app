@@ -14,31 +14,33 @@ class GamesCreateModalBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              _buildContainer(
-                iconPath: Assets.daily.path,
-                backgroundColor: const Color(0xffEFF4FD),
-                textColor: const Color(0xff709CED),
-                title: '데일리 토너',
-                handleClick: handleDailyClick,
-              ),
-              const SizedBox(width: 16),
-              _buildContainer(
-                iconPath: Assets.gtd.path,
-                backgroundColor: const Color(0xffF7EEFB),
-                textColor: const Color(0xffBA66E0),
-                title: 'GTD 토너',
-                handleClick: handleGTDClick,
-              ),
-            ],
+    return SafeArea(
+      child: Wrap(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                _buildContainer(
+                  iconPath: Assets.daily.path,
+                  backgroundColor: const Color(0xffEFF4FD),
+                  textColor: const Color(0xff709CED),
+                  title: '데일리 토너',
+                  handleClick: handleDailyClick,
+                ),
+                const SizedBox(width: 16),
+                _buildContainer(
+                  iconPath: Assets.gtd.path,
+                  backgroundColor: const Color(0xffF7EEFB),
+                  textColor: const Color(0xffBA66E0),
+                  title: 'GTD 토너',
+                  handleClick: handleGTDClick,
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

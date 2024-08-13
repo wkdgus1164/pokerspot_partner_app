@@ -21,43 +21,45 @@ class _StoreBizEditPageState extends ConsumerState<StoreBizEditPage> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('사업자 정보 수정')),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(
-                    '변경된 사업자등록증을\n제출해주세요',
-                    style: textTheme.headlineSmall!.copyWith(
-                      color: colorGrey20,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      '변경된 사업자등록증을\n제출해주세요',
+                      style: textTheme.headlineSmall!.copyWith(
+                        color: colorGrey20,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    '아래 공간을 눌러서 변경된 사업자등록증을 제출해주시면\n관리자가 검토하여 최신 정보로 반영해드려요',
-                    style: textTheme.labelLarge!.copyWith(
-                      color: colorGrey60,
+                    const SizedBox(height: 16),
+                    Text(
+                      '아래 공간을 눌러서 변경된 사업자등록증을 제출해주시면\n관리자가 검토하여 최신 정보로 반영해드려요',
+                      style: textTheme.labelLarge!.copyWith(
+                        color: colorGrey60,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  const StoreBizEditImagePickerView(),
-                ],
+                    const SizedBox(height: 16),
+                    const StoreBizEditImagePickerView(),
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            child: FilledButton(
-              onPressed: handleValidClick,
-              child: const Text('변경 신청하기'),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              child: FilledButton(
+                onPressed: handleValidClick,
+                child: const Text('변경 신청하기'),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

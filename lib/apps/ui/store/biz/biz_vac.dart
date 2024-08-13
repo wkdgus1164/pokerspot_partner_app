@@ -19,40 +19,42 @@ class StoreBizVac extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            '사업자 정보',
-            style: textTheme.titleMedium!.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(16),
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              '사업자 정보',
+              style: textTheme.titleMedium!.copyWith(
+                fontWeight: FontWeight.bold,
               ),
-              border: Border.all(color: colorGrey90),
             ),
-            child: Column(
-              children: [
-                _buildRow(title: '상호명', value: bizName),
-                const Divider(),
-                _buildRow(title: '대표자명', value: ceoName),
-                const Divider(),
-                _buildRow(title: '주소', value: address),
-                const Divider(),
-                _buildRow(title: '업종', value: industry),
-                const Divider(),
-                _buildRow(title: '업태', value: bizType),
-              ],
+            const SizedBox(height: 16),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(16),
+                ),
+                border: Border.all(color: colorGrey90),
+              ),
+              child: Column(
+                children: [
+                  _buildRow(title: '상호명', value: bizName),
+                  const Divider(),
+                  _buildRow(title: '대표자명', value: ceoName),
+                  const Divider(),
+                  _buildRow(title: '주소', value: address),
+                  const Divider(),
+                  _buildRow(title: '업종', value: industry),
+                  const Divider(),
+                  _buildRow(title: '업태', value: bizType),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

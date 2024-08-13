@@ -17,22 +17,24 @@ class _StoreMentPageState extends ConsumerState<StoreMentPage> {
       appBar: AppBar(
         title: const Text('매장 소개 관리'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            const Caption(caption: '문구 수정 후에는 반드시 아래 적용하기 버튼을 눌러 주세요.'),
-            const SizedBox(height: 16),
-            const Expanded(child: StoreMentFormView()),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton(
-                onPressed: () {},
-                child: const Text('적용하기'),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              const Caption(caption: '문구 수정 후에는 반드시 아래 적용하기 버튼을 눌러 주세요.'),
+              const SizedBox(height: 16),
+              const Expanded(child: StoreMentFormView()),
+              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: () {},
+                  child: const Text('적용하기'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

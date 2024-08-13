@@ -28,50 +28,52 @@ class _StoreImagesPageState extends ConsumerState<StoreImagesPage> {
           ),
         ],
       ),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(16),
-        itemBuilder: (context, index) {
-          return Stack(
-            alignment: Alignment.topLeft,
-            children: [
-              AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Container(
-                  width: double.infinity,
+      body: SafeArea(
+        child: ListView.separated(
+          padding: const EdgeInsets.all(16),
+          itemBuilder: (context, index) {
+            return Stack(
+              alignment: Alignment.topLeft,
+              children: [
+                AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    child: CachedNetworkImage(
+                      imageUrl: 'https://placehold.it/160x90',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 40,
+                  height: 40,
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.white.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(100),
                   ),
-                  clipBehavior: Clip.antiAlias,
-                  child: CachedNetworkImage(
-                    imageUrl: 'https://placehold.it/160x90',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Container(
-                width: 40,
-                height: 40,
-                alignment: Alignment.center,
-                margin: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.6),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Text(
-                  (index + 1).toString(),
-                  style: textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: colorGrey20,
+                  child: Text(
+                    (index + 1).toString(),
+                    style: textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: colorGrey20,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          );
-        },
-        separatorBuilder: (context, index) {
-          return const SizedBox(height: 16);
-        },
-        itemCount: 10,
+              ],
+            );
+          },
+          separatorBuilder: (context, index) {
+            return const SizedBox(height: 16);
+          },
+          itemCount: 10,
+        ),
       ),
       // _buildPlaceholder(),
     );

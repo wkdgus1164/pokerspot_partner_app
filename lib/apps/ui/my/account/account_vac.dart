@@ -17,41 +17,43 @@ class MyAccountVac extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            '사업자 정보',
-            style: textTheme.titleMedium!.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(16),
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              '사업자 정보',
+              style: textTheme.titleMedium!.copyWith(
+                fontWeight: FontWeight.bold,
               ),
-              border: Border.all(color: colorGrey90),
             ),
-            child: Column(
-              children: [
-                _buildRow(title: '실명', value: name),
-                const Divider(),
-                _buildRow(title: '생년월일', value: birth),
-                const Divider(),
-                _buildRow(title: '성별', value: gender),
-              ],
+            const SizedBox(height: 16),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(16),
+                ),
+                border: Border.all(color: colorGrey90),
+              ),
+              child: Column(
+                children: [
+                  _buildRow(title: '실명', value: name),
+                  const Divider(),
+                  _buildRow(title: '생년월일', value: birth),
+                  const Divider(),
+                  _buildRow(title: '성별', value: gender),
+                ],
+              ),
             ),
-          ),
-          const Spacer(),
-          FilledButton(
-            onPressed: () {},
-            child: const Text('다시 인증하기'),
-          ),
-        ],
+            const Spacer(),
+            FilledButton(
+              onPressed: () {},
+              child: const Text('다시 인증하기'),
+            ),
+          ],
+        ),
       ),
     );
   }

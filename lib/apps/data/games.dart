@@ -1,0 +1,47 @@
+import 'package:pokerspot_partner_app/apps/domain/game/game_data.dart';
+import 'package:pokerspot_partner_app/apps/global/constants/enums.dart';
+
+final List<GameModel> games = [
+  GameModel(
+    id: 1,
+    title: '포커스팟 홀덤1',
+    buyIn: 100,
+    entry: 10,
+    blup: 5,
+    prize: 100,
+    duration: 30,
+    isRealtime: true,
+    isNextGame: true,
+    isFirstGame: true,
+    gameType: GameType.DAILY,
+    isDailyGame: true,
+  ),
+  GameModel(
+    id: 2,
+    title: '포커스팟 홀덤2',
+    buyIn: 200,
+    entry: 20,
+    blup: 5,
+    prize: 100,
+    duration: 30,
+    isRealtime: false,
+    isNextGame: false,
+    isFirstGame: false,
+    gameType: GameType.DAILY,
+    isDailyGame: false,
+  ),
+  GameModel(
+    id: 3,
+    title: '포커스팟 홀덤3',
+    buyIn: 300,
+    entry: 30,
+    blup: 5,
+    prize: 100,
+    duration: 30,
+    isRealtime: true,
+    isNextGame: false,
+    isFirstGame: true,
+    gameType: GameType.DAILY,
+    isDailyGame: false,
+  ),
+];

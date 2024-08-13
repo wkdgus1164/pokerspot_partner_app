@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:pokerspot_partner_app/apps/global/constants/enums.dart';
+import 'package:pokerspot_partner_app/apps/data/games.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/list/card/card.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/list/bottom_sheet/create_selection_sheet.dart';
@@ -64,27 +64,29 @@ class _GameListPageState extends ConsumerState<GameListPage> {
             ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: 10,
+              itemCount: games.length,
               separatorBuilder: (context, index) => const SizedBox(height: 16),
               itemBuilder: (context, index) {
                 return GameCard(
-                  gameTitle: '포커스팟 홀덤',
-                  buyIn: 100,
-                  entry: 10,
-                  blup: 5,
-                  prize: 100,
-                  duration: 30,
-                  isRealtime: true,
-                  isNextGame: true,
-                  isFirstGame: true,
-                  gameType: GameType.DAILY,
-                  isDailyGame: true,
+                  id: games[index].id,
+                  gameTitle: games[index].title,
+                  buyIn: games[index].buyIn,
+                  entry: games[index].entry,
+                  blup: games[index].blup,
+                  prize: games[index].prize,
+                  duration: games[index].duration,
+                  isRealtime: games[index].isRealtime,
+                  isNextGame: games[index].isNextGame,
+                  isFirstGame: games[index].isFirstGame,
+                  gameType: games[index].gameType,
+                  isDailyGame: games[index].isDailyGame,
                   handleUpdateButtonClick: _handleUpdateButtonClick,
-                  toggleNextGameSwitch: (bool state) {},
-                  toggleRealtimeSwitch: (bool state) {},
+                  toggleNextGameSwitch: (v) {},
+                  toggleRealtimeSwitch: (v) {},
                 );
               },
             ),
+            const SizedBox(height: 100),
           ],
         ),
       ),
@@ -100,7 +102,7 @@ class _GameListPageState extends ConsumerState<GameListPage> {
     context.push(CustomRouter.gameCreateGtd.path);
   }
 
-  void _handleUpdateButtonClick() {
+  void _handleUpdateButtonClick(int id) {
     context.push(CustomRouter.gameUpdateDaily.path);
   }
 }

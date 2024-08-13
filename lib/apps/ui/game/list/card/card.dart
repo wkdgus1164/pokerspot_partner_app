@@ -8,6 +8,7 @@ import 'package:pokerspot_partner_app/apps/ui/game/list/card/toggle.dart';
 class GameCard extends StatelessWidget {
   const GameCard({
     super.key,
+    required this.id,
     required this.gameTitle,
     required this.buyIn,
     required this.entry,
@@ -24,6 +25,7 @@ class GameCard extends StatelessWidget {
     required this.handleUpdateButtonClick,
   });
 
+  final int id;
   final String gameTitle;
   final int buyIn;
   final int entry;
@@ -37,7 +39,7 @@ class GameCard extends StatelessWidget {
   final bool isDailyGame;
   final Function(bool)? toggleRealtimeSwitch;
   final Function(bool)? toggleNextGameSwitch;
-  final Function() handleUpdateButtonClick;
+  final Function(int) handleUpdateButtonClick;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +86,7 @@ class GameCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 IconButton(
-                  onPressed: handleUpdateButtonClick,
+                  onPressed: () => handleUpdateButtonClick(id),
                   icon: const Icon(
                     Icons.edit_rounded,
                     color: colorGrey60,
@@ -93,12 +95,12 @@ class GameCard extends StatelessWidget {
               ],
             ),
           ),
-          const CardInformation(
-            buyIn: 5,
-            entry: 25,
-            blup: 7,
-            prize: 80,
-            duration: 15,
+          CardInformation(
+            buyIn: buyIn,
+            entry: entry,
+            blup: blup,
+            prize: prize,
+            duration: duration,
           ),
           const Divider(),
           CardToggle(

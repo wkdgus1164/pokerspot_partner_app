@@ -26,8 +26,26 @@ class _MyMainPageState extends ConsumerState<MyMainPage> {
         handlePasswordChangeClick: () {
           context.push(CustomRouter.myPassword.path);
         },
-        handleSignOutClick: () {},
-        handleMemberBreakClick: () {},
+        handleSignOutClick: () {
+          showAdaptiveDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog.adaptive(
+                title: const Text('로그아웃'),
+                content: const Text('정말 로그아웃 하시겠어요?'),
+                actions: [
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text('로그아웃'),
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        handleMemberBreakClick: () {
+          context.push(CustomRouter.myMemberBreak.path);
+        },
       ),
     );
   }

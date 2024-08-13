@@ -7,6 +7,7 @@ import 'package:pokerspot_partner_app/apps/ui/game/sort/sort_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/game/update/daily/update_daily_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/my/account/account_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/my/main/main_page.dart';
+import 'package:pokerspot_partner_app/apps/ui/my/member_break/member_break_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/my/password/password_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/biz/biz_page.dart';
 import 'package:pokerspot_partner_app/apps/ui/store/biz_edit/biz_edit_page.dart';
@@ -37,6 +38,7 @@ enum CustomRouter {
   myMain('/my/main'),
   myAccount('/my/account'),
   myPassword('/my/password'),
+  myMemberBreak('/my/member-break'),
   ;
 
   const CustomRouter(this.path);
@@ -129,6 +131,10 @@ final router = GoRouter(
     GoRoute(
       path: CustomRouter.myPassword.path,
       builder: (context, state) => const MyPasswordPage(),
+    ),
+    GoRoute(
+      path: CustomRouter.myMemberBreak.path,
+      builder: (context, state) => const MyMemberBreakPage(),
     ),
   ],
 );

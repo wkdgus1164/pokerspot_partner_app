@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pokerspot_partner_app/apps/global/global.dart';
 
-DialogTheme dialogTheme = const DialogTheme(
-    // backgroundColor: Colors.white,
-    // surfaceTintColor: colorGrey40,
-    // actionsPadding: const EdgeInsets.all(16),
-    // titleTextStyle: textTheme.titleLarge!.copyWith(color: colorGrey20),
-    // contentTextStyle: textTheme.labelLarge!.copyWith(color: colorGrey40),
-    );
+DialogTheme dialogTheme = DialogTheme(
+  titleTextStyle: textTheme.bodyLarge!.copyWith(
+    color: colorGrey20,
+    fontWeight: FontWeight.bold,
+  ),
+);

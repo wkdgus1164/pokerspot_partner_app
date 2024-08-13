@@ -23,7 +23,9 @@ class _MyMainPageState extends ConsumerState<MyMainPage> {
         handleAccountClick: () {
           context.push(CustomRouter.myAccount.path);
         },
-        handlePasswordChangeClick: () {},
+        handlePasswordChangeClick: () {
+          context.push(CustomRouter.myPassword.path);
+        },
         handleSignOutClick: () {},
         handleMemberBreakClick: () {},
       ),

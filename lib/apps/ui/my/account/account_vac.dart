@@ -24,9 +24,10 @@ class MyAccountVac extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              '사업자 정보',
+              '개인 정보',
               style: textTheme.titleMedium!.copyWith(
                 fontWeight: FontWeight.bold,
+                color: colorGrey20,
               ),
             ),
             const SizedBox(height: 16),

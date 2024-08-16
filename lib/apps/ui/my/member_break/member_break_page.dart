@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
+import 'package:pokerspot_partner_app/apps/ui/my/member_break/components/since_time.dart';
 import 'package:pokerspot_partner_app/common/checkbox/checkbox.dart';
 
 class MyMemberBreakPage extends StatefulHookConsumerWidget {
@@ -26,6 +27,8 @@ class _MyMemberBreakPageState extends ConsumerState<MyMemberBreakPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  const MemberBreakSinceTimeBanner(),
+                  const SizedBox(height: 32),
                   Text(
                     '회원 탈퇴하시면...',
                     style: textTheme.headlineSmall!.copyWith(

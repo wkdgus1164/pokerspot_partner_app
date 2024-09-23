@@ -22,51 +22,25 @@ class _GameListPageState extends ConsumerState<GameListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_title),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.format_line_spacing_rounded),
-            onPressed: () {
-              context.push(CustomRouter.gameSort.path);
-            },
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        label: const Text('토너먼트 생성'),
-        icon: const Icon(Icons.add_rounded),
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            useSafeArea: true,
-            builder: (context) {
-              return GamesCreateModalBottomSheet(
-                handleDailyClick: _handleDailyClick,
-                handleGTDClick: _handleGTDClick,
-              );
-            },
-          );
-        },
-      ),
+      appBar: AppBar(title: Text(_title)),
       drawer: const NavigationDrawerView(),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Caption(
-              title: '꼭 확인해주세요',
-              caption:
-                  '포커스팟은 홀덤펍의 정보 중개자로서, 해당 서비스 제공의 당사자가 아니에요.\n서비스의 예약 이용 및 환불, 불법적인 행위와 관련된 의무와 책임은 각 서비스 제공자에게 있어요.',
-            ),
-            const SizedBox(height: 16),
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.all(16),
               itemCount: games.length,
               separatorBuilder: (context, index) => const SizedBox(height: 16),
               itemBuilder: (context, index) {
+                if (index == 0) {
+                  return const Caption(
+                    title: '꼭 확인해주세요',
+                    caption:
+                        '포커스팟은 홀덤펍의 정보 중개자로서, 해당 서비스 제공의 당사자가 아니에요.\n서비스의 예약 이용 및 환불, 불법적인 행위와 관련된 의무와 책임은 각 서비스 제공자에게 있어요.',
+                  );
+                }
+
                 return GameCard(
                   id: games[index].id,
                   gameTitle: games[index].title,
@@ -86,9 +60,41 @@ class _GameListPageState extends ConsumerState<GameListPage> {
                 );
               },
             ),
-            const SizedBox(height: 100),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: FilledButton.tonal(
+                    onPressed: () {
+                      context.push(CustomRouter.gameSort.path);
+                    },
+                    child: const Text('순서 변경하기'),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: FilledButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        useSafeArea: true,
+                        builder: (context) {
+                          return GamesCreateModalBottomSheet(
+                            handleDailyClick: _handleDailyClick,
+                            handleGTDClick: _handleGTDClick,
+                          );
+                        },
+                      );
+                    },
+                    child: const Text('토너먼트 생성하기'),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
       // _buildPlaceholder(),
     );

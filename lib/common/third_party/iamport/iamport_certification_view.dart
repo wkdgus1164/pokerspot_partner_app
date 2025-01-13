@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:iamport_flutter/iamport_certification.dart';
-import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:portone_flutter/iamport_payment.dart';
+import 'package:portone_flutter/model/payment_data.dart';
 
 class IamPortCertificationView extends StatelessWidget {
   final String iamportUserCode;
@@ -28,7 +27,7 @@ class IamPortCertificationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('본인 인증하기')),
-      body: IamportCertification(
+      body: IamportPayment(
         /* 웹뷰 로딩 컴포넌트 */
         initialChild: _buildLoading(),
 
@@ -36,7 +35,13 @@ class IamPortCertificationView extends StatelessWidget {
         userCode: iamportUserCode,
 
         /* [필수입력] 본인인증 데이터 */
-        data: CertificationData(mRedirectUrl: "https://www.google.com"),
+        data: PaymentData(
+          payMethod: "card",
+          merchantUid: "merchant_uid",
+          amount: 1000,
+          buyerTel: "01012345678",
+          appScheme: "appScheme",
+        ),
 
         /* [필수입력] 콜백 함수 */
         callback: handleCertificationResponse,

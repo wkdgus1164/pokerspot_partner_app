@@ -114,7 +114,6 @@ List<FlSpot> getSpots(List<int> dots) {
 
 LineTouchData pLineTouchData = LineTouchData(
   touchTooltipData: LineTouchTooltipData(
-    getTooltipColor: (touchedSpot) => colorGrey95,
     getTooltipItems: (List<LineBarSpot> touchedSpots) {
       return touchedSpots.map((LineBarSpot touchedSpot) {
         final flSpot = touchedSpot;

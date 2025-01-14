@@ -19,7 +19,9 @@ mixin _$DrawerStoresModel {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DrawerStoresModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DrawerStoresModelCopyWith<DrawerStoresModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$DrawerStoresModelCopyWithImpl<$Res, $Val extends DrawerStoresModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DrawerStoresModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$DrawerStoresModelImplCopyWithImpl<$Res>
       $Res Function(_$DrawerStoresModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DrawerStoresModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,7 +133,9 @@ class _$DrawerStoresModelImpl implements _DrawerStoresModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DrawerStoresModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DrawerStoresModelImplCopyWith<_$DrawerStoresModelImpl> get copyWith =>
@@ -144,8 +152,11 @@ abstract class _DrawerStoresModel implements DrawerStoresModel {
   String get id;
   @override
   String get name;
+
+  /// Create a copy of DrawerStoresModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DrawerStoresModelImplCopyWith<_$DrawerStoresModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

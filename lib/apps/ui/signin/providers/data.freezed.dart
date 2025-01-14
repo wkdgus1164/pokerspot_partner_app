@@ -24,8 +24,12 @@ mixin _$SigninModel {
   String get password => throw _privateConstructorUsedError;
   bool get isPwVisible => throw _privateConstructorUsedError;
 
+  /// Serializes this SigninModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SigninModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SigninModelCopyWith<SigninModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$SigninModelCopyWithImpl<$Res, $Val extends SigninModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SigninModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$SigninModelImplCopyWithImpl<$Res>
       _$SigninModelImpl _value, $Res Function(_$SigninModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SigninModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,11 +157,13 @@ class _$SigninModelImpl implements _SigninModel {
                 other.isPwVisible == isPwVisible));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, password, isPwVisible);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SigninModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SigninModelImplCopyWith<_$SigninModelImpl> get copyWith =>
@@ -182,8 +192,11 @@ abstract class _SigninModel implements SigninModel {
   String get password;
   @override
   bool get isPwVisible;
+
+  /// Create a copy of SigninModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SigninModelImplCopyWith<_$SigninModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

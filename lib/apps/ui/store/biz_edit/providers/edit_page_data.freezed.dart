@@ -19,7 +19,9 @@ mixin _$BizEditModel {
   File get fileName => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BizEditModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BizEditModelCopyWith<BizEditModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$BizEditModelCopyWithImpl<$Res, $Val extends BizEditModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BizEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$BizEditModelImplCopyWithImpl<$Res>
       _$BizEditModelImpl _value, $Res Function(_$BizEditModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BizEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,7 +134,9 @@ class _$BizEditModelImpl implements _BizEditModel {
   @override
   int get hashCode => Object.hash(runtimeType, fileName, isValid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BizEditModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BizEditModelImplCopyWith<_$BizEditModelImpl> get copyWith =>
@@ -144,8 +152,11 @@ abstract class _BizEditModel implements BizEditModel {
   File get fileName;
   @override
   bool get isValid;
+
+  /// Create a copy of BizEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BizEditModelImplCopyWith<_$BizEditModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

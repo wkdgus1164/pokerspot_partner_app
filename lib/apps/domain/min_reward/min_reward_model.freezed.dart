@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GameMinRewardModel {
   int get minReward => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameMinRewardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameMinRewardModelCopyWith<GameMinRewardModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$GameMinRewardModelCopyWithImpl<$Res, $Val extends GameMinRewardModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameMinRewardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$GameMinRewardModelImplCopyWithImpl<$Res>
       $Res Function(_$GameMinRewardModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameMinRewardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$GameMinRewardModelImpl extends _GameMinRewardModel {
   @override
   int get hashCode => Object.hash(runtimeType, minReward);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameMinRewardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameMinRewardModelImplCopyWith<_$GameMinRewardModelImpl> get copyWith =>
@@ -129,8 +137,11 @@ abstract class _GameMinRewardModel extends GameMinRewardModel {
 
   @override
   int get minReward;
+
+  /// Create a copy of GameMinRewardModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameMinRewardModelImplCopyWith<_$GameMinRewardModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

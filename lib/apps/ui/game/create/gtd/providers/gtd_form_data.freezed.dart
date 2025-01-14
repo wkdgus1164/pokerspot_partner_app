@@ -27,7 +27,9 @@ mixin _$GameCreateGTDFormModel {
   bool get everyDay => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameCreateGTDFormModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameCreateGTDFormModelCopyWith<GameCreateGTDFormModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +64,8 @@ class _$GameCreateGTDFormModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameCreateGTDFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,6 +157,8 @@ class __$$GameCreateGTDFormModelImplCopyWithImpl<$Res>
       $Res Function(_$GameCreateGTDFormModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameCreateGTDFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -282,7 +288,9 @@ class _$GameCreateGTDFormModelImpl extends _GameCreateGTDFormModel {
   int get hashCode => Object.hash(runtimeType, gameName, buyIn, minEntry,
       maxEntry, prize, duration, minReward, firstGame, everyDay, isValid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameCreateGTDFormModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameCreateGTDFormModelImplCopyWith<_$GameCreateGTDFormModelImpl>
@@ -324,8 +332,11 @@ abstract class _GameCreateGTDFormModel extends GameCreateGTDFormModel {
   bool get everyDay;
   @override
   bool get isValid;
+
+  /// Create a copy of GameCreateGTDFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameCreateGTDFormModelImplCopyWith<_$GameCreateGTDFormModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

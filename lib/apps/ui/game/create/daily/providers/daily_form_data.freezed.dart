@@ -26,7 +26,9 @@ mixin _$GameCreateDailyFormModel {
   bool get everyDay => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameCreateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameCreateDailyFormModelCopyWith<GameCreateDailyFormModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +62,8 @@ class _$GameCreateDailyFormModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameCreateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,6 +149,8 @@ class __$$GameCreateDailyFormModelImplCopyWithImpl<$Res>
       $Res Function(_$GameCreateDailyFormModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameCreateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -264,7 +270,9 @@ class _$GameCreateDailyFormModelImpl extends _GameCreateDailyFormModel {
   int get hashCode => Object.hash(runtimeType, gameName, buyIn, minEntry,
       maxEntry, prize, duration, firstGame, everyDay, isValid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameCreateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameCreateDailyFormModelImplCopyWith<_$GameCreateDailyFormModelImpl>
@@ -303,8 +311,11 @@ abstract class _GameCreateDailyFormModel extends GameCreateDailyFormModel {
   bool get everyDay;
   @override
   bool get isValid;
+
+  /// Create a copy of GameCreateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameCreateDailyFormModelImplCopyWith<_$GameCreateDailyFormModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

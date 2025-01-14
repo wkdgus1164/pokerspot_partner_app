@@ -26,8 +26,12 @@ mixin _$StoreOperationTimeModel {
   String get closeTime => throw _privateConstructorUsedError;
   String get closeMinute => throw _privateConstructorUsedError;
 
+  /// Serializes this StoreOperationTimeModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StoreOperationTimeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoreOperationTimeModelCopyWith<StoreOperationTimeModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$StoreOperationTimeModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoreOperationTimeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -111,6 +117,8 @@ class __$$StoreOperationTimeModelImplCopyWithImpl<$Res>
       $Res Function(_$StoreOperationTimeModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoreOperationTimeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -181,12 +189,14 @@ class _$StoreOperationTimeModelImpl implements _StoreOperationTimeModel {
                 other.closeMinute == closeMinute));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, openTime, openMinute, closeTime, closeMinute);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreOperationTimeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreOperationTimeModelImplCopyWith<_$StoreOperationTimeModelImpl>
@@ -219,8 +229,11 @@ abstract class _StoreOperationTimeModel implements StoreOperationTimeModel {
   String get closeTime;
   @override
   String get closeMinute;
+
+  /// Create a copy of StoreOperationTimeModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreOperationTimeModelImplCopyWith<_$StoreOperationTimeModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

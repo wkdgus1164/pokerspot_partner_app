@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GameMaxEntryModel {
   int get maxEntry => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameMaxEntryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameMaxEntryModelCopyWith<GameMaxEntryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$GameMaxEntryModelCopyWithImpl<$Res, $Val extends GameMaxEntryModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameMaxEntryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$GameMaxEntryModelImplCopyWithImpl<$Res>
       $Res Function(_$GameMaxEntryModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameMaxEntryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$GameMaxEntryModelImpl extends _GameMaxEntryModel {
   @override
   int get hashCode => Object.hash(runtimeType, maxEntry);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameMaxEntryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameMaxEntryModelImplCopyWith<_$GameMaxEntryModelImpl> get copyWith =>
@@ -129,8 +137,11 @@ abstract class _GameMaxEntryModel extends GameMaxEntryModel {
 
   @override
   int get maxEntry;
+
+  /// Create a copy of GameMaxEntryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameMaxEntryModelImplCopyWith<_$GameMaxEntryModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -21,7 +21,9 @@ mixin _$CustomSheetModel {
   Widget get icon => throw _privateConstructorUsedError;
   dynamic Function() get onTap => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomSheetModelCopyWith<CustomSheetModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$CustomSheetModelCopyWithImpl<$Res, $Val extends CustomSheetModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,6 +99,8 @@ class __$$CustomSheetModelImplCopyWithImpl<$Res>
       $Res Function(_$CustomSheetModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,7 +168,9 @@ class _$CustomSheetModelImpl implements _CustomSheetModel {
   @override
   int get hashCode => Object.hash(runtimeType, title, subtitle, icon, onTap);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomSheetModelImplCopyWith<_$CustomSheetModelImpl> get copyWith =>
@@ -185,8 +193,11 @@ abstract class _CustomSheetModel implements CustomSheetModel {
   Widget get icon;
   @override
   dynamic Function() get onTap;
+
+  /// Create a copy of CustomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomSheetModelImplCopyWith<_$CustomSheetModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

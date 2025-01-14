@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ImagePickerModel {
   File? get image => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImagePickerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ImagePickerModelCopyWith<ImagePickerModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$ImagePickerModelCopyWithImpl<$Res, $Val extends ImagePickerModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ImagePickerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$ImagePickerModelImplCopyWithImpl<$Res>
       $Res Function(_$ImagePickerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImagePickerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,7 +119,9 @@ class _$ImagePickerModelImpl implements _ImagePickerModel {
   @override
   int get hashCode => Object.hash(runtimeType, image);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImagePickerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImagePickerModelImplCopyWith<_$ImagePickerModelImpl> get copyWith =>
@@ -127,8 +135,11 @@ abstract class _ImagePickerModel implements ImagePickerModel {
 
   @override
   File? get image;
+
+  /// Create a copy of ImagePickerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImagePickerModelImplCopyWith<_$ImagePickerModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GameEveryDayModel {
   bool get everyDay => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameEveryDayModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameEveryDayModelCopyWith<GameEveryDayModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$GameEveryDayModelCopyWithImpl<$Res, $Val extends GameEveryDayModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameEveryDayModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$GameEveryDayModelImplCopyWithImpl<$Res>
       $Res Function(_$GameEveryDayModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameEveryDayModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$GameEveryDayModelImpl extends _GameEveryDayModel {
   @override
   int get hashCode => Object.hash(runtimeType, everyDay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameEveryDayModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameEveryDayModelImplCopyWith<_$GameEveryDayModelImpl> get copyWith =>
@@ -129,8 +137,11 @@ abstract class _GameEveryDayModel extends GameEveryDayModel {
 
   @override
   bool get everyDay;
+
+  /// Create a copy of GameEveryDayModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameEveryDayModelImplCopyWith<_$GameEveryDayModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

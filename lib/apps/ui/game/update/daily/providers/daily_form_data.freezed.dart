@@ -31,8 +31,12 @@ mixin _$GameUpdateDailyFormModel {
   bool get everyDay => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
+  /// Serializes this GameUpdateDailyFormModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GameUpdateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameUpdateDailyFormModelCopyWith<GameUpdateDailyFormModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$GameUpdateDailyFormModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameUpdateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,6 +157,8 @@ class __$$GameUpdateDailyFormModelImplCopyWithImpl<$Res>
       $Res Function(_$GameUpdateDailyFormModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameUpdateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -269,12 +277,14 @@ class _$GameUpdateDailyFormModelImpl extends _GameUpdateDailyFormModel {
             (identical(other.isValid, isValid) || other.isValid == isValid));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, gameName, buyIn, minEntry,
       maxEntry, prize, duration, firstGame, everyDay, isValid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameUpdateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameUpdateDailyFormModelImplCopyWith<_$GameUpdateDailyFormModelImpl>
@@ -323,8 +333,11 @@ abstract class _GameUpdateDailyFormModel extends GameUpdateDailyFormModel {
   bool get everyDay;
   @override
   bool get isValid;
+
+  /// Create a copy of GameUpdateDailyFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameUpdateDailyFormModelImplCopyWith<_$GameUpdateDailyFormModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GameBuyInModel {
   int get buyIn => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameBuyInModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameBuyInModelCopyWith<GameBuyInModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$GameBuyInModelCopyWithImpl<$Res, $Val extends GameBuyInModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameBuyInModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$gameBuyInModelImplCopyWithImpl<$Res>
       _$gameBuyInModelImpl _value, $Res Function(_$gameBuyInModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameBuyInModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,7 +119,9 @@ class _$gameBuyInModelImpl extends _gameBuyInModel {
   @override
   int get hashCode => Object.hash(runtimeType, buyIn);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameBuyInModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$gameBuyInModelImplCopyWith<_$gameBuyInModelImpl> get copyWith =>
@@ -127,8 +135,11 @@ abstract class _gameBuyInModel extends GameBuyInModel {
 
   @override
   int get buyIn;
+
+  /// Create a copy of GameBuyInModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$gameBuyInModelImplCopyWith<_$gameBuyInModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

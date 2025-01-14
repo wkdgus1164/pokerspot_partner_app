@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GameMinEntryModel {
   int get minEntry => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameMinEntryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameMinEntryModelCopyWith<GameMinEntryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$GameMinEntryModelCopyWithImpl<$Res, $Val extends GameMinEntryModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameMinEntryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$GameMinEntryModelImplCopyWithImpl<$Res>
       $Res Function(_$GameMinEntryModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameMinEntryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$GameMinEntryModelImpl extends _GameMinEntryModel {
   @override
   int get hashCode => Object.hash(runtimeType, minEntry);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameMinEntryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameMinEntryModelImplCopyWith<_$GameMinEntryModelImpl> get copyWith =>
@@ -129,8 +137,11 @@ abstract class _GameMinEntryModel extends GameMinEntryModel {
 
   @override
   int get minEntry;
+
+  /// Create a copy of GameMinEntryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameMinEntryModelImplCopyWith<_$GameMinEntryModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GameNameModel {
   String get gameName => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameNameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameNameModelCopyWith<GameNameModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$GameNameModelCopyWithImpl<$Res, $Val extends GameNameModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameNameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$GameNameModelImplCopyWithImpl<$Res>
       _$GameNameModelImpl _value, $Res Function(_$GameNameModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameNameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$GameNameModelImpl extends _GameNameModel {
   @override
   int get hashCode => Object.hash(runtimeType, gameName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameNameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameNameModelImplCopyWith<_$GameNameModelImpl> get copyWith =>
@@ -128,8 +136,11 @@ abstract class _GameNameModel extends GameNameModel {
 
   @override
   String get gameName;
+
+  /// Create a copy of GameNameModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameNameModelImplCopyWith<_$GameNameModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

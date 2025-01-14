@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GameFirstGameModel {
   bool get firstGame => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameFirstGameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameFirstGameModelCopyWith<GameFirstGameModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$GameFirstGameModelCopyWithImpl<$Res, $Val extends GameFirstGameModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameFirstGameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$GameFirstGameModelImplCopyWithImpl<$Res>
       $Res Function(_$GameFirstGameModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameFirstGameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$GameFirstGameModelImpl extends _GameFirstGameModel {
   @override
   int get hashCode => Object.hash(runtimeType, firstGame);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameFirstGameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameFirstGameModelImplCopyWith<_$GameFirstGameModelImpl> get copyWith =>
@@ -129,8 +137,11 @@ abstract class _GameFirstGameModel extends GameFirstGameModel {
 
   @override
   bool get firstGame;
+
+  /// Create a copy of GameFirstGameModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameFirstGameModelImplCopyWith<_$GameFirstGameModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

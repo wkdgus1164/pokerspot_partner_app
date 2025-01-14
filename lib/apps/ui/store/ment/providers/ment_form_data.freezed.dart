@@ -22,8 +22,12 @@ StoreMentFormModel _$StoreMentFormModelFromJson(Map<String, dynamic> json) {
 mixin _$StoreMentFormModel {
   String get ment => throw _privateConstructorUsedError;
 
+  /// Serializes this StoreMentFormModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StoreMentFormModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoreMentFormModelCopyWith<StoreMentFormModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$StoreMentFormModelCopyWithImpl<$Res, $Val extends StoreMentFormModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoreMentFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$StoreMentFormModelImplCopyWithImpl<$Res>
       $Res Function(_$StoreMentFormModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoreMentFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,11 +126,13 @@ class _$StoreMentFormModelImpl implements _StoreMentFormModel {
             (identical(other.ment, ment) || other.ment == ment));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, ment);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreMentFormModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreMentFormModelImplCopyWith<_$StoreMentFormModelImpl> get copyWith =>
@@ -146,8 +156,11 @@ abstract class _StoreMentFormModel implements StoreMentFormModel {
 
   @override
   String get ment;
+
+  /// Create a copy of StoreMentFormModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreMentFormModelImplCopyWith<_$StoreMentFormModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -26,8 +26,12 @@ mixin _$SignupInfoModel {
   bool get isPasswordVisible => throw _privateConstructorUsedError;
   bool get isPasswordConfirmVisible => throw _privateConstructorUsedError;
 
+  /// Serializes this SignupInfoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignupInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignupInfoModelCopyWith<SignupInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$SignupInfoModelCopyWithImpl<$Res, $Val extends SignupInfoModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignupInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +120,8 @@ class __$$SignupInfoModelImplCopyWithImpl<$Res>
       _$SignupInfoModelImpl _value, $Res Function(_$SignupInfoModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignupInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -194,12 +202,14 @@ class _$SignupInfoModelImpl implements _SignupInfoModel {
                 other.isPasswordConfirmVisible == isPasswordConfirmVisible));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, password, passwordConfirm,
       isPasswordVisible, isPasswordConfirmVisible);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignupInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignupInfoModelImplCopyWith<_$SignupInfoModelImpl> get copyWith =>
@@ -235,8 +245,11 @@ abstract class _SignupInfoModel implements SignupInfoModel {
   bool get isPasswordVisible;
   @override
   bool get isPasswordConfirmVisible;
+
+  /// Create a copy of SignupInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignupInfoModelImplCopyWith<_$SignupInfoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

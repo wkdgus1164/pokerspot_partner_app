@@ -29,7 +29,9 @@ mixin _$GameModel {
   GameType get gameType => throw _privateConstructorUsedError;
   bool get isDailyGame => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameModelCopyWith<GameModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +66,8 @@ class _$GameModelCopyWithImpl<$Res, $Val extends GameModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -164,6 +168,8 @@ class __$$GameModelImplCopyWithImpl<$Res>
       _$GameModelImpl _value, $Res Function(_$GameModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -321,7 +327,9 @@ class _$GameModelImpl implements _GameModel {
       gameType,
       isDailyGame);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameModelImplCopyWith<_$GameModelImpl> get copyWith =>
@@ -367,8 +375,11 @@ abstract class _GameModel implements GameModel {
   GameType get gameType;
   @override
   bool get isDailyGame;
+
+  /// Create a copy of GameModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameModelImplCopyWith<_$GameModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

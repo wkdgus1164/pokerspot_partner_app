@@ -15,7 +15,11 @@ class DioConfig {
     'Accept': 'application/json',
   };
 
-  /// 응답의 error 필드 존재 여부로 성공/실패 판단
-  static bool isSuccessStatusCode(int? statusCode) =>
-      statusCode != null && statusCode >= 200 && statusCode < 300;
+  /// 상태 코드 검증
+  /// 200-299: 정상 응답
+  /// 409: Conflict (이미 존재하는 리소스 등)
+  static bool isSuccessStatusCode(int? statusCode) {
+    if (statusCode == null) return false;
+    return (statusCode >= 200 && statusCode < 300) || statusCode == 409;
+  }
 }

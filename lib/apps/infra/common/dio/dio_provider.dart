@@ -1,8 +1,6 @@
-// ignore_for_file: invalid_annotation_target
-
 import 'package:dio/dio.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'dio_config.dart';
 import 'dio_interceptor.dart';

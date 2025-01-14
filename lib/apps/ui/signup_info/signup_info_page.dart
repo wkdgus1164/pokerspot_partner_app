@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
+import 'package:pokerspot_partner_app/apps/global/exception/exceptions.dart';
 import 'package:pokerspot_partner_app/apps/global/global.dart';
-import 'package:pokerspot_partner_app/apps/infra/api/signup/dto/signup_dto.dart';
 import 'package:pokerspot_partner_app/apps/infra/api/signup/input/signup_input.dart';
 import 'package:pokerspot_partner_app/apps/infra/api/signup/signup_api.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_info/form/form_view.dart';
 import 'package:pokerspot_partner_app/apps/ui/signup_info/providers/data.dart';
+import 'package:pokerspot_partner_app/common/full_screen_loading/loading.dart';
 
+/// 회원가입 정보 입력 페이지
 class SignupInfoPage extends StatefulHookConsumerWidget {
   const SignupInfoPage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _SignupInfoPageState();
+  ConsumerState<SignupInfoPage> createState() => _SignupInfoPageState();
 }
 
 class _SignupInfoPageState extends ConsumerState<SignupInfoPage> {
@@ -21,48 +24,47 @@ class _SignupInfoPageState extends ConsumerState<SignupInfoPage> {
 
   @override
   Widget build(BuildContext context) {
-    // ID
-    final id = ref.watch(signupInfoDataProvider).id;
-
-    // PW
-    final pw = ref.watch(signupInfoDataProvider).password;
-    final pwConfirm = ref.watch(signupInfoDataProvider).passwordConfirm;
-
-    final handleSubmit = !_isLoading &&
-            pw.isNotEmpty &&
-            pwConfirm.isNotEmpty &&
-            id.isNotEmpty &&
-            pw == pwConfirm
-        ? _handleSubmit
-        : null;
-
     return Scaffold(
       appBar: AppBar(title: const Text('가입 정보 입력하기')),
       body: Stack(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SignupInfoFormView(),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: FilledButton(
-                  onPressed: handleSubmit,
-                  child: const Text('회원 가입하기'),
-                ),
-              ),
-            ],
-          ),
-          if (_isLoading)
-            const Center(
-              child: CircularProgressIndicator(),
-            ),
+          _buildContent(),
+          if (_isLoading) const FullScreenLoading(),
         ],
       ),
     );
   }
 
-  Future<void> _handleSubmit() async {
+  /// 메인 컨텐츠 영역
+  Widget _buildContent() {
+    final signupData = ref.watch(signupInfoDataProvider);
+    final isValid = _validateSignupData(signupData);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SignupInfoFormView(),
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: FilledButton(
+            onPressed: isValid && !_isLoading ? () => _handleSubmit() : null,
+            child: const Text('회원 가입하기'),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// 회원가입 데이터 유효성 검사
+  bool _validateSignupData(SignupInfoModel data) {
+    return data.id.isNotEmpty &&
+        data.password.isNotEmpty &&
+        data.passwordConfirm.isNotEmpty &&
+        data.password == data.passwordConfirm;
+  }
+
+  /// 회원가입 요청 처리
+  Future _handleSubmit() async {
     if (!mounted) return;
     setState(() => _isLoading = true);
 
@@ -78,38 +80,21 @@ class _SignupInfoPageState extends ConsumerState<SignupInfoPage> {
     setState(() => _isLoading = false);
 
     response.when(
-      success: (data, message, timestamp) async {
-        await showAdaptiveDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog.adaptive(
-              title: const Text('회원가입 완료!'),
-              content: const Text('로그인하고 바로 매장을 등록해보세요.'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    context.go(CustomRouter.signin.path);
-                  },
-                  child: const Text('로그인'),
-                ),
-              ],
-            );
-          },
-        );
-      },
-      error: (error, message, timestamp) {
-        String errorMessage = message;
-        if (error == 'DUPLICATE_IDENTIFIER') {
-          errorMessage = '이미 등록된 이메일입니다.';
-        }
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(errorMessage),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      },
+      success: (_, __, ___) => _handleSignupSuccess(),
+      error: (error, message, _) => _handleSignupError(error, message),
     );
+  }
+
+  /// 회원가입 성공 처리
+  void _handleSignupSuccess() {
+    Fluttertoast.showToast(msg: '회원가입 완료!');
+    context.go(CustomRouter.signin.path);
+  }
+
+  /// 회원가입 실패 처리
+  void _handleSignupError(String error, String message) {
+    if (error == DuplicateIdentifierException.error) {
+      Fluttertoast.showToast(msg: DuplicateIdentifierException().message);
+    }
   }
 }

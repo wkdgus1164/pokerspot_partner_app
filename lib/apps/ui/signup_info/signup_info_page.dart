@@ -93,8 +93,19 @@ class _SignupInfoPageState extends ConsumerState<SignupInfoPage> {
 
   /// 회원가입 실패 처리
   void _handleSignupError(String error, String message) {
-    if (error == DuplicateIdentifierException.error) {
-      Fluttertoast.showToast(msg: DuplicateIdentifierException().message);
-    }
+    Logger().e('SignUp Error - Code: $error, Message: $message');
+
+    final errorMessage = switch (error) {
+      DuplicateIdentifierException.error =>
+        DuplicateIdentifierException().message,
+      PartnerNotFoundException.error => PartnerNotFoundException().message,
+      _ => message.isNotEmpty ? message : '회원가입 중 오류가 발생했습니다.'
+    };
+
+    Fluttertoast.showToast(
+      msg: errorMessage,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+    );
   }
 }
